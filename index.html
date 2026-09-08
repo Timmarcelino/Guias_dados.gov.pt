@@ -1,0 +1,1836 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Guias para utilizadores - Conjunto de dados</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="guias-conjuntos-de-dados.html" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
+&lt;title&gt;guias-conjuntos-de-dados.html&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const parentWindow = globalThis.parent;
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.documentElement;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  let appliedProperties = [];
+
+  const applyHostStyleVariables = (styleVariables) =&gt; {
+    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
+      return;
+    }
+    for (const property of appliedProperties) {
+      root.style.removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
+        root.style.setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) =&gt; {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+    const sandboxDocument = globalThis.frameElement?.ownerDocument;
+    if (sandboxDocument != null &amp;&amp; globals?.visualizationTheme != null) {
+      let colorSchemeMeta = sandboxDocument.querySelector(
+        'meta[name=&quot;color-scheme&quot;]',
+      );
+      if (colorSchemeMeta == null) {
+        colorSchemeMeta = sandboxDocument.createElement(&quot;meta&quot;);
+        colorSchemeMeta.name = &quot;color-scheme&quot;;
+        sandboxDocument.head.appendChild(colorSchemeMeta);
+      }
+      colorSchemeMeta.content = globals.visualizationTheme;
+      sandboxDocument.documentElement.style.colorScheme =
+        globals.visualizationTheme;
+      // Paint the host surface behind transparent saved visualization documents.
+      sandboxDocument.documentElement.style.backgroundColor =
+        root.style.getPropertyValue(&quot;--background&quot;);
+    }
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+&lt;/script&gt;
+
+
+&lt;style&gt;
+#dados-guides-review{--dg-navy:#103454;--dg-blue:#005ce6;--dg-ink:#243b50;--dg-muted:#526779;--dg-line:#dce5eb;--dg-wash:#f4f7f9;--dg-green:#eaf5ef;color:var(--dg-ink);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;container-type:inline-size;background:transparent;color-scheme:light}
+#dados-guides-review *{box-sizing:border-box}
+#dados-guides-review .dg-window{background:#fff;min-width:0}
+#dados-guides-review .dg-draft{background:var(--dg-navy);color:#fff;padding:8px 24px;font-size:12px;letter-spacing:.02em}
+#dados-guides-review .dg-header{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:20px 26px;border-bottom:1px solid var(--dg-line)}
+#dados-guides-review .dg-brand{color:var(--dg-navy);font-size:24px;font-weight:700;letter-spacing:-1px;white-space:nowrap}
+#dados-guides-review .dg-brand span{color:var(--dg-blue)}
+#dados-guides-review .dg-header-name{border-left:1px solid var(--dg-line);padding-left:24px;color:var(--dg-navy);font-size:17px}
+#dados-guides-review .dg-search{margin-left:auto;display:flex;gap:8px;flex:1;max-width:345px;min-width:220px}
+#dados-guides-review input,#dados-guides-review select{font:inherit;color:var(--dg-ink);background:#fff;border:1px solid #a7bac8;border-radius:5px;padding:10px 12px;min-width:0;width:100%}
+#dados-guides-review button{font:inherit;cursor:pointer}
+#dados-guides-review .dg-search button{background:var(--dg-blue);border:0;color:#fff;border-radius:5px;padding:10px 14px}
+#dados-guides-review .dg-body{display:grid;grid-template-columns:246px minmax(0,1fr);align-items:start}
+#dados-guides-review .dg-sidebar{background:var(--dg-wash);padding:26px 16px 32px;border-right:1px solid var(--dg-line);align-self:stretch}
+#dados-guides-review .dg-selector-label{display:block;font-size:12px;color:var(--dg-muted);margin:0 10px 8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+#dados-guides-review .dg-side-title{font-size:17px;color:var(--dg-navy);font-weight:700;margin:22px 10px 14px;line-height:1.35}
+#dados-guides-review .dg-sidebar nav{display:grid;gap:3px}
+#dados-guides-review .dg-nav-item{display:block;text-align:left;border:0;border-left:3px solid transparent;background:transparent;color:var(--dg-ink);padding:10px 11px;line-height:1.4;border-radius:0 5px 5px 0;font-size:13px}
+#dados-guides-review .dg-nav-item[aria-current=page]{background:#e4eefc;border-left-color:var(--dg-blue);color:#004aaa;font-weight:700}
+#dados-guides-review .dg-nav-item:hover{background:#eaf0f5}
+#dados-guides-review .dg-all{border:0;background:transparent;color:var(--dg-blue);padding:13px 10px;text-align:left;font-size:13px;text-decoration:underline;margin-top:22px}
+#dados-guides-review main{padding:28px 36px 38px;min-width:0}
+#dados-guides-review .dg-breadcrumb{font-size:12px;color:var(--dg-muted);margin-bottom:24px}
+#dados-guides-review .dg-kicker{color:#006a4c;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;margin-bottom:8px}
+#dados-guides-review h1{font-size:32px;line-height:1.2;color:var(--dg-navy);font-weight:700;margin:0 0 16px;letter-spacing:-.7px}
+#dados-guides-review h2{font-size:20px;color:var(--dg-navy);font-weight:700;line-height:1.3;margin:28px 0 15px}
+#dados-guides-review p{margin:0 0 14px}
+#dados-guides-review .dg-lead{font-size:17px;line-height:1.55;max-width:760px;color:var(--dg-muted)}
+#dados-guides-review .dg-audience{font-size:13px;margin:17px 0 25px;max-width:720px}
+#dados-guides-review .dg-role{display:inline-block;background:var(--dg-green);color:#175a44;border-radius:4px;padding:4px 9px;font-size:12px;margin:0 0 13px}
+#dados-guides-review .dg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 28px}
+#dados-guides-review .dg-choice{display:flex;gap:13px;text-align:left;background:#fff;border:1px solid var(--dg-line);border-radius:8px;padding:17px 15px;color:var(--dg-navy);min-width:0}
+#dados-guides-review .dg-choice:hover{border-color:var(--dg-blue);background:#f7faff}
+#dados-guides-review .dg-number{background:#eaf1fd;border-radius:50%;flex:0 0 29px;width:29px;height:29px;display:flex;align-items:center;justify-content:center;color:var(--dg-blue);font-size:12px;font-weight:700}
+#dados-guides-review .dg-choice strong{font-size:14px;line-height:1.4;display:block;margin:2px 0 6px}
+#dados-guides-review .dg-choice small{font-size:12px;color:var(--dg-muted);line-height:1.4;display:block}
+#dados-guides-review .dg-example{background:#edf4fd;border-radius:8px;padding:18px 21px;margin:25px 0}
+#dados-guides-review .dg-example h2{margin:0 0 8px;font-size:16px}
+#dados-guides-review .dg-example p{font-size:14px;margin:0}
+#dados-guides-review .dg-tip{background:var(--dg-green);padding:17px 20px;border-radius:7px;margin:22px 0;font-size:13px}
+#dados-guides-review .dg-tip strong{display:block;color:#175a44;margin-bottom:5px}
+#dados-guides-review .dg-tip p{margin:0}
+#dados-guides-review .dg-steps{list-style:none;counter-reset:steps;padding:0;margin:0;display:grid;gap:16px}
+#dados-guides-review .dg-steps li{counter-increment:steps;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-size:14px;line-height:1.65}
+#dados-guides-review .dg-steps li:before{content:counter(steps);background:#e9f1fc;color:#0050b9;font-weight:700;font-size:12px;border-radius:50%;height:27px;display:flex;align-items:center;justify-content:center}
+#dados-guides-review .dg-media{border:1px dashed #9fb5c6;padding:20px;border-radius:7px;background:#f8fafc;color:var(--dg-muted);font-size:12px;margin-top:23px;display:flex;gap:16px;align-items:center;min-height:105px}
+#dados-guides-review .dg-media-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#435d73;margin-bottom:5px}
+#dados-guides-review .dg-media p{margin:0}
+#dados-guides-review .dg-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:30px;padding-top:20px;border-top:1px solid var(--dg-line)}
+#dados-guides-review .dg-primary{border:0;border-radius:5px;background:var(--dg-blue);color:white;padding:12px 18px;text-align:left;font-size:13px}
+#dados-guides-review .dg-text-button{border:0;background:transparent;color:var(--dg-blue);padding:10px 0;text-align:left;font-size:13px;text-decoration:underline}
+#dados-guides-review .dg-related{display:flex;flex-wrap:wrap;gap:3px 19px}
+#dados-guides-review .dg-table{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;table-layout:fixed}
+#dados-guides-review .dg-table td,#dados-guides-review .dg-table th{padding:10px 12px;text-align:left;border-bottom:1px solid var(--dg-line);overflow-wrap:anywhere}
+#dados-guides-review .dg-table th{background:var(--dg-wash);font-weight:700}
+#dados-guides-review .dg-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dg-muted);font-size:11px;border-top:1px solid var(--dg-line);padding:15px 26px}
+#dados-guides-review .dg-mobile{display:none}
+#dados-guides-review .dg-sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+#dados-guides-review [hidden]{display:none!important}
+@container(max-width:800px){#dados-guides-review .dg-body{grid-template-columns:210px minmax(0,1fr)}#dados-guides-review main{padding:24px}#dados-guides-review h1{font-size:27px}#dados-guides-review .dg-grid{grid-template-columns:1fr}#dados-guides-review .dg-header{gap:14px;padding:18px}#dados-guides-review .dg-header-name{padding-left:14px}#dados-guides-review .dg-search{max-width:none;flex-basis:100%}}
+@container(max-width:580px){#dados-guides-review .dg-body{display:block}#dados-guides-review .dg-sidebar{border-right:0;border-bottom:1px solid var(--dg-line);padding:15px 18px}#dados-guides-review .dg-sidebar nav,#dados-guides-review .dg-side-title,#dados-guides-review .dg-all{display:none}#dados-guides-review .dg-mobile{display:block;margin-top:12px}#dados-guides-review .dg-header-name{font-size:14px}#dados-guides-review .dg-brand{font-size:22px}#dados-guides-review .dg-selector-label{margin-left:0}#dados-guides-review main{padding:22px 18px}#dados-guides-review h1{font-size:26px}#dados-guides-review .dg-lead{font-size:16px}#dados-guides-review .dg-breadcrumb{margin-bottom:18px}#dados-guides-review .dg-bottom{align-items:stretch;flex-direction:column}#dados-guides-review input,#dados-guides-review select{font-size:16px}#dados-guides-review .dg-nav-item,#dados-guides-review button{min-height:44px}}
+&lt;/style&gt;
+&lt;div id=&quot;dados-guides-review&quot; aria-label=&quot;Rascunho dos guias do utilizador&quot;&gt;
+  &lt;div class=&quot;dg-window&quot;&gt;
+    &lt;div class=&quot;dg-draft&quot;&gt;Rascunho visual para revisão&lt;/div&gt;
+    &lt;header class=&quot;dg-header&quot;&gt;
+      &lt;div class=&quot;dg-brand&quot;&gt;dados&lt;span&gt;.&lt;/span&gt;gov&lt;span&gt;.&lt;/span&gt;pt&lt;/div&gt;
+      &lt;div class=&quot;dg-header-name&quot;&gt;Guias do utilizador&lt;/div&gt;
+      &lt;form class=&quot;dg-search&quot; role=&quot;search&quot;&gt;&lt;label class=&quot;dg-sr&quot; for=&quot;dg-query&quot;&gt;Pesquisar nestes guias&lt;/label&gt;&lt;input id=&quot;dg-query&quot; type=&quot;search&quot; placeholder=&quot;Pesquisar nestes guias&quot;&gt;&lt;button type=&quot;submit&quot;&gt;Pesquisar&lt;/button&gt;&lt;/form&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;dg-body&quot;&gt;
+      &lt;aside class=&quot;dg-sidebar&quot; aria-label=&quot;Navegação dos guias&quot;&gt;
+        &lt;label class=&quot;dg-selector-label&quot; for=&quot;dg-guide&quot;&gt;Escolher guia&lt;/label&gt;
+        &lt;select id=&quot;dg-guide&quot;&gt;&lt;/select&gt;
+        &lt;div class=&quot;dg-side-title&quot;&gt;&lt;/div&gt;
+        &lt;nav aria-label=&quot;Fichas do guia&quot;&gt;&lt;/nav&gt;
+        &lt;div class=&quot;dg-mobile&quot;&gt;&lt;label class=&quot;dg-selector-label&quot; for=&quot;dg-ficha&quot;&gt;Neste guia&lt;/label&gt;&lt;select id=&quot;dg-ficha&quot;&gt;&lt;/select&gt;&lt;/div&gt;
+        &lt;button class=&quot;dg-all&quot; type=&quot;button&quot;&gt;Ver os seis guias&lt;/button&gt;
+      &lt;/aside&gt;
+      &lt;main aria-live=&quot;polite&quot;&gt;&lt;/main&gt;
+    &lt;/div&gt;
+    &lt;footer class=&quot;dg-footer&quot;&gt;&lt;span&gt;Guias práticos · dados.gov.pt&lt;/span&gt;&lt;span&gt;Proposta de apresentação · Setembro de 2026&lt;/span&gt;&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(() =&gt; {
+ const root=document.getElementById('dados-guides-review');
+ const guides=[{&quot;code&quot;: &quot;D03&quot;, &quot;title&quot;: &quot;Encontrar e consultar dados&quot;, &quot;intro&quot;: &quot;Encontre Conjuntos de Dados, refine a pesquisa e escolha como aceder à informação.&quot;, &quot;audience&quot;: &quot;Não precisa de iniciar sessão para pesquisar e consultar Conjuntos de Dados públicos.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Encontrar dados&quot;, &quot;intro&quot;: &quot;Comece pelo tema que lhe interessa.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Aceda à área Conjuntos de Dados.&quot;, &quot;Escreva uma palavra ou expressão no campo de pesquisa.&quot;, &quot;Consulte os resultados e abra o Conjunto de Dados que lhe parece mais adequado.&quot;], &quot;example&quot;: &quot;Para procurar informação sobre transportes em Lisboa, pesquise “transportes Lisboa”.&quot;, &quot;tip&quot;: &quot;Comece com poucas palavras. Pode refinar a pesquisa depois.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do catálogo com o campo de pesquisa destacado.&quot;, &quot;next&quot;: &quot;Pesquisar e filtrar&quot;}, {&quot;title&quot;: &quot;Pesquisar e filtrar&quot;, &quot;intro&quot;: &quot;Combine a pesquisa com os filtros disponíveis para reduzir os resultados.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Pesquise pelo tema pretendido.&quot;, &quot;Abra os filtros e aplique os critérios que lhe interessam.&quot;, &quot;Ajuste a ordenação e percorra as páginas de resultados.&quot;, &quot;Remova ou altere os filtros se a pesquisa ficar demasiado restrita.&quot;], &quot;example&quot;: &quot;Pesquise “qualidade da água” e refine os resultados com os filtros disponíveis que se adequem à sua pesquisa.&quot;, &quot;tip&quot;: &quot;Um resultado vazio pode dever-se à combinação de critérios. Retire um filtro de cada vez.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da pesquisa e dos filtros; vídeo curto a aplicar e remover um filtro.&quot;, &quot;next&quot;: &quot;Consultar um Conjunto de Dados&quot;}, {&quot;title&quot;: &quot;Consultar um Conjunto de Dados&quot;, &quot;intro&quot;: &quot;Antes de utilizar os dados, confirme o conteúdo e as condições de utilização.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Leia o título e a descrição.&quot;, &quot;Identifique quem publicou os dados e consulte as datas e a cobertura indicadas.&quot;, &quot;Consulte a licença para compreender as condições de utilização.&quot;, &quot;Verifique os recursos e os conteúdos relacionados disponíveis.&quot;], &quot;example&quot;: &quot;Se procura acidentes rodoviários de um determinado ano, confirme o período abrangido antes de descarregar o ficheiro.&quot;, &quot;tip&quot;: &quot;O título, a descrição, as datas e a licença fazem parte dos metadados, a informação que descreve o Conjunto de Dados.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do detalhe com entidade, datas, licença e recursos identificados.&quot;, &quot;next&quot;: &quot;Aceder aos dados&quot;}, {&quot;title&quot;: &quot;Aceder aos dados&quot;, &quot;intro&quot;: &quot;Escolha a opção adequada ao que pretende fazer com o recurso.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;No detalhe do Conjunto de Dados, aceda a Ficheiros.&quot;, &quot;Escolha um recurso e seleccione Ver mais.&quot;, &quot;Consulte os separadores disponíveis e escolha a forma de acesso.&quot;], &quot;example&quot;: &quot;Use a pré-visualização para confirmar o conteúdo. Para trabalhar fora do portal, consulte Downloads. Para analisar no portal, seleccione Explorar dados, quando disponível.&quot;, &quot;tip&quot;: &quot;Nem todas as opções estão disponíveis em todos os recursos. Uma falha da pré-visualização não impede a consulta de Metadados e Downloads.&quot;, &quot;table&quot;: [[&quot;Pretendo&quot;, &quot;Opção&quot;], [&quot;Ver rapidamente o conteúdo&quot;, &quot;Pré-visualização&quot;], [&quot;Guardar o ficheiro disponibilizado&quot;, &quot;Downloads&quot;], [&quot;Aceder a uma fonte externa&quot;, &quot;Ligação do recurso&quot;], [&quot;Analisar no portal&quot;, &quot;Explorar dados&quot;]], &quot;media&quot;: &quot;Captura de um recurso expandido e vídeo curto das opções de acesso.&quot;, &quot;next&quot;: &quot;Não encontrou o que procura?&quot;}, {&quot;title&quot;: &quot;Não encontrou o que procura?&quot;, &quot;intro&quot;: &quot;Experimente outros termos ou critérios antes de concluir que os dados não existem.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Use menos palavras ou uma expressão diferente.&quot;, &quot;Remova os filtros activos.&quot;, &quot;Procure a entidade que poderá publicar os dados e consulte os conteúdos relacionados.&quot;, &quot;Se precisar de apoio, consulte Ajuda e contactos.&quot;], &quot;example&quot;: &quot;Se “rendas médias Lisboa” não devolver resultados, experimente “rendas Lisboa” ou “habitação”.&quot;, &quot;tip&quot;: &quot;Sem resultados e erro são situações diferentes. Perante um erro, tente novamente; se persistir, reporte o problema através de Ajuda e contactos.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do estado sem resultados e da ligação a Ajuda e contactos.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}, {&quot;code&quot;: &quot;D04&quot;, &quot;title&quot;: &quot;Publicar e gerir Conjuntos de Dados&quot;, &quot;intro&quot;: &quot;Crie um Conjunto de Dados, publique a informação e mantenha os seus metadados, estado e responsabilidade.&quot;, &quot;audience&quot;: &quot;Inicie sessão e confirme que tem permissão no contexto pessoal ou na organização onde pretende actuar.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Encontrar os Conjuntos de Dados que gere&quot;, &quot;intro&quot;: &quot;Escolha o contexto certo antes de procurar um conteúdo.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Na área de gestão, escolha Meu perfil para os seus Conjuntos de Dados pessoais, sem organização associada, ou seleccione a organização pretendida.&quot;, &quot;Pesquise pelo título, sigla ou acrónimo, ou descrição.&quot;, &quot;Ajuste o filtro de estado, a ordenação e a paginação.&quot;, &quot;Seleccione o Conjunto de Dados para abrir o detalhe e as acções a que tem acesso.&quot;], &quot;example&quot;: &quot;Para encontrar um conteúdo arquivado de uma organização, seleccione essa organização e o filtro Arquivado.&quot;, &quot;tip&quot;: &quot;O filtro Todos apresenta Públicos e Rascunhos. Arquivados e Eliminados têm filtros próprios. O contexto Sistema exige a permissão administrativa aplicável.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura dos contextos e do filtro de estado.&quot;, &quot;next&quot;: &quot;Criar e guardar um rascunho&quot;}, {&quot;title&quot;: &quot;Criar e guardar um rascunho&quot;, &quot;intro&quot;: &quot;Prepare a informação antes de a tornar pública.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Escolha o contexto pessoal ou a organização em que tem permissão para criar.&quot;, &quot;Inicie a criação de um Conjunto de Dados.&quot;, &quot;Preencha os metadados disponíveis e confirme a licença adequada. A licença inicial é CC BY 4.0 e pode ser alterada.&quot;, &quot;Guarde como Rascunho para continuar mais tarde.&quot;], &quot;example&quot;: &quot;Pode guardar o título e a descrição enquanto aguarda a informação necessária para completar os restantes metadados.&quot;, &quot;tip&quot;: &quot;Um Rascunho pode ser guardado com metadados obrigatórios em falta. O conteúdo ainda não fica disponível ao público.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da criação e da acção de guardar rascunho.&quot;, &quot;next&quot;: &quot;Publicar um Conjunto de Dados&quot;}, {&quot;title&quot;: &quot;Publicar um Conjunto de Dados&quot;, &quot;intro&quot;: &quot;A publicação torna o conteúdo público imediatamente após a conclusão.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Abra o Rascunho que pretende publicar.&quot;, &quot;Complete os metadados obrigatórios assinalados no formulário e reveja a informação.&quot;, &quot;Se pretende disponibilizar ficheiros ou ligações, adicione os recursos e confirme os respectivos metadados.&quot;, &quot;Seleccione a acção de publicar e verifique o resultado.&quot;], &quot;example&quot;: &quot;Depois de completar os metadados de um Conjunto de Dados sobre transportes, publique-o e confirme a informação apresentada ao público.&quot;, &quot;tip&quot;: &quot;Pode publicar sem recursos, após o aviso apresentado. A ausência de modelo ou validação, Não conforme e Erro técnico também não bloqueiam a publicação. Não existe aprovação editorial intermédia no portal.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da revisão e publicação, incluindo o aviso de ausência de recursos.&quot;, &quot;next&quot;: &quot;Editar a informação publicada&quot;}, {&quot;title&quot;: &quot;Editar a informação publicada&quot;, &quot;intro&quot;: &quot;Mantenha os metadados actualizados no contexto em que tem permissão.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Abra o Conjunto de Dados e seleccione a edição.&quot;, &quot;Altere os metadados necessários. A licença existente mantém-se, salvo alteração explícita.&quot;, &quot;Quando o produtor é uma organização, preencha o contacto se for útil; este campo é opcional.&quot;, &quot;Reveja e guarde as alterações.&quot;], &quot;example&quot;: &quot;Actualize a descrição para esclarecer a cobertura dos dados, mantendo a licença quando as condições de utilização não mudaram.&quot;, &quot;tip&quot;: &quot;Num Conjunto de Dados público, as alterações guardadas têm efeito imediato. Cancelar antes de guardar descarta as alterações. O portal não disponibiliza versões recuperáveis dos metadados.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura dos metadados em edição.&quot;, &quot;next&quot;: &quot;Arquivar e voltar a disponibilizar&quot;}, {&quot;title&quot;: &quot;Arquivar e voltar a disponibilizar&quot;, &quot;intro&quot;: &quot;Arquive um Conjunto de Dados público quando pretende retirá-lo das listagens públicas.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Abra o Conjunto de Dados público no contexto autorizado.&quot;, &quot;Seleccione a acção de arquivar e conclua a operação apresentada.&quot;, &quot;Para o voltar a incluir nas listagens públicas, localize-o com o filtro Arquivado.&quot;, &quot;Seleccione a acção de desarquivar. O estado regressa a Público.&quot;], &quot;example&quot;: &quot;Pode arquivar um conteúdo que deixou de ser actualizado e desarquivá-lo quando voltar a ser pertinente.&quot;, &quot;tip&quot;: &quot;Arquivar retira o conteúdo das listagens públicas, mas mantém o acesso aplicável por ligação directa. Não use o arquivo como garantia de retirada total de acesso.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura das acções e dos estados Público e Arquivado.&quot;, &quot;next&quot;: &quot;Transferir a responsabilidade&quot;}, {&quot;title&quot;: &quot;Transferir a responsabilidade&quot;, &quot;intro&quot;: &quot;A transferência só altera o responsável quando o destinatário autorizado aceita o pedido.&quot;, &quot;roles&quot;: &quot;Utilizador autenticado&quot;, &quot;steps&quot;: [&quot;Abra um Conjunto de Dados que pode modificar e que não esteja Arquivado nem Eliminado.&quot;, &quot;Seleccione Transferir o Conjunto de Dados.&quot;, &quot;No campo Organização ou utilizador, escolha o destinatário. Preencha Comentário se quiser contextualizar o pedido.&quot;, &quot;Reveja e confirme. O pedido fica Pendente e o responsável actual mantém-se.&quot;, &quot;O destinatário recebe um email e pode consultar, aceitar ou recusar o pedido, conforme as suas permissões.&quot;], &quot;example&quot;: &quot;Transfira um conteúdo pessoal para a organização que passará a ser responsável por o manter. A mudança concretiza-se após a aceitação.&quot;, &quot;tip&quot;: &quot;A aceitação preserva o estado, os metadados, os recursos e o histórico. Uma recusa mantém o responsável anterior. Pode cancelar antes de submeter o pedido.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Sequência do formulário de transferência e da decisão do destinatário.&quot;, &quot;next&quot;: &quot;Eliminar um Conjunto de Dados&quot;}, {&quot;title&quot;: &quot;Eliminar um Conjunto de Dados&quot;, &quot;intro&quot;: &quot;A eliminação é uma operação administrativa e não permite recuperação no portal.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Com perfil Administrador e a permissão aplicável, abra o Conjunto de Dados.&quot;, &quot;Seleccione a acção de eliminar e reveja o conteúdo identificado.&quot;, &quot;Confirme apenas se pretende concluir a eliminação.&quot;, &quot;Para consulta posterior autorizada, utilize o filtro Eliminados enquanto o registo existir.&quot;], &quot;example&quot;: &quot;Antes de eliminar um conteúdo criado por engano, confirme o título e o contexto para evitar actuar sobre outro Conjunto de Dados.&quot;, &quot;tip&quot;: &quot;O conteúdo deixa de ser público. A eliminação preserva os registos e o histórico, mas nenhum perfil dispõe de recuperação ou expurgo definitivo no portal.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da confirmação de eliminação e do filtro Eliminados.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}, {&quot;code&quot;: &quot;D05&quot;, &quot;title&quot;: &quot;Recursos de um Conjunto de Dados&quot;, &quot;intro&quot;: &quot;Disponibilize os dados através de ficheiros ou ligações e mantenha os recursos actualizados.&quot;, &quot;audience&quot;: &quot;Para gerir recursos, inicie sessão como Editor ou Administrador com permissão sobre o Conjunto de Dados.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Adicionar ficheiros&quot;, &quot;intro&quot;: &quot;Cada ficheiro aceite origina um recurso próprio.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Aceda à gestão de recursos do Conjunto de Dados e seleccione a opção de adicionar.&quot;, &quot;Escolha carregar ficheiros e seleccione-os ou arraste-os para a área indicada.&quot;, &quot;Aguarde o resultado do carregamento.&quot;, &quot;Para cada recurso, preencha o título, o tipo e o formato, além do tipo de recurso e do ficheiro. A descrição é opcional.&quot;, &quot;Corrija os campos assinalados e conclua a operação.&quot;], &quot;example&quot;: &quot;Carregue dois ficheiros com dados de anos diferentes e atribua a cada recurso um título que identifique o ano correspondente.&quot;, &quot;tip&quot;: &quot;XML é admitido até 100 MB; os restantes tipos até 800 MB. SVG e HTML não são permitidos. O tamanho e o tipo MIME são preenchidos automaticamente quando disponíveis.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do carregamento múltiplo e dos metadados de cada recurso.&quot;, &quot;next&quot;: &quot;Adicionar uma ligação&quot;}, {&quot;title&quot;: &quot;Adicionar uma ligação&quot;, &quot;intro&quot;: &quot;Use um recurso remoto quando os dados são disponibilizados noutro endereço.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Na gestão de recursos, escolha adicionar um recurso remoto.&quot;, &quot;Indique a URL e preencha o título, o tipo e o formato aplicáveis.&quot;, &quot;Acrescente uma descrição, se necessário.&quot;, &quot;Reveja e conclua a operação.&quot;], &quot;example&quot;: &quot;Adicione a ligação para um ficheiro disponibilizado no sítio da entidade e use a descrição para explicar o seu conteúdo.&quot;, &quot;tip&quot;: &quot;Ligações externas, APIs e serviços de dados apresentam Não aplicável para validação. Adicionar a ligação não equivale a carregar o ficheiro no portal.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de criação de recurso remoto com URL e metadados.&quot;, &quot;next&quot;: &quot;Editar metadados ou uma ligação&quot;}, {&quot;title&quot;: &quot;Editar metadados ou uma ligação&quot;, &quot;intro&quot;: &quot;Actualize a descrição do recurso ou o endereço de acesso quando necessário.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra o recurso na área de gestão.&quot;, &quot;Altere o título, o tipo, a descrição ou o formato, conforme necessário.&quot;, &quot;Num recurso remoto, actualize a URL se o endereço mudou.&quot;, &quot;Reveja e guarde.&quot;], &quot;example&quot;: &quot;Se a entidade mudou o endereço de um ficheiro, actualize a ligação do recurso existente.&quot;, &quot;tip&quot;: &quot;Alterar apenas metadados não inicia nem invalida a validação aplicável ao ficheiro actual. Uma ligação remota continua com Não aplicável. Num Conjunto de Dados público, as alterações concluídas são imediatas.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura dos metadados e da alteração de URL.&quot;, &quot;next&quot;: &quot;Substituir o ficheiro de um recurso&quot;}, {&quot;title&quot;: &quot;Substituir o ficheiro de um recurso&quot;, &quot;intro&quot;: &quot;Substitua o conteúdo quando pretende actualizar o ficheiro do mesmo recurso.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra o recurso e seleccione a substituição do ficheiro.&quot;, &quot;Escolha o novo ficheiro e aguarde o resultado do carregamento.&quot;, &quot;Se o novo ficheiro for elegível e existir modelo anterior, decida se pretende seleccionar Herdar modelo de validação. A opção começa desmarcada.&quot;, &quot;Conclua a substituição e confira o estado da validação.&quot;], &quot;example&quot;: &quot;Ao substituir um CSV actualizado, seleccione Herdar modelo de validação se pretende conservar a versão e a configuração do modelo anterior. O novo conteúdo fica Por validar.&quot;, &quot;tip&quot;: &quot;O ficheiro novo nunca herda o resultado anterior. Sem herança fica Sem modelo; se não for elegível, fica Não aplicável. A validação tem de ser solicitada. Se a substituição falhar, o conteúdo anterior mantém-se.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da substituição, da herança desmarcada e do estado resultante.&quot;, &quot;next&quot;: &quot;Remover um recurso&quot;}, {&quot;title&quot;: &quot;Remover um recurso&quot;, &quot;intro&quot;: &quot;Confirme qual o recurso que pretende retirar antes de concluir.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra a lista de recursos do Conjunto de Dados.&quot;, &quot;Seleccione a remoção do recurso pretendido.&quot;, &quot;Reveja a confirmação e confirme a operação.&quot;, &quot;Verifique que o recurso deixou de constar da lista.&quot;], &quot;example&quot;: &quot;Se adicionou o mesmo ficheiro duas vezes, identifique o recurso duplicado antes de o remover.&quot;, &quot;tip&quot;: &quot;Cancelar a confirmação mantém o recurso. Remover o último recurso não altera automaticamente o estado do Conjunto de Dados.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da confirmação de remoção.&quot;, &quot;next&quot;: &quot;Consultar o recurso disponibilizado&quot;}, {&quot;title&quot;: &quot;Consultar o recurso disponibilizado&quot;, &quot;intro&quot;: &quot;Verifique como os dados são apresentados a quem os consulta.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Abra o detalhe do Conjunto de Dados e aceda a Ficheiros.&quot;, &quot;No recurso pretendido, seleccione Ver mais.&quot;, &quot;Consulte Metadados e Downloads e, quando apresentados, Pré-visualização e Estrutura de dados.&quot;, &quot;Use Explorar dados quando a acção estiver disponível.&quot;], &quot;example&quot;: &quot;Depois de actualizar um ficheiro, confirme o título, os metadados e a opção de acesso apresentada no detalhe.&quot;, &quot;tip&quot;: &quot;A pré-visualização simples suporta CSV, TSV, XLS, XLSX e ODS, mas depende da obtenção e leitura do conteúdo. O Explorador e o Validador têm condições próprias. A ausência de validação não bloqueia, por si só, o acesso.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de recurso com pré-visualização e outro apenas com Metadados e Downloads.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}, {&quot;code&quot;: &quot;D06&quot;, &quot;title&quot;: &quot;Explorador de dados&quot;, &quot;intro&quot;: &quot;Consulte uma tabela, aplique filtros, crie gráficos e exporte a informação apresentada.&quot;, &quot;audience&quot;: &quot;Aceda ao recurso que pretende consultar. A opção Explorar dados depende da disponibilidade do conteúdo e das permissões de acesso.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Abrir o Explorador&quot;, &quot;intro&quot;: &quot;Entre a partir do recurso que pretende analisar.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;No detalhe do recurso, seleccione Explorar dados, quando disponível.&quot;, &quot;Aguarde a abertura da área Dados.&quot;, &quot;Navegue entre Dados, Estrutura, Métricas e Gráfico.&quot;], &quot;example&quot;: &quot;Abra um recurso tabular sobre transportes para consultar os registos antes de escolher os filtros.&quot;, &quot;tip&quot;: &quot;O Explorador suporta CSV, TXT tabular delimitado, XLS e XLSX após processamento bem-sucedido e disponibilização dos dados. Nos ficheiros Excel, apresenta a folha disponibilizada pelo processamento, sem selector de folhas.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da entrada e das quatro áreas do Explorador.&quot;, &quot;next&quot;: &quot;Filtrar os resultados&quot;}, {&quot;title&quot;: &quot;Filtrar os resultados&quot;, &quot;intro&quot;: &quot;Os filtros restringem os Dados e o Gráfico. A Estrutura e as Métricas continuam a representar o recurso completo.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Em qualquer área, seleccione Filtrar Resultados.&quot;, &quot;Escolha os filtros das colunas pretendidas e preencha os valores no formato indicado.&quot;, &quot;Aplique os filtros e consulte os resultados.&quot;, &quot;Para remover todos os filtros, incluindo os de colunas ocultas, seleccione Limpar.&quot;], &quot;example&quot;: &quot;Num recurso com município e data, filtre um município e uma data. Os resultados têm de cumprir as duas condições.&quot;, &quot;tip&quot;: &quot;Os filtros combinam-se por “e”. Ocultar uma coluna não retira o seu filtro. Limpar remove os filtros, mas mantém a visibilidade das colunas. Para uma data, use o formato YYYY-MM-DD, como 2026-08-01.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do painel com dois filtros e da acção Limpar.&quot;, &quot;next&quot;: &quot;Ordenar e escolher as colunas&quot;}, {&quot;title&quot;: &quot;Ordenar e escolher as colunas&quot;, &quot;intro&quot;: &quot;Adapte a tabela ao que precisa de consultar.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Na área Dados, escolha a coluna pela qual pretende ordenar.&quot;, &quot;Defina as colunas que quer manter visíveis.&quot;, &quot;Escolha 10, 50 ou 200 registos por página.&quot;, &quot;Percorra as páginas para consultar os restantes resultados.&quot;], &quot;example&quot;: &quot;Mantenha visíveis apenas o município, a data e o valor que pretende analisar, e ordene pela data.&quot;, &quot;tip&quot;: &quot;A ordenação utiliza uma coluna de cada vez. A tabela inicia com 10 registos por página. Os filtros de colunas ocultas continuam activos.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da selecção de colunas, ordenação e paginação.&quot;, &quot;next&quot;: &quot;Consultar a estrutura e as métricas&quot;}, {&quot;title&quot;: &quot;Consultar a estrutura e as métricas&quot;, &quot;intro&quot;: &quot;Conheça as colunas e os indicadores disponíveis para o recurso completo.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Abra Estrutura para consultar a identificação do recurso, os campos e os tipos e formatos disponibilizados.&quot;, &quot;Abra Métricas para consultar os indicadores globais e por coluna existentes.&quot;, &quot;Confirme o significado e a disponibilidade de cada indicador antes de o interpretar.&quot;], &quot;example&quot;: &quot;Mesmo que filtre um município na tabela, as métricas continuam a descrever o recurso completo.&quot;, &quot;tip&quot;: &quot;Uma métrica não disponível não significa zero. As métricas podem ajudar a compreender os dados, mas esta área não produz alertas automáticos de qualidade.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de Estrutura e Métricas com o âmbito completo identificado.&quot;, &quot;next&quot;: &quot;Criar e guardar um gráfico&quot;}, {&quot;title&quot;: &quot;Criar e guardar um gráfico&quot;, &quot;intro&quot;: &quot;O gráfico representa os registos da página actual, até 200.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Abra Gráfico e escolha o tipo pretendido.&quot;, &quot;Seleccione os eixos e as séries entre as colunas compatíveis. Em Bolhas, escolha também a coluna numérica para o raio.&quot;, &quot;Ajuste os filtros e a paginação para seleccionar os registos representados.&quot;, &quot;Use o modo de ecrã inteiro para ampliar ou exporte o gráfico em PNG.&quot;], &quot;example&quot;: &quot;Para comparar valores entre municípios presentes na página actual, escolha Barras e configure as colunas de município e valor.&quot;, &quot;tip&quot;: &quot;Os gráficos não calculam Soma ou Contagem. Anel, Circular e Área polar usam uma série de valores. Para sair do ecrã inteiro, use o controlo disponível ou Esc. Pode consultar a informação na tabela.&quot;, &quot;table&quot;: [[&quot;Tipos disponíveis&quot;, &quot;Utilização das colunas&quot;], [&quot;Linha, Barras e Radar&quot;, &quot;Dimensão ou categorias e valores numéricos&quot;], [&quot;Anel, Circular e Área polar&quot;, &quot;Categorias e uma série de valores&quot;], [&quot;Dispersão&quot;, &quot;Eixos numéricos&quot;], [&quot;Bolhas&quot;, &quot;Eixos numéricos e valor numérico para o raio&quot;]], &quot;media&quot;: &quot;Captura do gráfico configurado, paginação e exportação PNG.&quot;, &quot;next&quot;: &quot;Exportar os dados apresentados&quot;}, {&quot;title&quot;: &quot;Exportar os dados apresentados&quot;, &quot;intro&quot;: &quot;A exportação do Explorador inclui apenas a página actual e as colunas visíveis.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Ajuste os filtros, a ordenação, a página e as colunas visíveis.&quot;, &quot;Em Dados, Estrutura, Métricas ou Gráfico, seleccione Exportar CSV ou Exportar JSON.&quot;, &quot;Guarde o ficheiro e confirme o conteúdo exportado.&quot;], &quot;example&quot;: &quot;Se a página apresenta 50 registos e três colunas visíveis, a exportação contém esses registos e essas três colunas.&quot;, &quot;tip&quot;: &quot;Para obter o ficheiro original completo, regresse ao detalhe do recurso e consulte Downloads, quando disponível. Exportar a partir de Métricas não exporta as métricas.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da exportação com a página e as colunas visíveis assinaladas.&quot;, &quot;next&quot;: &quot;Guardar ou partilhar uma exploração&quot;}, {&quot;title&quot;: &quot;Guardar ou partilhar uma exploração&quot;, &quot;intro&quot;: &quot;Guarde o endereço para retomar a configuração suportada sobre o conteúdo disponível.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Configure a área, os filtros, a ordenação, a página, as colunas e, se necessário, o gráfico.&quot;, &quot;Copie o endereço do navegador.&quot;, &quot;Guarde ou partilhe a ligação e volte a abri-la para retomar a exploração.&quot;], &quot;example&quot;: &quot;Partilhe a ligação depois de filtrar um município para que outro utilizador possa abrir essa configuração, desde que tenha acesso ao recurso.&quot;, &quot;tip&quot;: &quot;A ligação não concede permissões nem fixa uma cópia dos dados. Após uma actualização do recurso, configurações incompatíveis podem ser removidas, com informação ao utilizador.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de uma exploração configurada e do endereço para partilha.&quot;, &quot;next&quot;: &quot;Resolver ausência de resultados ou indisponibilidade&quot;}, {&quot;title&quot;: &quot;Resolver ausência de resultados ou indisponibilidade&quot;, &quot;intro&quot;: &quot;Identifique a situação apresentada antes de tentar novamente.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Se os filtros não devolverem resultados, altere os critérios ou seleccione Limpar.&quot;, &quot;Se um filtro for inválido, corrija o campo indicado.&quot;, &quot;Se ocorrer uma falha temporária, seleccione Tentar novamente.&quot;, &quot;Se o conteúdo estiver em processamento, volte a consultar quando os dados estiverem disponíveis.&quot;], &quot;example&quot;: &quot;Depois de substituir um ficheiro, o Explorador pode ficar indisponível durante o novo processamento.&quot;, &quot;tip&quot;: &quot;Durante o reprocessamento, os dados anteriores não são apresentados como actuais. Recurso não encontrado, erro e pesquisa sem resultados são situações distintas.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Capturas dos estados sem resultados, em processamento e erro com nova tentativa.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}, {&quot;code&quot;: &quot;D07&quot;, &quot;title&quot;: &quot;Qualidade e validação de dados&quot;, &quot;intro&quot;: &quot;Associe um modelo a um ficheiro tabular, execute a validação e interprete o resultado no contexto do conteúdo validado.&quot;, &quot;audience&quot;: &quot;Para associar modelos ou executar validações, inicie sessão como Editor ou Administrador com permissão sobre o Conjunto de Dados.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Compreender o resultado da validação&quot;, &quot;intro&quot;: &quot;A validação verifica se o ficheiro cumpre a estrutura, os tipos e as regras de uma versão do modelo.&quot;, &quot;roles&quot;: &quot;&quot;, &quot;steps&quot;: [&quot;Consulte o estado apresentado no recurso.&quot;, &quot;Quando existir resultado, confirme o ficheiro e a versão do modelo a que se aplica.&quot;, &quot;Interprete o resultado em conjunto com a descrição, a cobertura e a licença dos dados.&quot;], &quot;example&quot;: &quot;Um ficheiro pode estar Válido perante o modelo e, ainda assim, abranger um período diferente do que procura.&quot;, &quot;tip&quot;: &quot;Válido significa que o ficheiro cumpre as verificações do modelo. Não é uma garantia geral de qualidade ou adequação. A ausência de validação não impede, por si só, a publicação, consulta ou exploração.&quot;, &quot;table&quot;: [[&quot;Estado&quot;, &quot;Significado&quot;], [&quot;Não aplicável&quot;, &quot;O recurso não é elegível&quot;], [&quot;Sem modelo&quot;, &quot;É elegível, mas não tem modelo associado&quot;], [&quot;Por validar&quot;, &quot;Tem modelo, mas não tem resultado actual aplicável&quot;], [&quot;Em validação&quot;, &quot;A execução está em curso&quot;], [&quot;Válido&quot;, &quot;Cumpre as verificações do modelo&quot;], [&quot;Não conforme&quot;, &quot;Foi identificada pelo menos uma não conformidade&quot;], [&quot;Erro técnico&quot;, &quot;A execução não pôde ser concluída&quot;]], &quot;media&quot;: &quot;Captura de um resumo de validação aplicável ao conteúdo actual.&quot;, &quot;next&quot;: &quot;Associar um modelo de validação&quot;}, {&quot;title&quot;: &quot;Associar um modelo de validação&quot;, &quot;intro&quot;: &quot;A associação é opcional e identifica uma versão exacta do modelo.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra a área de validação de um recurso elegível: ficheiro carregado em CSV, TXT tabular, XLS, XLSX ou ODS.&quot;, &quot;Escolha um modelo Activo e a versão Em vigor disponibilizada.&quot;, &quot;Reveja Validar a ordem das colunas, activa por defeito.&quot;, &quot;Confirme a associação. O recurso fica Por validar.&quot;], &quot;example&quot;: &quot;Associe um modelo com as colunas esperadas para os dados de transportes que está a disponibilizar.&quot;, &quot;tip&quot;: &quot;Se desactivar a validação da ordem, as colunas são comparadas pelo nome. Colunas em falta ou adicionais continuam a ser não conformidades. Ligações externas, APIs e serviços de dados não são elegíveis.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do selector de modelo, versão e ordem das colunas.&quot;, &quot;next&quot;: &quot;Executar a validação&quot;}, {&quot;title&quot;: &quot;Executar a validação&quot;, &quot;intro&quot;: &quot;A validação começa quando a solicita. Carregar ou editar o recurso não a inicia automaticamente.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Confirme que o recurso tem um modelo associado.&quot;, &quot;Seleccione a acção de validar.&quot;, &quot;Acompanhe o estado Em validação.&quot;, &quot;Consulte o resultado final e o detalhe disponível.&quot;], &quot;example&quot;: &quot;Depois de associar o modelo, execute a validação para verificar se o ficheiro cumpre as regras seleccionadas.&quot;, &quot;tip&quot;: &quot;Não conforme e Erro técnico não bloqueiam a gestão do recurso nem a publicação ou actualização do Conjunto de Dados. Um erro técnico não é um resultado de conformidade.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Sequência Por validar, Em validação e resultado final.&quot;, &quot;next&quot;: &quot;Tratar não conformidades ou erros&quot;}, {&quot;title&quot;: &quot;Tratar não conformidades ou erros&quot;, &quot;intro&quot;: &quot;Use o detalhe disponível para decidir o que precisa de corrigir.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Se o resultado for Não conforme, consulte as colunas, regras ou ocorrências identificadas, quando disponíveis.&quot;, &quot;Confirme se o ficheiro ou o modelo escolhido precisa de correcção.&quot;, &quot;Se corrigiu o ficheiro fora do portal, substitua-o e confirme a associação de modelo.&quot;, &quot;Solicite uma nova validação. Perante Erro técnico, pode tentar novamente.&quot;], &quot;example&quot;: &quot;Se faltar uma coluna exigida pelo modelo, corrija o ficheiro ou confirme se associou o modelo adequado antes de repetir a validação.&quot;, &quot;tip&quot;: &quot;Uma substituição bem-sucedida retira ao resultado anterior o carácter de resultado actual. Herdar o modelo conserva a versão e a configuração, mas exige uma nova validação.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de não conformidade e erro técnico, sem prometer detalhe que não esteja disponível.&quot;, &quot;next&quot;: &quot;Alterar ou remover o modelo associado&quot;}, {&quot;title&quot;: &quot;Alterar ou remover o modelo associado&quot;, &quot;intro&quot;: &quot;Altere a associação quando pretende validar o recurso com outra definição.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra a associação de modelo do recurso.&quot;, &quot;Para a alterar, seleccione um modelo Activo e a versão Em vigor disponibilizada.&quot;, &quot;Confirme a nova associação e solicite a validação quando necessário.&quot;, &quot;Para deixar de utilizar um modelo, remova a associação.&quot;], &quot;example&quot;: &quot;Se foi disponibilizada uma nova versão adequada ao recurso, seleccione-a explicitamente para passar a validar com essa definição.&quot;, &quot;tip&quot;: &quot;Alterar a associação coloca o recurso em Por validar. Removê-la coloca-o em Sem modelo. As versões novas e a inactivação de um modelo não alteram automaticamente associações existentes.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da alteração e remoção da associação.&quot;, &quot;next&quot;: &quot;Consultar o histórico de validações&quot;}, {&quot;title&quot;: &quot;Consultar o histórico de validações&quot;, &quot;intro&quot;: &quot;Cada execução fica ligada ao ficheiro e à versão do modelo utilizados nessa validação.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra o histórico de validação do recurso.&quot;, &quot;Identifique a execução pela data, ficheiro, modelo e versão.&quot;, &quot;Consulte o resultado e as não conformidades disponíveis.&quot;, &quot;Distinga o resultado aplicável ao conteúdo actual dos resultados históricos.&quot;], &quot;example&quot;: &quot;Depois de substituir um CSV, consulte a execução anterior para perceber quais as verificações feitas sobre o ficheiro substituído.&quot;, &quot;tip&quot;: &quot;Alterar apenas os metadados mantém a validação aplicável ao ficheiro. Uma execução antiga que termine após a substituição não passa a validar o novo conteúdo.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do histórico com data, ficheiro, modelo, versão e resultado.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}, {&quot;code&quot;: &quot;CM&quot;, &quot;title&quot;: &quot;Catálogo de Modelos&quot;, &quot;intro&quot;: &quot;Consulte e administre os modelos que definem a estrutura e as regras utilizadas na validação de ficheiros tabulares.&quot;, &quot;audience&quot;: &quot;O Editor pode consultar modelos, versões e utilização. As operações de criação, alteração, activação, eliminação e auditoria exigem perfil Administrador.&quot;, &quot;fichas&quot;: [{&quot;title&quot;: &quot;Consultar modelos e versões&quot;, &quot;intro&quot;: &quot;O Catálogo é global e permite conhecer a definição e a utilização de cada modelo.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Inicie sessão e abra o Catálogo de Modelos.&quot;, &quot;Pesquise por nome ou descrição e ajuste o filtro de estado.&quot;, &quot;Abra um modelo para consultar a identificação, a estrutura, as versões e a utilização.&quot;, &quot;Regresse à listagem para continuar a pesquisa; os critérios e a página mantêm-se.&quot;], &quot;example&quot;: &quot;Antes de associar um modelo a um recurso, consulte as colunas e as regras esperadas.&quot;, &quot;tip&quot;: &quot;O Editor consulta modelos em Rascunho, Activos e Inactivos, mas não os altera nem acede à auditoria ou aos eliminados. A listagem apresenta 20 resultados por página.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da listagem e do detalhe de uma versão.&quot;, &quot;next&quot;: &quot;Criar um modelo manualmente&quot;}, {&quot;title&quot;: &quot;Criar um modelo manualmente&quot;, &quot;intro&quot;: &quot;Defina a estrutura que os ficheiros deverão cumprir.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Com perfil Administrador, inicie a criação de um modelo e introduza um nome único.&quot;, &quot;Escolha a criação manual e adicione os campos.&quot;, &quot;Em cada campo, preencha o nome e seleccione o tipo lógico. Ordene os campos conforme a estrutura pretendida.&quot;, &quot;Adicione regras compatíveis, se necessário, e guarde. A primeira gravação cria o modelo e a versão v1 em Rascunho.&quot;], &quot;example&quot;: &quot;Crie um modelo para ficheiros com as colunas de município, data e valor, seleccionando os tipos adequados disponibilizados pelo portal.&quot;, &quot;tip&quot;: &quot;O nome do modelo é único, mesmo com diferenças de maiúsculas, acentos ou espaços normalizados. Nomes de modelos eliminados não podem ser reutilizados.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da criação manual, dos campos e da gravação em Rascunho.&quot;, &quot;next&quot;: &quot;Criar a partir de um ficheiro&quot;}, {&quot;title&quot;: &quot;Criar a partir de um ficheiro&quot;, &quot;intro&quot;: &quot;A inferência propõe uma estrutura inicial que tem de rever antes de guardar.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Escolha a criação assistida por inferência e seleccione um ficheiro CSV, TXT tabular, XLS, XLSX ou ODS.&quot;, &quot;Aguarde a proposta de campos, ordem, tipos prováveis e valores apresentados.&quot;, &quot;Reveja os nomes, os tipos e as regras. Corrija colunas vazias, duplicadas ou equivalentes.&quot;, &quot;Confirme e guarde a proposta. O modelo e a versão v1 ficam em Rascunho.&quot;], &quot;example&quot;: &quot;Use um CSV representativo para obter uma proposta inicial e confirme se os tipos sugeridos correspondem ao significado dos dados.&quot;, &quot;tip&quot;: &quot;São consideradas até 1.000 linhas ou 5 MB descomprimidos, consoante o primeiro limite atingido. Em XLS, XLSX e ODS, só é analisada a primeira folha. A inferência não valida o ficheiro nem activa o modelo.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da proposta inferida, incluindo coluna a corrigir e aviso de folhas adicionais.&quot;, &quot;next&quot;: &quot;Rever campos e regras&quot;}, {&quot;title&quot;: &quot;Rever campos e regras&quot;, &quot;intro&quot;: &quot;Prepare uma definição coerente antes de activar o modelo.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Abra o Rascunho e reveja os nomes, os tipos lógicos e a ordem dos campos.&quot;, &quot;Seleccione apenas regras activas e compatíveis e preencha os parâmetros pedidos.&quot;, &quot;Se alterar um tipo ou remover um campo com regras, reveja e confirme a remoção das regras afectadas.&quot;, &quot;Corrija os problemas indicados e guarde.&quot;], &quot;example&quot;: &quot;Os nomes “ Código Postal ” e “código postal” são equivalentes para detectar duplicados. “Código Postal” e “Codigo Postal” são diferentes.&quot;, &quot;tip&quot;: &quot;Depois de editar manualmente a proposta, não pode repetir a inferência sobre essa proposta. As amostras e os valores usados na inferência são temporários e não integram o modelo nem a auditoria.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de campos, regra parametrizada e confirmação de incompatibilidade.&quot;, &quot;next&quot;: &quot;Activar um modelo&quot;}, {&quot;title&quot;: &quot;Activar um modelo&quot;, &quot;intro&quot;: &quot;A activação disponibiliza uma versão válida para novas associações a recursos.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Abra um Rascunho previamente guardado.&quot;, &quot;Confirme que existe pelo menos um campo e que todos têm nome e tipo lógico.&quot;, &quot;Reveja as regras e os parâmetros. Corrija os problemas que impeçam a activação.&quot;, &quot;Seleccione Guardar e activar e confirme. O modelo fica Activo e a versão Em vigor.&quot;], &quot;example&quot;: &quot;Depois de rever a estrutura proposta a partir de um CSV, active a versão para a disponibilizar na associação de modelos aos recursos.&quot;, &quot;tip&quot;: &quot;Uma versão activada não pode ser alterada. Uma regra inactiva ou a indisponibilidade do catálogo de regras impede a activação, embora o Rascunho possa ser guardado.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da activação e do resultado Activo com versão Em vigor.&quot;, &quot;next&quot;: &quot;Criar uma nova versão&quot;}, {&quot;title&quot;: &quot;Criar uma nova versão&quot;, &quot;intro&quot;: &quot;Altere a estrutura ou as regras através de um novo Rascunho.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Abra um modelo Activo e seleccione a edição da definição.&quot;, &quot;Se já existir um Rascunho, continue nesse Rascunho. Caso contrário, é criada uma cópia da versão Em vigor.&quot;, &quot;Altere os campos ou as regras e guarde.&quot;, &quot;Quando a definição estiver válida, active-a. A versão anterior passa a Substituída.&quot;], &quot;example&quot;: &quot;Para acrescentar uma coluna esperada ao modelo, prepare uma nova versão e active-a depois de revista.&quot;, &quot;tip&quot;: &quot;Existe no máximo um Rascunho por modelo. A activação não migra recursos já associados: cada recurso mantém a versão exacta anterior até uma alteração explícita da associação.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura do Rascunho e comparação dos estados Em vigor e Substituída.&quot;, &quot;next&quot;: &quot;Inactivar ou reactivar um modelo&quot;}, {&quot;title&quot;: &quot;Inactivar ou reactivar um modelo&quot;, &quot;intro&quot;: &quot;A inactivação impede novas associações e preserva as versões e a utilização histórica.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Abra o modelo que pretende inactivar.&quot;, &quot;Se existir um Rascunho, active-o ou descarte-o antes de inactivar.&quot;, &quot;Seleccione a inactivação e conclua a operação apresentada.&quot;, &quot;Para reactivar, confirme que a versão continua válida. Se precisar de a corrigir, edite uma nova versão e utilize Guardar e reactivar.&quot;], &quot;example&quot;: &quot;Inactive um modelo que deixou de ser recomendado para novos recursos, preservando a rastreabilidade das associações existentes.&quot;, &quot;tip&quot;: &quot;Uma regra entretanto inactiva pode impedir a reactivação. A inactivação não altera automaticamente os recursos que já utilizam o modelo.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura de inactivação, impedimento por Rascunho e reactivação.&quot;, &quot;next&quot;: &quot;Consultar a utilização e a auditoria&quot;}, {&quot;title&quot;: &quot;Consultar a utilização e a auditoria&quot;, &quot;intro&quot;: &quot;Verifique onde o modelo foi utilizado e quais as operações administrativas registadas.&quot;, &quot;roles&quot;: &quot;Editor ou Administrador&quot;, &quot;steps&quot;: [&quot;Abra o modelo e consulte a utilização das versões.&quot;, &quot;Identifique as associações relevantes para avaliar o impacto de uma alteração.&quot;, &quot;Com perfil Administrador, consulte a auditoria das operações sobre o modelo e as versões.&quot;], &quot;example&quot;: &quot;Antes de inactivar um modelo, consulte a utilização para identificar os recursos que continuam associados às versões existentes.&quot;, &quot;tip&quot;: &quot;Uma utilização passada continua relevante mesmo que já não existam associações actuais. O Editor pode consultar a utilização, mas não a auditoria.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da utilização por versão e da auditoria administrativa.&quot;, &quot;next&quot;: &quot;Eliminar um modelo nunca utilizado&quot;}, {&quot;title&quot;: &quot;Eliminar um modelo nunca utilizado&quot;, &quot;intro&quot;: &quot;Só pode eliminar um modelo quando nenhuma das suas versões foi alguma vez associada a um recurso.&quot;, &quot;roles&quot;: &quot;Administrador&quot;, &quot;steps&quot;: [&quot;Com perfil Administrador, abra o modelo e verifique a utilização.&quot;, &quot;Seleccione Eliminar, quando permitido.&quot;, &quot;Reveja e confirme a operação.&quot;, &quot;O modelo e as versões ficam logicamente eliminados e só o Administrador os pode consultar.&quot;], &quot;example&quot;: &quot;Pode eliminar um modelo de preparação que nunca foi associado. Retirar associações actuais de um modelo utilizado não o torna elegível para eliminação.&quot;, &quot;tip&quot;: &quot;O portal não permite recuperar modelos eliminados. O nome também não fica disponível para reutilização. A elegibilidade é novamente verificada ao confirmar.&quot;, &quot;table&quot;: null, &quot;media&quot;: &quot;Captura da confirmação de eliminação e do impedimento por utilização histórica.&quot;, &quot;next&quot;: &quot;Voltar à visão geral&quot;}]}];
+ const $=s=&gt;root.querySelector(s);
+ const esc=s=&gt;String(s).replace(/[&amp;&lt;&gt;&quot;']/g,c=&gt;({'&amp;':'&amp;amp;','&lt;':'&amp;lt;','&gt;':'&amp;gt;','&quot;':'&amp;quot;',&quot;'&quot;:'&amp;#39;'}[c]));
+ const normal=s=&gt;s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const state={guide:0,ficha:-1};
+ const design={showMedia:true,grid:'Cartões'};
+ const related={D03:['D05','D06','D07'],D04:['D05','D07'],D05:['D03','D07'],D06:['D03','D07'],D07:['D05','CM'],CM:['D07','D05']};
+ $('#dg-guide').innerHTML=guides.map((g,i)=&gt;`&lt;option value=&quot;${i}&quot;&gt;${esc(g.title)}&lt;/option&gt;`).join('');
+ function nav(){
+  const g=guides[state.guide];
+  $('#dg-guide').value=state.guide;
+  $('.dg-side-title').textContent=g.title;
+  $('nav').innerHTML=[{title:'Visão geral'},...g.fichas].map((f,i)=&gt;`&lt;button type=&quot;button&quot; class=&quot;dg-nav-item&quot; data-ficha=&quot;${i-1}&quot; ${state.ficha===i-1?'aria-current=&quot;page&quot;':''}&gt;${esc(f.title)}&lt;/button&gt;`).join('');
+  $('#dg-ficha').innerHTML=[{title:'Visão geral'},...g.fichas].map((f,i)=&gt;`&lt;option value=&quot;${i-1}&quot;&gt;${esc(f.title)}&lt;/option&gt;`).join('');
+  $('#dg-ficha').value=state.ficha;
+ }
+ function card(f,i,gi=state.guide){return `&lt;button type=&quot;button&quot; class=&quot;dg-choice&quot; data-guide=&quot;${gi}&quot; data-ficha=&quot;${i}&quot;&gt;&lt;span class=&quot;dg-number&quot;&gt;${String(i+1).padStart(2,'0')}&lt;/span&gt;&lt;span&gt;&lt;strong&gt;${esc(f.title)}&lt;/strong&gt;&lt;small&gt;${esc(f.intro)}&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;`}
+ function overview(){
+  const g=guides[state.guide];
+  const first=g.fichas[0];
+  return `&lt;div class=&quot;dg-breadcrumb&quot;&gt;Guias do utilizador / Visão geral&lt;/div&gt;&lt;div class=&quot;dg-kicker&quot;&gt;${g.code==='CM'?'Documento complementar':'Guia prático'}&lt;/div&gt;&lt;h1&gt;${esc(g.title)}&lt;/h1&gt;&lt;p class=&quot;dg-lead&quot;&gt;${esc(g.intro)}&lt;/p&gt;&lt;p class=&quot;dg-audience&quot;&gt;${esc(g.audience)}&lt;/p&gt;&lt;h2&gt;O que pretende fazer?&lt;/h2&gt;&lt;div class=&quot;dg-grid&quot;&gt;${g.fichas.map((f,i)=&gt;card(f,i)).join('')}&lt;/div&gt;&lt;div class=&quot;dg-example&quot;&gt;&lt;h2&gt;Exemplo&lt;/h2&gt;&lt;p&gt;${esc(first.example)}&lt;/p&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;dg-primary&quot; data-ficha=&quot;0&quot;&gt;Começar por ${esc(first.title.toLowerCase())} →&lt;/button&gt;&lt;h2&gt;Guias relacionados&lt;/h2&gt;&lt;div class=&quot;dg-related&quot;&gt;${related[g.code].map(code=&gt;{const gi=guides.findIndex(g=&gt;g.code===code);return `&lt;button type=&quot;button&quot; class=&quot;dg-text-button&quot; data-guide=&quot;${gi}&quot; data-ficha=&quot;-1&quot;&gt;${esc(guides[gi].title)}&lt;/button&gt;`}).join('')}&lt;/div&gt;`;
+ }
+ function detail(){
+  const g=guides[state.guide],f=g.fichas[state.ficha];
+  const table=f.table?`&lt;table class=&quot;dg-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;${f.table[0].map(x=&gt;`&lt;th scope=&quot;col&quot;&gt;${esc(x)}&lt;/th&gt;`).join('')}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${f.table.slice(1).map(row=&gt;`&lt;tr&gt;${row.map(x=&gt;`&lt;td&gt;${esc(x)}&lt;/td&gt;`).join('')}&lt;/tr&gt;`).join('')}&lt;/tbody&gt;&lt;/table&gt;`:'';
+  return `&lt;div class=&quot;dg-breadcrumb&quot;&gt;${esc(g.title)} / Ficha ${state.ficha+1} de ${g.fichas.length}&lt;/div&gt;${f.roles?`&lt;span class=&quot;dg-role&quot;&gt;${esc(f.roles)}&lt;/span&gt;`:''}&lt;h1&gt;${esc(f.title)}&lt;/h1&gt;&lt;p class=&quot;dg-lead&quot;&gt;${esc(f.intro)}&lt;/p&gt;&lt;h2&gt;Como fazer&lt;/h2&gt;&lt;ol class=&quot;dg-steps&quot;&gt;${f.steps.map(s=&gt;`&lt;li&gt;&lt;span&gt;${esc(s)}&lt;/span&gt;&lt;/li&gt;`).join('')}&lt;/ol&gt;${table}&lt;div class=&quot;dg-example&quot;&gt;&lt;h2&gt;Exemplo&lt;/h2&gt;&lt;p&gt;${esc(f.example)}&lt;/p&gt;&lt;/div&gt;${design.showMedia?`&lt;div class=&quot;dg-media&quot;&gt;&lt;div&gt;&lt;div class=&quot;dg-media-label&quot;&gt;Imagem ou vídeo previsto&lt;/div&gt;&lt;p&gt;${esc(f.media)}&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;`:''}&lt;div class=&quot;dg-tip&quot;&gt;&lt;strong&gt;Dica&lt;/strong&gt;&lt;p&gt;${esc(f.tip)}&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;dg-bottom&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;dg-text-button&quot; data-ficha=&quot;-1&quot;&gt;Voltar à visão geral&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;dg-primary&quot; data-ficha=&quot;${state.ficha+1&lt;g.fichas.length?state.ficha+1:-1}&quot;&gt;${esc(f.next)} →&lt;/button&gt;&lt;/div&gt;`;
+ }
+ function render(){nav();$('main').innerHTML=state.ficha&lt;0?overview():detail();$('.dg-grid')?.style.setProperty('grid-template-columns',design.grid==='Lista'?'1fr':'');}
+ root.addEventListener('click',e=&gt;{const b=e.target.closest('button[data-ficha]');if(!b)return;if(b.dataset.guide!==undefined)state.guide=Number(b.dataset.guide);state.ficha=Number(b.dataset.ficha);render();});
+ $('#dg-guide').addEventListener('change',e=&gt;{state.guide=Number(e.target.value);state.ficha=-1;$('#dg-query').value='';render()});
+ $('#dg-ficha').addEventListener('change',e=&gt;{state.ficha=Number(e.target.value);render()});
+ $('.dg-all').addEventListener('click',()=&gt;{$('main').innerHTML=`&lt;div class=&quot;dg-breadcrumb&quot;&gt;Guias do utilizador&lt;/div&gt;&lt;h1&gt;Escolha um guia&lt;/h1&gt;&lt;div class=&quot;dg-grid&quot;&gt;${guides.map((g,i)=&gt;`&lt;button class=&quot;dg-choice&quot; type=&quot;button&quot; data-guide=&quot;${i}&quot; data-ficha=&quot;-1&quot;&gt;&lt;span&gt;&lt;strong&gt;${esc(g.title)}&lt;/strong&gt;&lt;small&gt;${esc(g.intro)}&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;`).join('')}&lt;/div&gt;`;});
+ $('.dg-search').addEventListener('submit',e=&gt;{e.preventDefault();const q=$('#dg-query').value.trim();if(!q){render();return;}const hits=[];guides.forEach((g,gi)=&gt;g.fichas.forEach((f,i)=&gt;{if(normal(f.title+' '+f.intro+' '+f.steps.join(' ')+' '+f.tip).includes(normal(q)))hits.push({f,i,gi})}));$('main').innerHTML=`&lt;div class=&quot;dg-breadcrumb&quot;&gt;Pesquisa nos seis guias&lt;/div&gt;&lt;h1&gt;Resultados da pesquisa&lt;/h1&gt;&lt;p&gt;${hits.length} ${hits.length===1?'ficha encontrada':'fichas encontradas'} para “${esc(q)}”.&lt;/p&gt;${hits.length?`&lt;div class=&quot;dg-grid&quot;&gt;${hits.map(h=&gt;card(h.f,h.i,h.gi)).join('')}&lt;/div&gt;`:'&lt;p&gt;Experimente menos palavras ou outra expressão.&lt;/p&gt;'}`;});
+ render();
+ if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:render});tweak.addSelect(design,'grid',{label:'Apresentação das tarefas',options:['Cartões','Lista']});tweak.addToggle(design,'showMedia',{label:'Mostrar espaço previsto para imagens'});}
+})();
+&lt;/script&gt;
+
+
+&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = '.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]';
+  const disabled = ':disabled,[aria-disabled=&quot;true&quot;]';
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest('[role=&quot;tablist&quot;]').querySelectorAll('[role=&quot;tab&quot;]')) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest('[role=&quot;tablist&quot;]').querySelectorAll('[role=&quot;tab&quot;]'),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll('.nav[role=&quot;tablist&quot;]')) {
+    const selected =
+      list.querySelector('[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]') ??
+      list.querySelector('[role=&quot;tab&quot;].active') ??
+      list.querySelector('[role=&quot;tab&quot;]');
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  frame.srcdoc = srcdoc;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>

@@ -7,10 +7,10 @@ export const guides = [{"code": "D02", "title": "Organizações e permissões", 
  const normal=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[.?]$/,'').trim();
 
 export const themes = [
-  {id:'conta-participacao',title:'Conta e participação',intro:'Gira o seu perfil, acompanhe conteúdos e participe na comunidade.',guides:['D13','D11','D12']},
-  {id:'organizacoes',title:'Organizações',intro:'Encontre, integre e gira organizações, membros e permissões.',guides:['D02']},
   {id:'encontrar-explorar',title:'Encontrar, consultar e explorar dados',intro:'Pesquise Conjuntos de Dados, consulte recursos e explore a informação no portal.',guides:['D03','D06']},
   {id:'publicar-gerir',title:'Publicar e gerir dados',intro:'Crie, publique e mantenha Conjuntos de Dados e os respectivos recursos.',guides:['D04','D05']},
   {id:'qualidade-modelos',title:'Qualidade e modelos de dados',intro:'Valide recursos e utilize modelos para compreender e melhorar a estrutura dos dados.',guides:['D07','CM']},
-  {id:'apis-reutilizacao-automatizacao',title:'APIs, reutilizações e automatização',intro:'Disponibilize serviços de dados, valorize reutilizações e automatize a recolha de informação.',guides:['D08','D09','D10']}
+  {id:'organizacoes',title:'Organizações',intro:'Encontre, integre e gira organizações, membros e permissões.',guides:['D02']},
+  {id:'apis-reutilizacao-automatizacao',title:'APIs, reutilizações e automatização',intro:'Disponibilize serviços de dados, valorize reutilizações e automatize a recolha de informação.',guides:['D08','D09','D10']},
+  {id:'conta-participacao',title:'Conta e participação',intro:'Gira o seu perfil, acompanhe conteúdos e participe na comunidade.',guides:['D13','D11','D12']}
  ];

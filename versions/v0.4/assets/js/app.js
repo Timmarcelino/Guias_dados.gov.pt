@@ -16,6 +16,7 @@ import { guides, themes } from "./data.js";
  function nav(){
   const g=guides[state.guide]; $('#dg-guide').value=state.guide;
   $('.dg-side-title').textContent=g.title;
+  $('nav').before($('.dg-side-title'));
   $('nav').classList.remove('dg-home-theme-nav');
   $('nav').innerHTML=[{title:'Visão geral'},...g.fichas].map((f,i)=>`<button type="button" class="dg-nav-item" data-ficha="${i-1}" ${state.ficha===i-1?'aria-current="page"':''}>${esc(f.title)}</button>`).join('');
   $('.dg-mobile label').textContent='Neste guia';
@@ -25,6 +26,7 @@ import { guides, themes } from "./data.js";
   $('.dg-side-title').textContent='Explorar por tema';
   $('nav').classList.add('dg-home-theme-nav');
   $('nav').innerHTML=themes.map(t=>`<button type="button" class="dg-nav-item" data-theme-target="${t.id}">${esc(t.title)}</button>`).join('');
+  $('nav').after($('.dg-side-title'));
   $('.dg-mobile label').textContent='Temas';
   $('#dg-ficha').innerHTML='<option value="">Escolher tema</option>'+themes.map(t=>`<option value="${t.id}">${esc(t.title)}</option>`).join('');
   $('#dg-ficha').value='';
@@ -39,7 +41,7 @@ import { guides, themes } from "./data.js";
  function home(){
   const themeIndex=themes.map(t=>`<button type="button" class="dg-theme-jump" data-theme-target="${t.id}"><strong>${esc(t.title)}</strong><small>${esc(t.intro)}</small></button>`).join('');
   const sections=themes.map(t=>{const gs=t.guides.map(code=>guideIndex(code)).filter(i=>i>=0);return `<section class="dg-theme-section" id="tema-${t.id}"><div class="dg-theme-heading"><div><h2>${esc(t.title)}</h2><p>${esc(t.intro)}</p></div></div><div class="dg-guide-grid">${gs.map(i=>`<button type="button" class="dg-guide-card" data-guide="${i}" data-ficha="-1"><span><strong>${esc(guides[i].title)}</strong><small>${esc(guides[i].intro)}</small></span><span class="dg-arrow" aria-hidden="true">→</span></button>`).join('')}</div></section>`}).join('');
-  return `<div class="dg-breadcrumb">Guias do utilizador</div><div class="dg-kicker">Guias práticos</div><h1>Como podemos ajudar?</h1><p class="dg-lead dg-home-intro">Escolha o tema relacionado com o que pretende fazer no dados.gov.pt. Dentro de cada tema encontra guias práticos organizados por tarefas.</p><h2>Explorar por tema</h2><div class="dg-theme-index">${themeIndex}</div>${sections}`;
+  return `<div class="dg-breadcrumb">Guias do utilizador</div><div class="dg-kicker">Guias práticos</div><h1>Como podemos ajudar?</h1><p class="dg-lead dg-home-intro">Escolha o tema relacionado com o que pretende fazer no dados.gov.pt. Dentro de cada tema encontra guias práticos organizados por tarefas.</p><div class="dg-theme-index">${themeIndex}</div>${sections}`;
  }
  function next(g,f){
   const target=normal(f.next);

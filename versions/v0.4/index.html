@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Protótipo dos Guias do Utilizador do dados.gov.pt.">
+  <title>Guias do Utilizador | dados.gov.pt | Protótipo v0.4</title>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/portal.css">
+  <link rel="stylesheet" href="./assets/css/guides.css">
+  <script type="module" src="./assets/js/header.js"></script>
+  <script type="module" src="./assets/js/app.js"></script>
+</head>
+<body>
+<div class="prototype-notice" role="note">
+  <div class="prototype-notice__inner">
+    Protótipo dos Guias do Utilizador em revisão. O header e o footer reproduzem a estrutura pública do dados.gov.pt sem integração com o CMS.
+  </div>
+</div>
+<header class="portal-header" aria-label="Cabeçalho do portal">
+  <div class="portal-general-bar">
+    <div class="portal-general-bar__inner">
+      <div class="portal-area">
+        <a href="https://dados.gov.pt/pt" target="_blank" rel="noopener noreferrer">Portal</a>
+      </div>
+      <nav class="portal-general-actions" aria-label="Opções de navegação geral">
+        <a href="https://dados.gov.pt/pt" lang="pt">PT <span class="sr-only">Português</span></a>
+        <button type="button" data-header-search aria-label="Pesquisar no protótipo">
+          <span aria-hidden="true">⌕</span><span class="label-wide">Pesquisar</span>
+        </button>
+        <button type="button" aria-label="Ecossistema" disabled>Ecossistema</button>
+        <a href="https://dados.gov.pt/pt/login" target="_blank" rel="noopener noreferrer">Autenticar</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="portal-brand-row">
+    <div class="portal-brand-row__inner">
+      <a class="portal-logo" href="https://dados.gov.pt/pt" target="_blank" rel="noopener noreferrer" aria-label="dados.gov.pt">
+        <img src="https://dados.gov.pt/Logos/Dados.gov_logocores.png" alt="dados.gov.pt" width="251" height="43">
+      </a>
+      <span class="portal-section-name">Guias do utilizador</span>
+    </div>
+  </div>
+
+  <nav class="portal-primary-nav" aria-label="Navegação principal do portal">
+    <div class="portal-primary-nav__inner">
+      <a href="https://dados.gov.pt/pt/datastories" target="_blank" rel="noopener noreferrer">Data Stories</a>
+      <a href="https://dados.gov.pt/pt/datasets" target="_blank" rel="noopener noreferrer">Conjuntos de dados</a>
+      <a href="https://dados.gov.pt/pt/reuses" target="_blank" rel="noopener noreferrer">Reutilizações</a>
+      <a href="https://dados.gov.pt/pt/organizations" target="_blank" rel="noopener noreferrer">Organizações</a>
+
+      <div class="portal-nav-menu">
+        <button type="button" data-menu-button aria-expanded="false" aria-controls="menu-recursos">Recursos</button>
+        <div class="portal-dropdown" id="menu-recursos" hidden>
+          <ul>
+            <li><span>Como usar o portal</span></li>
+            <li><span>Aprender</span></li>
+            <li><span>Desenvolvimento</span></li>
+            <li><a href="https://dados.gov.pt/pt/recursos/publicacoes" target="_blank" rel="noopener noreferrer">Publicações</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="portal-nav-menu">
+        <button type="button" data-menu-button aria-expanded="false" aria-controls="menu-publicar">Publicar</button>
+        <div class="portal-dropdown" id="menu-publicar" hidden>
+          <ul>
+            <li><span>Novo Conjunto de Dados</span></li>
+            <li><span>Nova Reutilização</span></li>
+            <li><span>Nova Organização</span></li>
+            <li><span>Novo Harvester</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div id="dados-guides-review" aria-label="Protótipo dos Guias do Utilizador">
+  <div class="dg-window">
+    <div class="dg-search-band">
+<div class="dg-search-inner">
+<form class="dg-search" role="search"><label class="dg-sr" for="dg-query">Pesquisar nestes guias</label><input id="dg-query" placeholder="Pesquisar nestes guias" type="search"/><button type="submit">Pesquisar</button></form>
+</div>
+</div>
+    <div class="dg-body">
+<aside aria-label="Navegação dos guias" class="dg-sidebar">
+<label class="dg-selector-label" for="dg-guide">Escolher guia</label>
+<select id="dg-guide"></select>
+<div class="dg-side-title"></div>
+<nav aria-label="Fichas do guia"></nav>
+<div class="dg-mobile"><label class="dg-selector-label" for="dg-ficha">Neste guia</label><select id="dg-ficha"></select></div>
+<button class="dg-all" type="button">Ver todos os guias</button>
+</aside>
+<main aria-live="polite"></main>
+</div>
+  </div>
+</div>
+
+<footer class="portal-footer" aria-label="Rodapé do portal">
+  <div class="portal-footer__inner portal-footer__navigation">
+    <h2>Mais para descobrir no portal</h2>
+    <nav class="portal-footer__columns" aria-label="Navegação do rodapé">
+      <section>
+        <h3>Dados abertos</h3>
+        <ul>
+          <li><a href="https://dados.gov.pt/areas-tematicas" target="_blank" rel="noopener noreferrer">Áreas Temáticas</a></li>
+          <li><a href="https://dados.gov.pt/roadmap" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
+          <li><a href="https://dados.gov.pt/datasets/catalogo-de-dados-dos-dados-gov-pt" target="_blank" rel="noopener noreferrer">Catálogo de dados</a></li>
+          <li><a href="https://data.europa.eu/" target="_blank" rel="noopener noreferrer">Portal de dados europeu</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Portal</h3>
+        <ul>
+          <li><a href="https://dados.gov.pt/pt/noticias" target="_blank" rel="noopener noreferrer">Notícias</a></li>
+          <li><a href="https://dados.gov.pt/recursos/como-usar-o-portal/o-que-e-dados-gov-pt" target="_blank" rel="noopener noreferrer">O que é dados.gov.pt</a></li>
+          <li><a href="https://dados.gov.pt/ajuda-e-contactos" target="_blank" rel="noopener noreferrer">Ajuda e contactos</a></li>
+          <li><a href="https://dados.gov.pt/termos-de-utilizacao" target="_blank" rel="noopener noreferrer">Termos de utilização</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Desenvolvimento</h3>
+        <ul>
+          <li><a href="https://dados.gov.pt/recursos/desenvolvimento/referencia-api" target="_blank" rel="noopener noreferrer">Referência API</a></li>
+          <li><a href="https://github.com/amagovpt/udata-pt" target="_blank" rel="noopener noreferrer">Mecanismo de código aberto: udata</a></li>
+          <li><a href="https://github.com/amagovpt/dadosgov-fe" target="_blank" rel="noopener noreferrer">Extensão do tema udata: udata-front</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <div class="portal-footer__inner portal-footer__brands" aria-label="Entidades e financiamento">
+    <img src="https://dados.gov.pt/Logos/pt-republic-color.svg" alt="República Portuguesa">
+    <img src="https://dados.gov.pt/Logos/NextGenerationEU.svg" alt="NextGenerationEU">
+    <img data-logo="arte" src="https://dados.gov.pt/Logos/Logotipo_ARTE__Horizontal_branco_pt.svg" alt="Agência para a Reforma Tecnológica do Estado">
+  </div>
+
+  <div class="portal-footer__inner portal-footer__bottom">
+    <p>Portal aberto de dados públicos portugueses.</p>
+    <div class="portal-footer__related">
+      <a href="https://portugal.gov.pt/" target="_blank" rel="noopener noreferrer">República Portuguesa</a>
+      <a href="https://www.compete2020.gov.pt/" target="_blank" rel="noopener noreferrer">Compete 2020</a>
+      <a href="https://portugal2020.pt/" target="_blank" rel="noopener noreferrer">Portugal 2020</a>
+      <a href="https://eur-lex.europa.eu/legal-content/PT/LSU/?uri=CELEX:32019L1024" target="_blank" rel="noopener noreferrer">Comissão Europeia</a>
+    </div>
+    <div class="portal-footer__copyright">© dados.gov.pt · Protótipo v0.4 em revisão</div>
+  </div>
+</footer>
+</body>
+</html>

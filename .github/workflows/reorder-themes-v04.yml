@@ -1,0 +1,103 @@
+name: Ordenar temas v0.4
+
+on:
+  push:
+    branches:
+      - feature/v0.4-header-footer-refactor
+
+permissions:
+  contents: write
+
+jobs:
+  reorder:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Reordenar temas e navegação
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+
+          data_path = Path('assets/js/data.js')
+          data = data_path.read_text(encoding='utf-8')
+          new_themes = """export const themes = [
+  {id:'encontrar-explorar',title:'Encontrar, consultar e explorar dados',intro:'Pesquise Conjuntos de Dados, consulte recursos e explore a informação no portal.',guides:['D03','D06']},
+  {id:'publicar-gerir',title:'Publicar e gerir dados',intro:'Crie, publique e mantenha Conjuntos de Dados e os respectivos recursos.',guides:['D04','D05']},
+  {id:'qualidade-modelos',title:'Qualidade e modelos de dados',intro:'Valide recursos e utilize modelos para compreender e melhorar a estrutura dos dados.',guides:['D07','CM']},
+  {id:'organizacoes',title:'Organizações',intro:'Encontre, integre e gira organizações, membros e permissões.',guides:['D02']},
+  {id:'apis-reutilizacao-automatizacao',title:'APIs, reutilizações e automatização',intro:'Disponibilize serviços de dados, valorize reutilizações e automatize a recolha de informação.',guides:['D08','D09','D10']},
+  {id:'conta-participacao',title:'Conta e participação',intro:'Gira o seu perfil, acompanhe conteúdos e participe na comunidade.',guides:['D13','D11','D12']}
+ ];"""
+          data, count = re.subn(r"export const themes = \[.*?\n \];", new_themes, data, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit('Bloco themes não encontrado ou ambíguo')
+          data_path.write_text(data, encoding='utf-8')
+
+          app_path = Path('assets/js/app.js')
+          app = app_path.read_text(encoding='utf-8')
+          app = app.replace(
+              "  $('.dg-side-title').textContent=g.title;\n  $('nav').classList.remove('dg-home-theme-nav');",
+              "  $('.dg-side-title').textContent=g.title;\n  $('nav').before($('.dg-side-title'));\n  $('nav').classList.remove('dg-home-theme-nav');"
+          )
+          app = app.replace(
+              "  $('nav').innerHTML=themes.map(t=>`<button type=\"button\" class=\"dg-nav-item\" data-theme-target=\"${t.id}\">${esc(t.title)}</button>`).join('');\n  $('.dg-mobile label').textContent='Temas';",
+              "  $('nav').innerHTML=themes.map(t=>`<button type=\"button\" class=\"dg-nav-item\" data-theme-target=\"${t.id}\">${esc(t.title)}</button>`).join('');\n  $('nav').after($('.dg-side-title'));\n  $('.dg-mobile label').textContent='Temas';"
+          )
+          app = app.replace("<h2>Explorar por tema</h2><div class=\"dg-theme-index\">${themeIndex}</div>", "<div class=\"dg-theme-index\">${themeIndex}</div>")
+
+          if "$('nav').after($('.dg-side-title'));" not in app:
+              raise SystemExit('Não foi possível mover Explorar por tema para o fim')
+          if '<h2>Explorar por tema</h2>' in app:
+              raise SystemExit('Título Explorar por tema continua antes dos temas no conteúdo principal')
+          app_path.write_text(app, encoding='utf-8')
+
+          shutil.copy2(data_path, Path('versions/v0.4/assets/js/data.js'))
+          shutil.copy2(app_path, Path('versions/v0.4/assets/js/app.js'))
+          PY
+
+      - name: Validar JavaScript e ordem
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check assets/js/data.js
+          node --check assets/js/app.js
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('assets/js/data.js').read_text(encoding='utf-8')
+          titles = [
+              'Encontrar, consultar e explorar dados',
+              'Publicar e gerir dados',
+              'Qualidade e modelos de dados',
+              'Organizações',
+              'APIs, reutilizações e automatização',
+              'Conta e participação',
+          ]
+          positions = [text.index(title) for title in titles]
+          assert positions == sorted(positions), positions
+          app = Path('assets/js/app.js').read_text(encoding='utf-8')
+          assert "$('nav').after($('.dg-side-title'));" in app
+          assert '<h2>Explorar por tema</h2>' not in app
+          assert Path('versions/v0.4/assets/js/data.js').read_text(encoding='utf-8') == text
+          assert Path('versions/v0.4/assets/js/app.js').read_text(encoding='utf-8') == app
+          print('Ordem dos temas e posição de Explorar por tema validadas.')
+          PY
+
+      - name: Registar alteração
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/data.js assets/js/app.js versions/v0.4/assets/js/data.js versions/v0.4/assets/js/app.js
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Ordena temas e reposiciona exploração temática"
+          git push

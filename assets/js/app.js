@@ -62,25 +62,27 @@ import { guides, themes } from "./data.js";
   if(state.home){navHome();$('main').innerHTML=home();}
   else{nav();$('main').innerHTML=state.ficha<0?overview():detail();$('.dg-grid')?.style.setProperty('grid-template-columns',design.grid==='Lista'?'1fr':'');}
  }
- function openGuide(gi,fi=-1){state.guide=gi;state.ficha=fi;state.home=false;$('#dg-query').value='';render();}
+ function resetView(){requestAnimationFrame(()=>{const main=$('main'),header=document.querySelector('.portal-header');if(!main)return;const offset=(header?.getBoundingClientRect().height||0)+24;const top=main.getBoundingClientRect().top+window.scrollY-offset;window.scrollTo({top:Math.max(0,top),behavior:'auto'});const title=main.querySelector('h1');if(title){title.setAttribute('tabindex','-1');title.focus({preventScroll:true});}});}
+ function openGuide(gi,fi=-1){state.guide=gi;state.ficha=fi;state.home=false;$('#dg-query').value='';render();resetView();}
  function scrollToTheme(id){const el=root.querySelector(`#tema-${CSS.escape(id)}`);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
  root.addEventListener('click',e=>{
   const themeButton=e.target.closest('[data-theme-target]');
   if(themeButton){if(!state.home){state.home=true;render();requestAnimationFrame(()=>scrollToTheme(themeButton.dataset.themeTarget));}else scrollToTheme(themeButton.dataset.themeTarget);return;}
   const b=e.target.closest('button[data-ficha]');if(!b)return;
   if(b.dataset.guide!==undefined){openGuide(Number(b.dataset.guide),Number(b.dataset.ficha));return;}
-  state.home=false;state.ficha=Number(b.dataset.ficha);render();
+  state.home=false;state.ficha=Number(b.dataset.ficha);render();resetView();
  });
  $('#dg-guide').addEventListener('change',e=>openGuide(Number(e.target.value),-1));
- $('#dg-ficha').addEventListener('change',e=>{if(state.home){if(e.target.value)scrollToTheme(e.target.value);return;}state.ficha=Number(e.target.value);render();});
- $('.dg-all').addEventListener('click',()=>{state.home=true;state.ficha=-1;$('#dg-query').value='';render();});
+ $('#dg-ficha').addEventListener('change',e=>{if(state.home){if(e.target.value)scrollToTheme(e.target.value);return;}state.ficha=Number(e.target.value);render();resetView();});
+ $('.dg-all').addEventListener('click',()=>{state.home=true;state.ficha=-1;$('#dg-query').value='';render();resetView();});
  function search(){
-  const q=$('#dg-query').value.trim();if(!q){render();return;}
+  const q=$('#dg-query').value.trim();if(!q){render();resetView();return;}
   state.home=false;
   const hits=[];guides.forEach((g,gi)=>g.fichas.forEach((f,i)=>{if(normal(f.title+' '+f.intro+' '+f.steps.join(' ')+' '+f.tip).includes(normal(q)))hits.push({f,i,gi,theme:themeForCode(g.code)});}));
   navHome();
   const grouped=themes.map(t=>({theme:t,hits:hits.filter(h=>h.theme?.id===t.id)})).filter(x=>x.hits.length);
   $('main').innerHTML=`<div class="dg-breadcrumb">Pesquisa nos guias disponíveis</div><h1>Resultados da pesquisa</h1><p>${hits.length} ${hits.length===1?'ficha encontrada':'fichas encontradas'} para “${esc(q)}”.</p>${hits.length?grouped.map(x=>`<h2 class="dg-search-theme">${esc(x.theme.title)}</h2><div class="dg-grid">${x.hits.map(h=>card(h.f,h.i,h.gi)).join('')}</div>`).join(''):'<p>Experimente menos palavras ou outra expressão.</p>'}`;
+  resetView();
  }
  $('.dg-search button').type='button';
  $('.dg-search button').addEventListener('click',search);

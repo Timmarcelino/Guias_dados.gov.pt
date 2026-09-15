@@ -12,7 +12,7 @@ Principais alterações:
 * Separação dos dados editoriais, lógica principal e comportamento do header em módulos JavaScript distintos.
 * Introdução de propriedades CSS personalizadas e camadas de cascade para reduzir conflitos de especificidade e centralizar tokens do protótipo.
 * Utilização de HTML semântico para `header`, `nav`, `main` e `footer`.
-* Manutenção dos 13 guias e 80 fichas existentes sem alteração intencional das respectivas regras funcionais.
+* Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas, elevando a v0.4 para 14 guias e 85 fichas.
 * Criação de uma cópia autónoma da v0.4 dentro de `versions/v0.4`.
 
 Fonte técnica: implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer.

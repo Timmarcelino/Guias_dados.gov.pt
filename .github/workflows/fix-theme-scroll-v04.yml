@@ -28,10 +28,11 @@ jobs:
               Path('versions/v0.4/assets/css/guides.css'),
           ]
 
-          responsive = """
-@media (max-width:900px){#dados-guides-review .dg-theme-section{scroll-margin-top:152px}}
-@media (max-width:700px){#dados-guides-review .dg-theme-section{scroll-margin-top:136px}}
-"""
+          responsive = "\n".join([
+              '@media (max-width:900px){#dados-guides-review .dg-theme-section{scroll-margin-top:152px}}',
+              '@media (max-width:700px){#dados-guides-review .dg-theme-section{scroll-margin-top:136px}}',
+              '',
+          ])
 
           for path in paths:
               text = path.read_text(encoding='utf-8')
@@ -45,7 +46,7 @@ jobs:
                   pos = text.rfind(marker)
                   if pos < 0:
                       raise SystemExit(f'Fecho do layer não encontrado em {path}')
-                  text = text[:pos] + responsive + text[pos:]
+                  text = text[:pos] + '\n' + responsive + text[pos:]
               path.write_text(text, encoding='utf-8')
           PY
 

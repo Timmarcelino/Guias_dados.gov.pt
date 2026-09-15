@@ -1,0 +1,80 @@
+name: Corrigir scroll dos temas v0.4
+
+on:
+  push:
+    branches:
+      - feature/v0.4-header-footer-refactor
+
+permissions:
+  contents: write
+
+jobs:
+  fix-scroll:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Corrigir offset de scroll dos temas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          paths = [
+              Path('assets/css/guides.css'),
+              Path('versions/v0.4/assets/css/guides.css'),
+          ]
+
+          responsive = """
+@media (max-width:900px){#dados-guides-review .dg-theme-section{scroll-margin-top:152px}}
+@media (max-width:700px){#dados-guides-review .dg-theme-section{scroll-margin-top:136px}}
+"""
+
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              old = '#dados-guides-review .dg-theme-section{scroll-margin-top:24px;'
+              new = '#dados-guides-review .dg-theme-section{scroll-margin-top:164px;'
+              if old not in text:
+                  raise SystemExit(f'Offset base não encontrado em {path}')
+              text = text.replace(old, new, 1)
+              marker = '\n}\n'
+              if responsive.strip() not in text:
+                  pos = text.rfind(marker)
+                  if pos < 0:
+                      raise SystemExit(f'Fecho do layer não encontrado em {path}')
+                  text = text[:pos] + responsive + text[pos:]
+              path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validar correcção
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          current = Path('assets/css/guides.css').read_text(encoding='utf-8')
+          snapshot = Path('versions/v0.4/assets/css/guides.css').read_text(encoding='utf-8')
+
+          assert 'scroll-margin-top:164px' in current
+          assert '@media (max-width:900px){#dados-guides-review .dg-theme-section{scroll-margin-top:152px}}' in current
+          assert '@media (max-width:700px){#dados-guides-review .dg-theme-section{scroll-margin-top:136px}}' in current
+          assert current == snapshot
+          print('Offset de scroll validado em desktop, tablet e mobile.')
+          PY
+
+      - name: Registar alteração
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/guides.css versions/v0.4/assets/css/guides.css
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Corrige offset de scroll dos temas"
+          git push

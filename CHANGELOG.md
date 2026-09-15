@@ -2,7 +2,7 @@
 
 ## v0.4 · 15/09/2026
 
-Evolução técnica e visual do protótipo preparada para revisão.
+Evolução técnica, visual e editorial do protótipo preparada para revisão.
 
 Principais alterações:
 
@@ -14,8 +14,12 @@ Principais alterações:
 * Utilização de HTML semântico para `header`, `nav`, `main` e `footer`.
 * Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas.
 * Integração do guia D01, Autenticação e acesso à conta, com seis fichas baseadas no comportamento alvo validado em TST. O guia mantém o login por email e palavra-passe como opção actual e não antecipa a futura consolidação de contas nem a descontinuação desse método.
-* A v0.4 passa a disponibilizar 15 guias e 91 fichas.
-* Criação de uma cópia autónoma da v0.4 dentro de `versions/v0.4`.
+* Evolução da taxonomia de seis para sete temas funcionais.
+* Renomeação do tema `Conta e participação` para `Acesso, perfil e participação`.
+* Separação de `Ajuda e contactos` num tema próprio, para tornar o apoio directamente localizável sem exigir que o utilizador identifique primeiro a área funcional do problema.
+* A v0.4 disponibiliza 15 guias e 91 fichas.
+* Criação e manutenção de uma cópia autónoma da v0.4 dentro de `versions/v0.4`.
+* Reescrita integral do `README.md`, que passa a apresentar o problema resolvido, a proposta de valor dos guias, a arquitectura de informação, a metodologia de construção do conteúdo, a rastreabilidade e a estrutura técnica do protótipo.
 
 Fonte técnica: implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer. Para D01 e D14, foram consideradas as decisões funcionais e a evidência de implementação registadas no Jira do projecto.
 

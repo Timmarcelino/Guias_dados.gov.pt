@@ -20,6 +20,7 @@ O `index.html` na raiz corresponde à versão corrente do protótipo.
 │   │   └── guides.css
 │   └── js/
 │       ├── data.js
+│       ├── data-d01.js
 │       ├── app.js
 │       └── header.js
 ├── versions/
@@ -34,7 +35,8 @@ A separação adoptada tem os seguintes objectivos:
 * `assets/css/base.css`: reset, tokens partilhados e utilitários de acessibilidade.
 * `assets/css/portal.css`: estrutura e responsividade do header e footer.
 * `assets/css/guides.css`: apresentação e responsividade da área dos guias.
-* `assets/js/data.js`: conteúdo estruturado dos guias e temas.
+* `assets/js/data.js`: conteúdo estruturado dos guias e temas consolidados até à integração do D14.
+* `assets/js/data-d01.js`: conteúdo editorial do D01, Autenticação e acesso à conta, registado sobre a estrutura existente sem alterar o histórico dos restantes guias.
 * `assets/js/app.js`: apresentação, pesquisa, navegação e interacções dos guias.
 * `assets/js/header.js`: comportamento do header do protótipo.
 
@@ -45,7 +47,7 @@ Os módulos JavaScript são carregados com `type="module"`. Por esse motivo, o p
 * `versions/v0.1/index.html`: primeiro rascunho existente no repositório.
 * `versions/v0.2/index.html`: evolução visual com aproximação estrutural ao Figma e padrões Ágora observados.
 * `versions/v0.3/index.html`: agrupamento dos guias por temas.
-* `versions/v0.4/index.html`: header e footer alinhados com a implementação pública do dados.gov.pt e reorganização técnica em HTML, CSS e módulos JavaScript separados.
+* `versions/v0.4/index.html`: header e footer alinhados com a implementação pública do dados.gov.pt, reorganização técnica em HTML, CSS e módulos JavaScript separados, e integração editorial dos guias D14 e D01.
 
 Cada versão de referência deve manter-se abrível de forma autónoma. O histórico Git continua a ser a fonte técnica principal de versionamento.
 
@@ -54,6 +56,8 @@ Cada versão de referência deve manter-se abrível de forma autónoma. O histó
 A aproximação do header e footer foi baseada no repositório público `amagovpt/dadosgov-fe`, em particular nos componentes `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer.
 
 A réplica no protótipo é deliberadamente estática. Não replica autenticação, integração com CMS, gestão de sessão nem conteúdo dinâmico do Ecossistema.
+
+O conteúdo de autenticação do D01 representa o comportamento alvo validado em TST e as decisões funcionais registadas para esta fase. O protótipo não transforma em comportamento actual as evoluções futuras de consolidação de contas ou descontinuação do login por email e palavra-passe.
 
 ## Trabalhar localmente
 

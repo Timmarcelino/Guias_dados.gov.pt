@@ -12,10 +12,12 @@ Principais alterações:
 * Separação dos dados editoriais, lógica principal e comportamento do header em módulos JavaScript distintos.
 * Introdução de propriedades CSS personalizadas e camadas de cascade para reduzir conflitos de especificidade e centralizar tokens do protótipo.
 * Utilização de HTML semântico para `header`, `nav`, `main` e `footer`.
-* Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas, elevando a v0.4 para 14 guias e 85 fichas.
+* Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas.
+* Integração do guia D01, Autenticação e acesso à conta, com seis fichas baseadas no comportamento alvo validado em TST. O guia mantém o login por email e palavra-passe como opção actual e não antecipa a futura consolidação de contas nem a descontinuação desse método.
+* A v0.4 passa a disponibilizar 15 guias e 91 fichas.
 * Criação de uma cópia autónoma da v0.4 dentro de `versions/v0.4`.
 
-Fonte técnica: implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer.
+Fonte técnica: implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer. Para D01 e D14, foram consideradas as decisões funcionais e a evidência de implementação registadas no Jira do projecto.
 
 Assunção: a v0.4 é uma aproximação estática para prototipagem. Não implementa autenticação, sessão, CMS ou conteúdo dinâmico do Ecossistema.
 

@@ -1,4 +1,7 @@
 import { guides, themes } from "./data.js";
+import { registerD01 } from "./data-d01.js";
+
+registerD01(guides, themes);
 
 (() => {
  const root=document.getElementById('dados-guides-review');
@@ -10,7 +13,7 @@ import { guides, themes } from "./data.js";
  const guideOptions=()=>themes.map(t=>`<optgroup label="${esc(t.title)}">${t.guides.map(code=>guideIndex(code)).filter(i=>i>=0).map(i=>`<option value="${i}">${esc(guides[i].title)}</option>`).join('')}</optgroup>`).join('');
  const state={guide:guides.findIndex(g=>g.code==='D03'),ficha:-1,home:true};
  const design={showMedia:true,grid:'Cartões'};
- const related={D03:['D05','D06','D07'],D04:['D05','D07'],D05:['D03','D07'],D06:['D03','D07'],D07:['D05','CM'],CM:['D07','D05'],D08:['D03','D04'],D09:['D03','D04'],D10:['D02','D07'],D11:['D13','D12'],D12:['D03','D14'],D13:['D01','D02','D11','D14']};
+ const related={D01:['D13','D14'],D03:['D05','D06','D07'],D04:['D05','D07'],D05:['D03','D07'],D06:['D03','D07'],D07:['D05','CM'],CM:['D07','D05'],D08:['D03','D04'],D09:['D03','D04'],D10:['D02','D07'],D11:['D13','D12'],D12:['D03','D14'],D13:['D01','D02','D11','D14']};
  $('#dg-guide').innerHTML=guideOptions();
  $('.dg-all').textContent='Ver todos os temas';
  function nav(){

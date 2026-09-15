@@ -119,7 +119,29 @@ export function registerD01(guides, themes) {
   }
 
   const accountTheme = themes.find(theme => theme.id === "conta-participacao");
-  if (accountTheme && !accountTheme.guides.includes(d01Guide.code)) {
-    accountTheme.guides.unshift(d01Guide.code);
+  if (accountTheme) {
+    accountTheme.title = "Acesso, perfil e participação";
+    accountTheme.intro = "Inicie sessão, consulte o seu perfil e acompanhe a sua actividade e os conteúdos que segue no portal.";
+    accountTheme.guides = accountTheme.guides.filter(code => code !== "D14");
+    if (!accountTheme.guides.includes(d01Guide.code)) {
+      accountTheme.guides.unshift(d01Guide.code);
+    }
+  }
+
+  let helpTheme = themes.find(theme => theme.id === "ajuda-contactos");
+  if (!helpTheme) {
+    helpTheme = {
+      id: "ajuda-contactos",
+      title: "Ajuda e contactos",
+      intro: "Encontre apoio, esclareça dúvidas, peça informação e contacte a equipa do dados.gov.pt.",
+      guides: ["D14"]
+    };
+
+    const accountThemeIndex = accountTheme ? themes.indexOf(accountTheme) : themes.length - 1;
+    themes.splice(accountThemeIndex + 1, 0, helpTheme);
+  } else {
+    helpTheme.title = "Ajuda e contactos";
+    helpTheme.intro = "Encontre apoio, esclareça dúvidas, peça informação e contacte a equipa do dados.gov.pt.";
+    helpTheme.guides = ["D14"];
   }
 }

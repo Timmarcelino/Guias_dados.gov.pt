@@ -1,8 +1,27 @@
 # Histórico de versões
 
-## v0.3 · 15/09/2026
+## v0.4 · 15/09/2026
 
-Versão corrente do protótipo.
+Evolução técnica e visual do protótipo preparada para revisão.
+
+Principais alterações:
+
+* Aproximação do header ao frontend público actual do dados.gov.pt, com marca, navegação principal, Recursos, Publicar, pesquisa, Ecossistema e autenticação representados no protótipo.
+* Aproximação do footer à estrutura observada no portal, incluindo as três áreas de navegação `Dados abertos`, `Portal` e `Desenvolvimento`, marcas institucionais e ligações relacionadas.
+* Separação do CSS do documento HTML.
+* Separação dos dados editoriais, lógica principal e comportamento do header em módulos JavaScript distintos.
+* Introdução de propriedades CSS personalizadas e camadas de cascade para reduzir conflitos de especificidade e centralizar tokens do protótipo.
+* Utilização de HTML semântico para `header`, `nav`, `main` e `footer`.
+* Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas, elevando a v0.4 para 14 guias e 85 fichas.
+* Criação de uma cópia autónoma da v0.4 dentro de `versions/v0.4`.
+
+Fonte técnica: implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo `Header.tsx`, `Footer.tsx`, configuração de navegação, estilos globais e testes E2E de header/footer.
+
+Assunção: a v0.4 é uma aproximação estática para prototipagem. Não implementa autenticação, sessão, CMS ou conteúdo dinâmico do Ecossistema.
+
+Por confirmar: paridade visual pixel a pixel com a versão publicada, todos os tokens Ágora aplicáveis e comportamento integral do header/footer nos breakpoints suportados.
+
+## v0.3 · 15/09/2026
 
 Principais alterações:
 

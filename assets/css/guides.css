@@ -1,0 +1,263 @@
+@layer guides {
+
+#dados-guides-review{--dg-navy:#103454;--dg-blue:#005ce6;--dg-ink:#243b50;--dg-muted:#526779;--dg-line:#dce5eb;--dg-wash:#f4f7f9;--dg-green:#eaf5ef;color:var(--dg-ink);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;container-type:inline-size;background:transparent;color-scheme:light}
+#dados-guides-review *{box-sizing:border-box}
+#dados-guides-review .dg-window{background:#fff;min-width:0}
+#dados-guides-review .dg-draft{background:var(--dg-navy);color:#fff;padding:8px 24px;font-size:12px;letter-spacing:.02em}
+#dados-guides-review .dg-header{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:20px 26px;border-bottom:1px solid var(--dg-line)}
+#dados-guides-review .dg-brand{color:var(--dg-navy);font-size:24px;font-weight:700;letter-spacing:-1px;white-space:nowrap}
+#dados-guides-review .dg-brand span{color:var(--dg-blue)}
+#dados-guides-review .dg-header-name{border-left:1px solid var(--dg-line);padding-left:24px;color:var(--dg-navy);font-size:17px}
+#dados-guides-review .dg-search{margin-left:auto;display:flex;gap:8px;flex:1;max-width:345px;min-width:220px}
+#dados-guides-review input,#dados-guides-review select{font:inherit;color:var(--dg-ink);background:#fff;border:1px solid #a7bac8;border-radius:5px;padding:10px 12px;min-width:0;width:100%}
+#dados-guides-review button{font:inherit;cursor:pointer}
+#dados-guides-review .dg-search button{background:var(--dg-blue);border:0;color:#fff;border-radius:5px;padding:10px 14px}
+#dados-guides-review .dg-body{display:grid;grid-template-columns:246px minmax(0,1fr);align-items:start}
+#dados-guides-review .dg-sidebar{background:var(--dg-wash);padding:26px 16px 32px;border-right:1px solid var(--dg-line);align-self:stretch}
+#dados-guides-review .dg-selector-label{display:block;font-size:12px;color:var(--dg-muted);margin:0 10px 8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+#dados-guides-review .dg-side-title{font-size:17px;color:var(--dg-navy);font-weight:700;margin:22px 10px 14px;line-height:1.35}
+#dados-guides-review .dg-sidebar nav{display:grid;gap:3px}
+#dados-guides-review .dg-nav-item{display:block;text-align:left;border:0;border-left:3px solid transparent;background:transparent;color:var(--dg-ink);padding:10px 11px;line-height:1.4;border-radius:0 5px 5px 0;font-size:13px}
+#dados-guides-review .dg-nav-item[aria-current=page]{background:#e4eefc;border-left-color:var(--dg-blue);color:#004aaa;font-weight:700}
+#dados-guides-review .dg-nav-item:hover{background:#eaf0f5}
+#dados-guides-review .dg-all{border:0;background:transparent;color:var(--dg-blue);padding:13px 10px;text-align:left;font-size:13px;text-decoration:underline;margin-top:22px}
+#dados-guides-review main{padding:28px 36px 38px;min-width:0}
+#dados-guides-review .dg-breadcrumb{font-size:12px;color:var(--dg-muted);margin-bottom:24px}
+#dados-guides-review .dg-kicker{color:#006a4c;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;margin-bottom:8px}
+#dados-guides-review h1{font-size:32px;line-height:1.2;color:var(--dg-navy);font-weight:700;margin:0 0 16px;letter-spacing:-.7px}
+#dados-guides-review h2{font-size:20px;color:var(--dg-navy);font-weight:700;line-height:1.3;margin:28px 0 15px}
+#dados-guides-review p{margin:0 0 14px}
+#dados-guides-review .dg-lead{font-size:17px;line-height:1.55;max-width:760px;color:var(--dg-muted)}
+#dados-guides-review .dg-audience{font-size:13px;margin:17px 0 25px;max-width:720px}
+#dados-guides-review .dg-role{display:inline-block;background:var(--dg-green);color:#175a44;border-radius:4px;padding:4px 9px;font-size:12px;margin:0 0 13px}
+#dados-guides-review .dg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 28px}
+#dados-guides-review .dg-choice{display:flex;gap:13px;text-align:left;background:#fff;border:1px solid var(--dg-line);border-radius:8px;padding:17px 15px;color:var(--dg-navy);min-width:0}
+#dados-guides-review .dg-choice:hover{border-color:var(--dg-blue);background:#f7faff}
+#dados-guides-review .dg-number{background:#eaf1fd;border-radius:50%;flex:0 0 29px;width:29px;height:29px;display:flex;align-items:center;justify-content:center;color:var(--dg-blue);font-size:12px;font-weight:700}
+#dados-guides-review .dg-choice strong{font-size:14px;line-height:1.4;display:block;margin:2px 0 6px}
+#dados-guides-review .dg-choice small{font-size:12px;color:var(--dg-muted);line-height:1.4;display:block}
+#dados-guides-review .dg-example{background:#edf4fd;border-radius:8px;padding:18px 21px;margin:25px 0}
+#dados-guides-review .dg-example h2{margin:0 0 8px;font-size:16px}
+#dados-guides-review .dg-example p{font-size:14px;margin:0}
+#dados-guides-review .dg-tip{background:var(--dg-green);padding:17px 20px;border-radius:7px;margin:22px 0;font-size:13px}
+#dados-guides-review .dg-tip strong{display:block;color:#175a44;margin-bottom:5px}
+#dados-guides-review .dg-tip p{margin:0}
+#dados-guides-review .dg-steps{list-style:none;counter-reset:steps;padding:0;margin:0;display:grid;gap:16px}
+#dados-guides-review .dg-steps li{counter-increment:steps;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-size:14px;line-height:1.65}
+#dados-guides-review .dg-steps li:before{content:counter(steps);background:#e9f1fc;color:#0050b9;font-weight:700;font-size:12px;border-radius:50%;height:27px;display:flex;align-items:center;justify-content:center}
+#dados-guides-review .dg-media{border:1px dashed #9fb5c6;padding:20px;border-radius:7px;background:#f8fafc;color:var(--dg-muted);font-size:12px;margin-top:23px;display:flex;gap:16px;align-items:center;min-height:105px}
+#dados-guides-review .dg-media-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#435d73;margin-bottom:5px}
+#dados-guides-review .dg-media p{margin:0}
+#dados-guides-review .dg-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:30px;padding-top:20px;border-top:1px solid var(--dg-line)}
+#dados-guides-review .dg-primary{border:0;border-radius:5px;background:var(--dg-blue);color:white;padding:12px 18px;text-align:left;font-size:13px}
+#dados-guides-review .dg-text-button{border:0;background:transparent;color:var(--dg-blue);padding:10px 0;text-align:left;font-size:13px;text-decoration:underline}
+#dados-guides-review .dg-related{display:flex;flex-wrap:wrap;gap:3px 19px}
+#dados-guides-review .dg-table{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;table-layout:fixed}
+#dados-guides-review .dg-table td,#dados-guides-review .dg-table th{padding:10px 12px;text-align:left;border-bottom:1px solid var(--dg-line);overflow-wrap:anywhere}
+#dados-guides-review .dg-table th{background:var(--dg-wash);font-weight:700}
+#dados-guides-review .dg-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dg-muted);font-size:11px;border-top:1px solid var(--dg-line);padding:15px 26px}
+#dados-guides-review .dg-mobile{display:none}
+#dados-guides-review .dg-sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+#dados-guides-review [hidden]{display:none!important}
+@container(max-width:800px){#dados-guides-review .dg-body{grid-template-columns:210px minmax(0,1fr)}#dados-guides-review main{padding:24px}#dados-guides-review h1{font-size:27px}#dados-guides-review .dg-grid{grid-template-columns:1fr}#dados-guides-review .dg-header{gap:14px;padding:18px}#dados-guides-review .dg-header-name{padding-left:14px}#dados-guides-review .dg-search{max-width:none;flex-basis:100%}}
+@container(max-width:580px){#dados-guides-review .dg-body{display:block}#dados-guides-review .dg-sidebar{border-right:0;border-bottom:1px solid var(--dg-line);padding:15px 18px}#dados-guides-review .dg-sidebar nav,#dados-guides-review .dg-side-title,#dados-guides-review .dg-all{display:none}#dados-guides-review .dg-mobile{display:block;margin-top:12px}#dados-guides-review .dg-header-name{font-size:14px}#dados-guides-review .dg-brand{font-size:22px}#dados-guides-review .dg-selector-label{margin-left:0}#dados-guides-review main{padding:22px 18px}#dados-guides-review h1{font-size:26px}#dados-guides-review .dg-lead{font-size:16px}#dados-guides-review .dg-breadcrumb{margin-bottom:18px}#dados-guides-review .dg-bottom{align-items:stretch;flex-direction:column}#dados-guides-review input,#dados-guides-review select{font-size:16px}#dados-guides-review .dg-nav-item,#dados-guides-review button{min-height:44px}}
+
+#dados-guides-review .dg-review{font-size:13px;margin:0 0 20px;padding:12px 14px;border:1px solid var(--dg-line);border-radius:5px;background:var(--dg-wash)}
+#dados-guides-review .dg-review summary{cursor:pointer;font-weight:700;color:var(--dg-navy)}
+#dados-guides-review .dg-review p{margin:12px 0 0}
+#dados-guides-review :focus-visible{outline:3px solid var(--dg-blue);outline-offset:3px}
+#dados-guides-review select{max-width:100%;text-overflow:ellipsis}
+@container(max-width:580px){#dados-guides-review .dg-all{display:block;margin-top:8px}}
+
+
+/*
+  Protótipo v0.2. Alinhamentos suportados por evidência do Figma oficial:
+  Desktop 1440px, conteúdo útil 1216px com margens de 112px,
+  barra geral 60px + navegação 76px; mobile 360px, margem 32px,
+  barra geral 60px + navegação 44px.
+  Tipografia, raios e tokens finos Ágora mantêm-se Por confirmar.
+*/
+#dados-guides-review{
+  --dg-shell:1216px;
+  --dg-desktop-gutter:32px;
+  --dg-mobile-gutter:32px;
+  background:#fff;
+}
+#dados-guides-review .dg-window{min-height:100vh;background:#fff}
+#dados-guides-review .dg-draft{
+  min-height:60px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  background:var(--dg-navy);
+}
+#dados-guides-review .dg-draft-inner{
+  width:min(var(--dg-shell),calc(100% - 64px));
+  min-height:60px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  color:#fff;
+  font-size:13px;
+}
+#dados-guides-review .dg-agency-short{display:none;font-weight:700;letter-spacing:.03em}
+#dados-guides-review .dg-proto-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:4px 10px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+}
+#dados-guides-review .dg-header{
+  min-height:76px;
+  padding:0;
+  display:block;
+  border-bottom:1px solid var(--dg-line);
+  background:#fff;
+}
+#dados-guides-review .dg-header-inner{
+  width:min(var(--dg-shell),calc(100% - 64px));
+  min-height:76px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+#dados-guides-review .dg-brand{font-size:24px}
+#dados-guides-review .dg-header-name{font-size:18px}
+#dados-guides-review .dg-search-band{
+  border-bottom:1px solid var(--dg-line);
+  background:#fff;
+}
+#dados-guides-review .dg-search-inner{
+  width:min(var(--dg-shell),calc(100% - 64px));
+  margin:0 auto;
+  padding:16px 0;
+  display:flex;
+  justify-content:flex-end;
+}
+#dados-guides-review .dg-search{
+  width:min(100%,420px);
+  max-width:420px;
+  min-width:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:8px;
+}
+#dados-guides-review .dg-body{
+  width:min(var(--dg-shell),calc(100% - 64px));
+  margin:0 auto;
+  grid-template-columns:264px minmax(0,1fr);
+  border-left:1px solid var(--dg-line);
+  border-right:1px solid var(--dg-line);
+}
+#dados-guides-review .dg-sidebar{
+  padding:32px 20px 40px;
+  border-right:1px solid var(--dg-line);
+  background:var(--dg-wash);
+}
+#dados-guides-review main{padding:40px 48px 56px}
+#dados-guides-review .dg-breadcrumb{margin-bottom:28px}
+#dados-guides-review .dg-grid{gap:16px;margin:20px 0 32px}
+#dados-guides-review .dg-choice{padding:20px 18px;border-radius:6px}
+#dados-guides-review .dg-choice:focus-visible,
+#dados-guides-review .dg-nav-item:focus-visible,
+#dados-guides-review .dg-primary:focus-visible,
+#dados-guides-review .dg-text-button:focus-visible,
+#dados-guides-review .dg-all:focus-visible,
+#dados-guides-review .dg-search button:focus-visible{
+  outline:3px solid var(--dg-blue);
+  outline-offset:3px;
+}
+#dados-guides-review .dg-footer{
+  width:min(var(--dg-shell),calc(100% - 64px));
+  margin:0 auto;
+  padding:20px 0 28px;
+}
+#dados-guides-review .dg-media{
+  min-height:120px;
+  background:#fff;
+}
+@container(max-width:800px){
+  #dados-guides-review .dg-draft-inner,
+  #dados-guides-review .dg-header-inner,
+  #dados-guides-review .dg-search-inner,
+  #dados-guides-review .dg-body,
+  #dados-guides-review .dg-footer{width:calc(100% - 48px)}
+  #dados-guides-review .dg-body{grid-template-columns:224px minmax(0,1fr)}
+  #dados-guides-review main{padding:32px}
+}
+@container(max-width:580px){
+  #dados-guides-review .dg-draft{min-height:60px}
+  #dados-guides-review .dg-draft-inner,
+  #dados-guides-review .dg-header-inner,
+  #dados-guides-review .dg-search-inner,
+  #dados-guides-review .dg-body,
+  #dados-guides-review .dg-footer{width:calc(100% - 64px)}
+  #dados-guides-review .dg-agency-long{display:none}
+  #dados-guides-review .dg-agency-short{display:inline}
+  #dados-guides-review .dg-header{min-height:44px}
+  #dados-guides-review .dg-header-inner{min-height:44px;gap:12px}
+  #dados-guides-review .dg-brand{font-size:20px}
+  #dados-guides-review .dg-header-name{font-size:14px;margin-left:auto;border-left:0;padding-left:0;text-align:right}
+  #dados-guides-review .dg-search-inner{padding:16px 0}
+  #dados-guides-review .dg-search{max-width:none}
+  #dados-guides-review .dg-search button{min-width:88px}
+  #dados-guides-review .dg-body{display:block;border-left:0;border-right:0}
+  #dados-guides-review .dg-sidebar{padding:20px 0 24px;border-right:0;border-bottom:1px solid var(--dg-line);background:#fff}
+  #dados-guides-review main{padding:28px 0 40px}
+  #dados-guides-review .dg-footer{padding:20px 0 28px}
+  #dados-guides-review .dg-grid{grid-template-columns:1fr}
+}
+@container(max-width:420px){
+  #dados-guides-review .dg-search{grid-template-columns:1fr}
+  #dados-guides-review .dg-search button{width:100%}
+}
+
+/* v0.3 · Agrupamento dos guias por temas */
+#dados-guides-review .dg-home-intro{max-width:820px;margin-bottom:32px}
+#dados-guides-review .dg-theme-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0 40px}
+#dados-guides-review .dg-theme-jump{display:flex;flex-direction:column;gap:5px;min-height:108px;padding:18px;text-align:left;border:1px solid var(--dg-line);border-radius:6px;background:#fff;color:var(--dg-navy)}
+#dados-guides-review .dg-theme-jump:hover{border-color:var(--dg-blue);background:#f7faff}
+#dados-guides-review .dg-theme-jump strong{font-size:15px;line-height:1.35}
+#dados-guides-review .dg-theme-jump small{color:var(--dg-muted);font-size:12px;line-height:1.45}
+#dados-guides-review .dg-theme-section{scroll-margin-top:164px;padding:0 0 34px;margin:0 0 34px;border-bottom:1px solid var(--dg-line)}
+#dados-guides-review .dg-theme-section:last-child{border-bottom:0;margin-bottom:0}
+#dados-guides-review .dg-theme-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:16px}
+#dados-guides-review .dg-theme-heading h2{margin:0 0 6px;font-size:22px}
+#dados-guides-review .dg-theme-heading p{max-width:720px;margin:0;color:var(--dg-muted);font-size:14px}
+#dados-guides-review .dg-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#dados-guides-review .dg-guide-card{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;min-height:118px;padding:20px;text-align:left;border:1px solid var(--dg-line);border-radius:6px;background:#fff;color:var(--dg-ink)}
+#dados-guides-review .dg-guide-card:hover{border-color:var(--dg-blue);background:#f7faff}
+#dados-guides-review .dg-guide-card strong{display:block;color:var(--dg-navy);font-size:15px;line-height:1.4;margin-bottom:6px}
+#dados-guides-review .dg-guide-card small{display:block;color:var(--dg-muted);font-size:12px;line-height:1.5}
+#dados-guides-review .dg-guide-card .dg-arrow{flex:0 0 auto;color:var(--dg-blue);font-size:20px;line-height:1}
+#dados-guides-review .dg-theme-chip{display:inline-flex;align-items:center;min-height:28px;margin:0 0 14px;padding:4px 9px;border-radius:4px;background:#edf4fd;color:#004aaa;font-size:12px;font-weight:700}
+#dados-guides-review .dg-search-theme{margin:30px 0 12px;font-size:15px;color:var(--dg-navy)}
+#dados-guides-review .dg-home-theme-nav .dg-nav-item{font-size:13px}
+#dados-guides-review .dg-home-theme-nav .dg-nav-item[aria-current=page]{background:transparent;border-left-color:transparent;color:var(--dg-ink);font-weight:400}
+#dados-guides-review .dg-home-theme-nav .dg-nav-item:hover{background:#eaf0f5}
+@container(max-width:900px){
+  #dados-guides-review .dg-theme-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@container(max-width:700px){
+  #dados-guides-review .dg-guide-grid{grid-template-columns:1fr}
+}
+@container(max-width:580px){
+  #dados-guides-review .dg-theme-index{grid-template-columns:1fr;margin-bottom:32px}
+  #dados-guides-review .dg-theme-jump{min-height:0}
+  #dados-guides-review .dg-theme-heading{display:block}
+  #dados-guides-review .dg-theme-heading h2{font-size:20px}
+}
+
+@media (max-width:900px){#dados-guides-review .dg-theme-section{scroll-margin-top:152px}}
+@media (max-width:700px){#dados-guides-review .dg-theme-section{scroll-margin-top:136px}}
+
+}

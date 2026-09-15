@@ -1,0 +1,182 @@
+name: Adicionar D14 à v0.4
+
+on:
+  push:
+    branches:
+      - feature/v0.4-header-footer-refactor
+    paths:
+      - .github/workflows/add-d14-v04.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-d14:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: feature/v0.4-header-footer-refactor
+          fetch-depth: 0
+
+      - name: Implementar D14 e validar conteúdo
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import json
+
+          root = Path('assets/js/data.js')
+          snapshot = Path('versions/v0.4/assets/js/data.js')
+          changelog = Path('CHANGELOG.md')
+          text = root.read_text(encoding='utf-8')
+
+          if '"code": "D14"' not in text:
+              d14 = {
+                  "code": "D14",
+                  "title": "Ajuda e contactos",
+                  "intro": "Encontre apoio, contacte a equipa do dados.gov.pt e saiba como encaminhar questões relacionadas com dados e organizações.",
+                  "audience": "Para quem procura apoio sobre a utilização do portal, pedidos relacionados com dados ou assuntos de uma organização.",
+                  "fichas": [
+                      {
+                          "title": "Consultar Ajuda e contactos",
+                          "intro": "Comece pela informação de apoio disponível para identificar o canal mais adequado à sua necessidade.",
+                          "roles": "Consulta pública",
+                          "steps": [
+                              "Aceda à página Ajuda e contactos.",
+                              "Consulte os temas e opções de apoio apresentados.",
+                              "Escolha a opção que corresponde à sua necessidade.",
+                              "Se a informação disponível não resolver a questão, utilize o canal de contacto adequado apresentado na página."
+                          ],
+                          "example": "Uma pessoa que não encontra a forma correcta de encaminhar uma questão começa por consultar Ajuda e contactos antes de submeter um pedido.",
+                          "tip": "Escolher o canal adequado ajuda a encaminhar a questão para o contexto correcto.",
+                          "table": None,
+                          "media": "Captura da página Ajuda e contactos com as principais opções de apoio identificadas.",
+                          "next": "Enviar uma pergunta à equipa do dados.gov.pt."
+                      },
+                      {
+                          "title": "Enviar uma pergunta à equipa do dados.gov.pt",
+                          "intro": "Utilize o formulário Tenho uma pergunta quando precisa de contactar a equipa responsável pelo portal.",
+                          "roles": "Utilizador da página Ajuda e contactos",
+                          "steps": [
+                              "Na página Ajuda e contactos, seleccione Tenho uma pergunta.",
+                              "Indique o endereço de email solicitado no formulário.",
+                              "Escolha a categoria aplicável, indique o assunto e escreva a sua pergunta.",
+                              "Reveja a informação e submeta o pedido.",
+                              "Confirme o resultado apresentado após a submissão."
+                          ],
+                          "example": "Para esclarecer uma dúvida sobre o funcionamento do portal, escolha a categoria adequada e descreva a situação de forma objectiva.",
+                          "tip": "Ao pedir apoio, indique a página e a acção em causa e evite incluir palavras-passe, chaves da API ou dados pessoais desnecessários.",
+                          "table": None,
+                          "media": "Captura do formulário Tenho uma pergunta com dados de demonstração.",
+                          "next": "Pedir informação ou sugerir um conjunto de dados."
+                      },
+                      {
+                          "title": "Pedir informação ou sugerir um conjunto de dados",
+                          "intro": "Quando não encontra os dados de que precisa, consulte as orientações disponíveis para encaminhar o pedido.",
+                          "roles": "Consulta pública; participação quando aplicável",
+                          "steps": [
+                              "Na página Ajuda e contactos, consulte a área Pedir um dataset.",
+                              "Se a organização responsável estiver registada no dados.gov.pt, utilize as discussões associadas ao contexto dessa organização para colocar a questão.",
+                              "Se pretende efectuar um pedido formal de dados a uma entidade pública, consulte as orientações apresentadas e a página de perguntas frequentes da CADA indicada pelo portal.",
+                              "Escolha o percurso adequado ao tipo de pedido que pretende realizar."
+                          ],
+                          "example": "Se procura dados de uma entidade já registada no portal, utilize o canal de discussão indicado para colocar a questão à organização responsável.",
+                          "tip": "O portal não disponibiliza actualmente um formulário autónomo de sugestão de conjuntos de dados. Um pedido formal de acesso a informação segue o enquadramento indicado na página Ajuda e contactos.",
+                          "table": None,
+                          "media": "Captura da área Pedir um dataset e das orientações para discussões e CADA.",
+                          "next": "Reportar uma questão sobre um conjunto de dados."
+                      },
+                      {
+                          "title": "Reportar uma questão sobre um conjunto de dados",
+                          "intro": "Quando a questão está ligada a dados já publicados, identifique primeiro o conteúdo e a organização responsável.",
+                          "roles": "Consulta pública; utilizador autenticado para participar em discussões",
+                          "steps": [
+                              "Abra o Conjunto de Dados e identifique a organização responsável pela publicação.",
+                              "Consulte as discussões disponíveis no contexto do conteúdo ou da organização.",
+                              "Se precisar de participar, inicie sessão quando o portal o solicitar e descreva a questão com a informação necessária para a compreender.",
+                              "Acompanhe a discussão no contexto correspondente."
+                          ],
+                          "example": "Uma pessoa que tem uma dúvida sobre o significado de um campo identifica a organização responsável e coloca a questão na discussão relacionada com os dados.",
+                          "tip": "Para dificuldades de funcionamento do próprio portal, utilize Tenho uma pergunta em Ajuda e contactos em vez de tratar o assunto como uma questão sobre os dados.",
+                          "table": None,
+                          "media": "Captura do acesso às discussões a partir de um conteúdo e da identificação da organização responsável.",
+                          "next": "Solicitar atribuição ou alteração de um emblema."
+                      },
+                      {
+                          "title": "Solicitar atribuição ou alteração de um emblema",
+                          "intro": "O gestor de uma organização pode pedir um novo emblema ou a alteração de um emblema existente através do formulário de contacto.",
+                          "roles": "Gestor da organização",
+                          "steps": [
+                              "Na página Ajuda e contactos, seleccione Tenho uma pergunta.",
+                              "No pedido, indique o nome da organização.",
+                              "Identifique o emblema que pretende solicitar ou alterar.",
+                              "Inclua a fundamentação quando aplicável e submeta o pedido.",
+                              "Aguarde a análise da equipa de gestão do portal e a comunicação do resultado por email."
+                          ],
+                          "example": "O gestor de uma organização solicita a alteração de um emblema, identificando a entidade, o emblema pretendido e a fundamentação aplicável.",
+                          "tip": "A submissão do pedido não atribui nem altera automaticamente o emblema. O resultado depende da análise da equipa de gestão do portal.",
+                          "table": None,
+                          "media": "Captura da referência aos emblemas em Ajuda e contactos e do formulário Tenho uma pergunta.",
+                          "next": "Voltar à visão geral."
+                      }
+                  ]
+              }
+              marker = ', {"code": "CM"'
+              if marker not in text:
+                  raise SystemExit('Marcador CM não encontrado')
+              text = text.replace(marker, ', ' + json.dumps(d14, ensure_ascii=False) + marker, 1)
+
+          old_theme = "{id:'conta-participacao',title:'Conta e participação',intro:'Gira o seu perfil, acompanhe conteúdos e participe na comunidade.',guides:['D13','D11','D12']}"
+          new_theme = "{id:'conta-participacao',title:'Conta e participação',intro:'Gira o seu perfil, acompanhe conteúdos, participe na comunidade e encontre apoio.',guides:['D13','D11','D12','D14']}"
+          if old_theme in text:
+              text = text.replace(old_theme, new_theme, 1)
+          elif new_theme not in text:
+              raise SystemExit('Tema Conta e participação não encontrado no formato esperado')
+
+          root.write_text(text, encoding='utf-8')
+          snapshot.write_text(text, encoding='utf-8')
+
+          start_marker = 'export const guides = '
+          end_marker = '].filter(g=>g.fichas.length);'
+          start = text.index(start_marker) + len(start_marker)
+          end = text.index(end_marker, start) + 1
+          guides = json.loads(text[start:end])
+          assert len(guides) == 14, len(guides)
+          assert sum(len(g['fichas']) for g in guides) == 85
+          d14 = next(g for g in guides if g['code'] == 'D14')
+          assert len(d14['fichas']) == 5
+          assert [f['title'] for f in d14['fichas']] == [
+              'Consultar Ajuda e contactos',
+              'Enviar uma pergunta à equipa do dados.gov.pt',
+              'Pedir informação ou sugerir um conjunto de dados',
+              'Reportar uma questão sobre um conjunto de dados',
+              'Solicitar atribuição ou alteração de um emblema'
+          ]
+          assert 'Pedir certificação da organização' not in text
+          assert "guides:['D13','D11','D12','D14']" in text
+          assert root.read_bytes() == snapshot.read_bytes()
+
+          c = changelog.read_text(encoding='utf-8')
+          old = '* Manutenção dos 13 guias e 80 fichas existentes sem alteração intencional das respectivas regras funcionais.'
+          new = '* Integração do guia D14, Ajuda e contactos, com cinco fichas suportadas pelo comportamento actual e pelas decisões registadas, elevando a v0.4 para 14 guias e 85 fichas.'
+          if old in c:
+              c = c.replace(old, new, 1)
+          elif new not in c:
+              raise SystemExit('Linha de contagem da v0.4 não encontrada no CHANGELOG')
+          changelog.write_text(c, encoding='utf-8')
+          PY
+
+          node --check assets/js/data.js
+          cmp assets/js/data.js versions/v0.4/assets/js/data.js
+
+      - name: Registar alteração e remover workflow temporário
+        shell: bash
+        run: |
+          git config user.name "Valentim Marcelino"
+          git config user.email "Timmarcelino@users.noreply.github.com"
+          rm .github/workflows/add-d14-v04.yml
+          git add assets/js/data.js versions/v0.4/assets/js/data.js CHANGELOG.md .github/workflows/add-d14-v04.yml
+          git commit -m "Adiciona guia D14 Ajuda e contactos"
+          git push origin HEAD:feature/v0.4-header-footer-refactor

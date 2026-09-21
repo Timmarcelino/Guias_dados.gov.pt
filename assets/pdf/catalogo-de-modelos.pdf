@@ -1,0 +1,395 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 10 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R] >>
+endobj
+6 0 obj
+<< /Length 2111 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Consulte e administre os modelos que definem a estrutura e as regras utilizadas na valida\347\343o) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (de ficheiros tabulares.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (O Editor pode consultar modelos, vers\365es e utiliza\347\343o. As opera\347\365es de cria\347\343o, altera\347\343o,) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (activa\347\343o, elimina\347\343o e auditoria exigem perfil Administrador.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/qualidade-e-modelos-de-dados/catalogo-de-modelos/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Consultar modelos e vers\365es) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Criar um modelo manualmente) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Criar a partir de um ficheiro) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Rever campos e regras) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Activar um modelo) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Criar uma nova vers\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 559.0 Tm (7. Inactivar ou reactivar um modelo) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 544.5 Tm (8. Consultar a utiliza\347\343o e a auditoria) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 530.0 Tm (9. Eliminar um modelo nunca utilizado) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [35 0 R] >>
+endobj
+8 0 obj
+<< /Length 1956 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar modelos e vers\365es) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (O Cat\341logo \351 global e permite conhecer a defini\347\343o e a utiliza\347\343o de cada modelo.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Inicie sess\343o e abra o Cat\341logo de Modelos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Pesquise por nome ou descri\347\343o e ajuste o filtro de estado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Abra um modelo para consultar a identifica\347\343o, a estrutura, as vers\365es e a utiliza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Regresse \340 listagem para continuar a pesquisa; os crit\351rios e a p\341gina mant\352m-se.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Antes de associar um modelo a um recurso, consulte as colunas e as regras esperadas.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 640.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 626.0 Tm (O Editor consulta modelos em Rascunho, Activos e Inactivos, mas n\343o os altera nem acede \340 auditoria ou aos) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (eliminados. A listagem apresenta 20 resultados por p\341gina.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [36 0 R] >>
+endobj
+10 0 obj
+<< /Length 2208 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar um modelo manualmente) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Defina a estrutura que os ficheiros dever\343o cumprir.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Com perfil Administrador, inicie a cria\347\343o de um modelo e introduza um nome \372nico.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Escolha a cria\347\343o manual e adicione os campos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Em cada campo, preencha o nome e seleccione o tipo l\363gico. Ordene os campos conforme a estrutura) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (pretendida.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Adicione regras compat\355veis, se necess\341rio, e guarde. A primeira grava\347\343o cria o modelo e a vers\343o v1) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 663.5 Tm (em Rascunho.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 647.2 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (Crie um modelo para ficheiros com as colunas de munic\355pio, data e valor, seleccionando os tipos adequados) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 622.4 Tm (disponibilizados pelo portal.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 607.6 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (O nome do modelo \351 \372nico, mesmo com diferen\347as de mai\372sculas, acentos ou espa\347os normalizados. Nomes de) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 582.8 Tm (modelos eliminados n\343o podem ser reutilizados.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [37 0 R] >>
+endobj
+12 0 obj
+<< /Length 2130 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar a partir de um ficheiro) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A infer\352ncia prop\365e uma estrutura inicial que tem de rever antes de guardar.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Escolha a cria\347\343o assistida por infer\352ncia e seleccione um ficheiro CSV, TXT tabular, XLS, XLSX ou ODS.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Aguarde a proposta de campos, ordem, tipos prov\341veis e valores apresentados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Reveja os nomes, os tipos e as regras. Corrija colunas vazias, duplicadas ou equivalentes.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Confirme e guarde a proposta. O modelo e a vers\343o v1 ficam em Rascunho.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Use um CSV representativo para obter uma proposta inicial e confirme se os tipos sugeridos correspondem ao) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (significado dos dados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (S\343o consideradas at\351 1.000 linhas ou 5 MB descomprimidos, consoante o primeiro limite atingido. Em XLS,) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (XLSX e ODS, s\363 \351 analisada a primeira folha. A infer\352ncia n\343o valida o ficheiro nem activa o modelo.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [38 0 R] >>
+endobj
+14 0 obj
+<< /Length 2069 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Rever campos e regras) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Prepare uma defini\347\343o coerente antes de activar o modelo.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o Rascunho e reveja os nomes, os tipos l\363gicos e a ordem dos campos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione apenas regras activas e compat\355veis e preencha os par\342metros pedidos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Se alterar um tipo ou remover um campo com regras, reveja e confirme a remo\347\343o das regras afectadas.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Corrija os problemas indicados e guarde.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Os nomes " C\363digo Postal " e "c\363digo postal" s\343o equivalentes para detectar duplicados. "C\363digo Postal" e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm ("Codigo Postal" s\343o diferentes.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Depois de editar manualmente a proposta, n\343o pode repetir a infer\352ncia sobre essa proposta. As amostras e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (os valores usados na infer\352ncia s\343o tempor\341rios e n\343o integram o modelo nem a auditoria.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [39 0 R] >>
+endobj
+16 0 obj
+<< /Length 2042 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Activar um modelo) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A activa\347\343o disponibiliza uma vers\343o v\341lida para novas associa\347\365es a recursos.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra um Rascunho previamente guardado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Confirme que existe pelo menos um campo e que todos t\352m nome e tipo l\363gico.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Reveja as regras e os par\342metros. Corrija os problemas que impe\347am a activa\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Seleccione Guardar e activar e confirme. O modelo fica Activo e a vers\343o Em vigor.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Depois de rever a estrutura proposta a partir de um CSV, active a vers\343o para a disponibilizar na) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (associa\347\343o de modelos aos recursos.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Uma vers\343o activada n\343o pode ser alterada. Uma regra inactiva ou a indisponibilidade do cat\341logo de regras) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (impede a activa\347\343o, embora o Rascunho possa ser guardado.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [40 0 R] >>
+endobj
+18 0 obj
+<< /Length 2044 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar uma nova vers\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Altere a estrutura ou as regras atrav\351s de um novo Rascunho.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra um modelo Activo e seleccione a edi\347\343o da defini\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Se j\341 existir um Rascunho, continue nesse Rascunho. Caso contr\341rio, \351 criada uma c\363pia da vers\343o Em) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (vigor.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Altere os campos ou as regras e guarde.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Quando a defini\347\343o estiver v\341lida, active-a. A vers\343o anterior passa a Substitu\355da.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Para acrescentar uma coluna esperada ao modelo, prepare uma nova vers\343o e active-a depois de revista.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Existe no m\341ximo um Rascunho por modelo. A activa\347\343o n\343o migra recursos j\341 associados: cada recurso mant\351m) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (a vers\343o exacta anterior at\351 uma altera\347\343o expl\355cita da associa\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 20 0 R /Annots [41 0 R] >>
+endobj
+20 0 obj
+<< /Length 2120 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Inactivar ou reactivar um modelo) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A inactiva\347\343o impede novas associa\347\365es e preserva as vers\365es e a utiliza\347\343o hist\363rica.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o modelo que pretende inactivar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Se existir um Rascunho, active-o ou descarte-o antes de inactivar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Seleccione a inactiva\347\343o e conclua a opera\347\343o apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Para reactivar, confirme que a vers\343o continua v\341lida. Se precisar de a corrigir, edite uma nova vers\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (e utilize Guardar e reactivar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Inactive um modelo que deixou de ser recomendado para novos recursos, preservando a rastreabilidade das) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (associa\347\365es existentes.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 618.4 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Uma regra entretanto inactiva pode impedir a reactiva\347\343o. A inactiva\347\343o n\343o altera automaticamente os) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (recursos que j\341 utilizam o modelo.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (8) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 22 0 R /Annots [42 0 R] >>
+endobj
+22 0 obj
+<< /Length 1951 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar a utiliza\347\343o e a auditoria) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Verifique onde o modelo foi utilizado e quais as opera\347\365es administrativas registadas.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o modelo e consulte a utiliza\347\343o das vers\365es.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Identifique as associa\347\365es relevantes para avaliar o impacto de uma altera\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Com perfil Administrador, consulte a auditoria das opera\347\365es sobre o modelo e as vers\365es.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 681.1 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 667.1 Tm (Antes de inactivar um modelo, consulte a utiliza\347\343o para identificar os recursos que continuam associados) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 656.3 Tm (\340s vers\365es existentes.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 641.5 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 627.5 Tm (Uma utiliza\347\343o passada continua relevante mesmo que j\341 n\343o existam associa\347\365es actuais. O Editor pode) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 616.7 Tm (consultar a utiliza\347\343o, mas n\343o a auditoria.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (9) Tj ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 24 0 R /Annots [43 0 R] >>
+endobj
+24 0 obj
+<< /Length 2043 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Eliminar um modelo nunca utilizado) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (S\363 pode eliminar um modelo quando nenhuma das suas vers\365es foi alguma vez associada a um recurso.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Com perfil Administrador, abra o modelo e verifique a utiliza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione Eliminar, quando permitido.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Reveja e confirme a opera\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. O modelo e as vers\365es ficam logicamente eliminados e s\363 o Administrador os pode consultar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Pode eliminar um modelo de prepara\347\343o que nunca foi associado. Retirar associa\347\365es actuais de um modelo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (utilizado n\343o o torna eleg\355vel para elimina\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (O portal n\343o permite recuperar modelos eliminados. O nome tamb\351m n\343o fica dispon\355vel para reutiliza\347\343o. A) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (elegibilidade \351 novamente verificada ao confirmar.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Cat\341logo de Modelos) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (10) Tj ET
+endstream
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/qualidade-e-modelos-de-dados/catalogo-de-modelos/) >> >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 556 541 569] /Border [0 0 0] /Dest [19 0 R /XYZ null null null] >>
+endobj
+33 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 541.5 541 554.5] /Border [0 0 0] /Dest [21 0 R /XYZ null null null] >>
+endobj
+34 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 527 541 540] /Border [0 0 0] /Dest [23 0 R /XYZ null null null] >>
+endobj
+35 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+36 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+37 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+38 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+39 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+40 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+41 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+42 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+43 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 44
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000202 00000 n 
+0000000299 00000 n 
+0000000401 00000 n 
+0000000617 00000 n 
+0000002779 00000 n 
+0000002932 00000 n 
+0000004939 00000 n 
+0000005093 00000 n 
+0000007353 00000 n 
+0000007508 00000 n 
+0000009690 00000 n 
+0000009845 00000 n 
+0000011966 00000 n 
+0000012121 00000 n 
+0000014215 00000 n 
+0000014370 00000 n 
+0000016466 00000 n 
+0000016621 00000 n 
+0000018793 00000 n 
+0000018948 00000 n 
+0000020951 00000 n 
+0000021106 00000 n 
+0000023201 00000 n 
+0000023428 00000 n 
+0000023551 00000 n 
+0000023678 00000 n 
+0000023802 00000 n 
+0000023930 00000 n 
+0000024054 00000 n 
+0000024182 00000 n 
+0000024306 00000 n 
+0000024434 00000 n 
+0000024558 00000 n 
+0000024679 00000 n 
+0000024800 00000 n 
+0000024921 00000 n 
+0000025042 00000 n 
+0000025163 00000 n 
+0000025284 00000 n 
+0000025405 00000 n 
+0000025526 00000 n 
+trailer
+<< /Size 44 /Root 1 0 R >>
+startxref
+25647
+%%EOF

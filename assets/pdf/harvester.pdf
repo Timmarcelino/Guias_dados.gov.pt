@@ -1,0 +1,286 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R] >>
+endobj
+6 0 obj
+<< /Length 1752 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Harvester) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Prepare uma fonte, consulte a configura\347\343o e acompanhe os trabalhos de Harvester que) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (integram dados no portal.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Para membros de organiza\347\365es que acompanham fontes de Harvester e administradores do sistema que as) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (validam e gerem.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/harvester/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Preparar uma fonte de Harvester) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Consultar e actualizar a configura\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Configurar e rever filtros) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Pr\351-visualizar os resultados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Consultar trabalhos e resultados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Aprovar ou rejeitar uma fonte) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [26 0 R] >>
+endobj
+8 0 obj
+<< /Length 2218 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Preparar uma fonte de Harvester) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Re\372na a informa\347\343o sobre a origem dos dados antes de configurar a integra\347\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Respons\341vel pela prepara\347\343o da fonte) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Identifique a organiza\347\343o respons\341vel e o endere\347o da fonte de dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Prepare um nome e uma descri\347\343o que permitam reconhecer o conte\372do da fonte.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Confirme o tipo de fonte a utilizar entre as op\347\365es disponibilizadas no ambiente.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Identifique se precisa de limitar os dados atrav\351s de filtros e quais os valores a usar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Confirme com o administrador o acesso necess\341rio para criar a fonte e a sua valida\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Uma organiza\347\343o prepara o endere\347o do seu cat\341logo e identifica as etiquetas dos dados que pretende) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (integrar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 616.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (Os tipos dispon\355veis dependem do ambiente. N\343o seleccione um tipo diferente apenas para contornar uma) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.1 Tm (dificuldade no formul\341rio.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [27 0 R] >>
+endobj
+10 0 obj
+<< /Length 2470 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar e actualizar a configura\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (O editor consulta a configura\347\343o. O administrador da organiza\347\343o pode alterar nome, descri\347\343o e) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (filtros.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Editor ou administrador da organiza\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. Abra a listagem de Harvesters da organiza\347\343o e localize a fonte.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.2 Tm (2. Abra o detalhe pelo nome ou use o \355cone de edi\347\343o para entrar em Configura\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.9 Tm (3. Consulte o produtor, o nome, a descri\347\343o e a configura\347\343o apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 673.6 Tm (4. Se for administrador da organiza\347\343o, actualize apenas os campos permitidos: nome, descri\347\343o e filtros.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.8 Tm (URL, tipo e planeamento n\343o s\343o edit\341veis neste perfil.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 650.5 Tm (5. Guarde as altera\347\365es e volte a consultar a fonte para confirmar o resultado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 634.2 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.2 Tm (Um administrador corrige a descri\347\343o da fonte. Um editor da mesma organiza\347\343o consulta essa informa\347\343o sem) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 609.4 Tm (a alterar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 594.6 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 580.6 Tm (Uma op\347\343o desactivada pode corresponder \340s permiss\365es do seu perfil. Confirme o contexto da organiza\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 569.8 Tm (antes de pedir apoio.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [28 0 R] >>
+endobj
+12 0 obj
+<< /Length 2187 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Configurar e rever filtros) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Os filtros permitem seleccionar os dados a considerar. As op\347\365es dependem do tipo de Harvester.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador com permiss\343o para editar os filtros) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Na Configura\347\343o, localize a sec\347\343o de filtros quando o tipo de fonte a disponibiliza.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Escolha a chave do filtro entre as op\347\365es apresentadas e indique o valor pretendido.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Seleccione o modo Incluir ou Excluir de acordo com a selec\347\343o que pretende preparar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Guarde e volte a abrir a configura\347\343o para confirmar que os filtros ficaram registados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Utilize a pr\351-visualiza\347\343o autorizada para rever os resultados antes de uma execu\347\343o real.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Uma organiza\347\343o configura um filtro de etiqueta para seleccionar dados de mobilidade e rev\352 os resultados) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (apresentados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 616.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (N\343o deduza como v\341rios filtros se combinam. Confirme os resultados e a regra aplic\341vel ao tipo de fonte.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [29 0 R] >>
+endobj
+14 0 obj
+<< /Length 2456 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Pr\351-visualizar os resultados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A pr\351-visualiza\347\343o permite rever os resultados da configura\347\343o sem os publicar como uma execu\347\343o real.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador com permiss\343o de pr\351-visualiza\347\343o da fonte) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a Configura\347\343o da fonte e reveja os valores apresentados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Se tiver permiss\343o, seleccione Pr\351-visualiza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Consulte os itens e avisos devolvidos. Compare a origem e a selec\347\343o com o que pretende integrar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Se tiver acesso apenas de leitura, reveja a configura\347\343o guardada. A pr\351-visualiza\347\343o de altera\347\365es) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (ainda n\343o guardadas exige direitos de edi\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.0 Tm (5. Se o resultado divergir do esperado, reveja os filtros ou pe\347a apoio ao respons\341vel pela configura\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 645.7 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (Um editor consulta os resultados da configura\347\343o guardada e comunica ao administrador que falta um grupo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.9 Tm (de dados esperado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 606.1 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.1 Tm (A disponibilidade da ac\347\343o depende da permiss\343o sobre a fonte. Ter uma conta autenticada n\343o concede, por) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 581.3 Tm (si s\363, acesso a todas as pr\351-visualiza\347\365es.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [30 0 R] >>
+endobj
+16 0 obj
+<< /Length 2091 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar trabalhos e resultados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Consulte os trabalhos para acompanhar os resultados apresentados e identificar dificuldades.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador com acesso ao Harvester) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o detalhe do Harvester e entre em Trabalhos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Localize o trabalho que pretende consultar e abra o seu detalhe.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Reveja os itens apresentados e a informa\347\343o que os acompanha.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Utilize a navega\347\343o entre p\341ginas e Linhas por p\341gina para consultar os restantes itens.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Se precisar de apoio, indique a fonte, o trabalho e o resultado observado, sem partilhar credenciais.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Um editor abre um trabalho e aumenta o n\372mero de linhas por p\341gina para rever os itens apresentados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 627.7 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 613.7 Tm (Uma lista vazia n\343o permite concluir que todos os dados foram integrados. Verifique o trabalho e a) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (configura\347\343o antes de repetir a opera\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [31 0 R] >>
+endobj
+18 0 obj
+<< /Length 2134 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Aprovar ou rejeitar uma fonte) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A decis\343o de valida\347\343o de uma fonte pendente pertence ao administrador do sistema.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador do sistema) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Na administra\347\343o do sistema, localize uma fonte com valida\347\343o pendente.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Reveja a configura\347\343o e a informa\347\343o dispon\355vel sobre a fonte.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Escolha Aprovar ou Rejeitar na listagem ou no detalhe, conforme a ac\347\343o apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Ao rejeitar, preencha o motivo. Ao aprovar, o coment\341rio \351 opcional.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Confirme a decis\343o e verifique o novo estado. Se ocorrer um erro, consulte a mensagem antes de repetir.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Um administrador rejeita uma fonte e indica que o endere\347o precisa de ser corrigido.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 627.7 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 613.7 Tm (A aprova\347\343o da fonte e a execu\347\343o do Harvester s\343o opera\347\365es distintas. N\343o interprete a aprova\347\343o como) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (confirma\347\343o de importa\347\343o dos dados.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Harvester) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/harvester/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 32
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000180 00000 n 
+0000000277 00000 n 
+0000000379 00000 n 
+0000000574 00000 n 
+0000002377 00000 n 
+0000002530 00000 n 
+0000004799 00000 n 
+0000004953 00000 n 
+0000007475 00000 n 
+0000007630 00000 n 
+0000009869 00000 n 
+0000010024 00000 n 
+0000012532 00000 n 
+0000012687 00000 n 
+0000014830 00000 n 
+0000014985 00000 n 
+0000017171 00000 n 
+0000017394 00000 n 
+0000017517 00000 n 
+0000017644 00000 n 
+0000017768 00000 n 
+0000017896 00000 n 
+0000018020 00000 n 
+0000018148 00000 n 
+0000018269 00000 n 
+0000018390 00000 n 
+0000018511 00000 n 
+0000018632 00000 n 
+0000018753 00000 n 
+trailer
+<< /Size 32 /Root 1 0 R >>
+startxref
+18874
+%%EOF

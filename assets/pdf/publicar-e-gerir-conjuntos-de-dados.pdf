@@ -1,0 +1,333 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 8 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R] >>
+endobj
+6 0 obj
+<< /Length 2151 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Crie um Conjunto de Dados, publique a informa\347\343o e mantenha os seus metadados, estado e) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (responsabilidade.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Inicie sess\343o e confirme que tem permiss\343o no contexto pessoal ou na organiza\347\343o onde pretende) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (actuar.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/publicar-e-gerir-dados/publicar-e-gerir-conjuntos-de-dados/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Encontrar os Conjuntos de Dados que gere) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Criar e guardar um rascunho) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Publicar um Conjunto de Dados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Editar a informa\347\343o publicada) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Arquivar e voltar a disponibilizar) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Transferir a responsabilidade) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 559.0 Tm (7. Eliminar um Conjunto de Dados) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 539.5 Tm (Liga\347\365es \372teis) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 522.5 Tm (Minicurso: Metadados & Standards) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 508.5 Tm (Minicurso: Licen\347as) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [31 0 R] >>
+endobj
+8 0 obj
+<< /Length 2106 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Encontrar os Conjuntos de Dados que gere) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Escolha o contexto certo antes de procurar um conte\372do.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Na \341rea de gest\343o, escolha Meu perfil para os seus Conjuntos de Dados pessoais, sem organiza\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.2 Tm (associada, ou seleccione a organiza\347\343o pretendida.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (2. Pesquise pelo t\355tulo, sigla ou acr\363nimo, ou descri\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Ajuste o filtro de estado, a ordena\347\343o e a pagina\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Seleccione o Conjunto de Dados para abrir o detalhe e as ac\347\365es a que tem acesso.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Para encontrar um conte\372do arquivado de uma organiza\347\343o, seleccione essa organiza\347\343o e o filtro Arquivado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (O filtro Todos apresenta P\372blicos e Rascunhos. Arquivados e Eliminados t\352m filtros pr\363prios. O contexto) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Sistema exige a permiss\343o administrativa aplic\341vel.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [32 0 R] >>
+endobj
+10 0 obj
+<< /Length 2049 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar e guardar um rascunho) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Prepare a informa\347\343o antes de a tornar p\372blica.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Escolha o contexto pessoal ou a organiza\347\343o em que tem permiss\343o para criar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Inicie a cria\347\343o de um Conjunto de Dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Preencha os metadados dispon\355veis e confirme a licen\347a adequada. A licen\347a inicial \351 CC BY 4.0 e pode) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (ser alterada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Guarde como Rascunho para continuar mais tarde.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Pode guardar o t\355tulo e a descri\347\343o enquanto aguarda a informa\347\343o necess\341ria para completar os restantes) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (metadados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 618.4 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Um Rascunho pode ser guardado com metadados obrigat\363rios em falta. O conte\372do ainda n\343o fica dispon\355vel ao) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (p\372blico.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [33 0 R] >>
+endobj
+12 0 obj
+<< /Length 2209 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Publicar um Conjunto de Dados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A publica\347\343o torna o conte\372do p\372blico imediatamente ap\363s a conclus\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o Rascunho que pretende publicar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Complete os metadados obrigat\363rios assinalados no formul\341rio e reveja a informa\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Se pretende disponibilizar ficheiros ou liga\347\365es, adicione os recursos e confirme os respectivos) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (metadados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Seleccione a ac\347\343o de publicar e verifique o resultado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Depois de completar os metadados de um Conjunto de Dados sobre transportes, publique-o e confirme a) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (informa\347\343o apresentada ao p\372blico.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 618.4 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Pode publicar sem recursos, ap\363s o aviso apresentado. A aus\352ncia de modelo ou valida\347\343o, N\343o conforme e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (Erro t\351cnico tamb\351m n\343o bloqueiam a publica\347\343o. N\343o existe aprova\347\343o editorial interm\351dia no portal.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [34 0 R] >>
+endobj
+14 0 obj
+<< /Length 2110 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Editar a informa\347\343o publicada) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Mantenha os metadados actualizados no contexto em que tem permiss\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o Conjunto de Dados e seleccione a edi\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Altere os metadados necess\341rios. A licen\347a existente mant\351m-se, salvo altera\347\343o expl\355cita.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Quando o produtor \351 uma organiza\347\343o, preencha o contacto se for \372til; este campo \351 opcional.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Reveja e guarde as altera\347\365es.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Actualize a descri\347\343o para esclarecer a cobertura dos dados, mantendo a licen\347a quando as condi\347\365es de) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (utiliza\347\343o n\343o mudaram.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Num Conjunto de Dados p\372blico, as altera\347\365es guardadas t\352m efeito imediato. Cancelar antes de guardar) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (descarta as altera\347\365es. O portal n\343o disponibiliza vers\365es recuper\341veis dos metadados.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [35 0 R] >>
+endobj
+16 0 obj
+<< /Length 1986 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Arquivar e voltar a disponibilizar) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Arquive um Conjunto de Dados p\372blico quando pretende retir\341-lo das listagens p\372blicas.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o Conjunto de Dados p\372blico no contexto autorizado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione a ac\347\343o de arquivar e conclua a opera\347\343o apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Para o voltar a incluir nas listagens p\372blicas, localize-o com o filtro Arquivado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Seleccione a ac\347\343o de desarquivar. O estado regressa a P\372blico.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Pode arquivar um conte\372do que deixou de ser actualizado e desarquiv\341-lo quando voltar a ser pertinente.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 640.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 626.0 Tm (Arquivar retira o conte\372do das listagens p\372blicas, mas mant\351m o acesso aplic\341vel por liga\347\343o directa. N\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (use o arquivo como garantia de retirada total de acesso.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [36 0 R] >>
+endobj
+18 0 obj
+<< /Length 2436 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Transferir a responsabilidade) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A transfer\352ncia s\363 altera o respons\341vel quando o destinat\341rio autorizado aceita o pedido.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra um Conjunto de Dados que pode modificar e que n\343o esteja Arquivado nem Eliminado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione Transferir o Conjunto de Dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. No campo Organiza\347\343o ou utilizador, escolha o destinat\341rio. Preencha Coment\341rio se quiser) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (contextualizar o pedido.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Reveja e confirme. O pedido fica Pendente e o respons\341vel actual mant\351m-se.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.0 Tm (5. O destinat\341rio recebe um email e pode consultar, aceitar ou recusar o pedido, conforme as suas) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 651.2 Tm (permiss\365es.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 634.9 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.9 Tm (Transfira um conte\372do pessoal para a organiza\347\343o que passar\341 a ser respons\341vel por o manter. A mudan\347a) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 610.1 Tm (concretiza-se ap\363s a aceita\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 595.3 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 581.3 Tm (A aceita\347\343o preserva o estado, os metadados, os recursos e o hist\363rico. Uma recusa mant\351m o respons\341vel) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 570.5 Tm (anterior. Pode cancelar antes de submeter o pedido.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 20 0 R /Annots [37 0 R] >>
+endobj
+20 0 obj
+<< /Length 2072 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Eliminar um Conjunto de Dados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A elimina\347\343o \351 uma opera\347\343o administrativa e n\343o permite recupera\347\343o no portal.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Com perfil Administrador e a permiss\343o aplic\341vel, abra o Conjunto de Dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione a ac\347\343o de eliminar e reveja o conte\372do identificado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Confirme apenas se pretende concluir a elimina\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Para consulta posterior autorizada, utilize o filtro Eliminados enquanto o registo existir.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Antes de eliminar um conte\372do criado por engano, confirme o t\355tulo e o contexto para evitar actuar sobre) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (outro Conjunto de Dados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (O conte\372do deixa de ser p\372blico. A elimina\347\343o preserva os registos e o hist\363rico, mas nenhum perfil disp\365e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (de recupera\347\343o ou expurgo definitivo no portal.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Publicar e gerir Conjuntos de Dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (8) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/publicar-e-gerir-dados/publicar-e-gerir-conjuntos-de-dados/) >> >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 556 541 569] /Border [0 0 0] /Dest [19 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 511.5 541 525.5] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/aprender/minicursos/metadados-and-standards) >> >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 497.5 541 511.5] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/aprender/minicursos/licencas) >> >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+33 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+34 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+35 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+36 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+37 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 38
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000187 00000 n 
+0000000284 00000 n 
+0000000386 00000 n 
+0000000602 00000 n 
+0000002804 00000 n 
+0000002957 00000 n 
+0000005114 00000 n 
+0000005268 00000 n 
+0000007369 00000 n 
+0000007524 00000 n 
+0000009785 00000 n 
+0000009940 00000 n 
+0000012102 00000 n 
+0000012257 00000 n 
+0000014295 00000 n 
+0000014450 00000 n 
+0000016938 00000 n 
+0000017093 00000 n 
+0000019217 00000 n 
+0000019454 00000 n 
+0000019577 00000 n 
+0000019704 00000 n 
+0000019828 00000 n 
+0000019956 00000 n 
+0000020080 00000 n 
+0000020208 00000 n 
+0000020332 00000 n 
+0000020526 00000 n 
+0000020705 00000 n 
+0000020826 00000 n 
+0000020947 00000 n 
+0000021068 00000 n 
+0000021189 00000 n 
+0000021310 00000 n 
+0000021431 00000 n 
+trailer
+<< /Size 38 /Root 1 0 R >>
+startxref
+21552
+%%EOF

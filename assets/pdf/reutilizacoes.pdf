@@ -1,0 +1,295 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R] >>
+endobj
+6 0 obj
+<< /Length 2082 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Encontre trabalhos baseados em dados e prepare, publique ou actualize uma reutiliza\347\343o no) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (portal.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Para pessoas que consultam reutiliza\347\365es e utilizadores que publicam trabalhos em nome pr\363prio ou no) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (contexto de uma organiza\347\343o.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/reutilizacoes/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Encontrar e consultar reutiliza\347\365es) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Preparar uma reutiliza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Associar os dados utilizados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Publicar ou manter em rascunho) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Actualizar uma reutiliza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Resolver dificuldades numa reutiliza\347\343o) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 554.0 Tm (Liga\347\365es \372teis) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 537.0 Tm (Minicurso: O que s\343o reutiliza\347\365es de dados abertos?) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 523.0 Tm (Minicurso: Licen\347as) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [28 0 R] >>
+endobj
+8 0 obj
+<< /Length 1954 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Encontrar e consultar reutiliza\347\365es) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Conhe\347a os trabalhos que reutilizam dados.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Consulta p\372blica) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a p\341gina de Reutiliza\347\365es e pesquise pelo assunto pretendido.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Reveja os termos e filtros quando precisar de ajustar os resultados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Abra uma reutiliza\347\343o e leia a descri\347\343o e as etiquetas apresentadas.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Consulte os dados e as liga\347\365es disponibilizadas para compreender o trabalho.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Uma pessoa pesquisa reutiliza\347\365es sobre mobilidade e abre uma publica\347\343o para conhecer o trabalho) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (desenvolvido.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Se n\343o encontrar resultados, reveja os crit\351rios antes de concluir que n\343o existe uma publica\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (relevante.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [29 0 R] >>
+endobj
+10 0 obj
+<< /Length 2115 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Preparar uma reutiliza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Prepare uma apresenta\347\343o clara do trabalho e identifique quem o publica.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador com acesso \340 cria\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Na \341rea de gest\343o, inicie a cria\347\343o de uma reutiliza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Preencha a informa\347\343o pedida sobre o trabalho, incluindo nome, endere\347o e descri\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Seleccione o produtor, o tipo e o tema adequados entre as op\347\365es dispon\355veis.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Acrescente palavras-chave e a imagem de capa, respeitando as indica\347\365es do formul\341rio.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Reveja a informa\347\343o e avance para a associa\347\343o de dados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Uma equipa descreve uma aplica\347\343o de consulta de transportes e indica o seu endere\347o e produtor.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 627.7 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 613.7 Tm (Seleccionar uma palavra-chave nova n\343o a guarda por si s\363. A persist\352ncia depende da grava\347\343o do conte\372do) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (ao avan\347ar.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [30 0 R] >>
+endobj
+12 0 obj
+<< /Length 2096 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Associar os dados utilizados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Identifique as fontes usadas no trabalho.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor da reutiliza\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Escolha conjuntos publicados no portal ou liga\347\365es para conjuntos externos.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Para dados do portal, pesquise e seleccione um ou v\341rios Conjuntos de Dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Para dados de outros portais, indique os respectivos endere\347os. O t\355tulo e a descri\347\343o de cada liga\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (s\343o opcionais.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Reveja os itens e avance. A associa\347\343o \351 opcional, mas n\343o combine dados do portal e liga\347\365es externas) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 663.5 Tm (na mesma reutiliza\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 647.2 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (Uma pessoa selecciona dois Conjuntos de Dados do portal usados numa an\341lise.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 618.4 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Use a pesquisa para conjuntos deste portal. O campo de liga\347\343o externa destina-se a dados de outros) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (portais.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [31 0 R] >>
+endobj
+14 0 obj
+<< /Length 2002 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Publicar ou manter em rascunho) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A reutiliza\347\343o fica guardada como rascunho ao concluir o primeiro passo. Torn\341-la p\372blica exige uma) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (ac\347\343o de publica\347\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Editor da reutiliza\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. No passo final, reveja a informa\347\343o e os dados associados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.2 Tm (2. Se precisar de revis\343o, mantenha o rascunho para continuar posteriormente na \341rea de gest\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.9 Tm (3. Quando estiver pronto, escolha Publicar a reutiliza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 673.6 Tm (4. Confirme o resultado e consulte a publica\347\343o no portal.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 657.3 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 643.3 Tm (Uma equipa mant\351m o rascunho para rever a descri\347\343o antes de publicar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 628.5 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 614.5 Tm (Avan\347ar entre passos n\343o significa que o trabalho j\341 esteja p\372blico. Confirme o estado antes de partilhar) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 603.7 Tm (a publica\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [32 0 R] >>
+endobj
+16 0 obj
+<< /Length 2219 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Actualizar uma reutiliza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Mantenha a apresenta\347\343o do trabalho e as refer\352ncias aos dados actualizadas.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador com acesso \340 edi\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Localize a reutiliza\347\343o na \341rea de gest\343o e abra a edi\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Reveja a informa\347\343o preenchida e altere o que deixou de estar actualizado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Na \341rea de Conjuntos de Dados, confira as associa\347\365es e as liga\347\365es externas existentes.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Se alterar ou remover uma liga\347\343o externa, reveja a lista a manter. T\355tulo e descri\347\343o da liga\347\343o s\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (opcionais.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.0 Tm (5. Guarde e volte a abrir a reutiliza\347\343o para confirmar as altera\347\365es.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 645.7 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (Uma editora corrige o endere\347o de uma fonte externa e acrescenta uma descri\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 616.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (Confirme a informa\347\343o guardada, sobretudo quando remove liga\347\365es. A transfer\352ncia de gest\343o tem um) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.1 Tm (percurso pr\363prio.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [33 0 R] >>
+endobj
+18 0 obj
+<< /Length 2326 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Resolver dificuldades numa reutiliza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Identifique se a dificuldade ocorre na pesquisa, no preenchimento ou na publica\347\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador ou editor) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Se a pesquisa n\343o apresentar o esperado, reveja os termos e filtros.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Se n\343o conseguir avan\347ar na associa\347\343o, confirme que n\343o combinou dados do portal com liga\347\365es) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (externas.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Se um campo for recusado, leia a indica\347\343o apresentada e reveja o valor.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Se n\343o encontrar a publica\347\343o, confirme na \341rea de gest\343o se continua em rascunho.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.0 Tm (5. Ao pedir apoio, indique a p\341gina, a ac\347\343o e a mensagem, sem incluir palavras-passe.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 645.7 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (Uma pessoa n\343o consegue avan\347ar porque seleccionou dados locais e uma liga\347\343o externa. Rev\352 as fontes e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.9 Tm (mant\351m uma modalidade.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 606.1 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.1 Tm (Um pedido de transfer\352ncia s\363 fica conclu\355do com a aceita\347\343o do destinat\341rio. O percurso completo aguarda) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 581.3 Tm (valida\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Reutiliza\347\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/reutilizacoes/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 526 541 540] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/aprender/minicursos/o-que-sao-reutilizacoes-de-dados-abertos) >> >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 512 541 526] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/aprender/minicursos/licencas) >> >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+33 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 34
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000180 00000 n 
+0000000277 00000 n 
+0000000379 00000 n 
+0000000588 00000 n 
+0000002721 00000 n 
+0000002874 00000 n 
+0000004879 00000 n 
+0000005033 00000 n 
+0000007200 00000 n 
+0000007355 00000 n 
+0000009503 00000 n 
+0000009658 00000 n 
+0000011712 00000 n 
+0000011867 00000 n 
+0000014138 00000 n 
+0000014293 00000 n 
+0000016671 00000 n 
+0000016898 00000 n 
+0000017021 00000 n 
+0000017148 00000 n 
+0000017272 00000 n 
+0000017400 00000 n 
+0000017524 00000 n 
+0000017652 00000 n 
+0000017859 00000 n 
+0000018034 00000 n 
+0000018155 00000 n 
+0000018276 00000 n 
+0000018397 00000 n 
+0000018518 00000 n 
+0000018639 00000 n 
+trailer
+<< /Size 34 /Root 1 0 R >>
+startxref
+18760
+%%EOF

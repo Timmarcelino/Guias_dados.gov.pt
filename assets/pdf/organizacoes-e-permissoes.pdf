@@ -1,0 +1,277 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R] >>
+endobj
+6 0 obj
+<< /Length 1681 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Encontre uma organiza\347\343o, pe\347a para a integrar e, quando tiver permiss\365es, gira o perfil e) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (os membros.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Para quem consulta organiza\347\365es, pretende colaborar ou administra uma entidade no portal.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 712.5 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 699.5 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/organizacoes/organizacoes-e-permissoes/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 675.5 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 657.5 Tm (1. Encontrar uma organiza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 643.0 Tm (2. Integrar uma organiza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 628.5 Tm (3. Criar uma organiza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 614.0 Tm (4. Gerir pedidos e membros) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 599.5 Tm (5. Editar uma organiza\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 585.0 Tm (6. Emblemas da organiza\347\343o) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [26 0 R] >>
+endobj
+8 0 obj
+<< /Length 1719 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Encontrar uma organiza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Pesquise pelo nome ou pela sigla e abra o perfil p\372blico da entidade.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Consulta p\372blica) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Aceda \340 \341rea Organiza\347\365es.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Pesquise pelo nome completo ou pela sigla.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Abra a organiza\347\343o pretendida e confirme a sua identifica\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Consulte a informa\347\343o e os conte\372dos publicados pela entidade.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Para encontrar a Ag\352ncia para a Reforma Tecnol\363gica do Estado, pesquise pelo nome ou por ARTE.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 640.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 626.0 Tm (Antes de criar uma organiza\347\343o, confirme se a entidade j\341 est\341 registada.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [27 0 R] >>
+endobj
+10 0 obj
+<< /Length 2045 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Integrar uma organiza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Pode pedir ades\343o a uma organiza\347\343o ou responder a um convite recebido.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Para pedir ades\343o, abra o perfil da organiza\347\343o e seleccione Pedir ades\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Preencha a informa\347\343o pedida, envie o pedido e aguarde a decis\343o de quem gere a organiza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Se recebeu um convite, abra-o na sua \341rea pessoal e confirme qual \351 a organiza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Aceite ou recuse o convite de acordo com a sua decis\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (A Ana envia um pedido para colaborar com uma entidade. Se a iniciativa partir da entidade, a Ana responde) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (ao convite recebido.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (O pedido de ades\343o \351 tratado por quem gere a organiza\347\343o. O convite deve ser aceite ou recusado pela) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (pessoa convidada.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [28 0 R] >>
+endobj
+12 0 obj
+<< /Length 1930 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar uma organiza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Registe uma entidade que ainda n\343o exista no portal.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador autenticado) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Pesquise primeiro a entidade pelo nome e pela sigla.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Inicie o registo de uma organiza\347\343o e indique o nome e a sigla, quando aplic\341vel.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Descreva a actividade e a miss\343o da entidade.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Adicione o website e o log\363tipo, quando aplic\341vel, respeitando as indica\347\365es do formul\341rio.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Reveja a informa\347\343o e conclua o registo pela ac\347\343o apresentada.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Ao registar um munic\355pio, use a designa\347\343o oficial e uma descri\347\343o curta da sua actividade.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 627.7 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 613.7 Tm (Se encontrar a entidade na pesquisa inicial, utilize o percurso Integrar uma organiza\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [29 0 R] >>
+endobj
+14 0 obj
+<< /Length 2414 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Gerir pedidos e membros) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Trate pedidos de ades\343o e mantenha os membros e os seus pap\351is actualizados.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Administrador da organiza\347\343o ou do portal) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a organiza\347\343o na administra\347\343o e entre na \341rea Membros.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Nos pedidos pendentes, confirme a pessoa e a informa\347\343o apresentada; aceite ou recuse o pedido de) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (ades\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Para adicionar um membro, use a op\347\343o dispon\355vel, pesquise a pessoa e seleccione o papel a atribuir.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Para alterar um papel, abra a edi\347\343o do membro, escolha o papel e guarde; confirme o resultado na) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 663.5 Tm (lista.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 651.2 Tm (5. Para remover um membro, confirme a pessoa, seleccione a remo\347\343o e leia a confirma\347\343o antes de) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.4 Tm (prosseguir.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 624.1 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 610.1 Tm (Uma administradora aceita um pedido de ades\343o e confirma o papel que a pessoa ter\341 na equipa.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 595.3 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 581.3 Tm (Antes de remover ou alterar o papel de um administrador, assegure que outra pessoa mant\351m a administra\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 570.5 Tm (da organiza\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [30 0 R] >>
+endobj
+16 0 obj
+<< /Length 2050 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Editar uma organiza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Actualize a informa\347\343o p\372blica da entidade.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Membro com permiss\343o de edi\347\343o) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a organiza\347\343o que pretende actualizar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione Editar ou entre no perfil da organiza\347\343o na administra\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Altere a informa\347\343o necess\341ria, como nome, descri\347\343o, website ou log\363tipo.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Guarde e confirme que as altera\347\365es foram aplicadas.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 672.8 Tm (5. Utilize Ver perfil p\372blico, quando dispon\355vel, para verificar a apresenta\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 656.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 642.5 Tm (Se o website institucional mudou, actualize esse campo e confirme o resultado no perfil p\372blico.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 627.7 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 613.7 Tm (A gest\343o de emblemas tem uma permiss\343o pr\363pria. Se a grava\347\343o falhar, registe a ac\347\343o e a mensagem) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 602.9 Tm (apresentada ao pedir apoio.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [31 0 R] >>
+endobj
+18 0 obj
+<< /Length 1871 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Emblemas da organiza\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Consulte os emblemas apresentados no perfil p\372blico da entidade.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Consulta p\372blica; gest\343o pela administra\347\343o do portal) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o perfil p\372blico da organiza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Consulte os emblemas e a informa\347\343o explicativa apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Se administra o portal e precisa de gerir emblemas, abra o perfil da organiza\347\343o na administra\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Na sec\347\343o Emblemas, efectue a altera\347\343o autorizada, guarde e confirme o resultado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Uma pessoa consulta os emblemas de uma entidade antes de explorar os dados que publica.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 640.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 626.0 Tm (Pertencer \340 organiza\347\343o, mesmo como administrador da entidade, n\343o d\341 acesso \340 gest\343o de emblemas.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Organiza\347\365es e permiss\365es) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 697.5 541 709.5] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/organizacoes/organizacoes-e-permissoes/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 654.5 541 667.5] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 640 541 653] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 625.5 541 638.5] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 611 541 624] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 596.5 541 609.5] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 582 541 595] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 32
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000180 00000 n 
+0000000277 00000 n 
+0000000379 00000 n 
+0000000574 00000 n 
+0000002306 00000 n 
+0000002459 00000 n 
+0000004229 00000 n 
+0000004383 00000 n 
+0000006480 00000 n 
+0000006635 00000 n 
+0000008617 00000 n 
+0000008772 00000 n 
+0000011238 00000 n 
+0000011393 00000 n 
+0000013495 00000 n 
+0000013650 00000 n 
+0000015573 00000 n 
+0000015794 00000 n 
+0000015921 00000 n 
+0000016044 00000 n 
+0000016172 00000 n 
+0000016296 00000 n 
+0000016424 00000 n 
+0000016548 00000 n 
+0000016669 00000 n 
+0000016790 00000 n 
+0000016911 00000 n 
+0000017032 00000 n 
+0000017153 00000 n 
+trailer
+<< /Size 32 /Root 1 0 R >>
+startxref
+17274
+%%EOF

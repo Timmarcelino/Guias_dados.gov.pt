@@ -1,0 +1,349 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 9 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R] >>
+endobj
+6 0 obj
+<< /Length 1916 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Explorador de dados) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Consulte uma tabela, aplique filtros, crie gr\341ficos e exporte a informa\347\343o apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Aceda ao recurso que pretende consultar. A op\347\343o Explorar dados depende da disponibilidade do) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 729.5 Tm (conte\372do e das permiss\365es de acesso.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 702.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/encontrar-consultar-e-explorar-dados/explorador-de-dados/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 678.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 660.0 Tm (1. Abrir o Explorador) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 645.5 Tm (2. Filtrar os resultados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.0 Tm (3. Ordenar e escolher as colunas) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 616.5 Tm (4. Consultar a estrutura e as m\351tricas) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.0 Tm (5. Criar e guardar um gr\341fico) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 587.5 Tm (6. Exportar os dados apresentados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.0 Tm (7. Guardar ou partilhar uma explora\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 558.5 Tm (8. Resolver aus\352ncia de resultados ou indisponibilidade) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [32 0 R] >>
+endobj
+8 0 obj
+<< /Length 1706 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Abrir o Explorador) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Entre a partir do recurso que pretende analisar.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. No detalhe do recurso, seleccione Explorar dados, quando dispon\355vel.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Aguarde a abertura da \341rea Dados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Navegue entre Dados, Estrutura, M\351tricas e Gr\341fico.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 693.6 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 679.6 Tm (Abra um recurso tabular sobre transportes para consultar os registos antes de escolher os filtros.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.8 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 650.8 Tm (O Explorador suporta CSV, TXT tabular delimitado, XLS e XLSX ap\363s processamento bem-sucedido e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.0 Tm (disponibiliza\347\343o dos dados. Nos ficheiros Excel, apresenta a folha disponibilizada pelo processamento, sem) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 629.2 Tm (selector de folhas.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [33 0 R] >>
+endobj
+10 0 obj
+<< /Length 2010 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Filtrar os resultados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Os filtros restringem os Dados e o Gr\341fico. A Estrutura e as M\351tricas continuam a representar o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (recurso completo.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 738.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 723.0 Tm (1. Em qualquer \341rea, seleccione Filtrar Resultados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.7 Tm (2. Escolha os filtros das colunas pretendidas e preencha os valores no formato indicado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.4 Tm (3. Aplique os filtros e consulte os resultados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.1 Tm (4. Para remover todos os filtros, incluindo os de colunas ocultas, seleccione Limpar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 669.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 655.8 Tm (Num recurso com munic\355pio e data, filtre um munic\355pio e uma data. Os resultados t\352m de cumprir as duas) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 645.0 Tm (condi\347\365es.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 630.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 616.2 Tm (Os filtros combinam-se por "e". Ocultar uma coluna n\343o retira o seu filtro. Limpar remove os filtros, mas) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 605.4 Tm (mant\351m a visibilidade das colunas. Para uma data, use o formato YYYY-MM-DD, como 2026-08-01.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [34 0 R] >>
+endobj
+12 0 obj
+<< /Length 1688 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Ordenar e escolher as colunas) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Adapte a tabela ao que precisa de consultar.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Na \341rea Dados, escolha a coluna pela qual pretende ordenar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Defina as colunas que quer manter vis\355veis.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Escolha 10, 50 ou 200 registos por p\341gina.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.6 Tm (4. Percorra as p\341ginas para consultar os restantes resultados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 681.3 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 667.3 Tm (Mantenha vis\355veis apenas o munic\355pio, a data e o valor que pretende analisar, e ordene pela data.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 652.5 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 638.5 Tm (A ordena\347\343o utiliza uma coluna de cada vez. A tabela inicia com 10 registos por p\341gina. Os filtros de) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 627.7 Tm (colunas ocultas continuam activos.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [35 0 R] >>
+endobj
+14 0 obj
+<< /Length 1818 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar a estrutura e as m\351tricas) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Conhe\347a as colunas e os indicadores dispon\355veis para o recurso completo.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Abra Estrutura para consultar a identifica\347\343o do recurso, os campos e os tipos e formatos) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 723.7 Tm (disponibilizados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.4 Tm (2. Abra M\351tricas para consultar os indicadores globais e por coluna existentes.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 699.1 Tm (3. Confirme o significado e a disponibilidade de cada indicador antes de o interpretar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 682.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 668.8 Tm (Mesmo que filtre um munic\355pio na tabela, as m\351tricas continuam a descrever o recurso completo.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 654.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.0 Tm (Uma m\351trica n\343o dispon\355vel n\343o significa zero. As m\351tricas podem ajudar a compreender os dados, mas esta) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 629.2 Tm (\341rea n\343o produz alertas autom\341ticos de qualidade.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [36 0 R] >>
+endobj
+16 0 obj
+<< /Length 2724 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Criar e guardar um gr\341fico) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (O gr\341fico representa os registos da p\341gina actual, at\351 200.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Abra Gr\341fico e escolha o tipo pretendido.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Seleccione os eixos e as s\351ries entre as colunas compat\355veis. Em Bolhas, escolha tamb\351m a coluna) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.4 Tm (num\351rica para o raio.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 699.1 Tm (3. Ajuste os filtros e a pagina\347\343o para seleccionar os registos representados.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.8 Tm (4. Use o modo de ecr\343 inteiro para ampliar ou exporte o gr\341fico em PNG.) Tj ET
+BT /F2 10.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 671.5 Tm (Tabela) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 657.5 Tm (Tipos dispon\355veis | Utiliza\347\343o das colunas) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 646.7 Tm (Linha, Barras e Radar | Dimens\343o ou categorias e valores num\351ricos) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 635.9 Tm (Anel, Circular e \301rea polar | Categorias e uma s\351rie de valores) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 625.1 Tm (Dispers\343o | Eixos num\351ricos) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 614.3 Tm (Bolhas | Eixos num\351ricos e valor num\351rico para o raio) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 599.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 585.5 Tm (Para comparar valores entre munic\355pios presentes na p\341gina actual, escolha Barras e configure as colunas) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 574.7 Tm (de munic\355pio e valor.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 559.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 545.9 Tm (Os gr\341ficos n\343o calculam Soma ou Contagem. Anel, Circular e \301rea polar usam uma s\351rie de valores. Para) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 535.1 Tm (sair do ecr\343 inteiro, use o controlo dispon\355vel ou Esc. Pode consultar a informa\347\343o na tabela.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [37 0 R] >>
+endobj
+18 0 obj
+<< /Length 1801 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Exportar os dados apresentados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A exporta\347\343o do Explorador inclui apenas a p\341gina actual e as colunas vis\355veis.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Ajuste os filtros, a ordena\347\343o, a p\341gina e as colunas vis\355veis.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Em Dados, Estrutura, M\351tricas ou Gr\341fico, seleccione Exportar CSV ou Exportar JSON.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Guarde o ficheiro e confirme o conte\372do exportado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 693.6 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 679.6 Tm (Se a p\341gina apresenta 50 registos e tr\352s colunas vis\355veis, a exporta\347\343o cont\351m esses registos e essas tr\352s) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 668.8 Tm (colunas.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 654.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.0 Tm (Para obter o ficheiro original completo, regresse ao detalhe do recurso e consulte Downloads, quando) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 629.2 Tm (dispon\355vel. Exportar a partir de M\351tricas n\343o exporta as m\351tricas.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 20 0 R /Annots [38 0 R] >>
+endobj
+20 0 obj
+<< /Length 1886 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Guardar ou partilhar uma explora\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Guarde o endere\347o para retomar a configura\347\343o suportada sobre o conte\372do dispon\355vel.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Configure a \341rea, os filtros, a ordena\347\343o, a p\341gina, as colunas e, se necess\341rio, o gr\341fico.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Copie o endere\347o do navegador.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Guarde ou partilhe a liga\347\343o e volte a abri-la para retomar a explora\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 693.6 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 679.6 Tm (Partilhe a liga\347\343o depois de filtrar um munic\355pio para que outro utilizador possa abrir essa configura\347\343o,) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 668.8 Tm (desde que tenha acesso ao recurso.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 654.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.0 Tm (A liga\347\343o n\343o concede permiss\365es nem fixa uma c\363pia dos dados. Ap\363s uma actualiza\347\343o do recurso,) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 629.2 Tm (configura\347\365es incompat\355veis podem ser removidas, com informa\347\343o ao utilizador.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (8) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 22 0 R /Annots [39 0 R] >>
+endobj
+22 0 obj
+<< /Length 1865 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Resolver aus\352ncia de resultados ou indisponibilidade) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Identifique a situa\347\343o apresentada antes de tentar novamente.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Se os filtros n\343o devolverem resultados, altere os crit\351rios ou seleccione Limpar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Se um filtro for inv\341lido, corrija o campo indicado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Se ocorrer uma falha tempor\341ria, seleccione Tentar novamente.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.6 Tm (4. Se o conte\372do estiver em processamento, volte a consultar quando os dados estiverem dispon\355veis.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 681.3 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 667.3 Tm (Depois de substituir um ficheiro, o Explorador pode ficar indispon\355vel durante o novo processamento.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 652.5 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 638.5 Tm (Durante o reprocessamento, os dados anteriores n\343o s\343o apresentados como actuais. Recurso n\343o encontrado,) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 627.7 Tm (erro e pesquisa sem resultados s\343o situa\347\365es distintas.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Explorador de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (9) Tj ET
+endstream
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 700 541 712] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/encontrar-consultar-e-explorar-dados/explorador-de-dados/) >> >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 657 541 670] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 642.5 541 655.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628 541 641] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 613.5 541 626.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599 541 612] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 584.5 541 597.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570 541 583] /Border [0 0 0] /Dest [19 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 555.5 541 568.5] /Border [0 0 0] /Dest [21 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+33 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+34 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+35 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+36 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+37 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+38 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+39 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 40
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000194 00000 n 
+0000000291 00000 n 
+0000000393 00000 n 
+0000000602 00000 n 
+0000002569 00000 n 
+0000002722 00000 n 
+0000004479 00000 n 
+0000004633 00000 n 
+0000006695 00000 n 
+0000006850 00000 n 
+0000008590 00000 n 
+0000008745 00000 n 
+0000010615 00000 n 
+0000010770 00000 n 
+0000013546 00000 n 
+0000013701 00000 n 
+0000015554 00000 n 
+0000015709 00000 n 
+0000017647 00000 n 
+0000017802 00000 n 
+0000019719 00000 n 
+0000019954 00000 n 
+0000020077 00000 n 
+0000020204 00000 n 
+0000020328 00000 n 
+0000020456 00000 n 
+0000020580 00000 n 
+0000020708 00000 n 
+0000020832 00000 n 
+0000020960 00000 n 
+0000021081 00000 n 
+0000021202 00000 n 
+0000021323 00000 n 
+0000021444 00000 n 
+0000021565 00000 n 
+0000021686 00000 n 
+0000021807 00000 n 
+trailer
+<< /Size 40 /Root 1 0 R >>
+startxref
+21928
+%%EOF

@@ -1,0 +1,294 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R] >>
+endobj
+6 0 obj
+<< /Length 2054 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Associe um modelo a um ficheiro tabular, execute a valida\347\343o e interprete o resultado no) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (contexto do conte\372do validado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Para associar modelos ou executar valida\347\365es, inicie sess\343o como Editor ou Administrador com) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (permiss\343o sobre o Conjunto de Dados.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/qualidade-e-modelos-de-dados/qualidade-e-validacao-de-dados/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Compreender o resultado da valida\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Associar um modelo de valida\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Executar a valida\347\343o) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Tratar n\343o conformidades ou erros) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Alterar ou remover o modelo associado) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Consultar o hist\363rico de valida\347\365es) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 554.0 Tm (Liga\347\365es \372teis) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 537.0 Tm (Minicurso: Metadados & Standards) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [27 0 R] >>
+endobj
+8 0 obj
+<< /Length 2919 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Compreender o resultado da valida\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A valida\347\343o verifica se o ficheiro cumpre a estrutura, os tipos e as regras de uma vers\343o do modelo.) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 749.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 734.5 Tm (1. Consulte o estado apresentado no recurso.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.2 Tm (2. Quando existir resultado, confirme o ficheiro e a vers\343o do modelo a que se aplica.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.9 Tm (3. Interprete o resultado em conjunto com a descri\347\343o, a cobertura e a licen\347a dos dados.) Tj ET
+BT /F2 10.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 694.6 Tm (Tabela) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 680.6 Tm (Estado | Significado) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 669.8 Tm (N\343o aplic\341vel | O recurso n\343o \351 eleg\355vel) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 659.0 Tm (Sem modelo | \311 eleg\355vel, mas n\343o tem modelo associado) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 648.2 Tm (Por validar | Tem modelo, mas n\343o tem resultado actual aplic\341vel) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 637.4 Tm (Em valida\347\343o | A execu\347\343o est\341 em curso) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 626.6 Tm (V\341lido | Cumpre as verifica\347\365es do modelo) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.8 Tm (N\343o conforme | Foi identificada pelo menos uma n\343o conformidade) Tj ET
+BT /F1 8.1 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 605.0 Tm (Erro t\351cnico | A execu\347\343o n\343o p\364de ser conclu\355da) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 590.2 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 576.2 Tm (Um ficheiro pode estar V\341lido perante o modelo e, ainda assim, abranger um per\355odo diferente do que) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 565.4 Tm (procura.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 550.6 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 536.6 Tm (V\341lido significa que o ficheiro cumpre as verifica\347\365es do modelo. N\343o \351 uma garantia geral de qualidade ou) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 525.8 Tm (adequa\347\343o. A aus\352ncia de valida\347\343o n\343o impede, por si s\363, a publica\347\343o, consulta ou explora\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [28 0 R] >>
+endobj
+10 0 obj
+<< /Length 2076 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Associar um modelo de valida\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A associa\347\343o \351 opcional e identifica uma vers\343o exacta do modelo.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a \341rea de valida\347\343o de um recurso eleg\355vel: ficheiro carregado em CSV, TXT tabular, XLS, XLSX ou) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.2 Tm (ODS.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (2. Escolha um modelo Activo e a vers\343o Em vigor disponibilizada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Reveja Validar a ordem das colunas, activa por defeito.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Confirme a associa\347\343o. O recurso fica Por validar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Associe um modelo com as colunas esperadas para os dados de transportes que est\341 a disponibilizar.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Se desactivar a valida\347\343o da ordem, as colunas s\343o comparadas pelo nome. Colunas em falta ou adicionais) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (continuam a ser n\343o conformidades. Liga\347\365es externas, APIs e servi\347os de dados n\343o s\343o eleg\355veis.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [29 0 R] >>
+endobj
+12 0 obj
+<< /Length 1961 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Executar a valida\347\343o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A valida\347\343o come\347a quando a solicita. Carregar ou editar o recurso n\343o a inicia automaticamente.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Confirme que o recurso tem um modelo associado.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Seleccione a ac\347\343o de validar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Acompanhe o estado Em valida\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Consulte o resultado final e o detalhe dispon\355vel.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Depois de associar o modelo, execute a valida\347\343o para verificar se o ficheiro cumpre as regras) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (seleccionadas.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (N\343o conforme e Erro t\351cnico n\343o bloqueiam a gest\343o do recurso nem a publica\347\343o ou actualiza\347\343o do Conjunto) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (de Dados. Um erro t\351cnico n\343o \351 um resultado de conformidade.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [30 0 R] >>
+endobj
+14 0 obj
+<< /Length 2200 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Tratar n\343o conformidades ou erros) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Use o detalhe dispon\355vel para decidir o que precisa de corrigir.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Se o resultado for N\343o conforme, consulte as colunas, regras ou ocorr\352ncias identificadas, quando) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.2 Tm (dispon\355veis.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (2. Confirme se o ficheiro ou o modelo escolhido precisa de correc\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Se corrigiu o ficheiro fora do portal, substitua-o e confirme a associa\347\343o de modelo.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Solicite uma nova valida\347\343o. Perante Erro t\351cnico, pode tentar novamente.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 658.0 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (Se faltar uma coluna exigida pelo modelo, corrija o ficheiro ou confirme se associou o modelo adequado) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 633.2 Tm (antes de repetir a valida\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 618.4 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (Uma substitui\347\343o bem-sucedida retira ao resultado anterior o car\341cter de resultado actual. Herdar o modelo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 593.6 Tm (conserva a vers\343o e a configura\347\343o, mas exige uma nova valida\347\343o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [31 0 R] >>
+endobj
+16 0 obj
+<< /Length 2082 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Alterar ou remover o modelo associado) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Altere a associa\347\343o quando pretende validar o recurso com outra defini\347\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra a associa\347\343o de modelo do recurso.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Para a alterar, seleccione um modelo Activo e a vers\343o Em vigor disponibilizada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Confirme a nova associa\347\343o e solicite a valida\347\343o quando necess\341rio.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Para deixar de utilizar um modelo, remova a associa\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Se foi disponibilizada uma nova vers\343o adequada ao recurso, seleccione-a explicitamente para passar a) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (validar com essa defini\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Alterar a associa\347\343o coloca o recurso em Por validar. Remov\352-la coloca-o em Sem modelo. As vers\365es novas e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (a inactiva\347\343o de um modelo n\343o alteram automaticamente associa\347\365es existentes.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [32 0 R] >>
+endobj
+18 0 obj
+<< /Length 2087 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar o hist\363rico de valida\347\365es) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Cada execu\347\343o fica ligada ao ficheiro e \340 vers\343o do modelo utilizados nessa valida\347\343o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Editor ou Administrador) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Abra o hist\363rico de valida\347\343o do recurso.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Identifique a execu\347\343o pela data, ficheiro, modelo e vers\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 697.4 Tm (3. Consulte o resultado e as n\343o conformidades dispon\355veis.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.1 Tm (4. Distinga o resultado aplic\341vel ao conte\372do actual dos resultados hist\363ricos.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 668.8 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 654.8 Tm (Depois de substituir um CSV, consulte a execu\347\343o anterior para perceber quais as verifica\347\365es feitas sobre) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 644.0 Tm (o ficheiro substitu\355do.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 629.2 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 615.2 Tm (Alterar apenas os metadados mant\351m a valida\347\343o aplic\341vel ao ficheiro. Uma execu\347\343o antiga que termine ap\363s) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 604.4 Tm (a substitui\347\343o n\343o passa a validar o novo conte\372do.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (Qualidade e valida\347\343o de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/qualidade-e-modelos-de-dados/qualidade-e-validacao-de-dados/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 526 541 540] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/aprender/minicursos/metadados-and-standards) >> >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 33
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000180 00000 n 
+0000000277 00000 n 
+0000000379 00000 n 
+0000000581 00000 n 
+0000002686 00000 n 
+0000002839 00000 n 
+0000005809 00000 n 
+0000005963 00000 n 
+0000008091 00000 n 
+0000008246 00000 n 
+0000010259 00000 n 
+0000010414 00000 n 
+0000012666 00000 n 
+0000012821 00000 n 
+0000014955 00000 n 
+0000015110 00000 n 
+0000017249 00000 n 
+0000017487 00000 n 
+0000017610 00000 n 
+0000017737 00000 n 
+0000017861 00000 n 
+0000017989 00000 n 
+0000018113 00000 n 
+0000018241 00000 n 
+0000018431 00000 n 
+0000018552 00000 n 
+0000018673 00000 n 
+0000018794 00000 n 
+0000018915 00000 n 
+0000019036 00000 n 
+trailer
+<< /Size 33 /Root 1 0 R >>
+startxref
+19157
+%%EOF

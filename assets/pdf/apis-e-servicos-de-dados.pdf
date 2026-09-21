@@ -1,0 +1,318 @@
+%PDF-1.4
+%----
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PageMode /UseNone >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R /Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R] >>
+endobj
+6 0 obj
+<< /Length 2117 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 22 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 759.0 Tm (Consulte a API do dados.gov.pt, conhe\347a as APIs registadas no cat\341logo e prepare a) Tj ET
+BT /F1 10.2 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 745.0 Tm (publica\347\343o e manuten\347\343o da API da sua organiza\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 727.0 Tm (Para pessoas que integram dados em aplica\347\365es e membros de organiza\347\365es que pretendem registar uma) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 715.5 Tm (API no portal.) Tj ET
+BT /F1 8.5 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 701.0 Tm (Vers\343o do conte\372do: 19/09/2026) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 688.0 Tm (P\341gina Web: https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/apis-e-servicos-de-dados/) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 664.0 Tm (Neste guia) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 646.0 Tm (1. Escolher a API adequada) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 631.5 Tm (2. Consultar a refer\352ncia da API do portal) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 617.0 Tm (3. Consultar uma API do cat\341logo) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 602.5 Tm (4. Preparar e registar uma API) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 588.0 Tm (5. Actualizar uma API e os dados associados) Tj ET
+BT /F1 9.5 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 573.5 Tm (6. Resolver dificuldades com uma API) Tj ET
+BT /F2 12 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 554.0 Tm (Liga\347\365es \372teis) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 537.0 Tm (Tutorial da API do dados.gov.pt) Tj ET
+BT /F1 9 Tf 0 0.36 0.90 rg 1 0 0 1 62.0 523.0 Tm (Refer\352ncia da API do dados.gov.pt) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (1) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R /Annots [28 0 R] >>
+endobj
+8 0 obj
+<< /Length 2402 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Escolher a API adequada) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A API do portal d\341 acesso program\341tico ao cat\341logo. Uma API registada no cat\341logo tem o seu pr\363prio) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (endere\347o e documenta\347\343o, que deve consultar antes de a utilizar.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Consulta p\372blica) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. Se pretende consultar ou integrar informa\347\343o do cat\341logo, abra a refer\352ncia da API do dados.gov.pt na) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 699.7 Tm (\341rea de desenvolvimento.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 687.4 Tm (2. Se procura uma API disponibilizada por uma entidade, consulte o seu registo no cat\341logo.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 675.1 Tm (3. Leia a descri\347\343o e a documenta\347\343o associada para confirmar se a API responde \340 sua necessidade.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.8 Tm (4. Distinga o endere\347o da p\341gina no portal da URL base usada para comunicar com a API.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 646.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 632.5 Tm (Uma equipa consulta a API do portal para recolher metadados do cat\341logo. Para usar um servi\347o de uma) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 621.7 Tm (entidade, consulta a documenta\347\343o ligada ao respectivo registo.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 606.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.9 Tm (Registar uma API no cat\341logo n\343o substitui a prepara\347\343o e disponibiliza\347\343o do servi\347o pela entidade) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 582.1 Tm (respons\341vel.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (2) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R /Annots [29 0 R] >>
+endobj
+10 0 obj
+<< /Length 3466 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar a refer\352ncia da API do portal) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A refer\352ncia permite identificar as opera\347\365es dispon\355veis, os par\342metros e a informa\347\343o devolvida.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Consulta p\372blica e utilizador autenticado para escrita) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Se est\341 a come\347ar, percorra o tutorial da API; utilize a refer\352ncia para consultar opera\347\365es e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 711.2 Tm (par\342metros.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (2. Abra a refer\352ncia da API do portal e consulte a documenta\347\343o interactiva ou a liga\347\343o para Swagger.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Localize a opera\347\343o pretendida e leia os par\342metros e a estrutura da resposta.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Para leitura de informa\347\343o p\372blica, siga a opera\347\343o de consulta documentada. Quando a resposta for) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 663.5 Tm (paginada, consulte as p\341ginas seguintes indicadas na pr\363pria resposta.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 651.2 Tm (5. Para opera\347\365es de escrita, obtenha uma chave nas defini\347\365es do perfil e forne\347a-a no cabe\347alho) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 640.4 Tm (X-API-KEY. As permiss\365es da conta continuam a aplicar-se.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 628.1 Tm (6. Se precisar da defini\347\343o da API nas suas ferramentas, utilize a op\347\343o de descarregar a especifica\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 617.3 Tm (OpenAPI em JSON.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 605.0 Tm (7. Antes de alterar ou eliminar conte\372dos, reveja o pedido: o tutorial alerta que estas opera\347\365es s\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 594.2 Tm (definitivas e n\343o disponibiliza uma \341rea de testes.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 577.9 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 563.9 Tm (Uma equipa consulta os metadados de organiza\347\365es e percorre as p\341ginas devolvidas para obter os restantes) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 553.1 Tm (resultados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 538.3 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 524.3 Tm (Guarde a chave de forma reservada. N\343o a inclua em exemplos partilhados, capturas ou pedidos de apoio. Nos) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 513.5 Tm (resultados paginados, next_page e previous_page indicam os endere\347os de navega\347\343o; null indica que n\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 502.7 Tm (existe p\341gina nesse sentido.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R /Annots [30 0 R] >>
+endobj
+12 0 obj
+<< /Length 2406 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Consultar uma API do cat\341logo) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (O registo re\372ne a descri\347\343o da API e as liga\347\365es que ajudam a compreender o servi\347o e os dados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (associados.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Consulta p\372blica) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. Abra o detalhe da API que pretende conhecer.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.2 Tm (2. Leia a descri\347\343o, a documenta\347\343o funcional e a informa\347\343o de acesso apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.9 Tm (3. Consulte a URL base e, quando dispon\355vel, a documenta\347\343o Swagger para preparar a integra\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 673.6 Tm (4. Na \341rea de informa\347\365es, abra os Conjuntos de Dados associados que pretende consultar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 661.3 Tm (5. Consulte as informa\347\365es t\351cnicas do registo, incluindo identificador, data de cria\347\343o e \372ltima) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 650.5 Tm (actualiza\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 634.2 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.2 Tm (Uma pessoa abre o detalhe de uma API e consulta um dos Conjuntos de Dados relacionados antes de preparar a) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 609.4 Tm (integra\347\343o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 594.6 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 580.6 Tm (A data de actualiza\347\343o do registo n\343o confirma, por si s\363, a actualiza\347\343o de todos os dados devolvidos) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 569.8 Tm (pelo servi\347o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R /Annots [31 0 R] >>
+endobj
+14 0 obj
+<< /Length 3183 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Preparar e registar uma API) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (A cria\347\343o de uma API no cat\341logo \351 feita em nome de uma organiza\347\343o com o emblema Servi\347o p\372blico da) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (qual o utilizador seja membro. Esta regra tamb\351m se aplica a administradores do portal.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Membro de organiza\347\343o com emblema Servi\347o p\372blico) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. Confirme que pertence \340 organiza\347\343o que vai publicar a API e que esta tem o emblema Servi\347o p\372blico.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.2 Tm (2. Prepare a descri\347\343o do servi\347o, a URL base, as liga\347\365es de documenta\347\343o e as condi\347\365es de acesso.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 685.9 Tm (3. Inicie a cria\347\343o de uma API e seleccione a organiza\347\343o eleg\355vel no campo Produtor.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 673.6 Tm (4. Preencha a informa\347\343o pedida no formul\341rio. No tipo de acesso, escolha Aberto, Aberto com conta ou) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.8 Tm (Restrito de acordo com o servi\347o. Para acesso restrito, prepare as audi\352ncias, condi\347\365es e motivo da) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 652.0 Tm (restri\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 639.7 Tm (5. No passo de associa\347\343o de Conjuntos de Dados, seleccione os que correspondem ao servi\347o. Esta) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 628.9 Tm (associa\347\343o \351 opcional.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 616.6 Tm (6. No passo final, escolha guardar como rascunho ou publicar. Consulte a listagem para confirmar o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 605.8 Tm (resultado.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 589.5 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 575.5 Tm (Uma organiza\347\343o com o emblema Servi\347o p\372blico prepara o registo da sua API, associa um Conjunto de Dados e) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 564.7 Tm (guarda o rascunho para revis\343o interna.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 549.9 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 535.9 Tm (Confirme o produtor e a informa\347\343o guardada antes de publicar. A regra de cria\347\343o n\343o altera) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 525.1 Tm (retroactivamente as APIs pessoais j\341 existentes.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R /Annots [32 0 R] >>
+endobj
+16 0 obj
+<< /Length 2426 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Actualizar uma API e os dados associados) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Mantenha o registo alinhado com o servi\347o e reveja as liga\347\365es aos Conjuntos de Dados.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 752.5 Tm (Quem pode utilizar: Utilizador com acesso \340 edi\347\343o da API) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 737.0 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 722.0 Tm (1. Localize a API na sua \341rea de gest\343o e abra a edi\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 709.7 Tm (2. Reveja o formul\341rio preenchido e actualize a descri\347\343o, URL base, documenta\347\343o ou outras informa\347\365es) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.9 Tm (que mudaram.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 686.6 Tm (3. Na sec\347\343o Conjuntos de dados associados, pesquise e seleccione os conjuntos que pretende acrescentar.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 674.3 Tm (4. Para retirar uma associa\347\343o, remova o conjunto da selec\347\343o.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 662.0 Tm (5. Guarde e volte a abrir o registo para confirmar as altera\347\365es e os dados associados.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 645.7 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 631.7 Tm (Uma entidade actualiza a documenta\347\343o funcional da API e acrescenta \340 selec\347\343o um Conjunto de Dados que) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 620.9 Tm (passou a ser disponibilizado pelo servi\347o.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 606.1 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 592.1 Tm (A remo\347\343o de um conjunto da selec\347\343o altera a associa\347\343o ao registo da API. N\343o use esta ac\347\343o como) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 581.3 Tm (procedimento de elimina\347\343o do Conjunto de Dados.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R /Annots [33 0 R] >>
+endobj
+18 0 obj
+<< /Length 2684 >>
+stream
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 815.0 Tm (dados.gov.pt | Guias do utilizador) Tj ET
+BT /F2 18 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 790.0 Tm (Resolver dificuldades com uma API) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 766.0 Tm (Identifique se o problema afecta o registo no portal, as permiss\365es da conta ou a comunica\347\343o com o) Tj ET
+BT /F1 9.4 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 754.5 Tm (servi\347o.) Tj ET
+BT /F1 8.6 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 741.0 Tm (Quem pode utilizar: Utilizador da API ou editor do registo) Tj ET
+BT /F2 11.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 725.5 Tm (Como fazer) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 710.5 Tm (1. Se n\343o consegue criar uma API, confirme a perten\347a \340 organiza\347\343o e o emblema Servi\347o p\372blico.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 698.2 Tm (2. Se uma chamada \340 API do portal falhar, compare a opera\347\343o com a refer\352ncia e confirme a chave e as) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 687.4 Tm (permiss\365es quando forem necess\341rias.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 675.1 Tm (3. Se o problema ocorrer numa API do cat\341logo, consulte a documenta\347\343o indicada no seu registo para) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 664.3 Tm (verificar o endere\347o e as condi\347\365es de acesso.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 652.0 Tm (4. Se uma altera\347\343o ao registo n\343o ficar guardada, registe a p\341gina, a ac\347\343o e a mensagem apresentada.) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 639.7 Tm (5. Ao pedir apoio, indique qual a API afectada e descreva o resultado esperado e o observado, omitindo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 628.9 Tm (credenciais e dados pessoais desnecess\341rios.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 612.6 Tm (Exemplo) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 598.6 Tm (Um editor n\343o consegue iniciar a cria\347\343o de uma API. Confirma que a organiza\347\343o seleccionada ainda n\343o tem) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 587.8 Tm (o emblema exigido.) Tj ET
+BT /F2 11 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 573.0 Tm (Tenha em aten\347\343o) Tj ET
+BT /F1 8.8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 559.0 Tm (N\343o confunda a chave da API do portal com credenciais eventualmente exigidas por outro servi\347o.) Tj ET
+BT /F1 8.5 Tf 0 0.36 0.90 rg 1 0 0 1 54.0 54.0 Tm (Voltar ao \355ndice) Tj ET
+0.86 0.90 0.93 RG 0.5 w 54 42 m 541 42 l S
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 54.0 28.0 Tm (APIs e servi\347os de dados) Tj ET
+BT /F1 8 Tf 0.12 0.21 0.29 rg 1 0 0 1 517.0 28.0 Tm (7) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 686 541 698] /Border [0 0 0] /A << /S /URI /URI (https://lbc-valentim.github.io/dados.gov.pt/Guias-do-utilizador/apis-reutilizacoes-e-automatizacao/apis-e-servicos-de-dados/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 643 541 656] /Border [0 0 0] /Dest [7 0 R /XYZ null null null] >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 628.5 541 641.5] /Border [0 0 0] /Dest [9 0 R /XYZ null null null] >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 614 541 627] /Border [0 0 0] /Dest [11 0 R /XYZ null null null] >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 599.5 541 612.5] /Border [0 0 0] /Dest [13 0 R /XYZ null null null] >>
+endobj
+24 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 585 541 598] /Border [0 0 0] /Dest [15 0 R /XYZ null null null] >>
+endobj
+25 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 570.5 541 583.5] /Border [0 0 0] /Dest [17 0 R /XYZ null null null] >>
+endobj
+26 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 526 541 540] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/desenvolvimento/tutorial-api) >> >>
+endobj
+27 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 512 541 526] /Border [0 0 0] /A << /S /URI /URI (https://dados.gov.pt/pt/recursos/desenvolvimento/referencia-api) >> >>
+endobj
+28 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+29 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+30 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+31 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+32 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+33 0 obj
+<< /Type /Annot /Subtype /Link /Rect [54 51 149 64] /Border [0 0 0] /Dest [5 0 R /XYZ null null null] >>
+endobj
+xref
+0 34
+0000000000 65535 f 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000180 00000 n 
+0000000277 00000 n 
+0000000379 00000 n 
+0000000588 00000 n 
+0000002756 00000 n 
+0000002909 00000 n 
+0000005362 00000 n 
+0000005516 00000 n 
+0000009034 00000 n 
+0000009189 00000 n 
+0000011647 00000 n 
+0000011802 00000 n 
+0000015037 00000 n 
+0000015192 00000 n 
+0000017670 00000 n 
+0000017825 00000 n 
+0000020561 00000 n 
+0000020799 00000 n 
+0000020922 00000 n 
+0000021049 00000 n 
+0000021173 00000 n 
+0000021301 00000 n 
+0000021425 00000 n 
+0000021553 00000 n 
+0000021728 00000 n 
+0000021905 00000 n 
+0000022026 00000 n 
+0000022147 00000 n 
+0000022268 00000 n 
+0000022389 00000 n 
+0000022510 00000 n 
+trailer
+<< /Size 34 /Root 1 0 R >>
+startxref
+22631
+%%EOF

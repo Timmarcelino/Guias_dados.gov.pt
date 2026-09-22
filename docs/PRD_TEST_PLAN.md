@@ -192,11 +192,11 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 | 5 | Pesquisar uma discussão | Termo conhecido | Resultados e estado sem resultados correspondem ao PRD |
 | 6 | Navegar por teclado | Tab, Shift+Tab | Foco e controlos são operáveis |
 
-### PRD-R08, Validador e Catálogo de Modelos
+### PRD-R08, Validador e Catálogo de Modelos após integração
 
 **Rastreabilidade:** D07, CM; LEDG-2031, LEDG-2049.
 
-**Summary:** confirmar se as funcionalidades estão efectivamente disponíveis em PRD antes de executar qualquer operação.
+**Summary:** revalidar a disponibilidade apenas após existir evidência de integração no PRD. No estado actual, frontend/backend/Swagger públicos não expõem o novo Validador nem o novo Catálogo.
 
 **Preconditions:**
 
@@ -205,13 +205,11 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 
 | Step | Action | Input | Expected Result |
 | ---: | --- | --- | --- |
-| 1 | Abrir gestão de recurso CSV | Recurso elegível | Registar presença/ausência da área de validação e estado actual |
-| 2 | Abrir selecção de modelo sem confirmar | Nenhum | Registar modelos, versões e configuração apresentada |
-| 3 | Abrir Catálogo de Modelos como Editor | Nenhum | Registar existência da área e informação disponível |
-| 4 | Abrir Catálogo como Administrador | Nenhum | Registar diferenças de permissões e acções |
-| 5 | Abrir detalhe de modelo e versões | Modelo existente | Registar estados, utilização e informação visível |
-| 6 | Abrir auditoria, quando disponível | Nenhum | Registar perfil autorizado e campos apresentados |
-| 7 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes acessíveis e estados são perceptíveis |
+| 1 | Confirmar que existe nova rota/área de Validação ou Catálogo em PRD | Nenhum | Se continuar ausente, terminar o TC e manter D07/CM bloqueados para publicação actual |
+| 2 | Confirmar que o Swagger/API PRD expõe contratos do novo domínio | Nenhum | Endpoints/propriedades correspondem ao Validador/Catálogo e não ao schema legado/Harvester |
+| 3 | Apenas após 1 e 2, abrir gestão de recurso CSV | Recurso elegível | Área de validação existe e apresenta o estado actual aplicável |
+| 4 | Apenas após 1 e 2, abrir Catálogo como Editor e Administrador | Nenhum | Registar área, modelos e diferenças reais de permissões |
+| 5 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes acessíveis e estados são perceptíveis |
 
 ### PRD-R09, Seguir e Notificações
 

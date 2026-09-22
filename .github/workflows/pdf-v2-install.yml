@@ -1,0 +1,88 @@
+name: Instalar PDFs v2
+
+on:
+  push:
+    branches:
+      - feature/static-routes-pdf
+    paths:
+      - ".pdfv2_tmp/**"
+      - ".github/workflows/pdf-v2-install.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da branch candidata
+        uses: actions/checkout@v4
+        with:
+          ref: feature/static-routes-pdf
+          fetch-depth: 0
+
+      - name: Preparar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar piloto aprovado do Explorador
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import qrcode
+          from weasyprint import HTML
+
+          root = Path(".pdfv2_tmp")
+          url = "https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/Encontrar-consultar-e-explorar-dados/Explorador-de-dados/"
+          qrcode.make(url).save(root / "qr_explorador.png")
+          HTML(filename=str(root / "explorador-de-dados-v2.html"), base_url=str(root)).write_pdf(
+              str(root / "approved-d06.pdf"), pdf_tags=True, srgb=True
+          )
+          PY
+
+      - name: Gerar colecção PDF v2
+        run: |
+          python .pdfv2_tmp/generate_pdf_v2.py > .pdfv2_tmp/generator-output.json
+
+      - name: Instalar PDFs nos caminhos públicos
+        run: |
+          mkdir -p assets/pdf
+          for f in .pdfv2_tmp/out/*/dados-gov-pt-guia-*-v2.pdf; do
+            name="$(basename "$f")"
+            target="$(printf '%s' "$name" | sed -e 's/^dados-gov-pt-guia-//' -e 's/-v2\.pdf$/.pdf/')"
+            cp "$f" "assets/pdf/$target"
+          done
+
+      - name: Validar colecção
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          root = Path(".pdfv2_tmp")
+          qa = json.loads((root / "out" / "qa-summary.json").read_text(encoding="utf-8"))
+          assert len(qa) == 15, f"Esperados 15 guias, obtidos {len(qa)}"
+          bad = [x for x in qa if x["missing_items"] != 0]
+          assert not bad, f"Conteúdo em falta: {bad}"
+
+          pdfs = sorted(Path("assets/pdf").glob("*.pdf"))
+          assert len(pdfs) == 15, f"Esperados 15 PDFs públicos, obtidos {len(pdfs)}"
+          for pdf in pdfs:
+              reader = PdfReader(str(pdf))
+              assert len(reader.pages) >= 1, f"PDF sem páginas: {pdf}"
+              assert pdf.stat().st_size > 50000, f"PDF anormalmente pequeno: {pdf}"
+          print("QA PDF v2: 15/15 ficheiros válidos; conteúdo editorial sem omissões.")
+          PY
+
+      - name: Commit final dos PDFs v2
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -rf .pdfv2_tmp .github/workflows/pdf-v2-install.yml
+          git add assets/pdf
+          git commit -m "feat(pdf): publica colecção editorial v2"
+          git push origin HEAD:feature/static-routes-pdf

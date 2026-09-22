@@ -1,0 +1,26 @@
+name: Validar consistência dos Guias
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/static-routes-pdf
+    paths:
+      - "content/guides.json"
+      - "assets/js/data.js"
+      - "assets/js/search-index.json"
+      - "assets/js/search.js"
+      - "Guias-do-utilizador/**"
+      - "sitemap.xml"
+      - "404.html"
+      - "scripts/validate_guides_consistency.py"
+      - ".github/workflows/guides-consistency.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validar fonte, rotas, pesquisa e sitemap
+        run: python scripts/validate_guides_consistency.py

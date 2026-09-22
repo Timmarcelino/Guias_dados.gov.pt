@@ -916,6 +916,25 @@ A fila deixa de representar seis grupos totalmente por executar. O estado actual
 3. PRD-R04: parcialmente executado; dependência de Organização elegível/API gerível;
 4. PRD-R05: parcialmente executado; edição/transferência pendentes;
 5. PRD-R06: parcialmente executado; dependência de perfil administrativo/fonte;
-6. PRD-R07: ainda activo para evidência autenticada não destrutiva.
+6. PRD-R07: parcialmente executado; consulta, pesquisa, estados vazios e formulário de criação confirmados; resposta/contexto de organização pendentes.
 
 Não foram encontradas nesta ronda divergências editoriais objectivas que justifiquem alteração imediata de `content/guides.json`.
+
+
+### Continuação PRD-R07, Discussões
+
+Execução autenticada complementar concluída sem escrita:
+
+* Conjunto de Dados com conversa existente: separador **Discussões (1)**, pesquisa e **Nova discussão** observados;
+* pesquisa por termo existente filtrou para a conversa correspondente;
+* termo sem correspondência removeu a conversa da lista; não foi observada mensagem textual específica de “sem resultados” nessa vista;
+* Reutilização com zero conversas: **0 DISCUSSÃO**, pesquisa, **Nova discussão** e estado vazio **Sem discussões**;
+* API com zero conversas: **Discussões (0)** disponível; o query parameter `?tab=discussions` não activou sozinho o separador na vista observada;
+* formulário **Nova discussão** aberto sem submissão;
+* **Título*** e **A sua mensagem*** são obrigatórios;
+* orientação de cordialidade/privacidade apresentada no campo de mensagem;
+* **Enviar** desactivado enquanto o formulário está vazio.
+
+Estado PRD-R07: **Parcialmente executado**.
+
+Ainda Por confirmar: controlo visual de resposta numa conversa existente, contexto de Organização e qualquer submissão persistente. Nenhuma mensagem foi criada.

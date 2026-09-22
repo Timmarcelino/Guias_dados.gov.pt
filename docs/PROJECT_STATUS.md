@@ -304,7 +304,7 @@ Estado confirmado:
 * revisão profunda concluída para as 15 áreas;
 * D01, D03 e D14 validados no âmbito actual;
 * D02, D04, D05, D08, D09, D10, D12 e D13 parcialmente validados;
-* D06, D07, D11 e CM por confirmar em PRD antes de publicação como comportamento actual;
+* D07 e CM por confirmar em PRD antes de publicação como comportamento actual; D06 confirmado como não integrado no Frontoffice público de PRD; D11 desalinhado com a terminologia actual de PRD;
 * fonte editorial permanente em `content/guides.json`;
 * gerador PDF permanente em `scripts/generate_pdf_guides.py`;
 * workflow PDF permanente validado com sucesso;
@@ -507,7 +507,7 @@ Estado verificado em 22/09/2026.
 A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
 
 1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
-2. D06, D07, D11 e CM sem confirmação suficiente de comportamento actual em PRD;
+2. D07 e CM sem confirmação suficiente de comportamento actual em PRD; D06 não integrado no Frontoffice PRD; D11 ainda não alinhado em PRD com a evolução Seguir;
 3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
 4. validação manual com NVDA no contexto final ainda pendente;
 5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
@@ -546,3 +546,14 @@ Commits:
 
 Estado: documentação corrente alinhada com 15 guias, 92 fichas, 115 rotas e 15 PDFs.
 
+
+## Actualização D06, Explorador de dados
+
+Evidência adicional recolhida em 22/09/2026:
+
+* o frontend actual contém o bloco **Explore os dados**, mas oculto com `className="hidden"`;
+* não foi encontrada rota pública autónoma do Explorador no frontend;
+* num recurso CSV real de PRD, `ipvc-estudantes.csv`, não foi exposto CTA **Explore os dados** no comportamento público observado;
+* não existe percurso público reproduzível confirmado para abrir o novo Explorador a partir do recurso testado.
+
+Conclusão operacional: D06 deixa de estar apenas **Por confirmar** e passa a **Não integrado no Frontoffice público de PRD**. O guia permanece no protótipo como conteúdo preparado, mas fica bloqueado para publicação como funcionalidade actualmente disponível.

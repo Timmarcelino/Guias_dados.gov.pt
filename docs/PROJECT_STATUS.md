@@ -405,3 +405,28 @@ Pesquisa real validada com `?q=dados`:
 
 Conclusão desta ronda: não ficaram defeitos web técnicos conhecidos em aberto no âmbito dos checks automatizados executados. Permanecem por fazer validação manual/NVDA no contexto final e validação visual detalhada dos PDFs.
 
+
+## Validação directa dos PDFs publicados 22/09/2026
+
+Remote Desktop Commander utilizado para ler os 15 PDFs directamente da publicação GitHub Pages.
+
+Resultado consolidado:
+
+* 15/15 PDFs acessíveis;
+* contagens de páginas coerentes;
+* 92/92 fichas presentes;
+* sequência de tarefas completa em cada guia;
+* Visão geral e fecho presentes nos 15;
+* D14 confirmado com 6 fichas;
+* correcções editoriais D04/D09/D13 reflectidas nos PDFs;
+* 0 ocorrências de `undefined`;
+* QA do workflow PDF já tinha confirmado 15/15 ficheiros válidos e sem omissões editoriais.
+
+Limitação mantida:
+
+* inspecção visual pixel a pixel não executada nesta sessão;
+* estrutura interna de acessibilidade PDF não pôde ser validada, porque o Edge expõe o documento apenas como `EmbeddedObject`;
+* estas verificações ficam Por confirmar antes da publicação oficial.
+
+Estado da frente PDF: **conteúdo e integridade estrutural validados; acessibilidade documental e revisão visual final Por confirmar**.
+

@@ -1311,28 +1311,34 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 19. Prioridade de revisão profunda
+## 19. Estado da revisão profunda
 
-### Prioridade 1
+A primeira revisão profunda está concluída para todos os guias que não pertenciam já ao grupo **Validado no âmbito actual**:
 
-Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM.
+* D02, Organizações e permissões;
+* D04, Publicar e gerir Conjuntos de Dados;
+* D05, Recursos de um Conjunto de Dados;
+* D06, Explorador de dados;
+* D07, Qualidade e validação de dados;
+* D08, APIs e serviços de dados;
+* D09, Reutilizações;
+* D10, Harvester;
+* D11, Seguir conteúdos e notificações;
+* D12, Discussões e comunidade;
+* D13, Perfil e actividade;
+* CM, Catálogo de Modelos.
 
-Não existem guias parcialmente validados sem uma primeira revisão profunda. D01, D03 e D14 já se encontravam no grupo validado no âmbito actual.
+D01, D03 e D14 permanecem **Validado no âmbito actual**, sujeitos apenas às passagens finais de consistência, terminologia, acessibilidade, imagens e nova evidência funcional que altere o comportamento.
 
-Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
+A próxima fase deixa de ser investigação ampla. Passa a ser:
 
-### Prioridade 2
+1. executar apenas os testes PRD autenticados mínimos já identificados em cada revisão;
+2. corrigir divergências editoriais objectivas na fonte do Manual;
+3. sincronizar a fonte editorial, rotas estáticas, pesquisa, sitemap e PDFs;
+4. executar revisão de acessibilidade e responsividade;
+5. preparar critérios objectivos para candidatura a merge em `main`.
 
-1. D02, Organizações e permissões
-2. D09, Reutilizações
-3. D12, Discussões e comunidade
-4. D13, Perfil e actividade
-
-Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobretudo perfis, notificações e evolução da conta.
-
-### Fecho editorial
-
-D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
+Prioridade editorial imediata: D04, D11, D13 e D09, porque já existem diferenças concretas entre o conteúdo actual do guia e o comportamento observado em PRD.
 
 ## 20. Critério para marcar um guia como Validado
 

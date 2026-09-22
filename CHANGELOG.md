@@ -17,7 +17,7 @@ Principais alterações:
 * QA estrutural sobre 115 páginas: 115/115 HTTP 200 e 134 ligações internas sem quebras.
 * QA responsivo e por teclado em 320, 360, 768 e 1440 px nas páginas representativas.
 * Criação de `docs/PROJECT_STATUS.md`, `docs/CONTENT_VALIDATION.md` e `docs/PRD_TEST_PLAN.md` para continuidade, rastreabilidade e fecho de validação.
-* D07 e CM permanecem condicionados por confirmação adicional em PRD. D06 foi confirmado como ainda não integrado no Frontoffice público de PRD e D11 continua desalinhado com a terminologia actual observada em PRD.
+* D06 está confirmado como não integrado no Frontoffice público de PRD; D07 e CM não são observáveis no stack público actual de PRD; D11 continua desalinhado com a terminologia actual observada em PRD.
 
 Por confirmar antes de publicação oficial: testes PRD autenticados aplicáveis, validação manual com NVDA, revisão visual final dos PDFs e acessibilidade documental interna dos PDFs.
 

@@ -1574,7 +1574,7 @@
         "tip": "A submissão do pedido não atribui nem altera automaticamente o emblema. O resultado depende da análise da equipa de gestão do portal.",
         "table": null,
         "media": "Captura da referência aos emblemas em Ajuda e contactos e do formulário Tenho uma pergunta.",
-        "next": "Voltar à visão geral."
+        "next": "Reportar um problema técnico"
       },
       {
         "title": "Reportar um problema técnico",
@@ -1590,7 +1590,7 @@
         "tip": "Oculte palavras-passe, chaves de acesso e dados pessoais desnecessários.",
         "table": null,
         "media": "Captura do formulário de reporte com dados de demonstração.",
-        "next": "Ajuda e contactos"
+        "next": "Voltar à visão geral."
       }
     ],
     "resources": [

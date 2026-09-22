@@ -601,3 +601,27 @@ Tickets de evolução:
 * LEDG-2303: To Do.
 
 Conclusão: D11 representa o comportamento alvo aprovado, mas não o comportamento actual de PRD. Fica bloqueado para publicação actual até a evolução estar integrada.
+
+## Actualização D04 e D05, evidência PRD pública
+
+Revisão complementar concluída em 22/09/2026.
+
+### D04
+
+* LEDG-2046 e LEDG-2047 passaram para **IN UAT**;
+* Swagger PRD mantém licença por defeito `notspecified`;
+* frontend actual também inicia com `notspecified`;
+* frontend actual exige contacto quando o produtor é Organização;
+* LEDG-2175 permanece Backlog para alterar estes comportamentos;
+* não existe endpoint público de recuperação de Dataset eliminado;
+* transferência expõe estados pending/accepted/refused.
+
+Decisão: manter o Manual neutro quanto à licença inicial e obrigatoriedade do contacto até a evolução estar reflectida em PRD.
+
+### D05
+
+* `/datasets/extensions/` confirma que SVG e HTML não estão entre as extensões permitidas;
+* preview real validado em PRD para CSV, XLS, XLSX e ODS;
+* TSV está suportado no frontend, mas não foi encontrado recurso público para observação;
+* Explorar dados continua não integrado no Frontoffice público;
+* principal pendência residual: integridade de upload/substituição e estados autenticados.

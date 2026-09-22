@@ -665,3 +665,35 @@ D01 foi revisto novamente segundo a regra PRD-first.
 * referências editoriais a comportamento alvo validado em TST foram removidas.
 
 Estado D01: **Validado no âmbito actual**, com mecanismo exacto de migração fora do detalhe documental até nova evidência PRD.
+
+## Plano visual e robustez da geração PDF
+
+Actualização de 22/09/2026.
+
+### Media
+
+Criado `docs/MEDIA_PLAN.md`, commit `384212b`.
+
+Classificação das 92 fichas:
+
+* **25** com media capturável em PRD público;
+* **39** que exigem sessão/contexto autenticado e validação correspondente;
+* **28** suspensas porque a funcionalidade alvo ainda não está integrada ou alinhada com PRD.
+
+As indicações públicas de media foram limpas de referências internas a TST/ambiente validado nas áreas D02, D09, D10, D11 e D12.
+
+### Workflow PDF
+
+A falha observada no run `35763998169` ocorreu apenas no push final: a branch avançou enquanto o job gerava os PDFs, causando rejeição `fetch first`.
+
+O workflow foi corrigido no commit `d61b5e9` para:
+
+* serializar jobs PDF através de `concurrency`;
+* criar o commit PDF;
+* fazer `git fetch` da branch actual;
+* rebasear o commit PDF sobre o HEAD remoto;
+* publicar apenas depois do rebase.
+
+A estratégia foi validada com sucesso: commits PDF `4fdbb6d` e posteriormente `238141c` foram publicados sem perder alterações concorrentes.
+
+Estado: **workflow PDF robusto para avanço concorrente da branch**.

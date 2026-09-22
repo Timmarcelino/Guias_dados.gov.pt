@@ -17,6 +17,7 @@ on:
       - "scripts/validate_guides_consistency.py"
       - ".github/workflows/guides-consistency.yml"
 
+# Guardrail read-only: nunca escreve na branch nem em sistemas externos.
 jobs:
   validate:
     runs-on: ubuntu-latest

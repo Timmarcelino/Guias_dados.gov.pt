@@ -1,5 +1,26 @@
 # Histórico de versões
 
+## Em desenvolvimento · 22/09/2026
+
+Evolução da branch `feature/static-routes-pdf` após a referência v0.4.
+
+Principais alterações:
+
+* Evolução da colecção para **15 guias e 92 fichas**, com inclusão da sexta ficha de D14, `Reportar um problema técnico`.
+* Publicação de **115 rotas estáticas** com sitemap, canonicals, pesquisa transversal e página 404 dedicada.
+* Publicação e validação estrutural de **15 PDFs**, cobrindo as 92 fichas.
+* Criação da fonte editorial permanente `content/guides.json` e do gerador `scripts/generate_pdf_guides.py`.
+* Criação do guardrail `scripts/validate_guides_consistency.py` e workflow de CI para validar fonte, rotas, pesquisa, sitemap e estrutura HTML.
+* Correcções editoriais baseadas em PRD para D04, D09 e D13.
+* Correcção de acessibilidade da pesquisa dinâmica com anúncio de resultados por `role="status"` e `aria-live="polite"`.
+* Correcção dos nomes acessíveis de Pesquisa e Autenticar no header mobile.
+* QA estrutural sobre 115 páginas: 115/115 HTTP 200 e 134 ligações internas sem quebras.
+* QA responsivo e por teclado em 320, 360, 768 e 1440 px nas páginas representativas.
+* Criação de `docs/PROJECT_STATUS.md`, `docs/CONTENT_VALIDATION.md` e `docs/PRD_TEST_PLAN.md` para continuidade, rastreabilidade e fecho de validação.
+* D06, D07, D11 e CM permanecem condicionados por confirmação adicional em PRD antes de publicação como comportamento actual.
+
+Por confirmar antes de publicação oficial: testes PRD autenticados aplicáveis, validação manual com NVDA, revisão visual final dos PDFs e acessibilidade documental interna dos PDFs.
+
 ## v0.4 · 15/09/2026
 
 Evolução técnica, visual e editorial do protótipo preparada para revisão.

@@ -40,6 +40,10 @@ FORBIDDEN_TEXT = [
     "O percurso completo aguarda validação",
     "data de registo apresentados",
     "Consultar um perfil público",
+    "validado em TST",
+    "validada em TST",
+    "percurso em TST",
+    "ambiente validado",
 ]
 
 

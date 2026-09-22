@@ -66,7 +66,7 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 | PRD-R04 | D08 | **Parcialmente executado** | Elegibilidade e formulário observados; conta sem organização elegível impede restante fluxo |
 | PRD-R05 | D09 | **Parcialmente executado** | Formulário e associação observados; edição/transferência ainda por fechar |
 | PRD-R06 | D10 | **Parcialmente executado** | Wizard acessível; contexto de sistema indisponível para a conta actual |
-| PRD-R07 | D12 | **Activo** | Requer sessão autenticada para criação/resposta e contexto administrativo |
+| PRD-R07 | D12 | **Parcialmente executado** | Consulta, pesquisa, estados vazios e formulário de nova discussão observados; resposta/contexto de organização ainda pendentes |
 | PRD-R08 | D07 + CM | **Suspenso** | Reabrir apenas quando Validador/Catálogo forem observáveis no stack PRD |
 | PRD-R09 | D11 | **Suspenso** | Reabrir apenas quando a evolução Seguir/Notificações estiver integrada |
 | PRD-R10 | D06 | **Suspenso** | Reabrir apenas quando o Explorador estiver integrado no Frontoffice PRD |
@@ -135,6 +135,22 @@ Observado:
 * tentativa de abrir `/pt/admin/system/harvesters` regressou à área pessoal de Conjuntos de Dados.
 
 Decisão: acesso ao wizard **confirmado**; administração de sistema, comparação entre perfis, preview e Trabalhos ficam **Por confirmar com perfil/fonte adequados**.
+
+### PRD-R07, D12
+
+Observado em PRD autenticado:
+
+* Conjunto de Dados real com discussão existente aberto directamente no separador Discussões;
+* separador **Discussões (1)**, pesquisa e acção **Nova discussão** visíveis;
+* pesquisa por termo existente mantém a conversa correspondente;
+* pesquisa por termo sem correspondência remove a conversa da lista; na área observada, o contador visível manteve o total do conteúdo e não foi apresentada mensagem textual específica de “sem resultados”;
+* Reutilização pública sem conversas apresenta separador **Discussões**, contador **0 DISCUSSÃO**, pesquisa, **Nova discussão** e estado vazio **“Sem discussões”**;
+* API pública sem conversas apresenta separador **Discussões (0)**; o parâmetro `?tab=discussions` não activou visualmente o separador e foi necessário seleccioná-lo;
+* no formulário de **Nova discussão**, **Título*** e **A sua mensagem*** são obrigatórios;
+* o campo de mensagem apresenta orientação para manter cordialidade e evitar informação pessoal;
+* o botão **Enviar** permanece desactivado com o formulário vazio.
+
+Decisão: consulta autenticada, pesquisa, estado vazio e formulário de criação **confirmados**. Resposta a conversa existente, contexto de organização e submissão permanecem **Por confirmar**; nenhuma mensagem foi criada.
 
 ### Limitações desta execução
 

@@ -100,7 +100,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D01 | Autenticação e acesso à conta | 6 | **Validado no âmbito actual** | Conteúdo anteriormente revisto com comportamento alvo validado em TST | Revalidar após alterações futuras de consolidação de contas ou eventual alteração do login por email e palavra-passe |
 | D02 | Organizações e permissões | 6 | **Parcialmente validado** | Fluxos base de consulta, adesão, membros e organização estão estruturados | Confirmar matriz final de perfis/permissões, gestão de emblemas e limites das acções por membro, administrador da organização e administrador do portal |
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
-| D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2191 e LEDG-2048 em READY FOR UAT | Fechar regras finais de recuperação, perfis de recuperação, acesso directo a eliminados, concorrência entre transferência e ciclo de vida e permissões finais de transferência |
+| D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; gestão de recursos consolidada | Confirmar limites de upload, elegibilidade de preview, comportamento de substituição/herança no contexto actual e executar regressão de acesso/download; LEDG-2251 está Done mas a regressão continua necessária |
 | D06 | Explorador de dados | 8 | **Parcialmente validado** | Implementação documentada com quatro vistas; LEDG-2199 em READY FOR UAT; LEDG-2188 Done | Harmonizar requisito, implementação e UX/UI final; validar em UAT filtros, paginação, ordenação, exportações, URL persistente, estados vazios, erros e acessibilidade |
 | D07 | Qualidade e validação de dados | 6 | **Parcialmente validado** | Princípios do Validador consolidados; LEDG-2031 em READY FOR TESTING | Fechar contrato de não conformidades, aviso perante não conformidade, paginação/exportação/retenção do histórico, concorrência e volumetria |
@@ -113,7 +113,68 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
 | CM | Catálogo de Modelos | 9 | **Parcialmente validado** | LEDG-2049 em IN UAT; conceitos de modelo/versionamento consolidados | Confirmar limites de inferência, normalização, volumetria, paginação/histórico, retenção de auditoria, concorrência, permissões finais, critérios de estados e UX/UI |
 
-## 6. Decisões e lacunas transversais
+## 6. Revisão profunda D04, Publicar e gerir Conjuntos de Dados
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+As sete fichas de D04 estão coerentes, no essencial, com a especificação funcional actual das LEDG-2046 e LEDG-2048.
+
+### Confirmado pela LEDG-2046
+
+* é permitido guardar Rascunho com metadados obrigatórios ainda em falta;
+* a publicação exige os metadados obrigatórios no momento de publicar;
+* a publicação é imediata e não tem circuito de revisão editorial;
+* a ausência de recursos não bloqueia a publicação, com aviso aplicável;
+* ausência de modelo, ausência de validação, Não conforme e Erro técnico não bloqueiam a publicação;
+* alterações guardadas num Conjunto de Dados Público produzem efeito imediato;
+* os estados são Rascunho, Público, Arquivado e Eliminado;
+* Arquivado deixa de aparecer nas listagens públicas mas mantém o acesso aplicável por ligação directa;
+* a eliminação é lógica e exclusiva de Administrador autorizado;
+* Eliminado é irreversível no portal e não pode ser recuperado por qualquer perfil;
+* o expurgo definitivo não é disponibilizado no portal e é uma operação de servidor.
+
+A questão de recuperação que permanecia aberta na baseline de 13/08 fica, portanto, ultrapassada pela especificação actual da LEDG-2046.
+
+### Confirmado pela LEDG-2048
+
+* a transferência pode ter como destinatário um utilizador ou organização disponível;
+* a submissão cria um pedido Pendente sem alterar a responsabilidade;
+* o destinatário recebe email sobre o pedido;
+* a aceitação altera a responsabilidade;
+* a recusa mantém a responsabilidade;
+* estado, metadados, recursos e histórico são preservados após aceitação;
+* Arquivado e Eliminado não podem ser transferidos;
+* o comentário é incluído quando exista;
+* cancelar antes da submissão não cria pedido.
+
+### Divergência requisito versus implementação
+
+A LEDG-2046 define como comportamento alvo:
+
+* `CC BY 4.0` como licença inicial, alterável;
+* ponto de contacto opcional quando o produtor é uma organização.
+
+A LEDG-2175 permanece em Backlog e descreve a situação de implementação que motivou estas alterações:
+
+* a licença ainda necessita de melhoria para apresentar um valor por defeito;
+* o ponto de contacto é actualmente obrigatório quando o produtor é uma organização.
+
+**Conclusão:** estas duas regras são requisito alvo, não devem ser apresentadas como comportamento actual do portal até existir evidência de implementação/UAT.
+
+### Estado D04
+
+**Parcialmente validado.**
+
+O conteúdo funcional das sete fichas está suficientemente sustentado para continuar no protótipo, mas a publicação oficial fica bloqueada até:
+
+1. validar LEDG-2046 e LEDG-2048 em UAT;
+2. confirmar o estado real da LEDG-2175;
+3. corrigir ou condicionar no guia as afirmações sobre licença inicial e ponto de contacto;
+4. validar mensagens, terminologia e interface final contra o Figma/implementação aplicável.
+
+## 7. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -132,7 +193,7 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 7. Prioridade de revisão profunda
+## 8. Prioridade de revisão profunda
 
 ### Prioridade 1
 
@@ -165,7 +226,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 8. Critério para marcar um guia como Validado
+## 9. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -177,6 +238,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 9. Próxima acção
+## 10. Próxima acção
 
-Iniciar revisão profunda por D04, porque concentra a maior quantidade de regras de ciclo de vida ainda sensíveis e alimenta directamente D05, D07, D09 e partes do Catálogo de Modelos.
+Iniciar revisão profunda de D05, Recursos de um Conjunto de Dados. D04 já recebeu a primeira revisão profunda e permanece parcialmente validado até UAT e clarificação da LEDG-2175.

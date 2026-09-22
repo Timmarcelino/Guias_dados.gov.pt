@@ -65,6 +65,60 @@ Mensagem final do QA:
 
 `QA PDF v2: 15/15 ficheiros válidos; conteúdo editorial sem omissões.`
 
+
+### Validação directa dos PDFs publicados
+
+Em 22/09/2026, os 15 PDFs publicados no GitHub Pages foram lidos directamente através do Remote Desktop Commander.
+
+Resultado:
+
+| PDF | Páginas | Fichas esperadas | Fichas detectadas |
+| --- | ---: | ---: | ---: |
+| Autenticação e acesso à conta | 9 | 6 | 6 |
+| Organizações e permissões | 8 | 6 | 6 |
+| Encontrar e consultar dados | 7 | 5 | 5 |
+| Publicar e gerir Conjuntos de Dados | 9 | 7 | 7 |
+| Recursos de um Conjunto de Dados | 9 | 6 | 6 |
+| Explorador de dados | 13 | 8 | 8 |
+| Qualidade e validação de dados | 9 | 6 | 6 |
+| APIs e serviços de dados | 9 | 6 | 6 |
+| Reutilizações | 8 | 6 | 6 |
+| Harvester | 9 | 6 | 6 |
+| Seguir conteúdos e notificações | 7 | 5 | 5 |
+| Discussões e comunidade | 8 | 5 | 5 |
+| Perfil e actividade | 8 | 5 | 5 |
+| Ajuda e contactos | 9 | 6 | 6 |
+| Catálogo de Modelos | 12 | 9 | 9 |
+
+Para os 15 PDFs foi confirmado:
+
+* presença da Visão geral;
+* presença do fecho do guia;
+* sequência completa das tarefas de 1 até N;
+* denominador das tarefas coerente com o número esperado;
+* ausência de `undefined`;
+* ausência das formulações antigas corrigidas em D04, D09 e D13;
+* D14 contém as 6 fichas, incluindo `Reportar um problema técnico`.
+
+A leitura directa confirma conteúdo e paginação lógica, mas não substitui a inspecção visual pixel a pixel.
+
+### Limitação de acessibilidade PDF
+
+Foram tentadas duas vias adicionais:
+
+* abertura/captura pelo navegador web da sessão, indisponível para estes PDFs;
+* árvore de acessibilidade do Edge headless, que expõe o PDF apenas como `EmbeddedObject` sem estrutura interna.
+
+Assim, permanecem **Por confirmar** antes de publicação oficial:
+
+* cortes/overlaps apenas detectáveis visualmente no PDF renderizado;
+* ordem de leitura real no PDF;
+* qualidade da árvore de tags;
+* headings e listas expostos a leitores de ecrã;
+* texto alternativo de elementos gráficos na árvore PDF;
+* comportamento com leitor de ecrã num visualizador compatível.
+
+
 ### Limitação
 
 **Por confirmar:** qualidade visual página a página, cortes, quebras inadequadas, sobreposições, qualidade real da árvore de tags, ordem de leitura, bookmarks e restante acessibilidade documental.

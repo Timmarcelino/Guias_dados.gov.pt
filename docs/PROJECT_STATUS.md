@@ -625,3 +625,16 @@ Decisão: manter o Manual neutro quanto à licença inicial e obrigatoriedade do
 * TSV está suportado no frontend, mas não foi encontrado recurso público para observação;
 * Explorar dados continua não integrado no Frontoffice público;
 * principal pendência residual: integridade de upload/substituição e estados autenticados.
+
+## Sincronização da matriz e redução do plano autenticado
+
+Actualização em 22/09/2026 após D04/D05/D06/D13:
+
+* D04 actualizado para LEDG-2046 e LEDG-2191 em IN UAT;
+* D06 actualizado para **Não integrado no Frontoffice público de PRD**;
+* D13 já não tem correcção editorial pendente; actor/título/data de registo foram sincronizados;
+* D05 deixou de exigir revalidação autenticada de CSV/XLS/XLSX/ODS e SVG/HTML;
+* PRD-R03 foi reduzido à observação residual de TSV, quando existir recurso público adequado;
+* PRD-R10 fica suspenso até integração efectiva do Explorador.
+
+Objectivo: manter apenas testes autenticados que acrescentem evidência nova.

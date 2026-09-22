@@ -115,7 +115,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
-| D11 | Seguir conteúdos e notificações | 5 | **Parcialmente validado** | LEDG-2289 Done e decisão de uniformização para `Seguir` | Validar matriz final de eventos/notificações, disponibilidade por tipo de conteúdo e permissões das acções associadas |
+| D11 | Seguir conteúdos e notificações | 5 | **Por confirmar em PRD** | LEDG-2289 concluiu a análise e a direcção terminológica; LEDG-1960 continua To Do e LEDG-2305 In Progress; PRD ainda apresenta `Adicionar aos favoritos`/`Remover dos favoritos` nos quatro tipos de conteúdo | Não publicar `Seguir` como comportamento actual enquanto PRD não o apresentar; notificações de conteúdos seguidos também não estão demonstradas como implementadas |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Percursos de consulta, criação e resposta estão estruturados | Confirmar moderação, notificações por email, visibilidade, permissões na organização e tratamento de estados sem discussões |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | Percursos básicos de perfil, conteúdos e actividade estão definidos | Revalidar campos públicos, fotografia, actividade e impacto da evolução da autenticação/conta |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
@@ -741,7 +741,124 @@ A preparação da fonte, dependência do backend/ambiente e existência dos esta
 
 O Manual deve continuar genérico quanto a backends específicos e nunca recomendar alteração de tipo como contorno para erros de configuração.
 
-## 13. Decisões e lacunas transversais
+## 13. Revisão profunda D11, Seguir conteúdos e notificações
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D11 combina duas capacidades que se encontram em estados diferentes:
+
+1. relação técnica de seguimento (`Follow/Unfollow`), actualmente exposta no Frontoffice com terminologia de **Favoritos**;
+2. sistema de notificações, que já existe para vários eventos, mas cuja integração com conteúdos seguidos ainda está em evolução.
+
+### Implementação actual observada em PRD
+
+Foram consultados em PRD exemplos públicos de:
+
+* Conjunto de Dados;
+* API;
+* Organização;
+* Reutilização.
+
+Nos quatro tipos, o HTML actual contém **Adicionar aos favoritos** e **Remover dos favoritos**.
+
+Não foram encontradas as acções públicas **Seguir** ou **Deixar de seguir** nestes conteúdos.
+
+Assim, a terminologia do D11 representa a evolução aprovada como direcção funcional, mas **não corresponde ainda ao comportamento actual de PRD**.
+
+### Relação técnica confirmada
+
+A LEDG-2289 concluiu que:
+
+* **Adicionar aos favoritos** executa tecnicamente `Follow`;
+* **Remover dos favoritos** executa `Unfollow`;
+* Subscrições, Acompanhamentos, Seguidores e Subscritores eram utilizados de forma inconsistente para a mesma relação ou conceitos relacionados;
+* o Backend utiliza de forma mais coerente `Follow`, `Follower`, `Following` e `Unfollow`.
+
+A decisão de evolução foi uniformizar o conceito para **Seguir**, sem criar nesta fase uma relação distinta de Favoritos.
+
+### Estado da evolução
+
+A LEDG-1960, **Frontoffice - Reposição de Funcionalidade - Seguir conteúdos e notificações associadas**, encontra-se **To Do**.
+
+A LEDG-2305, **Backoffice - Notificações**, encontra-se **In Progress**.
+
+A LEDG-2306, relativa a Conteúdos seguidos e Seguidores no perfil, encontra-se em **Backlog**.
+
+Portanto, estes tickets não devem ser usados para antecipar o comportamento actual do Manual.
+
+### Notificações actualmente suportadas
+
+A análise LEDG-2289 identificou notificações existentes para eventos relacionados com:
+
+* Discussões;
+* Organizações;
+* Transferências;
+* Harvesters.
+
+O frontend actual de Notificações possui tratamento específico para validação de Harvester, incluindo:
+
+* estado da validação;
+* nome da fonte;
+* ligação **Ver harvester**;
+* acção **Marcar como lida**.
+
+Outros tipos de notificação actualmente caem num tratamento genérico **Nova notificação**, podendo ser marcados como lidos.
+
+A LEDG-2322 e a LEDG-2328 corrigiram defeitos de notificações de organização e discussão no Backend.
+
+### Follow não equivale actualmente a notificação
+
+A LEDG-2289 não identificou implementação que estabeleça:
+
+`Follow → alteração do conteúdo seguido → Notification para o seguidor`.
+
+Logo, **seguir/favoritar um conteúdo não pode ser documentado actualmente como garantia de receber notificações das suas alterações**.
+
+A matriz de eventos e notificações prevista na LEDG-2305 continua a ser a fonte de evolução para definir eventos, destinatários, categorias e canais.
+
+### Impacto nas cinco fichas de D11
+
+| Ficha | Estado face a PRD |
+| --- | --- |
+| Seguir um conteúdo | Não corresponde à terminologia actual de PRD; hoje a acção é Adicionar aos favoritos |
+| Deixar de seguir um conteúdo | Não corresponde à terminologia actual de PRD; hoje a acção é Remover dos favoritos |
+| Consultar uma notificação | Funcionalidade existente, mas percurso autenticado deve ser validado em PRD |
+| Tratar um aviso de validação de harvester | Implementação actual fortemente suportada; validar sessão PRD antes de fechar |
+| Resolver dificuldades com notificações | Conteúdo genérico aceitável, desde que não prometa eventos/canais ainda não implementados |
+
+### Decisão para o Manual
+
+Não regressar editorialmente à terminologia **Favoritos** apenas para antecipar uma publicação que ficaria rapidamente desactualizada.
+
+Enquanto a LEDG-1960 não estiver disponível em PRD:
+
+* manter D11 no protótipo como conteúdo preparado;
+* não publicar as fichas **Seguir** e **Deixar de seguir** como instruções do comportamento actual;
+* se for necessário documentar urgentemente o PRD actual, criar uma versão explicitamente identificada como comportamento actual com **Adicionar aos favoritos/Remover dos favoritos**, sem prometer notificações associadas;
+* não afirmar que seguir um conteúdo gera notificações de actualizações.
+
+### Conjunto mínimo de testes PRD após evolução
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Abrir Organização, Conjunto de Dados, Reutilização e API autenticado | A acção é apresentada como **Seguir** nos quatro tipos |
+| 2 | Seleccionar Seguir e reabrir o conteúdo | A relação persiste e a acção passa a **Deixar de seguir** |
+| 3 | Seleccionar Deixar de seguir | A relação termina e **Seguir** volta a estar disponível |
+| 4 | Tentar a acção sem autenticação | É apresentada a necessidade de autenticação conforme implementação real |
+| 5 | Consultar área de Notificações com eventos existentes | Conteúdo, ligação, estado lido/não lido e destino correspondem ao evento |
+| 6 | Validar evento de Harvester | A ligação encaminha para a fonte e marcar como lido não executa aprovação/rejeição |
+| 7 | Quando LEDG-2305 definir eventos de seguimento, provocar um evento notificável | Apenas destinatários e canais definidos na matriz recebem o aviso |
+| 8 | Operar acções e notificações por teclado | Foco, nomes acessíveis, estados e mensagens são perceptíveis |
+
+### Estado D11
+
+**Por confirmar em PRD para publicação como comportamento actual.**
+
+O principal bloqueio não é falta de definição conceptual. É a diferença entre a terminologia/integração alvo e o que PRD apresenta hoje.
+
+## 14. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -758,15 +875,18 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 14. Prioridade de revisão profunda
+## 15. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D04, D05, D06, D07, D08, D10 e CM.
+Revisões profundas concluídas: D04, D05, D06, D07, D08, D10, D11 e CM.
 
 Próxima vaga prioritária:
 
-1. D11, Seguir conteúdos e notificações
+1. D02, Organizações e permissões
+2. D09, Reutilizações
+3. D12, Discussões e comunidade
+4. D13, Perfil e actividade
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -783,7 +903,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 15. Critério para marcar um guia como Validado
+## 16. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -795,6 +915,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 16. Próxima acção
+## 17. Próxima acção
 
-Iniciar revisão profunda de D11, Seguir conteúdos e notificações. D10 já foi revisto e permanece parcialmente validado, com a infraestrutura pública confirmada em PRD.
+Iniciar revisão profunda de D02, Organizações e permissões. D11 já foi revisto e fica Por confirmar em PRD enquanto a terminologia e a integração de notificações previstas na LEDG-1960/2305 não estiverem disponíveis.

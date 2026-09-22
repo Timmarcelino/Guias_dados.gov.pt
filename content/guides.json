@@ -129,7 +129,7 @@
         "example": "Para encontrar a Agência para a Reforma Tecnológica do Estado, pesquise pelo nome ou por ARTE.",
         "tip": "Antes de criar uma organização, confirme se a entidade já está registada.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Integrar uma organização."
       },
       {
@@ -145,7 +145,7 @@
         "example": "A Ana envia um pedido para colaborar com uma entidade. Se a iniciativa partir da entidade, a Ana responde ao convite recebido.",
         "tip": "O pedido de adesão é tratado por quem gere a organização. O convite deve ser aceite ou recusado pela pessoa convidada.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Criar uma organização."
       },
       {
@@ -162,7 +162,7 @@
         "example": "Ao registar um município, use a designação oficial e uma descrição curta da sua actividade.",
         "tip": "Se encontrar a entidade na pesquisa inicial, utilize o percurso Integrar uma organização.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Gerir pedidos e membros."
       },
       {
@@ -179,7 +179,7 @@
         "example": "Uma administradora aceita um pedido de adesão e confirma o papel que a pessoa terá na equipa.",
         "tip": "Antes de remover ou alterar o papel de um administrador, assegure que outra pessoa mantém a administração da organização.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Editar uma organização."
       },
       {
@@ -196,7 +196,7 @@
         "example": "Se o website institucional mudou, actualize esse campo e confirme o resultado no perfil público.",
         "tip": "A gestão de emblemas tem uma permissão própria. Se a gravação falhar, registe a acção e a mensagem apresentada ao pedir apoio.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Emblemas da organização."
       },
       {
@@ -212,7 +212,7 @@
         "example": "Uma pessoa consulta os emblemas de uma entidade antes de explorar os dados que publica.",
         "tip": "Pertencer à organização, mesmo como administrador da entidade, não dá acesso à gestão de emblemas.",
         "table": null,
-        "media": "Captura do percurso da organização, com dados de demonstração e permissões validadas em TST.",
+        "media": "Captura do percurso da organização com dados fictícios, sem expor informação pessoal ou administrativa sensível.",
         "next": "Encontrar uma organização."
       }
     ]
@@ -1012,7 +1012,7 @@
         "example": "Uma pessoa pesquisa reutilizações sobre mobilidade e abre uma publicação para conhecer o trabalho desenvolvido.",
         "tip": "Se não encontrar resultados, reveja os critérios antes de concluir que não existe uma publicação relevante.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "A tarefa seguinte deste guia."
       },
       {
@@ -1029,7 +1029,7 @@
         "example": "Uma equipa descreve uma aplicação de consulta de transportes e indica o seu endereço e produtor.",
         "tip": "Seleccionar uma palavra-chave nova não a guarda por si só. A persistência depende da gravação do conteúdo ao avançar.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "A tarefa seguinte deste guia."
       },
       {
@@ -1045,7 +1045,7 @@
         "example": "Uma pessoa selecciona dois Conjuntos de Dados do portal usados numa análise.",
         "tip": "Use a pesquisa para conjuntos deste portal. O campo de ligação externa destina-se a dados de outros portais.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "A tarefa seguinte deste guia."
       },
       {
@@ -1061,7 +1061,7 @@
         "example": "Uma equipa mantém o rascunho para rever a descrição antes de publicar.",
         "tip": "Avançar entre passos não significa que o trabalho já esteja público. Confirme o estado antes de partilhar a publicação.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "A tarefa seguinte deste guia."
       },
       {
@@ -1078,7 +1078,7 @@
         "example": "Uma editora corrige o endereço de uma fonte externa e acrescenta uma descrição.",
         "tip": "Confirme a informação guardada, sobretudo quando remove ligações. A transferência de gestão tem um percurso próprio.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "A tarefa seguinte deste guia."
       },
       {
@@ -1095,7 +1095,7 @@
         "example": "Uma pessoa não consegue avançar porque seleccionou dados locais e uma ligação externa. Revê as fontes e mantém uma modalidade.",
         "tip": "Se precisar de alterar a responsabilidade e não encontrar essa acção no ecrã, consulte Ajuda e contactos.",
         "table": null,
-        "media": "Captura do percurso em TST com dados fictícios.",
+        "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
         "next": "Ajuda e contactos."
       }
     ],
@@ -1130,7 +1130,7 @@
         "example": "Uma organização prepara o endereço do seu catálogo e identifica as etiquetas dos dados que pretende integrar.",
         "tip": "Os tipos disponíveis dependem do ambiente. Não seleccione um tipo diferente apenas para contornar uma dificuldade no formulário.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Consultar e actualizar a configuração."
       },
       {
@@ -1147,7 +1147,7 @@
         "example": "Um administrador corrige a descrição da fonte. Um editor da mesma organização consulta essa informação sem a alterar.",
         "tip": "Uma opção desactivada pode corresponder às permissões do seu perfil. Confirme o contexto da organização antes de pedir apoio.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Configurar e rever filtros."
       },
       {
@@ -1164,7 +1164,7 @@
         "example": "Uma organização configura um filtro de etiqueta para seleccionar dados de mobilidade e revê os resultados apresentados.",
         "tip": "Não deduza como vários filtros se combinam. Confirme os resultados e a regra aplicável ao tipo de fonte.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Pré-visualizar os resultados."
       },
       {
@@ -1181,7 +1181,7 @@
         "example": "Um editor consulta os resultados da configuração guardada e comunica ao administrador que falta um grupo de dados esperado.",
         "tip": "A disponibilidade da acção depende da permissão sobre a fonte. Ter uma conta autenticada não concede, por si só, acesso a todas as pré-visualizações.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Consultar trabalhos e resultados."
       },
       {
@@ -1198,7 +1198,7 @@
         "example": "Um editor abre um trabalho e aumenta o número de linhas por página para rever os itens apresentados.",
         "tip": "Uma lista vazia não permite concluir que todos os dados foram integrados. Verifique o trabalho e a configuração antes de repetir a operação.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Aprovar ou rejeitar uma fonte, quando aplicável."
       },
       {
@@ -1215,7 +1215,7 @@
         "example": "Um administrador rejeita uma fonte e indica que o endereço precisa de ser corrigido.",
         "tip": "A aprovação da fonte e a execução do Harvester são operações distintas. Não interprete a aprovação como confirmação de importação dos dados.",
         "table": null,
-        "media": "Captura do percurso em ambiente validado, com fonte e organização fictícias.",
+        "media": "Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.",
         "next": "Consultar trabalhos e resultados."
       }
     ]
@@ -1239,7 +1239,7 @@
         "example": "Uma pessoa segue um conjunto de dados sobre transportes que utiliza regularmente.",
         "tip": "Seguir um conteúdo não dá permissão para o editar nem para integrar a organização que o publica.",
         "table": null,
-        "media": "Captura do percurso validado em TST, com conteúdo de demonstração e sem dados pessoais reais.",
+        "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Deixar de seguir um conteúdo."
       },
       {
@@ -1254,7 +1254,7 @@
         "example": "Uma pessoa deixa de seguir uma reutilização que já não acompanha.",
         "tip": "Esta acção termina o seguimento do conteúdo. Não deve ser usada como confirmação de que todos os avisos relativos à sua actividade foram desactivados.",
         "table": null,
-        "media": "Captura do percurso validado em TST, com conteúdo de demonstração e sem dados pessoais reais.",
+        "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Consultar uma notificação."
       },
       {
@@ -1270,7 +1270,7 @@
         "example": "Um administrador abre um aviso sobre uma fonte de harvesting e consulta o detalhe antes de decidir.",
         "tip": "O tipo de aviso depende do evento e do seu papel. Seguir um conteúdo não garante um aviso para todas as alterações.",
         "table": null,
-        "media": "Captura do percurso validado em TST, com conteúdo de demonstração e sem dados pessoais reais.",
+        "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Tratar um aviso de validação de harvester."
       },
       {
@@ -1287,7 +1287,7 @@
         "example": "Um administrador recebe um pedido de validação, consulta a fonte e regista a decisão no seu detalhe.",
         "tip": "Marcar um aviso como lido, quando essa opção está disponível, não aprova nem rejeita a fonte.",
         "table": null,
-        "media": "Captura do percurso validado em TST, com conteúdo de demonstração e sem dados pessoais reais.",
+        "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Resolver dificuldades com notificações."
       },
       {
@@ -1303,7 +1303,7 @@
         "example": "Uma ligação recebida não abre o detalhe. A pessoa localiza o conteúdo no portal e confirma a informação antes de agir.",
         "tip": "Não partilhe palavras-passe ou chaves da API ao reportar uma dificuldade.",
         "table": null,
-        "media": "Captura do percurso validado em TST, com conteúdo de demonstração e sem dados pessoais reais.",
+        "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Consultar uma notificação."
       }
     ]
@@ -1327,7 +1327,7 @@
         "example": "Uma pessoa consulta as discussões de um Conjunto de Dados para perceber o significado de uma coluna.",
         "tip": "Se não houver discussões, a área apresenta o estado correspondente. O detalhe de uma API também dispõe de um separador Discussões.",
         "table": null,
-        "media": "Captura do percurso validado em TST com uma discussão fictícia, sem dados pessoais reais.",
+        "media": "Captura do percurso de discussões com conteúdo fictício, sem dados pessoais reais.",
         "next": "Iniciar uma discussão."
       },
       {
@@ -1344,7 +1344,7 @@
         "example": "Uma utilizadora pergunta qual é a unidade de medida usada num recurso do Conjunto de Dados.",
         "tip": "Indique o recurso ou campo relevante. Evite publicar credenciais ou dados pessoais desnecessários.",
         "table": null,
-        "media": "Captura do percurso validado em TST com uma discussão fictícia, sem dados pessoais reais.",
+        "media": "Captura do percurso de discussões com conteúdo fictício, sem dados pessoais reais.",
         "next": "Responder a uma discussão."
       },
       {
@@ -1360,7 +1360,7 @@
         "example": "Um editor responde à pergunta sobre a unidade de medida e indica onde consultar a descrição do recurso.",
         "tip": "Uma ligação recebida por email pode abrir o Conjunto de Dados no separador Discussões. Confirme sempre o conteúdo e a conversa antes de responder.",
         "table": null,
-        "media": "Captura do percurso validado em TST com uma discussão fictícia, sem dados pessoais reais.",
+        "media": "Captura do percurso de discussões com conteúdo fictício, sem dados pessoais reais.",
         "next": "Consultar discussões da organização."
       },
       {
@@ -1376,7 +1376,7 @@
         "example": "Uma editora selecciona a sua organização e abre uma discussão relacionada com os dados publicados pela entidade.",
         "tip": "Confirme a organização seleccionada. A presença de uma área de gestão não permite presumir direitos de edição, encerramento ou eliminação de todas as discussões.",
         "table": null,
-        "media": "Captura do percurso validado em TST com uma discussão fictícia, sem dados pessoais reais.",
+        "media": "Captura do percurso de discussões com conteúdo fictício, sem dados pessoais reais.",
         "next": "Resolver dificuldades nas discussões."
       },
       {
@@ -1393,7 +1393,7 @@
         "example": "Uma pessoa recebe uma ligação que não abre a conversa. Localiza o Conjunto de Dados no portal e consulta as suas discussões.",
         "tip": "Descreva o resultado esperado e o observado. Partilhe apenas a informação necessária para reproduzir a dificuldade.",
         "table": null,
-        "media": "Captura do percurso validado em TST com uma discussão fictícia, sem dados pessoais reais.",
+        "media": "Captura do percurso de discussões com conteúdo fictício, sem dados pessoais reais.",
         "next": "Ajuda e contactos."
       }
     ]

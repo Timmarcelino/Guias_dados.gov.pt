@@ -8,6 +8,14 @@ Este documento controla a validação funcional e editorial dos 15 guias e 92 fi
 
 Não substitui Requirements, User Stories, critérios de aceitação, Figma aprovado, Jira, documentação técnica nem evidência de testes.
 
+### Regra de fallback para informação não confirmada
+
+Quando uma regra, permissão, validação, mensagem, limite ou comportamento não estiver confirmado por fonte funcional aprovada, o guia deve usar apenas o comportamento observado e reproduzível em **PRD**.
+
+Esse comportamento deve ser tratado como **Implementação actual**, não como Requisito.
+
+Não antecipar backlog, Figma futuro, proposta funcional ou comportamento esperado.
+
 Os estados usados são:
 
 * **Validado no âmbito actual**: o conteúdo principal está suportado pelas fontes consultadas para o comportamento actualmente documentado. Pode continuar a exigir revisão visual, acessibilidade ou nova validação quando a funcionalidade evoluir.
@@ -101,7 +109,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D02 | Organizações e permissões | 6 | **Parcialmente validado** | Fluxos base de consulta, adesão, membros e organização estão estruturados | Confirmar matriz final de perfis/permissões, gestão de emblemas e limites das acções por membro, administrador da organização e administrador do portal |
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
-| D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; gestão de recursos consolidada | Confirmar limites de upload, elegibilidade de preview, comportamento de substituição/herança no contexto actual e executar regressão de acesso/download; LEDG-2251 está Done mas a regressão continua necessária |
+| D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
 | D06 | Explorador de dados | 8 | **Parcialmente validado** | Implementação documentada com quatro vistas; LEDG-2199 em READY FOR UAT; LEDG-2188 Done | Harmonizar requisito, implementação e UX/UI final; validar em UAT filtros, paginação, ordenação, exportações, URL persistente, estados vazios, erros e acessibilidade |
 | D07 | Qualidade e validação de dados | 6 | **Parcialmente validado** | Princípios do Validador consolidados; LEDG-2031 em READY FOR TESTING | Fechar contrato de não conformidades, aviso perante não conformidade, paginação/exportação/retenção do histórico, concorrência e volumetria |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Conteúdo v2 inclui referência API, X-API-KEY, OpenAPI e registo de APIs | Resolver divergência entre fonte PDF/estática e fonte dinâmica; revalidar gating por organização/emblema, operações de escrita e terminologia da referência actual |
@@ -174,7 +182,69 @@ O conteúdo funcional das sete fichas está suficientemente sustentado para cont
 3. corrigir ou condicionar no guia as afirmações sobre licença inicial e ponto de contacto;
 4. validar mensagens, terminologia e interface final contra o Figma/implementação aplicável.
 
-## 7. Decisões e lacunas transversais
+## 7. Revisão profunda D05, Recursos de um Conjunto de Dados
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+As seis fichas de D05 estão, no essencial, alinhadas com a LEDG-2047. A revisão independente do Conselho não identificou conflito funcional estrutural; concentrou a validação PRD nos pontos em que a evidência ainda não fecha o comportamento actual.
+
+### Confirmado pela LEDG-2047
+
+* Editor ou Administrador autorizado pode gerir recursos;
+* cada ficheiro aceite num carregamento múltiplo origina um recurso autónomo;
+* título, tipo e formato são obrigatórios e a descrição é opcional;
+* tamanho e tipo MIME são preenchidos automaticamente quando disponíveis;
+* recurso remoto utiliza URL e permanece Não aplicável para validação;
+* alterar apenas metadados não inicia nem invalida a validação aplicável ao conteúdo vigente;
+* em Conjunto de Dados Público, alterações concluídas com sucesso produzem efeito imediato;
+* na substituição, Herdar modelo de validação é opcional e começa desmarcado;
+* sem herança, recurso elegível fica Sem modelo;
+* com herança, conserva a versão/configuração do modelo e fica Por validar;
+* conteúdo não elegível fica Não aplicável;
+* uma substituição falhada preserva o ficheiro e a informação vigente;
+* remover exige confirmação;
+* remover o último recurso não altera automaticamente o estado do Conjunto de Dados.
+
+### Implementação observada em PRD
+
+A evidência da LEDG-1997 regista promoção para produção do limite geral de **800 MB** e aumento do limite de XML para **100 MB**.
+
+Em 22/09/2026, a API pública de PRD foi consultada e confirmou, entre outros elementos:
+
+* existência de um recurso `gpkg.zip` com aproximadamente 670 MB;
+* exposição de `filesize`, `mime`, `description`, `format` e tipo de recurso;
+* recursos remotos WMS/WFS coexistem com ficheiros carregados;
+* o frontend público disponibiliza a estrutura de separadores `Pré-visualização`, `Estrutura de dados`, `Metadados` e `Downloads`;
+* o frontend de PRD contém a experiência textual `Explore os dados`.
+
+Estas observações confirmam implementação existente, mas não substituem um teste autenticado às operações de gestão.
+
+### Por confirmar em PRD
+
+1. **SVG e HTML**: a evidência consultada não prova que ambos sejam actualmente rejeitados em PRD. A afirmação não deve ser publicada como facto até teste.
+2. **Formatos de pré-visualização**: a ficha enumera CSV, TSV, XLS, XLSX e ODS. A LEDG-2254 alterou o preview para a Tabular API, pelo que a lista deve ser verificada no comportamento actual de PRD antes de ser fechada.
+3. **Explorar dados**: existe implementação textual no frontend, mas a disponibilidade efectiva depende do recurso. Confirmar apresentação e navegação num recurso elegível.
+4. **Integridade após upload/substituição**: a LEDG-2149 registou corrupção intermitente em PRD para ficheiros superiores a 1 MB. O estado Done não constitui, por si só, prova de regressão bem-sucedida.
+
+### Conjunto mínimo de testes PRD pendentes
+
+| Prioridade | Teste | Resultado observável |
+| --- | --- | --- |
+| 1 | Carregar e substituir um ficheiro superior a 1 MB e comparar o conteúdo descarregado com o original | O ficheiro descarregado corresponde integralmente ao original e não apresenta corrupção |
+| 2 | Tentar adicionar um ficheiro SVG e um HTML | Registar exactamente se PRD aceita ou rejeita cada formato e a mensagem apresentada |
+| 3 | Abrir recursos CSV, TSV, XLS, XLSX e ODS disponíveis em PRD | Registar em quais formatos a Pré-visualização é efectivamente apresentada e funcional |
+| 4 | Abrir um recurso elegível para exploração | Confirmar se `Explore os dados` é apresentado e se conduz ao Explorador correcto |
+| 5 | Verificar recurso sem validação conforme | Confirmar que o acesso/download permanece disponível, quando aplicável |
+
+### Estado D05
+
+**Parcialmente validado.**
+
+Não é necessário revalidar toda a gestão de recursos. O fecho fica concentrado nos cinco testes PRD acima e na UAT da LEDG-2047.
+
+## 8. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -184,16 +254,14 @@ O Validador é opcional, explícito, assíncrono e não bloqueante para publica�
 
 Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 
-* recuperação e expurgo de Conjuntos de Dados eliminados;
-* concorrência entre transferência, arquivo, eliminação e recuperação;
-* permissões finais da transferência;
+* comportamento concorrente residual entre operações de ciclo de vida e pedidos de transferência, apenas onde não estiver coberto pelas LEDG-2046/2048;
 * contratos das não conformidades e histórico do Validador;
 * regras finais de Catálogo de Modelos;
 * consistência entre fonte editorial dinâmica, estática e PDF;
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 8. Prioridade de revisão profunda
+## 9. Prioridade de revisão profunda
 
 ### Prioridade 1
 
@@ -226,7 +294,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 9. Critério para marcar um guia como Validado
+## 10. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -238,6 +306,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 10. Próxima acção
+## 11. Próxima acção
 
-Iniciar revisão profunda de D05, Recursos de um Conjunto de Dados. D04 já recebeu a primeira revisão profunda e permanece parcialmente validado até UAT e clarificação da LEDG-2175.
+Iniciar revisão profunda de D07, Qualidade e validação de dados. D05 já recebeu revisão profunda e permanece parcialmente validado apenas nos pontos PRD explicitamente listados.

@@ -106,7 +106,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | Código interno | Guia | Fichas | Estado | Evidência principal | Pendências para fecho |
 | --- | --- | ---: | --- | --- | --- |
 | D01 | Autenticação e acesso à conta | 6 | **Validado no âmbito actual** | Conteúdo anteriormente revisto com comportamento alvo validado em TST | Revalidar após alterações futuras de consolidação de contas ou eventual alteração do login por email e palavra-passe |
-| D02 | Organizações e permissões | 6 | **Parcialmente validado** | Fluxos base de consulta, adesão, membros e organização estão estruturados | Confirmar matriz final de perfis/permissões, gestão de emblemas e limites das acções por membro, administrador da organização e administrador do portal |
+| D02 | Organizações e permissões | 6 | **Parcialmente validado** | Pesquisa pública por nome/sigla e emblemas confirmados em PRD; LEDG-1941/1943/1919 suportam edição e gestão de emblemas; fluxos autenticados de membros estão em evolução | Consulta pública sustentada; criar/integrar/gerir membros/editar e emblemas administrativos devem ser confirmados em PRD autenticado, sem antecipar LEDG-2468/2483 |
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
@@ -858,7 +858,98 @@ Enquanto a LEDG-1960 não estiver disponível em PRD:
 
 O principal bloqueio não é falta de definição conceptual. É a diferença entre a terminologia/integração alvo e o que PRD apresenta hoje.
 
-## 14. Decisões e lacunas transversais
+## 14. Revisão profunda D02, Organizações e permissões
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D02 contém uma componente pública claramente observável em PRD e uma componente administrativa que ainda exige validação autenticada.
+
+### Implementação actual confirmada em PRD público
+
+A pesquisa de organizações por sigla foi confirmada através do endpoint de sugestões.
+
+A pesquisa por `ARTE` devolveu como primeiro resultado:
+
+**Agência para a Reforma Tecnológica do Estado**, acrónimo `arte`.
+
+Isto suporta a ficha **Encontrar uma organização** e a orientação para pesquisar por nome ou sigla.
+
+Os perfis públicos de organizações apresentam emblemas. Num perfil real foi observada a apresentação do emblema **Serviço público**.
+
+As LEDG-1919 e LEDG-1943 já tinham consolidado a visibilidade pública dos emblemas e a regra de que a gestão de emblemas pertence ao super administrador.
+
+### Evidência de implementação administrativa
+
+A LEDG-1941 confirmou a existência da acção de edição para super administrador ou membro da organização.
+
+A LEDG-1943 define que apenas o super administrador pode visualizar e alterar a secção administrativa de Emblemas; um administrador da organização não recebe essa capacidade apenas por pertencer à entidade.
+
+A LEDG-1680 consolidou que o website da organização não é obrigatório. O D02 já usa uma formulação condicional e não o apresenta como obrigatório.
+
+### Gestão de membros: evolução ainda aberta
+
+A LEDG-2468 está **READY FOR TESTING** e procura impedir que uma organização fique sem administrador através da remoção ou despromoção do último administrador nos endpoints de membros.
+
+A própria evidência do ticket regista que o teste funcional em TST ficou bloqueado e que caminhos relacionados com eliminação da conta ainda exigem decisão/validação.
+
+Portanto, o Manual **não deve afirmar** que o portal impede actualmente uma organização de ficar sem administrador.
+
+A recomendação editorial do D02:
+
+> antes de remover ou alterar o papel de um administrador, assegurar que outra pessoa mantém a administração
+
+continua adequada como precaução operacional e não deve ser reescrita como validação automática do sistema.
+
+### Pedidos de adesão e convites
+
+A LEDG-2483 encontra-se **To Do** e identifica que o ecrã administrativo ainda mistura:
+
+* pedidos de adesão;
+* convites pendentes.
+
+O backend já distingue `request` e `invitation`, mas a interface administrativa descrita no ticket ainda necessita de separar as acções.
+
+Assim:
+
+* o utilizador convidado pode continuar a aceitar ou recusar o seu convite conforme o fluxo aplicável;
+* não documentar como comportamento actual que o administrador da organização consegue tratar um convite com as mesmas acções dos pedidos de adesão;
+* a ficha **Gerir pedidos e membros** deve ser validada em PRD antes de publicação.
+
+### Impacto nas seis fichas
+
+| Ficha | Estado |
+| --- | --- |
+| Encontrar uma organização | Sustentada pelo PRD público |
+| Integrar uma organização | Parcialmente sustentada; validar pedido, convite e respectivas decisões em sessão PRD |
+| Criar uma organização | Fluxo existente, mas validar formulário, campos e resultado em sessão PRD |
+| Gerir pedidos e membros | Pendente de validação PRD e afectada pelas LEDG-2468/2483 |
+| Editar uma organização | Implementação suportada; confirmar permissões e campos em PRD autenticado |
+| Emblemas da organização | Consulta pública sustentada; gestão por super administrador requer validação PRD autenticada |
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Pedir adesão a uma organização | Pedido é criado, estado/feedback ficam visíveis e não há atribuição automática de papel |
+| 2 | Responder a um convite como destinatário | Confirmar acções reais disponíveis e estado resultante |
+| 3 | Criar organização | Confirmar campos obrigatórios/opcionais, mensagens e resultado actual |
+| 4 | Abrir Membros como administrador da organização | Confirmar pedidos, convites e acções efectivamente disponíveis em PRD |
+| 5 | Aceitar/recusar pedido de adesão | Confirmar mudança de estado e criação do membro/papel aplicável |
+| 6 | Adicionar, alterar papel e remover membro | Confirmar permissões, confirmação e resultado persistido |
+| 7 | Tentar remover/despromover o último administrador | Registar o comportamento real de PRD sem antecipar a LEDG-2468 |
+| 8 | Editar perfil como membro/admin da organização | Confirmar campos editáveis e presença da acção Ver perfil público |
+| 9 | Abrir edição como administrador da organização e super administrador | Confirmar que Emblemas só é gerível pelo perfil global autorizado |
+| 10 | Operar fluxos por teclado | Confirmar foco, labels, modais, erros e mensagens |
+
+### Estado D02
+
+**Parcialmente validado.**
+
+A consulta pública pode permanecer no Manual. As operações administrativas devem aguardar a validação PRD autenticada acima e não devem incorporar como actuais as correcções ainda em READY FOR TESTING ou To Do.
+
+## 15. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -875,18 +966,17 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 15. Prioridade de revisão profunda
+## 16. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D04, D05, D06, D07, D08, D10, D11 e CM.
+Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D10, D11 e CM.
 
 Próxima vaga prioritária:
 
-1. D02, Organizações e permissões
-2. D09, Reutilizações
-3. D12, Discussões e comunidade
-4. D13, Perfil e actividade
+1. D09, Reutilizações
+2. D12, Discussões e comunidade
+3. D13, Perfil e actividade
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -903,7 +993,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 16. Critério para marcar um guia como Validado
+## 17. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -915,6 +1005,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 17. Próxima acção
+## 18. Próxima acção
 
-Iniciar revisão profunda de D02, Organizações e permissões. D11 já foi revisto e fica Por confirmar em PRD enquanto a terminologia e a integração de notificações previstas na LEDG-1960/2305 não estiverem disponíveis.
+Iniciar revisão profunda de D09, Reutilizações. D02 já foi revisto e permanece parcialmente validado, com a componente pública confirmada em PRD.

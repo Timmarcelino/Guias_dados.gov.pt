@@ -727,7 +727,9 @@ Foram acrescentados comentários de manutenção sem alteração intencional de 
 * `8dab26e`: extensibilidade e contratos do validador de consistência;
 * `fa8d303`: fonte, determinismo, compatibilidade e extensão do gerador PDF;
 * `4626826`: natureza read-only do guardrail de consistência;
-* `11c4e4c`: concorrência e rebase seguro no workflow PDF.
+* `11c4e4c`: concorrência e rebase seguro no workflow PDF;
+* `fabf3bd`: contrato de contagens 15/92/115 centralizado no validador, evitando números mágicos dispersos;
+* `df614ec`: pesquisa reformatada e comentada, preservando normalização, segurança por `textContent` e anúncio acessível.
 
 Os comentários documentam especialmente:
 
@@ -746,7 +748,7 @@ Execuções verificadas:
 * **pages build and deployment**: sucesso no estado posterior da branch;
 * o workflow PDF publicou commits automáticos de sincronização sem perder os commits concorrentes, confirmando novamente a protecção por rebase.
 
-Estado técnico desta frente: **verde**.
+Estado técnico desta frente: **verde**. O guardrail voltou a passar após `fabf3bd` e `df614ec`.
 
 ### Evidência Jira actualizada
 
@@ -771,7 +773,7 @@ Estes estados são evidência de evolução do backlog. Não substituem o compor
 
 ### Disciplina de evidência PRD
 
-O `docs/PRD_TEST_PLAN.md` passou a exigir, por execução, ambiente, perfil funcional, área/conteúdo observado, resultado, divergência, evidência e decisão. Não devem ser guardados dados pessoais desnecessários.
+O `docs/PRD_TEST_PLAN.md` passou a exigir, por execução, ambiente, perfil funcional, área/conteúdo observado, resultado, divergência, evidência e decisão (`ee06017`). Não devem ser guardados dados pessoais desnecessários.
 
 A fila mínima mantém-se:
 

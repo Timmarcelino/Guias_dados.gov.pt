@@ -112,7 +112,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
 | D06 | Explorador de dados | 8 | **Por confirmar em PRD** | LEDG-2276 e LEDG-2199 em READY FOR UAT; documentação técnica consistente; frontend de produção revisto em 22/09/2026 mantém a acção `Explore os dados` oculta no detalhe do recurso | Não publicar como comportamento actual até a entrada no Explorador estar disponível e validada em PRD; distinguir da Pré-visualização simples que já existe no Frontoffice |
 | D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
-| D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Conteúdo v2 inclui referência API, X-API-KEY, OpenAPI e registo de APIs | Resolver divergência entre fonte PDF/estática e fonte dinâmica; revalidar gating por organização/emblema, operações de escrita e terminologia da referência actual |
+| D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
 | D10 | Harvester | 6 | **Parcialmente validado** | Conteúdo cobre preparação, configuração, filtros, preview, trabalhos e aprovação | Confirmar matriz actual de perfis, campos editáveis, preview, aprovação/rejeição e comportamento por ambiente; manter alinhamento com testes PPR |
 | D11 | Seguir conteúdos e notificações | 5 | **Parcialmente validado** | LEDG-2289 Done e decisão de uniformização para `Seguir` | Validar matriz final de eventos/notificações, disponibilidade por tipo de conteúdo e permissões das acções associadas |
@@ -530,7 +530,121 @@ Não utilizar a existência da Pré-visualização como prova de disponibilidade
 
 O conteúdo deve permanecer no protótipo porque está alinhado com a LEDG-2276, mas não deve ser apresentado como funcionalidade actualmente disponível até a acção de entrada estar exposta e o conjunto mínimo acima ser validado em PRD.
 
-## 11. Decisões e lacunas transversais
+## 11. Revisão profunda D08, APIs e serviços de dados
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D08 combina dois domínios distintos:
+
+1. utilização pública da API do portal e consulta das APIs registadas;
+2. gestão autenticada de registos de APIs no Backoffice.
+
+A primeira parte foi validada directamente em PRD. A segunda tem forte evidência de implementação e tickets concluídos, mas requer observação autenticada em PRD segundo a regra de fallback deste projecto.
+
+### Implementação actual confirmada em PRD público
+
+Foram revistos:
+
+* `/pt/recursos/desenvolvimento/referencia-api`;
+* `/pt/recursos/desenvolvimento/tutorial-api`;
+* `/api/1/dataservices/`;
+* um registo público real de API no catálogo.
+
+O tutorial actual confirma explicitamente:
+
+* para operações de escrita, o utilizador deve autenticar-se e obter uma chave nas definições do perfil;
+* a chave é enviada no cabeçalho HTTP `X-API-KEY`;
+* as permissões sobre o recurso continuam a ser verificadas;
+* respostas paginadas fornecem `previous_page` e `next_page`;
+* estes campos ficam `null` quando não existe página nesse sentido;
+* modificações e eliminações através da API são definitivas;
+* não existe actualmente uma área de testes para experimentar essas alterações.
+
+A referência actual contém referências a Swagger e OpenAPI.
+
+### Catálogo público de APIs
+
+A API pública `/api/1/dataservices/` devolve, entre outros:
+
+* `base_api_url`;
+* `access_type`;
+* `business_documentation_url`;
+* `technical_documentation_url`;
+* `machine_documentation_url`;
+* relação com Conjuntos de Dados;
+* organização ou proprietário;
+* identificadores e URLs do registo;
+* datas de criação/modificação e metadados aplicáveis.
+
+Foi consultado um registo real, **AGIT Planner**, publicado por uma organização cujo payload público contém o emblema `public-service`, com URL base, tipo de acesso e três Conjuntos de Dados relacionados.
+
+O detalhe público apresenta a informação do registo e os conteúdos relacionados aplicáveis.
+
+### Fichas sustentadas pelo PRD público
+
+Podem ser mantidas, no âmbito actual:
+
+* **Escolher a API adequada**;
+* **Consultar a referência da API do portal**;
+* **Consultar uma API do catálogo**.
+
+A formulação deve continuar a evitar expor chaves reais ou sugerir que a data de actualização do registo prova actualização dos dados do serviço.
+
+### Gestão autenticada: evidência disponível
+
+O `main` actual do frontend filtra as organizações elegíveis para criação por emblema `public-service`.
+
+A interface contém mensagens que indicam que uma API só pode ser publicada em nome de organização com emblema **Serviço público**.
+
+O frontend actual também utiliza os tipos de acesso:
+
+* `open`;
+* `open_with_account`;
+* `restricted`.
+
+Tickets concluídos confirmam implementação para:
+
+* associação opcional de Conjuntos de Dados;
+* guardar como rascunho ou publicar;
+* edição de API;
+* tipos de acesso;
+* apresentação/gestão dos estados administrativos.
+
+Isto é **evidência de implementação**, mas não substitui o teste autenticado em PRD.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Aceder à criação com membro de organização com emblema Serviço público | A organização elegível é apresentada como produtor e o fluxo de criação pode avançar |
+| 2 | Aceder com utilizador sem organização elegível | A criação é impedida ou a ausência de produtor elegível é comunicada exactamente como PRD implementar |
+| 3 | Repetir a condição com Administrador do portal, quando aplicável | Confirmar se a mesma regra de produtor se aplica efectivamente ao perfil administrativo |
+| 4 | Criar com acesso Aberto, Aberto com conta e Restrito | Confirmar campos, valores guardados, validações e informação apresentada no detalhe |
+| 5 | Avançar sem associar Conjunto de Dados | Confirmar que a associação é efectivamente opcional |
+| 6 | Guardar como rascunho e publicar | Confirmar estados, mensagens e presença/ausência na área pública |
+| 7 | Editar descrição, URL base, documentação e associações | Confirmar persistência das alterações e comportamento ao remover uma associação |
+| 8 | Confirmar listagem administrativa após alterações | Validar pesquisa, estado e informação actualmente exposta, sem antecipar itens ainda em To Do/In Review |
+| 9 | Executar criação/edição apenas por teclado | Confirmar ordem de foco, labels, erros, controlos e mensagens no contexto real |
+
+### Pontos que não devem ser antecipados
+
+A LEDG-2026 permanece To Do e a LEDG-2379 está In Review. Melhorias de novas colunas, filtros e implementação de endpoints das listagens administrativas não devem ser descritas como concluídas no Manual até PRD as apresentar.
+
+### Divergência editorial
+
+A fonte estática/PDF contém uma revisão mais recente da ficha de referência API do que a fonte dinâmica antiga.
+
+A versão a preservar deve ser a que corresponde ao conteúdo confirmado no PRD actual, incluindo `X-API-KEY`, paginação, OpenAPI e o aviso sobre operações definitivas.
+
+### Estado D08
+
+**Parcialmente validado.**
+
+As três fichas de consulta pública estão suportadas pelo PRD actual. As três fichas de gestão autenticada ficam pendentes apenas do conjunto mínimo de testes PRD acima.
+
+## 12. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -547,17 +661,16 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 12. Prioridade de revisão profunda
+## 13. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D04, D05, D06, D07 e CM.
+Revisões profundas concluídas: D04, D05, D06, D07, D08 e CM.
 
 Próxima vaga prioritária:
 
-1. D08, APIs e serviços de dados
-2. D10, Harvester
-3. D11, Seguir conteúdos e notificações
+1. D10, Harvester
+2. D11, Seguir conteúdos e notificações
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -574,7 +687,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 13. Critério para marcar um guia como Validado
+## 14. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -586,6 +699,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 14. Próxima acção
+## 15. Próxima acção
 
-Iniciar revisão profunda de D08, APIs e serviços de dados. D06 já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.
+Iniciar revisão profunda de D10, Harvester. D08 já foi revisto e permanece parcialmente validado, com a componente pública confirmada em PRD.

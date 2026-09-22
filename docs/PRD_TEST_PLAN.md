@@ -91,24 +91,22 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 | 6 | Abrir Transferir sem submeter | Nenhum | Confirmar destinatários possíveis, comentário e estado inicial do pedido |
 | 7 | Navegar pelos fluxos com teclado | Tab, Shift+Tab, Esc | Foco, labels, estados e modais são operáveis |
 
-### PRD-R03, Recursos e pré-visualização
+### PRD-R03, Recursos e pré-visualização residual
 
-**Rastreabilidade:** D05; LEDG-2047, LEDG-1997, LEDG-2102, LEDG-2051, LEDG-2254.
+**Rastreabilidade:** D05.
 
-**Summary:** confirmar comportamento actual de consulta, preview e exploração dos recursos.
+**Summary:** executar apenas a observação residual que ainda não foi fechada por evidência pública.
 
 **Preconditions:**
 
-* sessão PRD autenticada quando necessária;
-* recursos existentes em formatos CSV, TSV, XLS, XLSX e ODS, quando disponíveis.
+* recurso TSV público existente, se vier a estar disponível.
 
 | Step | Action | Input | Expected Result |
 | ---: | --- | --- | --- |
-| 1 | Abrir recurso CSV | Recurso existente | Registar separadores e pré-visualização efectivamente disponíveis |
-| 2 | Repetir para TSV, XLS, XLSX e ODS | Recursos existentes | Registar em quais formatos a Pré-visualização é apresentada e funcional |
-| 3 | Procurar Explorar dados num recurso elegível | Recurso elegível | Registar se a acção é apresentada e qual destino abre |
-| 4 | Abrir recurso sem validação conforme | Recurso existente | Confirmar que acesso/download permanece disponível quando aplicável |
-| 5 | Navegar pelos controlos com teclado | Tab, Shift+Tab, Enter | Foco e controlos são operáveis |
+| 1 | Procurar recurso TSV real em PRD | Nenhum | Se não existir recurso adequado, manter apenas suporte técnico confirmado e não inventar resultado de preview |
+| 2 | Quando existir recurso TSV, abrir a Pré-visualização | Recurso TSV | Registar se o proxy/UI apresenta dados tabulares correctamente |
+
+**Nota:** CSV, XLS, XLSX e ODS já foram validados directamente pelos proxies de PRD. SVG/HTML já foram confirmados como ausentes da lista de extensões permitidas. A integridade após upload/substituição pertence à Fase B porque exige escrita.
 
 ### PRD-R04, APIs e serviços de dados
 
@@ -231,11 +229,11 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 | 4 | Confirmar eventos de conteúdos seguidos definidos pela matriz | Evento notificável disponível | Só os eventos/canais efectivamente implementados são documentados |
 | 5 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes e estados são perceptíveis |
 
-### PRD-R10, Explorador após integração
+### PRD-R10, Explorador, suspenso até integração
 
 **Rastreabilidade:** D06; LEDG-2199, LEDG-2276.
 
-**Summary:** confirmar se o novo Explorador já está integrado em PRD.
+**Summary:** não executar enquanto o CTA/rota do Explorador continuar ausente do Frontoffice público de PRD. Reabrir apenas após evidência de integração.
 
 **Preconditions:**
 

@@ -255,7 +255,7 @@ def main() -> int:
         route_files.append((WEB_ROOT / slug(theme) / "index.html", theme_url))
         for code in codes:
             guide = by_code[code]
-            guide_path = f"{theme_path}{slug(guide['title'])}/"
+            guide_path = f"{theme_path}{guide_slug(code, guide['title'])}/"
             guide_url = SITE_BASE + guide_path
             expected_sitemap.add(guide_url)
             guide_file = WEB_ROOT / slug(theme) / guide_slug(code, guide["title"]) / "index.html"

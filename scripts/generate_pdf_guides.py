@@ -32,10 +32,15 @@ def slug(s:str)->str:
     s = re.sub(r'[^A-Za-z0-9]+','-',s).strip('-')
     return s
 
+GUIDE_SLUG_OVERRIDES = {'D11': 'Seguir-conteudos-e-notificacoes'}
+PDF_SLUG_OVERRIDES = {'D11': 'seguir-conteudos-e-notificacoes'}
+
 def esc(s): return html.escape(str(s or ''), quote=True)
 
 def theme_url(theme): return BASE_WEB + slug(theme) + '/'
-def guide_url(g): return theme_url(THEME_OF[g['code']]) + slug(g['title']) + '/'
+def guide_slug(g): return GUIDE_SLUG_OVERRIDES.get(g['code'], slug(g['title']))
+def pdf_slug(g): return PDF_SLUG_OVERRIDES.get(g['code'], slug(g['title']).lower())
+def guide_url(g): return theme_url(THEME_OF[g['code']]) + guide_slug(g) + '/'
 
 def icon(name, size=28):
     paths = {

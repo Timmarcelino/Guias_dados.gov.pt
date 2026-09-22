@@ -653,3 +653,15 @@ Após redução do plano, permanecem activos apenas:
 PRD-R03 é residual público para TSV. PRD-R08, PRD-R09 e PRD-R10 ficam suspensos até existir integração observável em PRD.
 
 Esta fila representa o mínimo necessário de leitura autenticada antes de decidir se algum dos guias parciais pode subir para **Validado no âmbito actual**.
+
+## Revalidação D01, autenticação
+
+D01 foi revisto novamente segundo a regra PRD-first.
+
+* PRD público confirma CMD, eIDAS, E-mail e palavra-passe e recuperação;
+* E-mail e palavra-passe é apresentado para utilizadores antigos;
+* mecanismo exacto de migração/associação não é fixado no Manual, porque LEDG-2357 permanece READY FOR UAT e o fluxo continua em evolução;
+* a antiga ficha `Concluir o primeiro acesso e confirmar o email` passou a `Concluir o primeiro acesso quando solicitado`, mantendo a URL histórica;
+* referências editoriais a comportamento alvo validado em TST foram removidas.
+
+Estado D01: **Validado no âmbito actual**, com mecanismo exacto de migração fora do detalhe documental até nova evidência PRD.

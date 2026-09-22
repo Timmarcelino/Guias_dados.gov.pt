@@ -117,7 +117,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
 | D11 | Seguir conteúdos e notificações | 5 | **Por confirmar em PRD** | LEDG-2289 concluiu a análise e a direcção terminológica; LEDG-1960 continua To Do e LEDG-2305 In Progress; PRD ainda apresenta `Adicionar aos favoritos`/`Remover dos favoritos` nos quatro tipos de conteúdo | Não publicar `Seguir` como comportamento actual enquanto PRD não o apresentar; notificações de conteúdos seguidos também não estão demonstradas como implementadas |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
-| D13 | Perfil e actividade | 5 | **Parcialmente validado** | Percursos básicos de perfil, conteúdos e actividade estão definidos | Revalidar campos públicos, fotografia, actividade e impacto da evolução da autenticação/conta |
+| D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 confirma autenticação obrigatória para perfis de utilizador; frontend actual suporta edição, datasets/reutilizações, conteúdos pessoais e actividade | Corrigir a ficha que trata o perfil como consulta pública e retirar a data de registo enquanto não estiver apresentada; restantes áreas autenticadas devem ser confirmadas em PRD |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
 | CM | Catálogo de Modelos | 9 | **Por confirmar em PRD** | LEDG-2049 consolidada e em IN UAT; frontend oficial e PRD público revistos em 22/09/2026 sem evidência dos fluxos específicos do Catálogo | Não publicar como comportamento actual até validação autenticada em PRD; confirmar catálogo, permissões, criação/inferência, versionamento, ciclo de vida, utilização e auditoria através do conjunto mínimo de testes definido abaixo |
 
@@ -1165,7 +1165,136 @@ A formulação actual, que recomenda abrir a conversa e confirmar o contexto ant
 
 A consulta pública está confirmada em PRD. A participação autenticada e o contexto de organização precisam apenas da validação PRD mínima acima.
 
-## 17. Decisões e lacunas transversais
+## 17. Revisão profunda D13, Perfil e actividade
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D13 representa funcionalidades existentes do perfil e da área pessoal, mas a ficha **Consultar um perfil público** ficou desactualizada após uma decisão de segurança.
+
+### Alteração de acesso confirmada pela LEDG-2113
+
+A LEDG-2113, concluída, corrigiu o acesso anónimo aos endpoints de utilizadores.
+
+A decisão validada foi:
+
+* exigir autenticação nos endpoints de perfil, contactos, seguidores, conteúdos seguidos, sugestões e roles;
+* utilizadores autenticados continuam a poder consultar perfis de outros utilizadores;
+* a página `/users/<slug>` passa a encaminhar visitantes anónimos para login.
+
+A consequência de produto está explicitamente registada no ticket:
+
+**o perfil de utilizador passa a exigir login**.
+
+### Implementação actual observada em PRD
+
+Em 22/09/2026:
+
+* `GET /api/1/users/<slug>/` devolveu `401 Unauthorized` sem autenticação;
+* a página de perfil respondeu com o esqueleto inicial, mas sem carregar os dados do utilizador para a sessão anónima;
+* o frontend actual contém o gate que redirecciona o visitante para `/login?next=/users/<slug>`.
+
+Portanto, a ficha não deve ter o actor **Consulta pública**.
+
+Actor correcto no comportamento actual:
+
+**Utilizador autenticado**.
+
+O termo “perfil público” pode continuar a ser usado apenas no sentido de perfil de apresentação visível a outros utilizadores autenticados, não como página disponível anonimamente.
+
+### Informação apresentada no perfil
+
+O frontend actual apresenta, quando disponível:
+
+* nome;
+* fotografia/avatar;
+* website;
+* biografia;
+* organizações;
+* Conjuntos de Dados;
+* Reutilizações;
+* seguidores;
+* relação de conteúdos seguidos apenas no próprio perfil, sob a terminologia actual ainda em evolução.
+
+A implementação actual de `PublicProfileClient` **não apresenta a data de registo do utilizador** na área de perfil.
+
+Assim, a instrução do D13 para consultar a “data de registo” deve ser removida enquanto PRD não a apresentar.
+
+### Edição do próprio perfil
+
+O frontend actual permite ao próprio utilizador aceder a **Editar perfil**.
+
+A ficha D13 prevê:
+
+* nome;
+* biografia;
+* website;
+* fotografia;
+* remoção da fotografia.
+
+**Por confirmar em PRD autenticado:** campos exactos actualmente editáveis, formatos/limites de fotografia, mensagens e persistência.
+
+O Manual está correcto ao recomendar que se respeitem as indicações apresentadas junto ao campo, sem inventar limites numéricos.
+
+### Conteúdos pessoais
+
+A área **Meu perfil** possui percursos para gestão de conteúdos.
+
+A LEDG-1917 repôs a listagem **Meu perfil > API**, testada anteriormente em PPR.
+
+A LEDG-2114 implementou ordenação nas listagens pessoais, mas registou que a consistência depende do suporte do Backend.
+
+Por isso, o D13 pode mencionar a ordenação disponibilizada, mas não deve prometer os mesmos critérios ou comportamento para todas as listagens sem confirmação PRD.
+
+### Actividade
+
+A área de actividade existe como funcionalidade de perfil.
+
+A LEDG-2115 está em **Backlog** e propõe pesquisa textual pelo campo Acção.
+
+O D13 actual já evita prometer essa pesquisa e deve continuar assim.
+
+A actividade deve permanecer apresentada como apoio à consulta, sem ser tratada como fonte definitiva do estado actual de um conteúdo.
+
+### Conteúdos seguidos e Seguidores
+
+As LEDG-2306 e LEDG-2303 ainda não estão concluídas.
+
+Não introduzir no D13 a nova terminologia/visibilidade prevista para **Conteúdos seguidos** e **Seguidores** enquanto não estiver confirmada em PRD.
+
+A relação com D11 deve manter-se explícita.
+
+### Correcções editoriais necessárias
+
+Na ficha **Consultar um perfil público**:
+
+1. substituir o actor **Consulta pública** por **Utilizador autenticado**;
+2. não afirmar acesso anónimo;
+3. remover **data de registo** da lista de informação apresentada enquanto não existir evidência PRD;
+4. manter nome, fotografia, biografia, website e conteúdos apenas quando efectivamente apresentados.
+
+Estas alterações são correcções do Manual ao comportamento actual, não mudanças de requisito do produto.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Abrir perfil de outro utilizador sem sessão e depois autenticado | Anónimo é encaminhado para login; autenticado consegue consultar conforme permissões actuais |
+| 2 | Editar o próprio perfil | Confirmar campos, fotografia, remoção, mensagens e persistência |
+| 3 | Abrir perfil de outro utilizador autenticado | Confirmar exactamente os campos e conteúdos apresentados |
+| 4 | Abrir Meu perfil > Conjuntos de Dados, API, Reutilizações e Recursos comunitários | Confirmar áreas realmente disponíveis, conteúdos e ordenação actual |
+| 5 | Abrir Actividade | Confirmar acções, ordenação/paginação e ausência de pesquisa textual enquanto LEDG-2115 não estiver implementada |
+| 6 | Comparar conteúdo pessoal com conteúdo de organização | Confirmar que a área pessoal não concede gestão automática dos conteúdos da organização |
+| 7 | Operar perfil e listagens por teclado | Confirmar foco, labels, avatar, tabelas, paginação e mensagens |
+
+### Estado D13
+
+**Parcialmente validado.**
+
+A maior correcção necessária é editorial: o perfil deixou de ser público para utilizadores anónimos. As restantes funcionalidades estão sustentadas por implementação, mas devem receber a passagem PRD autenticada acima antes de publicação final.
+
+## 18. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -1182,15 +1311,13 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 18. Prioridade de revisão profunda
+## 19. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11, D12 e CM.
+Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM.
 
-Próxima vaga prioritária:
-
-1. D13, Perfil e actividade
+Não existem guias parcialmente validados sem uma primeira revisão profunda. D01, D03 e D14 já se encontravam no grupo validado no âmbito actual.
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -1207,7 +1334,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 19. Critério para marcar um guia como Validado
+## 20. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -1219,6 +1346,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 20. Próxima acção
+## 21. Próxima acção
 
-Iniciar revisão profunda de D13, Perfil e actividade. D12 já foi revisto e permanece parcialmente validado, com a consulta pública confirmada em PRD.
+Executar os testes PRD mínimos registados por guia e preparar a ronda de correcções editoriais do conteúdo fonte, começando pelas divergências objectivas encontradas em D04, D11 e D13.

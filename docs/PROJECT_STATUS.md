@@ -294,3 +294,21 @@ Responsabilidades:
 * sinalizar itens que necessitam de nova validação.
 
 Esta função é um mecanismo de revisão. O presente ficheiro versionado continua a ser o ponto de continuidade operacional.
+
+## Ponto de controlo operacional 22/09/2026 15:56 Europe/Lisbon
+
+Secretário do projecto: progresso registado antes da nova ronda de testes PRD autenticados.
+
+Estado confirmado:
+
+* revisão profunda concluída para as 15 áreas;
+* D01, D03 e D14 validados no âmbito actual;
+* D02, D04, D05, D08, D09, D10, D12 e D13 parcialmente validados;
+* D06, D07, D11 e CM por confirmar em PRD antes de publicação como comportamento actual;
+* fonte editorial permanente em `content/guides.json`;
+* gerador PDF permanente em `scripts/generate_pdf_guides.py`;
+* workflow PDF permanente validado com sucesso;
+* correcções editoriais PRD já aplicadas a D04, D09 e D13;
+* próximo objectivo: executar apenas os testes PRD autenticados mínimos já identificados, começando por D04/D05, e actualizar a matriz apenas com evidência observada.
+
+Regra de continuidade: quando não existir regra funcional confirmada, documentar exclusivamente o comportamento reproduzível em PRD como Implementação actual. Não antecipar backlog, Figma futuro ou comportamento esperado.

@@ -165,7 +165,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
 | D06 | Explorador de dados | 8 | **Por confirmar em PRD** | LEDG-2276 e LEDG-2199 em READY FOR UAT; documentação técnica consistente; frontend de produção revisto em 22/09/2026 mantém a acção `Explore os dados` oculta no detalhe do recurso | Não publicar como comportamento actual até a entrada no Explorador estar disponível e validada em PRD; distinguir da Pré-visualização simples que já existe no Frontoffice |
-| D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
+| D07 | Qualidade e validação de dados | 6 | **Não observável no stack público actual de PRD** | LEDG-2031 em READY FOR TESTING; frontend/backend `main` sem rotas/módulos específicos; Swagger PRD sem endpoints/propriedades do novo Validador | Não publicar como comportamento actual. Revalidar quando existir integração PRD observável; ausência pública não prova inexistência de componente privado/separado |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Consulta pública confirmada em PRD; frontend actual sustenta validações de criação e associação; LEDG-2520 confirma que transferência de reutilização não está exposta no ecrã | Não orientar o utilizador para transferência enquanto o botão permanecer desligado; criação, publicação e edição devem ser confirmadas em sessão PRD autenticada |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
@@ -173,7 +173,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 confirma autenticação obrigatória para perfis de utilizador; frontend actual suporta edição, datasets/reutilizações, conteúdos pessoais e actividade | Corrigir a ficha que trata o perfil como consulta pública e retirar a data de registo enquanto não estiver apresentada; restantes áreas autenticadas devem ser confirmadas em PRD |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
-| CM | Catálogo de Modelos | 9 | **Por confirmar em PRD** | LEDG-2049 consolidada e em IN UAT; frontend oficial e PRD público revistos em 22/09/2026 sem evidência dos fluxos específicos do Catálogo | Não publicar como comportamento actual até validação autenticada em PRD; confirmar catálogo, permissões, criação/inferência, versionamento, ciclo de vida, utilização e auditoria através do conjunto mínimo de testes definido abaixo |
+| CM | Catálogo de Modelos | 9 | **Não observável no stack público actual de PRD** | LEDG-2049 em IN UAT; frontend/backend `main` sem rota/módulo do novo Catálogo; Swagger PRD sem endpoints equivalentes | Não publicar como comportamento actual. Revalidar após integração PRD observável; distinguir explicitamente o endpoint legado `/datasets/schemas/` do novo Catálogo |
 
 ## 6. Revisão profunda D04, Publicar e gerir Conjuntos de Dados
 
@@ -375,11 +375,28 @@ Por isso, as seis fichas de D07 permanecem no protótipo como conteúdo funciona
 
 ### Estado D07
 
-**Por confirmar em PRD para publicação como comportamento actual.**
+**Não observável no stack público actual de PRD.**
 
 Não é necessário rediscutir a LEDG-2031. O que falta é comprovar, através dos oito testes acima, quais partes da especificação já correspondem ao comportamento efectivamente disponível em produção.
 
 Se PRD divergir da LEDG-2031, o Manual deve descrever **PRD como Implementação actual** e registar separadamente a divergência para correcção do produto.
+
+### Evidência técnica PRD adicional, 22/09/2026
+
+A investigação foi aprofundada no stack público actual de PRD:
+
+* o `main` de `amagovpt/dadosgov-fe` não contém rotas, componentes, serviços ou traduções específicas para os estados/acções da LEDG-2031;
+* a árvore completa de rotas administrativas do frontend não contém área do novo Validador;
+* o `main` de `amagovpt/udata-pt` não contém módulo específico do novo Validador;
+* o Swagger actual de PRD não contém endpoints de associação, execução, resultado ou histórico do novo Validador;
+* nas definições de Resource/Dataset existe apenas o campo legado `schema`;
+* as ocorrências de `validation` no Swagger correspondem ao Harvester ou a erros genéricos de validação.
+
+**Classificação actual:** o novo Validador não é observável nem integrado no stack público actual de PRD.
+
+**Ressalva:** esta conclusão não prova ausência absoluta de um componente privado, serviço separado ou funcionalidade protegida por feature flag não exposta nas superfícies analisadas.
+
+**Impacto editorial:** D07 permanece como conteúdo preparado a partir do requisito, mas não deve ser publicado como funcionalidade actual.
 
 ## 9. Revisão profunda CM, Catálogo de Modelos
 
@@ -484,9 +501,29 @@ Até execução destes testes, não apresentar como comportamento actual:
 
 ### Estado CM
 
-**Por confirmar em PRD para publicação como comportamento actual.**
+**Não observável no stack público actual de PRD.**
 
 A LEDG-2049 continua a ser a fonte funcional para UAT. O Manual deve usar apenas o comportamento que os testes PRD autenticados confirmarem.
+
+### Evidência técnica PRD adicional, 22/09/2026
+
+A investigação foi aprofundada no stack público actual de PRD:
+
+* o frontend `main` não contém rota administrativa, componente, serviço ou tradução específica do novo Catálogo de Modelos;
+* a árvore completa de rotas administrativas não contém área de modelos de validação;
+* o backend `main` não contém módulo específico equivalente à LEDG-2049;
+* o Swagger actual de PRD não contém endpoints para criação, inferência, activação, versionamento, auditoria ou eliminação dos modelos da LEDG-2049;
+* existe `GET /datasets/schemas/`, mas o contrato devolve `CatalogSchema` com `schema_url`, `schema_type` e versões nominais;
+* esse endpoint é apenas de leitura e devolveu lista vazia no PRD consultado;
+* não possui estados Rascunho/Activo/Inactivo, inferência, regras, auditoria ou ciclo de vida da LEDG-2049.
+
+**Conclusão:** `/datasets/schemas/` é um mecanismo legado de schemas e não deve ser confundido com o novo Catálogo de Modelos.
+
+**Classificação actual:** CM não é observável nem integrado no stack público actual de PRD.
+
+**Ressalva:** a ausência nas superfícies públicas não prova inexistência de componente privado/separado ou protegido por feature flag.
+
+**Impacto editorial:** CM permanece no protótipo como conteúdo preparado para evolução futura, sem publicação como comportamento actual.
 
 ## 10. Revisão profunda D06, Explorador de dados
 

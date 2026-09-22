@@ -488,3 +488,43 @@ O plano separa:
 
 Critério: o Manual descreve PRD como Implementação actual quando houver divergência com backlog, requisito alvo ou documentação futura.
 
+
+## Prontidão para integração e publicação
+
+Estado verificado em 22/09/2026.
+
+### Branch candidata
+
+* branch: `feature/static-routes-pdf`;
+* relação com `main`: 58 commits à frente, 0 atrás no momento da verificação;
+* GitHub Pages do commit `d1522a8`: sucesso;
+* CI de consistência: verde;
+* workflow de geração PDF: verde na última execução aplicável;
+* 15 guias, 92 fichas, 115 URLs e 15 PDFs controlados.
+
+### Bloqueios antes de candidatura a merge
+
+A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
+
+1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
+2. D06, D07, D11 e CM sem confirmação suficiente de comportamento actual em PRD;
+3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
+4. validação manual com NVDA no contexto final ainda pendente;
+5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
+
+### Bloqueios adicionais antes de publicação oficial
+
+Mesmo após eventual merge, a publicação oficial exige ainda:
+
+1. confirmar o destino definitivo de publicação e integração no produto;
+2. substituir/parametrizar os canonicals e caminhos actualmente orientados ao GitHub Pages quando o destino oficial for conhecido;
+3. confirmar nomenclatura e arquitectura de informação finais;
+4. executar os testes de escrita da Fase B apenas quando forem indispensáveis e após autorização explícita;
+5. confirmar que não existem divergências funcionais novas entre PRD e o Manual no momento da publicação.
+
+### Decisão operacional
+
+Continuar a usar a branch actual como ambiente candidato de revisão.
+
+Não abrir PR, não fazer merge em `main` e não publicar oficialmente enquanto os bloqueios acima não forem tratados ou formalmente aceites.
+

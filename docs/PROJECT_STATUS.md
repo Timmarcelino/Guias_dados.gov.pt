@@ -304,7 +304,7 @@ Estado confirmado:
 * revisão profunda concluída para as 15 áreas;
 * D01, D03 e D14 validados no âmbito actual;
 * D02, D04, D05, D08, D09, D10, D12 e D13 parcialmente validados;
-* D07 e CM por confirmar em PRD antes de publicação como comportamento actual; D06 confirmado como não integrado no Frontoffice público de PRD; D11 desalinhado com a terminologia actual de PRD;
+* D06 não integrado no Frontoffice público de PRD; D07 e CM não observáveis no stack público actual de PRD; D11 desalinhado com a terminologia actual de PRD;
 * fonte editorial permanente em `content/guides.json`;
 * gerador PDF permanente em `scripts/generate_pdf_guides.py`;
 * workflow PDF permanente validado com sucesso;
@@ -507,7 +507,7 @@ Estado verificado em 22/09/2026.
 A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
 
 1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
-2. D07 e CM sem confirmação suficiente de comportamento actual em PRD; D06 não integrado no Frontoffice PRD; D11 ainda não alinhado em PRD com a evolução Seguir;
+2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 ainda não alinhado em PRD com a evolução Seguir;
 3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
 4. validação manual com NVDA no contexto final ainda pendente;
 5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
@@ -557,3 +557,32 @@ Evidência adicional recolhida em 22/09/2026:
 * não existe percurso público reproduzível confirmado para abrir o novo Explorador a partir do recurso testado.
 
 Conclusão operacional: D06 deixa de estar apenas **Por confirmar** e passa a **Não integrado no Frontoffice público de PRD**. O guia permanece no protótipo como conteúdo preparado, mas fica bloqueado para publicação como funcionalidade actualmente disponível.
+
+## Actualização D07 e CM, stack público PRD
+
+Investigação adicional concluída em 22/09/2026.
+
+### D07, Validador Automático
+
+* LEDG-2031: READY FOR TESTING;
+* sem rota/componente/serviço específico no frontend `main`;
+* sem módulo específico no backend `main`;
+* Swagger PRD sem endpoints do novo Validador;
+* Resource/Dataset expõem apenas o campo legado `schema`;
+* validation no contrato actual refere Harvester ou validação técnica genérica.
+
+Estado: **não observável no stack público actual de PRD**.
+
+### CM, Catálogo de Modelos
+
+* LEDG-2049: IN UAT;
+* sem rota/componente/serviço específico no frontend `main`;
+* sem módulo específico no backend `main`;
+* Swagger PRD sem endpoints do novo Catálogo;
+* `GET /datasets/schemas/` é um catálogo legado de schemas externos, apenas leitura, e devolveu lista vazia no PRD consultado.
+
+Estado: **não observável no stack público actual de PRD**.
+
+Ressalva comum: a evidência demonstra ausência nas superfícies públicas analisadas, não inexistência absoluta de componente privado, serviço separado ou feature flag.
+
+Decisão: D07 e CM permanecem no protótipo como conteúdo preparado, mas bloqueados para publicação como comportamento actual.

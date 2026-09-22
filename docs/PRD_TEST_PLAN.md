@@ -60,18 +60,89 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 
 | TC | Área | Estado actual | Motivo |
 | --- | --- | --- | --- |
-| PRD-R01 | D02 + D13 | **Activo** | Requer sessão autenticada para áreas pessoais, membros e permissões |
-| PRD-R02 | D04 | **Activo** | Requer sessão autenticada para formulário, ciclo de vida e transferência |
+| PRD-R01 | D02 + D13 | **Parcialmente executado** | Área pessoal e Atividades observadas; organização bloqueada pela conta sem organização disponível |
+| PRD-R02 | D04 | **Parcialmente executado** | Formulário observado; ciclo de vida e transferência ainda por fechar |
 | PRD-R03 | D05 | **Residual público** | Apenas TSV quando existir recurso real; não depende de sessão autenticada |
-| PRD-R04 | D08 | **Activo** | Requer sessão autenticada para criação/edição de API |
-| PRD-R05 | D09 | **Activo** | Requer sessão autenticada para criação/edição de Reutilização |
-| PRD-R06 | D10 | **Activo** | Requer sessão autenticada para perfis, preview e administração de Harvester |
+| PRD-R04 | D08 | **Parcialmente executado** | Elegibilidade e formulário observados; conta sem organização elegível impede restante fluxo |
+| PRD-R05 | D09 | **Parcialmente executado** | Formulário e associação observados; edição/transferência ainda por fechar |
+| PRD-R06 | D10 | **Parcialmente executado** | Wizard acessível; contexto de sistema indisponível para a conta actual |
 | PRD-R07 | D12 | **Activo** | Requer sessão autenticada para criação/resposta e contexto administrativo |
 | PRD-R08 | D07 + CM | **Suspenso** | Reabrir apenas quando Validador/Catálogo forem observáveis no stack PRD |
 | PRD-R09 | D11 | **Suspenso** | Reabrir apenas quando a evolução Seguir/Notificações estiver integrada |
 | PRD-R10 | D06 | **Suspenso** | Reabrir apenas quando o Explorador estiver integrado no Frontoffice PRD |
 
 **Resumo:** 6 grupos activos com sessão autenticada, 1 residual público e 3 suspensos por ausência de integração actual.
+
+## 2.2 Execução autenticada observada em PRD, 22/09/2026
+
+Perfil funcional utilizado: **Utilizador autenticado, sem organização disponível no contexto observado e sem acesso à listagem de sistema de Harvesters**.
+
+### PRD-R01, D02 + D13
+
+Observado:
+
+* `/pt/admin/me/profile` acessível;
+* áreas pessoais visíveis: Conjunto de dados, API, Reutilizações, Recursos comunitários, Perfil e Estatísticas;
+* aba **Atividades** acessível e com listagem estruturada por Utilizador, Acção e Data;
+* `/pt/admin/org/profile` não abriu contexto de organização e regressou à área pessoal;
+* no formulário de Conjunto de Dados, o PRD apresenta explicitamente **“Não pertence a uma organização”** para esta conta.
+
+Decisão: perfil/área pessoal **confirmados**; membros, permissões e edição de Organização ficam **Por confirmar com conta adequada**. A ausência de organização nesta conta não é regra global do produto.
+
+### PRD-R02, D04
+
+Observado no passo 2 do formulário de Conjunto de Dados:
+
+* campos obrigatórios identificados por asterisco;
+* **Produtor*** obrigatório;
+* para esta conta, nenhuma organização disponível como produtor;
+* licença inicial apresentada como **“Licença não especificada”**;
+* **Frequência de actualização*** obrigatória, inicialmente sem valor seleccionado, com placeholder;
+* listagem pessoal de Conjuntos de Dados acessível, incluindo estado e acções por item.
+
+Decisão: formulário e defaults **confirmados**. Ponto de contacto para produtor Organização, estados Arquivado/Eliminado, transferência e restantes acções de ciclo de vida continuam **Por confirmar**.
+
+### PRD-R04, D08
+
+Observado:
+
+* wizard de API acessível em `/pt/admin/dataservices/new?step=1`;
+* PRD apresenta a regra: só é possível publicar API em nome de uma organização com emblema **“Serviço público”**;
+* a conta actual é informada como não pertencendo a organização elegível e não pode criar API;
+* **Nome da API*** e **Descrição*** aparecem como obrigatórios no ecrã observado.
+
+Decisão: restrição de elegibilidade **confirmada no PRD actual**. Tipos de acesso, associação de Conjuntos de Dados e edição de API existente ficam **Por confirmar com organização elegível/API gerível**.
+
+### PRD-R05, D09
+
+Observado:
+
+* wizard de Reutilização acessível;
+* produtor pessoal seleccionado para esta conta;
+* ausência de organização explicitamente indicada;
+* **Nome da reutilização***, URL da reutilização e **Tipo*** aparecem no passo inicial;
+* passo 2 acessível directamente em leitura;
+* PRD apresenta duas alternativas de associação: Conjuntos de Dados do portal **ou** links externos, não as duas na mesma Reutilização;
+* nos links externos, **Título** e **Descrição** aparecem explicitamente como **opcionais**.
+
+Decisão: formulário e regra de associação **confirmados**. Edição existente, estado persistido e transferência continuam **Por confirmar**.
+
+### PRD-R06, D10
+
+Observado:
+
+* `/pt/admin/harvesters/new` acessível e reconhecido pelo browser como **Criar harvester**;
+* tentativa de abrir `/pt/admin/system/harvesters` regressou à área pessoal de Conjuntos de Dados.
+
+Decisão: acesso ao wizard **confirmado**; administração de sistema, comparação entre perfis, preview e Trabalhos ficam **Por confirmar com perfil/fonte adequados**.
+
+### Limitações desta execução
+
+* nenhuma escrita foi efectuada em PRD;
+* não foram criados, editados, publicados, eliminados ou transferidos conteúdos;
+* não foram alterados Favoritos, Discussões, membros ou notificações;
+* navegação por teclado foi utilizada como meio técnico de acesso, mas a ronda formal de acessibilidade/ordem de foco continua separada e pendente;
+* PRD-R07 não recebeu nova evidência autenticada suficiente nesta passagem.
 
 ## 3. Test Cases, Fase A
 

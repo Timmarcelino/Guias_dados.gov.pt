@@ -253,19 +253,20 @@ Estado da primeira passagem em 22/09/2026:
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Prioridade de revisão profunda: D02 → D09 → D12 → D13. D04, D05, D06, D07, D08, D10, D11 e CM receberam revisão profunda em 22/09/2026. D06, D07, D11 e CM permanecem Por confirmar em PRD; D08 e D10 permanecem parcialmente validados com componentes públicas confirmadas em PRD.
+Revisão profunda: concluída para D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM em 22/09/2026. D01, D03 e D14 já se encontravam validados no âmbito actual. D06, D07, D11 e CM permanecem Por confirmar em PRD; os restantes itens parciais têm testes PRD mínimos identificados.
 
 ## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
-3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04, D05, D06, D07, D08, D10, D11 e CM.
-4. Fechar nomenclatura e arquitectura de informação.
-5. Executar revisão funcional e editorial das fichas prioritárias.
-6. Validar acessibilidade e responsividade.
-7. Confirmar modelo de publicação e integração no produto.
-8. Preparar critérios objectivos para merge da branch em `main`.
-9. Só após validação, preparar a versão candidata a publicação oficial.
+3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem e revisões profundas concluídas em `docs/CONTENT_VALIDATION.md`.
+4. Executar os testes PRD autenticados mínimos registados por guia.
+5. Corrigir primeiro as divergências editoriais objectivas de D04, D11, D13 e D09 e sincronizar todos os artefactos derivados.
+6. Fechar nomenclatura e arquitectura de informação.
+7. Validar acessibilidade e responsividade.
+8. Confirmar modelo de publicação e integração no produto.
+9. Preparar critérios objectivos para merge da branch em `main`.
+10. Só após validação, preparar a versão candidata a publicação oficial.
 
 ## 13. Protocolo de continuidade
 

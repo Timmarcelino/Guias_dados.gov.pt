@@ -1,3 +1,18 @@
+"""Guardrail de consistência dos Guias do Utilizador.
+
+A fonte editorial canónica é content/guides.json. Este script verifica se
+os artefactos derivados (rotas estáticas, pesquisa, sitemap e dados JavaScript)
+continuam sincronizados e se os requisitos estruturais mínimos da experiência
+web não regrediram.
+
+Notas para ampliações futuras:
+* adicionar novos guias/temas exige rever THEMES e as contagens esperadas;
+* *_SLUG_OVERRIDES existem apenas para preservar URLs históricas;
+* SITE_ORIGIN e SITE_PREFIX são específicos da publicação GitHub Pages
+  e devem ser parametrizados quando existir o destino oficial;
+* novas validações devem produzir erros observáveis e determinísticos para CI.
+"""
+
 from __future__ import annotations
 
 import json
@@ -17,6 +32,7 @@ DYNAMIC_D01 = ROOT / "assets" / "js" / "data-d01.js"
 SITEMAP = ROOT / "sitemap.xml"
 WEB_ROOT = ROOT / "Guias-do-utilizador"
 
+# Destino actual de revisão. Não tratar como URL definitiva do produto.
 SITE_ORIGIN = "https://timmarcelino.github.io"
 SITE_PREFIX = "/Guias_dados.gov.pt/Guias-do-utilizador/"
 SITE_BASE = SITE_ORIGIN + SITE_PREFIX
@@ -31,6 +47,7 @@ THEMES = [
     ("Ajuda e contactos", ["D14"]),
 ]
 
+# Contratos de compatibilidade: títulos podem evoluir sem quebrar URLs já publicadas.
 GUIDE_SLUG_OVERRIDES = {
     "D11": "Seguir-conteudos-e-notificacoes",
 }

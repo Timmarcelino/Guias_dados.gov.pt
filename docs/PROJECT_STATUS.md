@@ -938,3 +938,75 @@ Execução autenticada complementar concluída sem escrita:
 Estado PRD-R07: **Parcialmente executado**.
 
 Ainda Por confirmar: controlo visual de resposta numa conversa existente, contexto de Organização e qualquer submissão persistente. Nenhuma mensagem foi criada.
+
+
+## Revisão final de PDFs e tentativa NVDA, 22/09/2026
+
+### Revisão visual
+
+Os 15 PDFs publicados na revisão foram descarregados para uma área temporária da Windows Sandbox e a estrutura/paginação foi novamente confirmada.
+
+Foi realizada uma revisão visual amostral no visualizador PDF do Edge, cobrindo diferentes variantes do template:
+
+* **Ajuda e contactos**: capa, página de tarefa e página final;
+* **Explorador de dados**: capa, página intermédia e página final;
+* **Publicar e gerir Conjuntos de Dados**: capa com título longo;
+* **Catálogo de Modelos**: capa;
+* **Discussões e comunidade**: capa e página de tarefa.
+
+Na amostra revista não foram observados:
+
+* clipping de texto;
+* sobreposição de blocos;
+* glifos quebrados;
+* títulos fora da área útil;
+* QR code ou elementos principais cortados.
+
+No Explorador de dados foi observada uma página intermédia com espaço em branco significativo, resultante da paginação de uma continuação curta. Não foi identificada quebra visual ou perda de conteúdo.
+
+Decisão: **revisão visual amostral sem defeitos detectados**. Não equivale a inspecção pixel a pixel de todas as páginas dos 15 documentos.
+
+### Estrutura documental e acessibilidade técnica dos PDFs
+
+Os 15 PDFs foram inspeccionados com uma biblioteca PDF, sem depender de pesquisa textual binária.
+
+Confirmado em **15/15**:
+
+* `StructTreeRoot` presente;
+* `MarkInfo` presente com `Marked=true`;
+* idioma documental `pt-PT`;
+* título e assunto documentais preenchidos;
+* `ViewerPreferences` com `DisplayDocTitle=true`;
+* árvore semântica real com `Document`, headings, parágrafos, listas e links;
+* tabelas etiquetadas nos documentos que contêm tabelas;
+* duas figuras estruturadas por guia e texto alternativo presente em **2/2** figuras de cada PDF.
+
+Esta evidência demonstra que os PDFs não são apenas visualmente renderizados com texto extraível: possuem estrutura semântica e metadados de acessibilidade.
+
+Decisão: **estrutura documental dos 15 PDFs validada tecnicamente**.
+
+Ressalva: isto não substitui uma validação de ordem de leitura com leitor de ecrã/PAC equivalente.
+
+### Tentativa NVDA
+
+Foi verificada a disponibilidade do NVDA oficial 2026.2.
+
+Controlo de integridade efectuado antes da execução:
+
+* origem: servidor oficial NV Access;
+* SHA256 local coincidente com o SHA256 oficial da release;
+* assinatura Authenticode: **Valid**, signatário **NV Access Limited**.
+
+Ao iniciar a cópia temporária na Windows Sandbox, o próprio log do NVDA registou:
+
+`ImportError: DLL load failed while importing _core: An Application Control policy has blocked this file.`
+
+Ficheiro bloqueado: `wx._core.pyd`, extraído para a área temporária do NVDA.
+
+Decisão: a ronda **NVDA não é executável nesta Windows Sandbox devido à política Application Control do ambiente**. Não foi tentado contornar ou reduzir essa política.
+
+Estado:
+
+* acessibilidade estrutural PDF: **validada tecnicamente**;
+* revisão visual PDF: **amostral, sem defeitos detectados**;
+* NVDA/leitura assistiva real: **bloqueado pelo ambiente, Por confirmar noutro ambiente compatível**.

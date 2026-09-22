@@ -169,7 +169,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Consulta pública confirmada em PRD; frontend actual sustenta validações de criação e associação; LEDG-2520 confirma que transferência de reutilização não está exposta no ecrã | Não orientar o utilizador para transferência enquanto o botão permanecer desligado; criação, publicação e edição devem ser confirmadas em sessão PRD autenticada |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
-| D11 | Seguir conteúdos e notificações | 5 | **Por confirmar em PRD** | LEDG-2289 concluiu a análise e a direcção terminológica; LEDG-1960 continua To Do e LEDG-2305 In Progress; PRD ainda apresenta `Adicionar aos favoritos`/`Remover dos favoritos` nos quatro tipos de conteúdo | Não publicar `Seguir` como comportamento actual enquanto PRD não o apresentar; notificações de conteúdos seguidos também não estão demonstradas como implementadas |
+| D11 | Seguir conteúdos e notificações | 5 | **Conteúdo alvo não alinhado com PRD actual** | LEDG-1960 To Do, LEDG-2305 In Progress, LEDG-2306 Backlog e LEDG-2303 To Do; PRD revalidado em 22/09/2026 usa Favoritos nos quatro tipos | Não publicar as fichas `Seguir`/`Deixar de seguir` como comportamento actual; retomar validação apenas quando a evolução estiver integrada em PRD |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 confirma autenticação obrigatória para perfis de utilizador; frontend actual suporta edição, datasets/reutilizações, conteúdos pessoais e actividade | Corrigir a ficha que trata o perfil como consulta pública e retirar a data de registo enquanto não estiver apresentada; restantes áreas autenticadas devem ser confirmadas em PRD |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
@@ -959,9 +959,35 @@ Enquanto a LEDG-1960 não estiver disponível em PRD:
 
 ### Estado D11
 
-**Por confirmar em PRD para publicação como comportamento actual.**
+**Conteúdo alvo não alinhado com o comportamento actual de PRD.**
 
 O principal bloqueio não é falta de definição conceptual. É a diferença entre a terminologia/integração alvo e o que PRD apresenta hoje.
+
+### Revalidação PRD adicional, 22/09/2026
+
+Foram novamente consultados no Frontoffice público de PRD exemplos reais dos quatro tipos abrangidos pela LEDG-1960:
+
+* Conjunto de Dados;
+* API;
+* Organização;
+* Reutilização.
+
+Em todos os quatro casos o HTML actual contém **Adicionar aos favoritos** e **Remover dos favoritos**.
+
+Não foram encontradas ocorrências de **Seguir** ou **Deixar de seguir** nesses mesmos conteúdos.
+
+Estado dos tickets de evolução na mesma data:
+
+* LEDG-1960: **To Do**;
+* LEDG-2305: **In Progress**;
+* LEDG-2306: **Backlog**;
+* LEDG-2303: **To Do**.
+
+A LEDG-2289 permanece a fonte de análise que demonstra que Favoritos utiliza tecnicamente `Follow/Unfollow`, mas também confirma que não foi identificada uma ligação implementada do tipo `Follow → alteração do conteúdo → Notification`.
+
+**Implementação actual:** Favoritos/Follow continua a ser o comportamento exposto em PRD. A evolução editorial para **Seguir** e a integração com notificações ainda não estão disponíveis como percurso actual reproduzível.
+
+**Impacto editorial:** manter D11 como conteúdo preparado para a evolução aprovada, mas bloqueado para publicação como Manual do PRD actual.
 
 ## 14. Revisão profunda D02, Organizações e permissões
 

@@ -12,6 +12,7 @@ Principais alterações:
 * Criação da fonte editorial permanente `content/guides.json` e do gerador `scripts/generate_pdf_guides.py`.
 * Criação do guardrail `scripts/validate_guides_consistency.py` e workflow de CI para validar fonte, rotas, pesquisa, sitemap e estrutura HTML.
 * Correcções editoriais baseadas em PRD para D04, D09 e D13.
+* D01 foi revalidado segundo o comportamento público actual de PRD; a ficha de primeiro acesso foi generalizada para não antecipar o mecanismo de migração/associação.
 * Correcção de acessibilidade da pesquisa dinâmica com anúncio de resultados por `role="status"` e `aria-live="polite"`.
 * Correcção dos nomes acessíveis de Pesquisa e Autenticar no header mobile.
 * QA estrutural sobre 115 páginas: 115/115 HTTP 200 e 134 ligações internas sem quebras.

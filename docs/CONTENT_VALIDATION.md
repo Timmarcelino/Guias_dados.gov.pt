@@ -159,7 +159,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 
 | Código interno | Guia | Fichas | Estado | Evidência principal | Pendências para fecho |
 | --- | --- | ---: | --- | --- | --- |
-| D01 | Autenticação e acesso à conta | 6 | **Validado no âmbito actual** | Conteúdo anteriormente revisto com comportamento alvo validado em TST | Revalidar após alterações futuras de consolidação de contas ou eventual alteração do login por email e palavra-passe |
+| D01 | Autenticação e acesso à conta | 6 | **Validado no âmbito actual** | PRD público confirma CMD, eIDAS, E-mail e palavra-passe para utilizadores antigos e recuperação; conteúdo de primeiro acesso foi neutralizado para seguir apenas os passos apresentados pelo portal | Não documentar mecanismo exacto de migração/associação enquanto continuar em evolução; revalidar após alterações de LEDG-2357/fluxos relacionados |
 | D02 | Organizações e permissões | 6 | **Parcialmente validado** | Pesquisa pública por nome/sigla e emblemas confirmados em PRD; LEDG-1941/1943/1919 suportam edição e gestão de emblemas; fluxos autenticados de membros estão em evolução | Consulta pública sustentada; criar/integrar/gerir membros/editar e emblemas administrativos devem ser confirmados em PRD autenticado, sem antecipar LEDG-2468/2483 |
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2046 e LEDG-2191 em IN UAT; LEDG-2048 READY FOR UAT; Swagger PRD e frontend actual confirmam divergência de licença/contacto face ao requisito alvo | Pendente essencialmente validação autenticada da UI de criação/ciclo de vida/transferência; manter redacção neutra até LEDG-2175 chegar a PRD |
@@ -174,6 +174,46 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 e PRD confirmam autenticação obrigatória; correcção editorial de actor/título/data de registo já aplicada e sincronizada | Pendente apenas validação autenticada das áreas pessoais, campos editáveis, actividade e diferenças de visibilidade/permissão |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
 | CM | Catálogo de Modelos | 9 | **Não observável no stack público actual de PRD** | LEDG-2049 em IN UAT; frontend/backend `main` sem rota/módulo do novo Catálogo; Swagger PRD sem endpoints equivalentes | Não publicar como comportamento actual. Revalidar após integração PRD observável; distinguir explicitamente o endpoint legado `/datasets/schemas/` do novo Catálogo |
+
+## 5.1 Revalidação D01, Autenticação e acesso à conta
+
+Data da revisão: 22/09/2026.
+
+### Evidência actual de PRD
+
+A página pública de autenticação em PRD contém actualmente:
+
+* **Chave Móvel Digital (CMD)**;
+* **Autenticação europeia (eIDAS)**;
+* **E-mail e palavra-passe**;
+* opção de recuperação da palavra-passe.
+
+O conteúdo actual da própria interface indica que o acesso por email e palavra-passe se destina a **utilizadores antigos**.
+
+A recuperação de palavra-passe continua implementada através de pedido por email e apresenta resposta genérica para não revelar se o endereço está associado a uma conta.
+
+### Migração e primeiro acesso
+
+A implementação e os tickets demonstram que os percursos de migração/associação continuam a evoluir.
+
+A LEDG-2357 encontra-se em **READY FOR UAT** e pretende substituir a prova por código de 6 dígitos por validação através de link de email no fluxo de associação de conta legada.
+
+Por isso, o Manual não deve fixar como comportamento actual um mecanismo concreto de código, link ou ecrã intermédio que não tenha sido reproduzido em PRD.
+
+A ficha foi revista para indicar apenas:
+
+1. concluir CMD/eIDAS;
+2. observar se o portal apresenta passos adicionais;
+3. seguir os campos, mensagens e método de validação efectivamente apresentados;
+4. não partilhar códigos, links, palavras-passe ou outros segredos.
+
+### Decisão editorial
+
+Foi removida a dependência textual de “comportamento alvo validado em TST”.
+
+O D01 permanece **Validado no âmbito actual** porque as capacidades públicas documentadas estão observáveis em PRD e os passos não observados foram deliberadamente generalizados para não antecipar implementação futura.
+
+A URL histórica da antiga ficha **Concluir o primeiro acesso e confirmar o email** foi preservada para evitar quebra de ligações, embora o título editorial passe a **Concluir o primeiro acesso quando solicitado**.
 
 ## 6. Revisão profunda D04, Publicar e gerir Conjuntos de Dados
 

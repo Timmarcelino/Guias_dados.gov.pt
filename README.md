@@ -26,7 +26,7 @@ A documentação existente foi analisada, consolidada e reorganizada numa arquit
 
 ## O que construímos
 
-O protótipo actual reúne o conhecimento funcional do portal em **15 guias e 91 fichas práticas**, organizados por objectivo e não pela estrutura interna do sistema.
+O protótipo actual reúne o conhecimento funcional do portal em **15 guias e 92 fichas práticas**, organizados por objectivo e não pela estrutura interna do sistema.
 
 Cada ficha procura responder a uma necessidade concreta, por exemplo:
 
@@ -47,7 +47,7 @@ O valor deste trabalho não está apenas em ter mais documentação. Está em to
 | Indicador | Estado actual |
 | --- | ---: |
 | Guias práticos | **15** |
-| Fichas orientadas a tarefas | **91** |
+| Fichas orientadas a tarefas | **92** |
 | Temas funcionais | **7** |
 | Pesquisa transversal | **1 experiência única sobre os guias** |
 | Versões de referência preservadas | **4** |
@@ -134,11 +134,11 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A versão corrente do protótipo está na raiz do repositório e corresponde à evolução v0.4.
+A `main` preserva a referência estável v0.4. A evolução corrente é preparada na branch `feature/static-routes-pdf`, que acrescenta rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto.
 
 Nesta fase, o projecto inclui:
 
-* 15 guias e 91 fichas;
+* 15 guias e 92 fichas;
 * sete temas funcionais;
 * pesquisa transversal;
 * navegação por tema, guia e tarefa;
@@ -146,7 +146,7 @@ Nesta fase, o projecto inclui:
 * header e footer aproximados à implementação pública do dados.gov.pt;
 * estrutura modular em HTML, CSS e JavaScript;
 * versões anteriores preservadas para comparação;
-* conteúdo editorial revisto para D01, Autenticação e acesso à conta, e D14, Ajuda e contactos.
+* conteúdo editorial revisto e rastreado para os 15 guias, com D01, D03 e D14 validados no âmbito actual e restantes áreas classificadas segundo a evidência disponível.
 
 O conteúdo continua destinado a revisão funcional, editorial e UX/UI antes de qualquer publicação como manual oficial.
 
@@ -165,16 +165,24 @@ A sua função é traduzir conhecimento técnico e funcional em orientação cla
 ```text
 .
 ├── index.html
+├── 404.html
+├── Guias-do-utilizador/       # 115 rotas publicadas
+├── content/
+│   └── guides.json            # fonte editorial versionada
 ├── assets/
 │   ├── css/
-│   │   ├── base.css
-│   │   ├── portal.css
-│   │   └── guides.css
-│   └── js/
-│       ├── data.js
-│       ├── data-d01.js
-│       ├── app.js
-│       └── header.js
+│   ├── js/
+│   └── pdf/                   # 15 PDFs publicados
+├── scripts/
+│   ├── generate_pdf_guides.py
+│   └── validate_guides_consistency.py
+├── docs/
+│   ├── PROJECT_STATUS.md
+│   ├── CONTENT_VALIDATION.md
+│   └── PRD_TEST_PLAN.md
+├── .github/workflows/
+│   ├── guides-pdf.yml
+│   └── guides-consistency.yml
 ├── versions/
 │   ├── v0.1/
 │   ├── v0.2/
@@ -191,10 +199,17 @@ Responsabilidades principais:
 * `assets/css/base.css`: reset, tokens partilhados e utilitários de acessibilidade;
 * `assets/css/portal.css`: estrutura e responsividade do header e footer;
 * `assets/css/guides.css`: apresentação e responsividade da área dos guias;
-* `assets/js/data.js`: conteúdo estruturado dos guias e temas consolidados;
-* `assets/js/data-d01.js`: conteúdo editorial do D01 e ajustes incrementais da taxonomia actual;
-* `assets/js/app.js`: apresentação, pesquisa, navegação e interacções;
-* `assets/js/header.js`: comportamento do header do protótipo.
+* `content/guides.json`: fonte editorial versionada usada pela colecção PDF;
+* `assets/js/data.js`: conteúdo estruturado dos guias consolidados para a experiência dinâmica;
+* `assets/js/data-d01.js`: módulo editorial do D01;
+* `assets/js/search-index.json`: índice das 92 fichas para pesquisa estática;
+* `assets/js/app.js`: apresentação, pesquisa, navegação e interacções da experiência dinâmica;
+* `assets/js/header.js`: comportamento do header do protótipo;
+* `scripts/generate_pdf_guides.py`: geração controlada dos PDFs;
+* `scripts/validate_guides_consistency.py`: guardrail entre fonte, rotas, pesquisa, sitemap e HTML;
+* `docs/PROJECT_STATUS.md`: estado operacional vivo do projecto;
+* `docs/CONTENT_VALIDATION.md`: matriz de validação funcional;
+* `docs/PRD_TEST_PLAN.md`: plano mínimo de validação autenticada em PRD.
 
 Os módulos JavaScript são carregados com `type="module"`. Por esse motivo, o protótipo deve ser servido através de HTTP local e não aberto directamente por `file://`.
 
@@ -246,7 +261,7 @@ A réplica presente neste projecto é deliberadamente estática. Não implementa
 
 O D01 representa o comportamento alvo validado em TST e as decisões funcionais registadas para esta fase. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.
 
-O D14 apresenta o comportamento actualmente suportado para Ajuda e contactos e mantém fora do percurso público funcionalidades futuras ainda não estabilizadas.
+O D14 apresenta seis fichas suportadas pelo comportamento e evidência actualmente consolidados para Ajuda e contactos, incluindo o reporte de problema técnico, sem antecipar funcionalidades futuras ainda não estabilizadas.
 
 ## Critério para evolução dos guias
 

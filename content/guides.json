@@ -54,7 +54,7 @@
         "tip": "No primeiro acesso por eIDAS pode ser necessário indicar e confirmar um endereço de email no dados.gov.pt.",
         "table": null,
         "media": "Sequência do acesso eIDAS com um país de demonstração e sem dados de identidade reais.",
-        "next": "Concluir o primeiro acesso e confirmar o email"
+        "next": "Concluir o primeiro acesso quando solicitado"
       },
       {
         "title": "Concluir o primeiro acesso quando solicitado",

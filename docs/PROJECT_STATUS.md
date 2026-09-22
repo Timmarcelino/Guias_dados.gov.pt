@@ -253,13 +253,13 @@ Estado da primeira passagem em 22/09/2026:
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Prioridade de revisão profunda: D10 → D11. D04, D05, D06, D07, D08 e CM receberam revisão profunda em 22/09/2026. D06, D07 e CM permanecem Por confirmar em PRD; D08 permanece parcialmente validado com a componente pública confirmada em PRD.
+Prioridade de revisão profunda: D11. D04, D05, D06, D07, D08, D10 e CM receberam revisão profunda em 22/09/2026. D06, D07 e CM permanecem Por confirmar em PRD; D08 e D10 permanecem parcialmente validados com componentes públicas confirmadas em PRD.
 
 ## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
-3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04, D05, D06, D07, D08 e CM.
+3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04, D05, D06, D07, D08, D10 e CM.
 4. Fechar nomenclatura e arquitectura de informação.
 5. Executar revisão funcional e editorial das fichas prioritárias.
 6. Validar acessibilidade e responsividade.

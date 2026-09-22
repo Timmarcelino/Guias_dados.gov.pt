@@ -116,7 +116,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Consulta pública confirmada em PRD; frontend actual sustenta validações de criação e associação; LEDG-2520 confirma que transferência de reutilização não está exposta no ecrã | Não orientar o utilizador para transferência enquanto o botão permanecer desligado; criação, publicação e edição devem ser confirmadas em sessão PRD autenticada |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
 | D11 | Seguir conteúdos e notificações | 5 | **Por confirmar em PRD** | LEDG-2289 concluiu a análise e a direcção terminológica; LEDG-1960 continua To Do e LEDG-2305 In Progress; PRD ainda apresenta `Adicionar aos favoritos`/`Remover dos favoritos` nos quatro tipos de conteúdo | Não publicar `Seguir` como comportamento actual enquanto PRD não o apresentar; notificações de conteúdos seguidos também não estão demonstradas como implementadas |
-| D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Percursos de consulta, criação e resposta estão estruturados | Confirmar moderação, notificações por email, visibilidade, permissões na organização e tratamento de estados sem discussões |
+| D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | Percursos básicos de perfil, conteúdos e actividade estão definidos | Revalidar campos públicos, fotografia, actividade e impacto da evolução da autenticação/conta |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
 | CM | Catálogo de Modelos | 9 | **Por confirmar em PRD** | LEDG-2049 consolidada e em IN UAT; frontend oficial e PRD público revistos em 22/09/2026 sem evidência dos fluxos específicos do Catálogo | Não publicar como comportamento actual até validação autenticada em PRD; confirmar catálogo, permissões, criação/inferência, versionamento, ciclo de vida, utilização e auditoria através do conjunto mínimo de testes definido abaixo |
@@ -1061,7 +1061,111 @@ A nota existente na ficha **Resolver dificuldades numa reutilização** deve ser
 
 A consulta pública e a regra de associação estão sustentadas. Criação, edição e publicação necessitam apenas da validação PRD autenticada. Transferência fica explicitamente fora do percurso actual.
 
-## 16. Decisões e lacunas transversais
+## 16. Revisão profunda D12, Discussões e comunidade
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D12 descreve uma funcionalidade pública existente em PRD. A criação e resposta exigem autenticação e devem ser fechadas com sessão PRD.
+
+### Implementação actual confirmada em PRD público
+
+O endpoint público de Discussões aceita filtro por identificador do conteúdo através do parâmetro `for`.
+
+Num Conjunto de Dados real foram encontradas **7 discussões**.
+
+A primeira discussão devolvida possuía:
+
+* título;
+* mensagens;
+* estado aberto/fechado aplicável;
+* autores/contexto;
+* URL web própria.
+
+O campo `self_web_url` apontou para o próprio Conjunto de Dados com:
+
+`?tab=discussions`.
+
+Isto sustenta as instruções de consulta e confirma o percurso de ligação directa para a área de Discussões.
+
+O endpoint respondeu correctamente também para identificadores de Reutilização e API, embora os exemplos consultados não tivessem discussões registadas.
+
+### Discussões no contexto da organização
+
+A decisão antiga registada na LEDG-1636, que tinha retirado Discussões das Organizações, foi superada na implementação actual.
+
+O frontend actual voltou a apresentar uma área de Discussões na Organização.
+
+Importante: esse contexto utiliza o filtro `org` do Backend.
+
+O filtro `org` não representa necessariamente uma discussão cujo assunto é a própria organização. O Backend agrega discussões cujo assunto pertence a:
+
+* Conjuntos de Dados da organização;
+* Reutilizações da organização;
+* APIs/serviços de dados da organização.
+
+Assim, a ficha **Consultar discussões da organização** é coerente quando entendida como área de acompanhamento das discussões associadas aos conteúdos da entidade.
+
+### Iniciar e responder
+
+O Backend actual exige autenticação para:
+
+* iniciar nova discussão;
+* responder a uma discussão.
+
+A criação exige título, comentário inicial e assunto.
+
+O frontend actual implementa os fluxos `createDiscussion` e `replyToDiscussion`.
+
+**Por confirmar em PRD autenticado:** identidade disponível, mensagens exactas, associação em nome de organização e comportamento final após submissão.
+
+### Pesquisa e estados vazios
+
+O endpoint de Discussões suporta:
+
+* pesquisa `q`;
+* ordenação;
+* estado aberto/fechado;
+* paginação;
+* filtro por assunto;
+* filtro por organização;
+* filtro por utilizador.
+
+O Manual pode orientar a pesquisa de uma conversa, mas a UI e a mensagem de estado vazio devem ser confirmadas no contexto real antes de publicação final.
+
+### Emails e notificações
+
+A LEDG-1742 corrigiu anteriormente o link de resposta para encaminhar para o conteúdo no separador Discussões.
+
+No entanto, existem actualmente questões abertas:
+
+* LEDG-2390, Backlog: comentário de fecho no índice 0 pode ser omitido do email e escapar à verificação de spam;
+* LEDG-2391, Backlog: uma notificação assíncrona pode citar o comentário errado se os índices mudarem antes da execução.
+
+Estas questões não impedem o uso normal da Discussão, mas significam que o Manual não deve apresentar o email como fonte de verdade sobre a conversa.
+
+A formulação actual, que recomenda abrir a conversa e confirmar o contexto antes de responder, é adequada.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Iniciar discussão num Conjunto de Dados | Autenticação/perfil, campos, mensagem e nova conversa ficam correctamente associados ao conteúdo |
+| 2 | Iniciar discussão numa Reutilização e numa API | Confirmar que o percurso está disponível nos dois tipos em PRD |
+| 3 | Responder a discussão existente | Resposta aparece uma única vez e na conversa correcta |
+| 4 | Abrir área Discussões de uma organização | Confirmar agregação dos conteúdos da entidade e acções efectivamente permitidas ao perfil |
+| 5 | Pesquisar discussão | Termo, resultados e estado sem resultados correspondem ao comportamento actual |
+| 6 | Abrir uma ligação proveniente de email/notificação | Destino abre o conteúdo/conversa correcta; não usar o email como substituto da confirmação no portal |
+| 7 | Operar criação/resposta por teclado | Foco, labels, editor, erros e submissão são acessíveis |
+
+### Estado D12
+
+**Parcialmente validado.**
+
+A consulta pública está confirmada em PRD. A participação autenticada e o contexto de organização precisam apenas da validação PRD mínima acima.
+
+## 17. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -1078,16 +1182,15 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 17. Prioridade de revisão profunda
+## 18. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11 e CM.
+Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11, D12 e CM.
 
 Próxima vaga prioritária:
 
-1. D12, Discussões e comunidade
-2. D13, Perfil e actividade
+1. D13, Perfil e actividade
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -1104,7 +1207,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 18. Critério para marcar um guia como Validado
+## 19. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -1116,6 +1219,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 19. Próxima acção
+## 20. Próxima acção
 
-Iniciar revisão profunda de D12, Discussões e comunidade. D09 já foi revisto e permanece parcialmente validado, com a consulta pública confirmada em PRD e a transferência self-service fora do percurso actual.
+Iniciar revisão profunda de D13, Perfil e actividade. D12 já foi revisto e permanece parcialmente validado, com a consulta pública confirmada em PRD.

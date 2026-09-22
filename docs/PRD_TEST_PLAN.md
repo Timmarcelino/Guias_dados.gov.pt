@@ -25,6 +25,19 @@ Inclui:
 * navegação por teclado;
 * comparação entre perfis quando existirem contas de teste adequadas.
 
+### Registo mínimo de evidência
+
+Para cada execução da Fase A, registar juntamente com o resultado:
+
+* data e ambiente observado, sempre PRD neste plano;
+* perfil funcional utilizado, por exemplo Utilizador autenticado, Editor, Administrador da organização ou Administrador do portal, sem identificar a pessoa;
+* conteúdo ou área consultada, usando apenas o identificador necessário para reproduzir a observação;
+* resultado observado e diferença face ao Manual, quando existir;
+* evidência suficiente para rastreabilidade, evitando dados pessoais ou informação sensível;
+* decisão resultante: sem alteração, correcção editorial, Por confirmar ou reabertura de teste.
+
+Quando um resultado variar por perfil, executar apenas os perfis necessários para demonstrar a diferença. Não transformar ausência de permissão num requisito global sem evidência adicional.
+
 ### Fase B, escrita controlada
 
 **Não executar sem autorização explícita de escrita em PRD na conversa actual.**

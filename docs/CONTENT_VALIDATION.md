@@ -110,7 +110,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
-| D06 | Explorador de dados | 8 | **Parcialmente validado** | Implementação documentada com quatro vistas; LEDG-2199 em READY FOR UAT; LEDG-2188 Done | Harmonizar requisito, implementação e UX/UI final; validar em UAT filtros, paginação, ordenação, exportações, URL persistente, estados vazios, erros e acessibilidade |
+| D06 | Explorador de dados | 8 | **Por confirmar em PRD** | LEDG-2276 e LEDG-2199 em READY FOR UAT; documentação técnica consistente; frontend de produção revisto em 22/09/2026 mantém a acção `Explore os dados` oculta no detalhe do recurso | Não publicar como comportamento actual até a entrada no Explorador estar disponível e validada em PRD; distinguir da Pré-visualização simples que já existe no Frontoffice |
 | D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Conteúdo v2 inclui referência API, X-API-KEY, OpenAPI e registo de APIs | Resolver divergência entre fonte PDF/estática e fonte dinâmica; revalidar gating por organização/emblema, operações de escrita e terminologia da referência actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
@@ -434,7 +434,103 @@ Até execução destes testes, não apresentar como comportamento actual:
 
 A LEDG-2049 continua a ser a fonte funcional para UAT. O Manual deve usar apenas o comportamento que os testes PRD autenticados confirmarem.
 
-## 10. Decisões e lacunas transversais
+## 10. Revisão profunda D06, Explorador de dados
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+As oito fichas de D06 estão fortemente alinhadas com a LEDG-2276 e com a documentação técnica do Explorador.
+
+A LEDG-2276 encontra-se em **READY FOR UAT** e consolida várias capacidades que, na baseline de Agosto, ainda estavam em decisão. Entre elas: oito tipos de gráfico, exportação JSON, exportação PNG, ecrã inteiro, paginação 10/50/200, estado persistente no URL e ausência de alertas automáticos de qualidade nesta entrega.
+
+No entanto, a integração de entrada no Explorador depende da LEDG-2199, também em **READY FOR UAT**.
+
+### Requisito confirmado pela LEDG-2276
+
+A História define:
+
+* quatro áreas: Dados, Estrutura, Métricas e Gráfico;
+* formatos elegíveis CSV, TXT tabular delimitado, XLS e XLSX;
+* filtros por coluna combinados por AND;
+* validação local de filtros;
+* ordenação por uma coluna;
+* selecção de colunas visíveis;
+* paginação de 10, 50 ou 200 registos;
+* filtros disponíveis nas quatro áreas;
+* filtros a afectar Dados e Gráfico, mantendo Estrutura e Métricas sobre o recurso completo;
+* exportação CSV e JSON da página actual e colunas visíveis;
+* oito tipos de gráfico;
+* gráfico sobre a página actual, até 200 registos, sem Soma ou Contagem;
+* exportação PNG;
+* modo de ecrã inteiro;
+* persistência no URL da área, filtros, ordenação, paginação, colunas e configuração de gráfico;
+* remoção selectiva de parâmetros incompatíveis após alteração da estrutura;
+* estados de processamento, indisponibilidade, erro e ausência de resultados;
+* interface responsiva, bilingue e acessível;
+* ausência de alertas automáticos de qualidade na área Métricas nesta entrega.
+
+A documentação técnica do Explorador confirma a existência de implementação para filtros, paginação, exportações, URL, i18n, tratamento de erros e as quatro vistas.
+
+### Divergência histórica ultrapassada
+
+A baseline de 13/08/2026 tratava JSON, PNG, ecrã inteiro, oito gráficos e outras extensões como implementação ainda não aprovada.
+
+A LEDG-2276 actual consolidou funcionalmente essas capacidades. Assim, essa divergência histórica deixa de bloquear o requisito.
+
+O Manual, contudo, continua obrigado a descrever apenas o que estiver efectivamente disponível em PRD.
+
+### Evidência observada em PRD
+
+Em 22/09/2026 foi revisto o frontend oficial actualmente associado ao portal.
+
+No componente de detalhe de recurso, o bloco com o texto **Explore os dados** encontra-se explicitamente com a classe `hidden`.
+
+O Frontoffice público apresenta actualmente a **Pré-visualização simples**, incluindo:
+
+* Pré-visualização;
+* Estrutura de dados;
+* Metadados;
+* Downloads.
+
+O código actual da Pré-visualização carrega dados tabulares através dos endpoints internos `proxy-csv` ou `proxy-spreadsheet`.
+
+Não foi encontrada uma rota pública do novo Explorador acessível a partir do recurso analisado, nem resultados públicos indexados que demonstrem o percurso completo D06 em PRD.
+
+### Distinção obrigatória
+
+**Pré-visualização simples** e **Explorador de dados** não são a mesma funcionalidade.
+
+A primeira está actualmente observável em PRD.
+
+A segunda é a funcionalidade definida na LEDG-2276, cuja entrada depende da acção **Explorar dados** da LEDG-2199.
+
+Não utilizar a existência da Pré-visualização como prova de disponibilidade do Explorador.
+
+### Conjunto mínimo de testes PRD após integração
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Abrir um recurso elegível no Frontoffice | A acção **Explorar dados** é visível e abre o Explorador correcto |
+| 2 | Abrir o Explorador | São apresentadas Dados, Estrutura, Métricas e Gráfico sobre o mesmo conteúdo vigente |
+| 3 | Aplicar dois filtros e ocultar uma coluna filtrada | Os filtros combinam-se por AND; ocultar coluna não remove o filtro; Limpar remove filtros e preserva visibilidade |
+| 4 | Ordenar e alterar paginação | Só uma coluna ordena; estão disponíveis 10, 50 e 200 registos por página |
+| 5 | Exportar CSV e JSON | O ficheiro contém apenas a página actual e as colunas visíveis |
+| 6 | Consultar Estrutura e Métricas após filtrar | Ambas continuam a representar o recurso completo |
+| 7 | Configurar os oito tipos de gráfico | Apenas configurações compatíveis são permitidas e o gráfico representa a página actual sem agregação |
+| 8 | Exportar PNG e utilizar ecrã inteiro | PNG corresponde ao estado visível; ecrã inteiro abre/fecha por controlo e Esc com retorno de foco |
+| 9 | Copiar e reabrir URL configurado | O estado suportado da exploração é reposto sem conceder permissões |
+| 10 | Introduzir filtro inválido e provocar ausência de resultados | Erro é associado ao campo sem pedido inválido; ausência de resultados é distinguida de erro |
+| 11 | Simular indisponibilidade/reprocessamento | Não são apresentados dados antigos como actuais e existe mensagem recuperável |
+| 12 | Executar navegação por teclado e NVDA | Separadores, filtros, tabela, paginação, exportações, gráfico e ecrã inteiro são operáveis e compreensíveis |
+
+### Estado D06
+
+**Por confirmar em PRD para publicação como comportamento actual.**
+
+O conteúdo deve permanecer no protótipo porque está alinhado com a LEDG-2276, mas não deve ser apresentado como funcionalidade actualmente disponível até a acção de entrada estar exposta e o conjunto mínimo acima ser validado em PRD.
+
+## 11. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -451,18 +547,17 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 11. Prioridade de revisão profunda
+## 12. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D04, D05, D07 e CM.
+Revisões profundas concluídas: D04, D05, D06, D07 e CM.
 
 Próxima vaga prioritária:
 
-1. D06, Explorador de dados
-2. D08, APIs e serviços de dados
-3. D10, Harvester
-4. D11, Seguir conteúdos e notificações
+1. D08, APIs e serviços de dados
+2. D10, Harvester
+3. D11, Seguir conteúdos e notificações
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -479,7 +574,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 12. Critério para marcar um guia como Validado
+## 13. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -491,6 +586,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 13. Próxima acção
+## 14. Próxima acção
 
-Iniciar revisão profunda de D06, Explorador de dados. CM já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.
+Iniciar revisão profunda de D08, APIs e serviços de dados. D06 já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.

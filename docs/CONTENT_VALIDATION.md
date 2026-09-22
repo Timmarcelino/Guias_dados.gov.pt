@@ -169,7 +169,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Consulta pública confirmada em PRD; frontend actual sustenta validações de criação e associação; LEDG-2520 confirma que transferência de reutilização não está exposta no ecrã | Não orientar o utilizador para transferência enquanto o botão permanecer desligado; criação, publicação e edição devem ser confirmadas em sessão PRD autenticada |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
-| D11 | Seguir conteúdos e notificações | 5 | **Conteúdo alvo não alinhado com PRD actual** | LEDG-1960 To Do, LEDG-2305 In Progress, LEDG-2306 Backlog e LEDG-2303 To Do; PRD revalidado em 22/09/2026 usa Favoritos nos quatro tipos | Não publicar as fichas `Seguir`/`Deixar de seguir` como comportamento actual; retomar validação apenas quando a evolução estiver integrada em PRD |
+| D11 | Favoritos e notificações | 5 | **Parcialmente validado** | PRD revalidado em 22/09/2026 apresenta `Adicionar aos favoritos`/`Remover dos favoritos` em Organização, Conjunto de Dados, Reutilização e API; notificações existentes são independentes desta relação | Fichas de Favoritos alinhadas ao PRD actual. Percurso autenticado de Notificações permanece a confirmar; não afirmar que Favoritos gera notificações |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 e PRD confirmam autenticação obrigatória; correcção editorial de actor/título/data de registo já aplicada e sincronizada | Pendente apenas validação autenticada das áreas pessoais, campos editáveis, actividade e diferenças de visibilidade/permissão |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
@@ -947,148 +947,121 @@ A preparação da fonte, dependência do backend/ambiente e existência dos esta
 
 O Manual deve continuar genérico quanto a backends específicos e nunca recomendar alteração de tipo como contorno para erros de configuração.
 
-## 13. Revisão profunda D11, Seguir conteúdos e notificações
+## 13. Revisão profunda D11, Favoritos e notificações
 
 Data da revisão: 22/09/2026.
 
 ### Resultado
 
-D11 combina duas capacidades que se encontram em estados diferentes:
+D11 foi alinhado à regra do projecto de documentar o comportamento actual de PRD sem antecipar evoluções futuras.
 
-1. relação técnica de seguimento (`Follow/Unfollow`), actualmente exposta no Frontoffice com terminologia de **Favoritos**;
-2. sistema de notificações, que já existe para vários eventos, mas cuja integração com conteúdos seguidos ainda está em evolução.
+O guia passa a separar duas capacidades:
+
+1. **Favoritos**, relação actualmente exposta no Frontoffice através das acções `Adicionar aos favoritos` e `Remover dos favoritos`;
+2. **Notificações**, avisos associados a eventos específicos do portal e não à existência de um Favorito por si só.
 
 ### Implementação actual observada em PRD
 
-Foram consultados em PRD exemplos públicos de:
+Foram revalidados exemplos públicos de:
 
-* Conjunto de Dados;
-* API;
 * Organização;
-* Reutilização.
+* Conjunto de Dados;
+* Reutilização;
+* API.
 
-Nos quatro tipos, o HTML actual contém **Adicionar aos favoritos** e **Remover dos favoritos**.
+Nos quatro tipos, o comportamento actual apresenta:
+
+* **Adicionar aos favoritos**;
+* **Remover dos favoritos**.
 
 Não foram encontradas as acções públicas **Seguir** ou **Deixar de seguir** nestes conteúdos.
 
-Assim, a terminologia do D11 representa a evolução aprovada como direcção funcional, mas **não corresponde ainda ao comportamento actual de PRD**.
+A LEDG-2289 confirma que, tecnicamente, Favoritos utiliza a relação `Follow/Unfollow`, mas a terminologia técnica não substitui a terminologia visível do PRD no Manual.
 
-### Relação técnica confirmada
+### Favoritos não equivale a Notificações
 
-A LEDG-2289 concluiu que:
+A evidência disponível não demonstra uma regra implementada do tipo:
 
-* **Adicionar aos favoritos** executa tecnicamente `Follow`;
-* **Remover dos favoritos** executa `Unfollow`;
-* Subscrições, Acompanhamentos, Seguidores e Subscritores eram utilizados de forma inconsistente para a mesma relação ou conceitos relacionados;
-* o Backend utiliza de forma mais coerente `Follow`, `Follower`, `Following` e `Unfollow`.
+`Adicionar aos favoritos → alteração do conteúdo → notificação para o utilizador`.
 
-A decisão de evolução foi uniformizar o conceito para **Seguir**, sem criar nesta fase uma relação distinta de Favoritos.
+Por isso:
 
-### Estado da evolução
-
-A LEDG-1960, **Frontoffice - Reposição de Funcionalidade - Seguir conteúdos e notificações associadas**, encontra-se **To Do**.
-
-A LEDG-2305, **Backoffice - Notificações**, encontra-se **In Progress**.
-
-A LEDG-2306, relativa a Conteúdos seguidos e Seguidores no perfil, encontra-se em **Backlog**.
-
-Portanto, estes tickets não devem ser usados para antecipar o comportamento actual do Manual.
+* adicionar um conteúdo aos Favoritos não deve ser documentado como subscrição de alterações;
+* remover dos Favoritos não deve ser documentado como gestão/desactivação das notificações;
+* as notificações devem ser explicadas a partir dos eventos que o portal efectivamente produz.
 
 ### Notificações actualmente suportadas
 
-A análise LEDG-2289 identificou notificações existentes para eventos relacionados com:
+A análise LEDG-2289 e a implementação actual identificam notificações relacionadas, entre outros contextos, com:
 
 * Discussões;
 * Organizações;
 * Transferências;
 * Harvesters.
 
-O frontend actual de Notificações possui tratamento específico para validação de Harvester, incluindo:
+O frontend actual possui tratamento específico para validação de Harvester, incluindo:
 
 * estado da validação;
 * nome da fonte;
 * ligação **Ver harvester**;
 * acção **Marcar como lida**.
 
-Outros tipos de notificação actualmente caem num tratamento genérico **Nova notificação**, podendo ser marcados como lidos.
+Outros tipos podem ser apresentados de forma genérica conforme a implementação disponível.
 
-A LEDG-2322 e a LEDG-2328 corrigiram defeitos de notificações de organização e discussão no Backend.
+Marcar uma notificação como lida não equivale a executar a decisão de negócio associada, por exemplo aprovar ou rejeitar um Harvester.
 
-### Follow não equivale actualmente a notificação
+### Evolução futura fora do Manual actual
 
-A LEDG-2289 não identificou implementação que estabeleça:
+Os tickets seguintes continuam a representar evolução e não comportamento actual:
 
-`Follow → alteração do conteúdo seguido → Notification para o seguidor`.
+* LEDG-1960, **To Do**;
+* LEDG-2305, **In Progress**;
+* LEDG-2306, **Backlog**;
+* LEDG-2303, **To Do**.
 
-Logo, **seguir/favoritar um conteúdo não pode ser documentado actualmente como garantia de receber notificações das suas alterações**.
+A futura uniformização para **Seguir** não deve ser antecipada no conteúdo actual enquanto PRD continuar a apresentar Favoritos.
 
-A matriz de eventos e notificações prevista na LEDG-2305 continua a ser a fonte de evolução para definir eventos, destinatários, categorias e canais.
+### Impacto nas cinco fichas
 
-### Impacto nas cinco fichas de D11
-
-| Ficha | Estado face a PRD |
+| Ficha actual | Estado face a PRD |
 | --- | --- |
-| Seguir um conteúdo | Não corresponde à terminologia actual de PRD; hoje a acção é Adicionar aos favoritos |
-| Deixar de seguir um conteúdo | Não corresponde à terminologia actual de PRD; hoje a acção é Remover dos favoritos |
-| Consultar uma notificação | Funcionalidade existente, mas percurso autenticado deve ser validado em PRD |
-| Tratar um aviso de validação de harvester | Implementação actual fortemente suportada; validar sessão PRD antes de fechar |
-| Resolver dificuldades com notificações | Conteúdo genérico aceitável, desde que não prometa eventos/canais ainda não implementados |
+| Adicionar aos favoritos | Alinhada ao comportamento público observado |
+| Remover dos favoritos | Alinhada ao comportamento público observado |
+| Consultar uma notificação | Funcionalidade existente; percurso autenticado ainda deve ser confirmado |
+| Tratar um aviso de validação de harvester | Implementação actual fortemente suportada; confirmar sessão PRD |
+| Resolver dificuldades com notificações | Conteúdo genérico compatível com o comportamento actual |
 
-### Decisão para o Manual
+### Correcção editorial executada
 
-Não regressar editorialmente à terminologia **Favoritos** apenas para antecipar uma publicação que ficaria rapidamente desactualizada.
+A fonte editorial foi alterada de:
 
-Enquanto a LEDG-1960 não estiver disponível em PRD:
+* **Seguir conteúdos e notificações** para **Favoritos e notificações**;
+* **Seguir um conteúdo** para **Adicionar aos favoritos**;
+* **Deixar de seguir um conteúdo** para **Remover dos favoritos**.
 
-* manter D11 no protótipo como conteúdo preparado;
-* não publicar as fichas **Seguir** e **Deixar de seguir** como instruções do comportamento actual;
-* se for necessário documentar urgentemente o PRD actual, criar uma versão explicitamente identificada como comportamento actual com **Adicionar aos favoritos/Remover dos favoritos**, sem prometer notificações associadas;
-* não afirmar que seguir um conteúdo gera notificações de actualizações.
+As rotas históricas e o nome físico do PDF foram preservados para evitar quebra de ligações existentes.
 
-### Conjunto mínimo de testes PRD após evolução
+A fonte, experiência dinâmica, pesquisa, páginas estáticas e PDF foram sincronizados. O guardrail de consistência passou após a alteração.
+
+### Conjunto mínimo de testes PRD autenticados
 
 | Prioridade | Teste | Resultado observável necessário |
 | --- | --- | --- |
-| 1 | Abrir Organização, Conjunto de Dados, Reutilização e API autenticado | A acção é apresentada como **Seguir** nos quatro tipos |
-| 2 | Seleccionar Seguir e reabrir o conteúdo | A relação persiste e a acção passa a **Deixar de seguir** |
-| 3 | Seleccionar Deixar de seguir | A relação termina e **Seguir** volta a estar disponível |
-| 4 | Tentar a acção sem autenticação | É apresentada a necessidade de autenticação conforme implementação real |
-| 5 | Consultar área de Notificações com eventos existentes | Conteúdo, ligação, estado lido/não lido e destino correspondem ao evento |
-| 6 | Validar evento de Harvester | A ligação encaminha para a fonte e marcar como lido não executa aprovação/rejeição |
-| 7 | Quando LEDG-2305 definir eventos de seguimento, provocar um evento notificável | Apenas destinatários e canais definidos na matriz recebem o aviso |
-| 8 | Operar acções e notificações por teclado | Foco, nomes acessíveis, estados e mensagens são perceptíveis |
+| 1 | Abrir Organização, Conjunto de Dados, Reutilização e API autenticado | A acção actual é **Adicionar aos favoritos** ou **Remover dos favoritos** conforme a relação existente |
+| 2 | Adicionar um conteúdo aos favoritos, apenas quando houver autorização de escrita | A relação persiste e a acção passa a **Remover dos favoritos** |
+| 3 | Remover dos favoritos, apenas quando houver autorização de escrita | A relação termina e **Adicionar aos favoritos** volta a estar disponível |
+| 4 | Consultar área de Notificações | Conteúdo, ligação, estado lido/não lido e destino correspondem ao evento apresentado |
+| 5 | Consultar um aviso de Harvester existente | A ligação encaminha para a fonte e marcar como lido permanece distinto da aprovação/rejeição |
+| 6 | Operar Favoritos e Notificações por teclado | Foco, nomes acessíveis, estados e mensagens são perceptíveis |
 
 ### Estado D11
 
-**Conteúdo alvo não alinhado com o comportamento actual de PRD.**
+**Parcialmente validado.**
 
-O principal bloqueio não é falta de definição conceptual. É a diferença entre a terminologia/integração alvo e o que PRD apresenta hoje.
+As duas fichas de Favoritos estão alinhadas com o comportamento actual observado em PRD.
 
-### Revalidação PRD adicional, 22/09/2026
+As fichas de Notificações permanecem pendentes apenas da validação autenticada mínima. Não existe evidência para afirmar que Favoritos gera notificações de alterações.
 
-Foram novamente consultados no Frontoffice público de PRD exemplos reais dos quatro tipos abrangidos pela LEDG-1960:
-
-* Conjunto de Dados;
-* API;
-* Organização;
-* Reutilização.
-
-Em todos os quatro casos o HTML actual contém **Adicionar aos favoritos** e **Remover dos favoritos**.
-
-Não foram encontradas ocorrências de **Seguir** ou **Deixar de seguir** nesses mesmos conteúdos.
-
-Estado dos tickets de evolução na mesma data:
-
-* LEDG-1960: **To Do**;
-* LEDG-2305: **In Progress**;
-* LEDG-2306: **Backlog**;
-* LEDG-2303: **To Do**.
-
-A LEDG-2289 permanece a fonte de análise que demonstra que Favoritos utiliza tecnicamente `Follow/Unfollow`, mas também confirma que não foi identificada uma ligação implementada do tipo `Follow → alteração do conteúdo → Notification`.
-
-**Implementação actual:** Favoritos/Follow continua a ser o comportamento exposto em PRD. A evolução editorial para **Seguir** e a integração com notificações ainda não estão disponíveis como percurso actual reproduzível.
-
-**Impacto editorial:** manter D11 como conteúdo preparado para a evolução aprovada, mas bloqueado para publicação como Manual do PRD actual.
 
 ## 14. Revisão profunda D02, Organizações e permissões
 

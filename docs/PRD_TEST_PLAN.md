@@ -226,11 +226,11 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 | 4 | Apenas após 1 e 2, abrir Catálogo como Editor e Administrador | Nenhum | Registar área, modelos e diferenças reais de permissões |
 | 5 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes acessíveis e estados são perceptíveis |
 
-### PRD-R09, Seguir e Notificações após integração
+### PRD-R09, Favoritos e Notificações
 
-**Rastreabilidade:** D11; LEDG-1960, LEDG-2289, LEDG-2305.
+**Rastreabilidade:** D11; LEDG-2289, LEDG-1960, LEDG-2305.
 
-**Summary:** revalidar a evolução Seguir/Notificações apenas depois de LEDG-1960/2305 estar integrada em PRD. No estado actual, PRD continua a expor Favoritos.
+**Summary:** confirmar a relação de Favoritos e a área de Notificações actualmente disponíveis, sem antecipar a futura evolução para Seguir.
 
 **Preconditions:**
 
@@ -240,11 +240,17 @@ Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execu
 
 | Step | Action | Input | Expected Result |
 | ---: | --- | --- | --- |
-| 1 | Confirmar que pelo menos um dos quatro tipos apresenta `Seguir` | Conteúdo existente | Se PRD continuar a apresentar Favoritos, terminar o TC e manter D11 bloqueado para publicação actual |
-| 2 | Confirmar a mesma terminologia nos quatro tipos | Organização, Dataset, Reutilização e API | `Seguir`/`Deixar de seguir` é coerente em todos os tipos abrangidos |
-| 3 | Abrir Notificações | Nenhum | Registar tipos, conteúdo, ligações e estado lido/não lido |
-| 4 | Confirmar eventos de conteúdos seguidos definidos pela matriz | Evento notificável disponível | Só os eventos/canais efectivamente implementados são documentados |
-| 5 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes e estados são perceptíveis |
+| 1 | Abrir Organização | Conteúdo existente | A acção apresentada corresponde a Adicionar aos favoritos ou Remover dos favoritos |
+| 2 | Abrir Conjunto de Dados | Conteúdo existente | A terminologia actual é Favoritos |
+| 3 | Abrir Reutilização | Conteúdo existente | A terminologia actual é Favoritos |
+| 4 | Abrir API | Conteúdo existente | A terminologia actual é Favoritos |
+| 5 | Abrir Notificações | Nenhum | Registar tipos, conteúdo, ligações e estado lido/não lido |
+| 6 | Abrir aviso de Harvester, se existir | Notificação existente | Ligação encaminha para a fonte e marcar como lido permanece distinto da decisão |
+| 7 | Confirmar ausência de relação automática documentável entre Favoritos e Notificações | Nenhum | Não existe no PRD observado uma promessa de notificação apenas por adicionar aos favoritos |
+| 8 | Navegar por teclado | Tab, Shift+Tab | Foco, nomes e estados são perceptíveis |
+
+**Nota:** adicionar/remover Favoritos altera dados da conta. Executar esses passos apenas na Fase B, após autorização explícita.
+
 
 ### PRD-R10, Explorador, suspenso até integração
 

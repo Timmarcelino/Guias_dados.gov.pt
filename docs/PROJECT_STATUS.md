@@ -232,7 +232,7 @@ Mitigação: não considerar aparência como aprovação funcional.
 
 Conteúdo ainda não validado pode ser confundido com comportamento actual.
 
-Mitigação: usar explicitamente Assunção ou Por confirmar sempre que não existir evidência suficiente.
+Mitigação: quando não existir regra funcional confirmada, usar exclusivamente o comportamento observado e reproduzível em PRD, identificado como Implementação actual. Não antecipar backlog, Figma futuro ou comportamento esperado.
 
 ### Risco
 
@@ -252,13 +252,13 @@ Estado da primeira passagem em 22/09/2026:
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Prioridade de revisão profunda: D05 → D07 → CM. D04 recebeu a primeira revisão profunda em 22/09/2026 e permanece parcialmente validado até UAT e clarificação da LEDG-2175.
+Prioridade de revisão profunda: D07 → CM. D04 e D05 receberam revisão profunda em 22/09/2026 e permanecem parcialmente validados apenas nos pontos explicitamente registados em `docs/CONTENT_VALIDATION.md`.
 
 ## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
-3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisão profunda iniciada por D04.
+3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04 e D05.
 4. Fechar nomenclatura e arquitectura de informação.
 5. Executar revisão funcional e editorial das fichas prioritárias.
 6. Validar acessibilidade e responsividade.
@@ -276,7 +276,8 @@ Sempre que o trabalho for retomado:
 4. Verificar alterações no Jira relacionadas com Guias.
 5. Actualizar este documento apenas quando existir nova evidência ou decisão.
 6. Não substituir uma decisão validada por inferência de implementação.
-7. Registar Assunção e Por confirmar quando necessário.
+7. Não usar Assunção para preencher lacunas de comportamento do portal. Quando não houver regra confirmada, consultar PRD e registar apenas o comportamento observado como Implementação actual.
+8. Usar `Por confirmar` quando PRD não puder ser observado ou a evidência não for suficiente.
 
 ## 14. Função de controlo de continuidade
 

@@ -325,12 +325,9 @@ def main() -> int:
         dg = dyn_by_code.get(code)
         if not dg:
             continue
-        if dg.get("title") != guide.get("title"):
-            errors.append(f"assets/js/data.js: título divergente em {code}")
-        source_titles = [f["title"] for f in guide["fichas"]]
-        dynamic_titles = [f["title"] for f in dg.get("fichas", [])]
-        if source_titles != dynamic_titles:
-            errors.append(f"assets/js/data.js: sequência de fichas divergente em {code}")
+        for field in ("title", "intro", "audience", "fichas"):
+            if dg.get(field) != guide.get(field):
+                errors.append(f"assets/js/data.js: campo {field} divergente em {code}")
 
     d01_text = DYNAMIC_D01.read_text(encoding="utf-8")
     d01 = by_code["D01"]
@@ -338,11 +335,22 @@ def main() -> int:
         errors.append("assets/js/data-d01.js: código D01 em falta")
     if f'title: "{d01["title"]}"' not in d01_text:
         errors.append("assets/js/data-d01.js: título D01 divergente")
-    for ficha in d01["fichas"]:
-        if f'title: "{ficha["title"]}"' not in d01_text:
+    def iter_strings(value):
+        if isinstance(value, str):
+            yield value
+        elif isinstance(value, list):
+            for item in value:
+                yield from iter_strings(item)
+        elif isinstance(value, dict):
+            for item in value.values():
+                yield from iter_strings(item)
+
+    for value in iter_strings(d01):
+        encoded = json.dumps(value, ensure_ascii=False)
+        if encoded not in d01_text:
             errors.append(
-                "assets/js/data-d01.js: ficha D01 em falta ou divergente: "
-                f'{ficha["title"]}'
+                "assets/js/data-d01.js: conteúdo D01 em falta ou divergente: "
+                f"{value!r}"
             )
 
     page404 = ROOT / "404.html"

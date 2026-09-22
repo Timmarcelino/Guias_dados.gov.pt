@@ -21,12 +21,13 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | Branch activa de evolução | `feature/static-routes-pdf` |
 | Diferença para `main` em 22/09/2026 | 10 commits à frente, 0 atrás, após esta correcção |
 | Guias | 15 |
-| Fichas orientadas a tarefas | 91 |
+| Fichas na baseline estável v0.4 | 91 |
+| Fichas na branch activa | 92 |
 | Temas funcionais | 7 |
 | Publicação oficial no dados.gov.pt | Não confirmada |
 | Estado funcional do conteúdo | Em revisão funcional, editorial e UX/UI |
 
-Regra: a contagem de referência é 91 fichas. Em 22/09/2026 foi detectada uma 92.ª rota gerada, “Reportar um problema técnico”, sem correspondência em `assets/js/data.js` e sem decisão editorial aprovada. A deriva foi removida da geração estática e não altera a baseline.
+Regra: a baseline estável v0.4 mantém 91 fichas. A branch activa evolui para 92 fichas após a validação da 6.ª ficha de D14, “Reportar um problema técnico”.
 
 ## 3. Branch activa
 
@@ -54,15 +55,15 @@ A comparação com `main` evidencia, entre outros:
 
 Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.
 
-### Correcção de consistência em 22/09/2026
+### Actualização de D14 em 22/09/2026
 
-Foi detectada uma divergência entre a fonte editorial e os artefactos estáticos: a geração continha 92 fichas, enquanto a baseline aprovada contém 91.
+A revisão histórica confirmou que a 6.ª ficha de D14, `Reportar um problema técnico`, já tinha sido analisada e estava encaminhada para integração.
 
-A entrada adicional era `Reportar um problema técnico`, no guia Ajuda e contactos.
+A reserva operacional principal estava associada ao formulário Ajuda e contactos e ao reCAPTCHA em PPR/PRD. O LEDG-2475 foi concluído e existe evidência posterior de submissão com sucesso em PPR.
 
-Decisão já validada no trabalho editorial: D14 mantém cinco fichas. A entrada adicional não estava presente em `assets/js/data.js` e não corresponde a nova decisão funcional.
+Decisão: D14 passa a seis fichas na branch activa. A ficha foi reposta nas rotas estáticas, pesquisa e sitemap e integrada em `assets/js/data.js` para eliminar a divergência entre fonte editorial e artefactos gerados.
 
-Correcção aplicada: removida a rota adicional, a entrada de pesquisa, a entrada do sitemap e as referências de navegação associadas. A fonte editorial não foi alterada.
+A ficha não deve prometer confirmação automática por email enquanto o LEDG-2029 não estiver implementado.
 
 ## 4. Baseline v0.4
 

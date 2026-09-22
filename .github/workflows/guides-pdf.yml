@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: guides-pdf-feature-static-routes-pdf
+  cancel-in-progress: false
+
 jobs:
   generate-pdfs:
     runs-on: ubuntu-latest
@@ -75,5 +79,7 @@ jobs:
             echo "Sem alterações nos PDFs."
           else
             git commit -m "chore(pdf): sincroniza PDFs com fonte editorial"
+            git fetch origin feature/static-routes-pdf
+            git rebase origin/feature/static-routes-pdf
             git push origin HEAD:feature/static-routes-pdf
           fi

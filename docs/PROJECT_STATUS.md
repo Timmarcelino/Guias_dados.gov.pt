@@ -247,19 +247,19 @@ A matriz detalhada encontra-se em `docs/CONTENT_VALIDATION.md`.
 Estado da primeira passagem em 22/09/2026:
 
 * Validado no âmbito actual: D01, D03 e D14.
-* Parcialmente validado: D02, D04, D05, D06, D08, D09, D10, D11, D12 e D13.
-* Por confirmar em PRD para publicação como comportamento actual: D07 e CM.
+* Parcialmente validado: D02, D04, D05, D08, D09, D10, D11, D12 e D13.
+* Por confirmar em PRD para publicação como comportamento actual: D06, D07 e CM.
 * Sem base funcional suficiente: nenhum guia.
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Prioridade de revisão profunda: D06 → D08 → D10 → D11. D04, D05, D07 e CM receberam revisão profunda em 22/09/2026. D07 e CM permanecem Por confirmar em PRD para publicação como comportamento actual.
+Prioridade de revisão profunda: D08 → D10 → D11. D04, D05, D06, D07 e CM receberam revisão profunda em 22/09/2026. D06, D07 e CM permanecem Por confirmar em PRD para publicação como comportamento actual.
 
 ## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
-3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04, D05, D07 e CM.
+3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisões profundas concluídas para D04, D05, D06, D07 e CM.
 4. Fechar nomenclatura e arquitectura de informação.
 5. Executar revisão funcional e editorial das fichas prioritárias.
 6. Validar acessibilidade e responsividade.

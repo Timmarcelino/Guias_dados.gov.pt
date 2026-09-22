@@ -55,6 +55,12 @@ A comparação com `main` evidencia, entre outros:
 
 Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.
 
+### Defeitos técnicos web fechados em 22/09/2026
+
+* Corrigido o título duplicado da entrada principal para `Guias do utilizador | dados.gov.pt`.
+* A página 404 passou a ter estrutura semântica, viewport responsivo, skip link, foco no conteúdo, navegação de retorno e `noindex`.
+* Por confirmar: o processo que gera rotas estáticas e PDFs não está versionado no repositório. Deve ser incorporado antes de nova regeneração para evitar reintrodução de defeitos já corrigidos.
+
 ### Actualização de D14 em 22/09/2026
 
 A revisão histórica confirmou que a 6.ª ficha de D14, `Reportar um problema técnico`, já tinha sido analisada e estava encaminhada para integração.

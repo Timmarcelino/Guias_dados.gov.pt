@@ -13,3 +13,6 @@
 .skip-link:focus{transform:none}
 a:focus-visible,select:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #0050b9;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+#dados-guides-review .dg-body--single{display:block}
+#dados-guides-review .dg-body--single main{min-height:420px}

@@ -119,7 +119,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Percursos de consulta, criação e resposta estão estruturados | Confirmar moderação, notificações por email, visibilidade, permissões na organização e tratamento de estados sem discussões |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | Percursos básicos de perfil, conteúdos e actividade estão definidos | Revalidar campos públicos, fotografia, actividade e impacto da evolução da autenticação/conta |
 | D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
-| CM | Catálogo de Modelos | 9 | **Parcialmente validado** | LEDG-2049 em IN UAT; conceitos de modelo/versionamento consolidados | Confirmar limites de inferência, normalização, volumetria, paginação/histórico, retenção de auditoria, concorrência, permissões finais, critérios de estados e UX/UI |
+| CM | Catálogo de Modelos | 9 | **Por confirmar em PRD** | LEDG-2049 consolidada e em IN UAT; frontend oficial e PRD público revistos em 22/09/2026 sem evidência dos fluxos específicos do Catálogo | Não publicar como comportamento actual até validação autenticada em PRD; confirmar catálogo, permissões, criação/inferência, versionamento, ciclo de vida, utilização e auditoria através do conjunto mínimo de testes definido abaixo |
 
 ## 6. Revisão profunda D04, Publicar e gerir Conjuntos de Dados
 
@@ -327,7 +327,114 @@ Não é necessário rediscutir a LEDG-2031. O que falta é comprovar, através d
 
 Se PRD divergir da LEDG-2031, o Manual deve descrever **PRD como Implementação actual** e registar separadamente a divergência para correcção do produto.
 
-## 9. Decisões e lacunas transversais
+## 9. Revisão profunda CM, Catálogo de Modelos
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+As nove fichas do Catálogo de Modelos estão fortemente alinhadas com a LEDG-2049, actualmente em **IN UAT**.
+
+A especificação é suficientemente detalhada para servir como fonte funcional e para preparar testes, mas o estado UAT não prova, por si só, que o comportamento esteja disponível e estável em PRD.
+
+### Requisito confirmado pela LEDG-2049
+
+A História define, entre outros pontos:
+
+* Catálogo global pesquisável, filtrável, ordenável e paginado;
+* Editor com consulta de modelos, versões e utilização, sem alteração, auditoria ou acesso a eliminados;
+* Administrador com operações administrativas, inferência, auditoria e consulta de eliminados;
+* criação manual ou por inferência;
+* primeira gravação a criar modelo e versão v1 em Rascunho;
+* no máximo um Rascunho por modelo;
+* versão activada imutável;
+* estados de versão Rascunho, Em vigor e Substituída;
+* modelo Activo ou Inactivo, com eliminação lógica quando elegível;
+* inferência para CSV, TXT tabular, XLS, XLSX e ODS;
+* inferência limitada a 1.000 linhas ou 5 MB descomprimidos;
+* apenas primeira folha em XLS, XLSX e ODS;
+* até cinco valores distintos e não vazios por campo na proposta;
+* normalização de nomes segundo Unicode NFC, caixa e espaços;
+* activação bloqueada perante regras incompatíveis/inactivas ou catálogo de regras indisponível;
+* nova versão sem migração automática das associações existentes;
+* inactivação bloqueada enquanto existir Rascunho;
+* eliminação apenas quando nenhuma versão foi alguma vez associada;
+* modelos eliminados não recuperáveis nesta entrega;
+* 20 resultados por página;
+* preservação de pesquisa, filtros, ordenação e página ao regressar do detalhe;
+* utilização e auditoria administrativas rastreáveis;
+* WCAG 2.2 AA e contratos de erro/conflito aplicáveis.
+
+Estes pontos são **Requisito** e não devem ser descritos no Manual como comportamento actual até serem confirmados em PRD.
+
+### Evidência observada em PRD
+
+Em 22/09/2026 foram revistos:
+
+* o `main` oficial de `amagovpt/dadosgov-fe`;
+* o HTML público actual do portal em PRD.
+
+Não foram encontradas ocorrências específicas para:
+
+* `Catálogo de Modelos`;
+* `Guardar e activar`;
+* `1.000 linhas`;
+* `Em vigor`;
+* `Catálogo de regras`;
+* `modelo de validação`.
+
+A expressão `Rascunho` existe no frontend actual, mas em contextos de outras funcionalidades e não constitui evidência do Catálogo de Modelos.
+
+A superfície pública não permite validar as operações administrativas do Catálogo.
+
+### Interpretação
+
+Não existe evidência suficiente para afirmar que as nove fichas de CM descrevem actualmente PRD.
+
+A ausência na superfície pública também não demonstra que o Backoffice autenticado esteja ausente.
+
+Assim, o conteúdo permanece no protótipo como documentação preparada a partir do requisito aprovado, mas fica **Por confirmar em PRD** para publicação como Manual do comportamento actual.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Aceder ao Catálogo como Editor e como Administrador | Confirmar existência da área, modelos visíveis e diferenças reais de permissões |
+| 2 | Criar manualmente um modelo e guardar pela primeira vez | Confirmar campos exigidos, estado inicial, versão criada e mensagens reais |
+| 3 | Criar um modelo por inferência com CSV elegível | Confirmar proposta, campos/tipos/amostras, limites observáveis e ausência de activação automática |
+| 4 | Repetir inferência com XLS/XLSX/ODS com várias folhas | Confirmar tratamento real da primeira folha, folhas adicionais e erros |
+| 5 | Activar um Rascunho | Confirmar pré-condições, mensagens, estado do modelo e estado da versão |
+| 6 | Criar e activar uma nova versão | Confirmar existência de um único Rascunho, transição Em vigor/Substituída e imutabilidade da versão activada |
+| 7 | Inactivar e reactivar um modelo | Confirmar restrições reais e impacto em novas associações |
+| 8 | Consultar utilização e auditoria com Editor e Administrador | Confirmar exactamente que informação cada perfil consegue consultar |
+| 9 | Tentar eliminar modelo nunca utilizado e modelo com utilização histórica | Confirmar elegibilidade, confirmação, irreversibilidade e visibilidade posterior |
+| 10 | Validar listagem com mais de 20 modelos e regressar do detalhe | Confirmar paginação, pesquisa, filtros, ordenação e preservação de contexto |
+| 11 | Executar os fluxos principais apenas por teclado e com NVDA quando aplicável | Confirmar foco, nomes acessíveis, estados, erros e confirmações no contexto real |
+
+### Pontos que não devem ser publicados sem PRD
+
+Até execução destes testes, não apresentar como comportamento actual:
+
+* limite exacto de 20 resultados por página;
+* 1.000 linhas ou 5 MB;
+* primeira folha para XLS/XLSX/ODS;
+* máximo de cinco valores de exemplo;
+* regras exactas de normalização de nomes;
+* existência de apenas um Rascunho;
+* estados e transições de versão;
+* irreversibilidade de modelos eliminados;
+* acesso do Editor à utilização e restrição de auditoria;
+* comportamento de concorrência e conflitos;
+* mensagens e confirmações;
+* preservação automática do contexto da listagem.
+
+### Estado CM
+
+**Por confirmar em PRD para publicação como comportamento actual.**
+
+A LEDG-2049 continua a ser a fonte funcional para UAT. O Manual deve usar apenas o comportamento que os testes PRD autenticados confirmarem.
+
+## 10. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -344,24 +451,22 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 10. Prioridade de revisão profunda
+## 11. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-1. CM, Catálogo de Modelos
+Revisões profundas concluídas: D04, D05, D07 e CM.
 
-Motivo: D04, D05 e D07 já receberam revisão profunda. CM permanece como a área de maior risco funcional ainda não aprofundada, encontrando-se em UAT.
-
-### Prioridade 2
+Próxima vaga prioritária:
 
 1. D06, Explorador de dados
 2. D08, APIs e serviços de dados
 3. D10, Harvester
 4. D11, Seguir conteúdos e notificações
 
-Motivo: existe implementação significativa, mas ainda há necessidade de harmonização entre comportamento, documentação, permissões e fontes editoriais.
+Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
-### Prioridade 3
+### Prioridade 2
 
 1. D02, Organizações e permissões
 2. D09, Reutilizações
@@ -374,7 +479,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 11. Critério para marcar um guia como Validado
+## 12. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -386,6 +491,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 12. Próxima acção
+## 13. Próxima acção
 
-Iniciar revisão profunda de CM, Catálogo de Modelos. D07 já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.
+Iniciar revisão profunda de D06, Explorador de dados. CM já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.

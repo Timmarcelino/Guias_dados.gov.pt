@@ -114,7 +114,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
-| D10 | Harvester | 6 | **Parcialmente validado** | Conteúdo cobre preparação, configuração, filtros, preview, trabalhos e aprovação | Confirmar matriz actual de perfis, campos editáveis, preview, aprovação/rejeição e comportamento por ambiente; manter alinhamento com testes PPR |
+| D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
 | D11 | Seguir conteúdos e notificações | 5 | **Parcialmente validado** | LEDG-2289 Done e decisão de uniformização para `Seguir` | Validar matriz final de eventos/notificações, disponibilidade por tipo de conteúdo e permissões das acções associadas |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Percursos de consulta, criação e resposta estão estruturados | Confirmar moderação, notificações por email, visibilidade, permissões na organização e tratamento de estados sem discussões |
 | D13 | Perfil e actividade | 5 | **Parcialmente validado** | Percursos básicos de perfil, conteúdos e actividade estão definidos | Revalidar campos públicos, fotografia, actividade e impacto da evolução da autenticação/conta |
@@ -644,7 +644,104 @@ A versão a preservar deve ser a que corresponde ao conteúdo confirmado no PRD 
 
 As três fichas de consulta pública estão suportadas pelo PRD actual. As três fichas de gestão autenticada ficam pendentes apenas do conjunto mínimo de testes PRD acima.
 
-## 12. Decisões e lacunas transversais
+## 12. Revisão profunda D10, Harvester
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D10 descreve uma funcionalidade existente e activa em PRD, mas a maior parte das tarefas do Manual ocorre no Backoffice autenticado.
+
+A revisão conseguiu confirmar em PRD a infraestrutura, os tipos activos e os estados públicos das fontes. As regras de edição, preview e validação têm evidência forte em Jira e no frontend actual, mas permanecem pendentes de observação autenticada em PRD para serem tratadas como comportamento actual.
+
+### Implementação actual observada em PRD público
+
+O endpoint `/api/1/harvest/backends/` devolveu **15 backends habilitados**:
+
+`ckan`, `ckanpt`, `cswudata`, `csw-dcat`, `csw-iso-19139`, `dcat`, `dkan`, `dgt`, `ogc`, `apambiente`, `dgtIne`, `ine`, `inehvd`, `maaf` e `odspt`.
+
+A própria resposta confirma que filtros, funcionalidades e configurações adicionais dependem do backend. Isto suporta a formulação do guia de que os tipos e opções variam por ambiente/implementação.
+
+O endpoint público de fontes devolveu **42 Harvesters** em PRD.
+
+Na consulta de 22/09/2026:
+
+* 41 fontes estavam com validação `accepted`;
+* 1 fonte estava com validação `pending`;
+* não foi encontrada fonte `refused` na amostra completa;
+* a resposta expõe backend, organização, configuração, planeamento, último trabalho, estado de validação e permissões;
+* para utilizador anónimo, as permissões `delete`, `edit`, `preview`, `run`, `schedule` e `validate` surgiram como `false`.
+
+Foram observados trabalhos concluídos em fontes reais, confirmando a existência operacional do conceito de `last_job` e estado `done`.
+
+### Política de preview confirmada na LEDG-2323
+
+A decisão final registada é:
+
+* preview de configuração sem `organization` exige **sysadmin**;
+* no fluxo de edição, quando o utilizador pode editar, o frontend envia a organização da fonte;
+* quando não pode editar, utiliza o preview da fonte existente, sujeito à permissão `preview` do objecto;
+* pré-visualizar configuração ainda não guardada exige direitos de edição;
+* o botão deve respeitar a permissão de preview;
+* as rotas de preview receberam limite específico de utilização.
+
+Esta decisão substitui a situação antiga em que uma conta meramente autenticada podia chegar ao preview de configuração sem autorização adequada.
+
+### Edição: evidência de implementação
+
+O frontend actual distingue:
+
+* **Administrador da organização**: pode editar Nome, Descrição e Filtros;
+* **Administrador do portal**: pode editar também os campos avançados, incluindo URL, implementação/tipo, planeamento e opções avançadas;
+* utilizadores sem permissão de edição consultam o formulário em modo de leitura.
+
+A LEDG-2296 foi testada em TST com Administrador do sistema e, posteriormente, com Editor/Administrador de organização, confirmando a restrição do produtor ao contexto aplicável.
+
+Por regra do projecto, estas evidências não substituem uma confirmação autenticada em PRD.
+
+### Aprovação e rejeição
+
+O frontend actual apresenta os estados `pending`, `accepted` e `refused`.
+
+Em estado pendente, as acções Aprovar e Rejeitar são apresentadas ao administrador do sistema.
+
+A aprovação/rejeição da fonte e a execução do Harvester são operações distintas.
+
+**Por confirmar em PRD:** mensagem final, obrigatoriedade efectiva do motivo de rejeição, comentário de aprovação e comportamento exacto após cada decisão.
+
+### Volatilidade por backend
+
+Existem alterações recentes ainda não estabilizadas em produção, nomeadamente:
+
+* LEDG-2518, Harvester DGT, em READY FOR TESTING;
+* LEDG-2530, campos/formatos do Harvester DGT, em READY FOR TESTING;
+* LEDG-2513, CMLisboa, em Ready for review.
+
+Estas alterações são específicas dos backends e **não devem ser incorporadas como regras genéricas do Manual D10** até estarem efectivamente reflectidas em PRD.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Abrir uma fonte como Editor/consulta e como Administrador de organização | Confirmar campos visíveis, modo de leitura e campos efectivamente editáveis por cada perfil |
+| 2 | Editar Nome, Descrição e Filtros como Administrador da organização | Confirmar gravação e persistência após reabrir; URL, Tipo e Planeamento permanecem não editáveis nesse perfil, se PRD assim implementar |
+| 3 | Abrir a mesma fonte como Administrador do portal | Confirmar disponibilidade real dos campos avançados |
+| 4 | Configurar filtro suportado pelo backend, guardar e reabrir | Filtro permanece registado e produz o efeito esperado no preview |
+| 5 | Executar preview como utilizador autorizado e como utilizador sem permissão | Confirmar disponibilidade/403 ou ocultação da acção e ausência de efeitos persistentes inesperados |
+| 6 | Consultar Trabalhos e detalhe de um trabalho | Confirmar estados, itens, paginação e Linhas por página efectivamente disponíveis |
+| 7 | Aprovar fonte pendente como Administrador do sistema | Confirmar mensagem, estado resultante e que a aprovação não equivale a execução |
+| 8 | Rejeitar fonte pendente | Confirmar se motivo é obrigatório, estado resultante e feedback ao proprietário |
+| 9 | Executar os fluxos principais apenas por teclado | Confirmar foco, labels, estados, modais, erros e acções no contexto real |
+
+### Estado D10
+
+**Parcialmente validado.**
+
+A preparação da fonte, dependência do backend/ambiente e existência dos estados/trabalhos têm evidência directa em PRD. As instruções autenticadas permanecem pendentes apenas do conjunto mínimo de testes acima.
+
+O Manual deve continuar genérico quanto a backends específicos e nunca recomendar alteração de tipo como contorno para erros de configuração.
+
+## 13. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -661,16 +758,15 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 13. Prioridade de revisão profunda
+## 14. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D04, D05, D06, D07, D08 e CM.
+Revisões profundas concluídas: D04, D05, D06, D07, D08, D10 e CM.
 
 Próxima vaga prioritária:
 
-1. D10, Harvester
-2. D11, Seguir conteúdos e notificações
+1. D11, Seguir conteúdos e notificações
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -687,7 +783,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 14. Critério para marcar um guia como Validado
+## 15. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -699,6 +795,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 15. Próxima acção
+## 16. Próxima acção
 
-Iniciar revisão profunda de D10, Harvester. D08 já foi revisto e permanece parcialmente validado, com a componente pública confirmada em PRD.
+Iniciar revisão profunda de D11, Seguir conteúdos e notificações. D10 já foi revisto e permanece parcialmente validado, com a infraestrutura pública confirmada em PRD.

@@ -113,7 +113,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D06 | Explorador de dados | 8 | **Por confirmar em PRD** | LEDG-2276 e LEDG-2199 em READY FOR UAT; documentação técnica consistente; frontend de produção revisto em 22/09/2026 mantém a acção `Explore os dados` oculta no detalhe do recurso | Não publicar como comportamento actual até a entrada no Explorador estar disponível e validada em PRD; distinguir da Pré-visualização simples que já existe no Frontoffice |
 | D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
-| D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
+| D09 | Reutilizações | 6 | **Parcialmente validado** | Consulta pública confirmada em PRD; frontend actual sustenta validações de criação e associação; LEDG-2520 confirma que transferência de reutilização não está exposta no ecrã | Não orientar o utilizador para transferência enquanto o botão permanecer desligado; criação, publicação e edição devem ser confirmadas em sessão PRD autenticada |
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
 | D11 | Seguir conteúdos e notificações | 5 | **Por confirmar em PRD** | LEDG-2289 concluiu a análise e a direcção terminológica; LEDG-1960 continua To Do e LEDG-2305 In Progress; PRD ainda apresenta `Adicionar aos favoritos`/`Remover dos favoritos` nos quatro tipos de conteúdo | Não publicar `Seguir` como comportamento actual enquanto PRD não o apresentar; notificações de conteúdos seguidos também não estão demonstradas como implementadas |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Percursos de consulta, criação e resposta estão estruturados | Confirmar moderação, notificações por email, visibilidade, permissões na organização e tratamento de estados sem discussões |
@@ -949,7 +949,119 @@ Assim:
 
 A consulta pública pode permanecer no Manual. As operações administrativas devem aguardar a validação PRD autenticada acima e não devem incorporar como actuais as correcções ainda em READY FOR TESTING ou To Do.
 
-## 15. Decisões e lacunas transversais
+## 15. Revisão profunda D09, Reutilizações
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+D09 possui um percurso público actualmente disponível em PRD e um percurso de gestão autenticada suportado pelo frontend e por testes anteriores, mas ainda não observado em produção nesta ronda.
+
+### Implementação actual confirmada em PRD público
+
+Foi consultada uma Reutilização pública real:
+
+**Monitorização das Organizações Produtoras de Dados no dados.gov**.
+
+A API pública confirma que uma Reutilização contém, entre outros:
+
+* título;
+* descrição;
+* URL;
+* tema/tipo;
+* etiquetas;
+* organização ou proprietário;
+* relações com Conjuntos de Dados e APIs/serviços quando aplicáveis;
+* estado público/privado;
+* datas e métricas;
+* página pública.
+
+A página pública apresenta os conteúdos e metadados necessários à ficha **Encontrar e consultar reutilizações**.
+
+### Criação: evidência de implementação
+
+O frontend actual:
+
+* exige nome, URL válida, tipo, tema e descrição;
+* cria inicialmente a Reutilização com `private: true`;
+* permite produtor pessoal ou organização disponível à conta;
+* suporta palavras-chave e imagem;
+* possui validação de URL.
+
+Isto suporta as fichas **Preparar uma reutilização** e **Publicar ou manter em rascunho** como implementação candidata, mas a execução real deve ser confirmada em PRD autenticado.
+
+### Associação de dados
+
+O frontend actual permite:
+
+* seleccionar um ou mais Conjuntos de Dados do portal;
+* registar fontes externas;
+* título e descrição opcionais nas fontes externas.
+
+A validação `validateReuseDatasetSelection` bloqueia a utilização simultânea de:
+
+* pelo menos um Conjunto de Dados do portal;
+* pelo menos um link externo.
+
+Portanto, a regra do D09 de **não combinar dados do portal e ligações externas na mesma reutilização** está sustentada pela implementação actual.
+
+Por regra do projecto, a mensagem e o comportamento final ainda devem ser observados em PRD antes de publicação oficial.
+
+### Publicação e rascunho
+
+A criação utiliza `private: true` como estado inicial.
+
+A ficha do Manual está correcta ao distinguir avançar no assistente de tornar a Reutilização pública.
+
+**Por confirmar em PRD autenticado:** designação exacta das acções, mensagens e estado visual após guardar/publicar.
+
+### Edição
+
+A implementação actual suporta edição dos dados principais e das associações.
+
+A LEDG-1748 consolidou que:
+
+* links externos existentes devem voltar a aparecer na edição;
+* título e descrição de cada link externo são opcionais;
+* a contagem de Conjuntos de Dados deve reflectir os itens associados.
+
+A confirmação final do comportamento em PRD continua necessária.
+
+### Transferência não está disponível no percurso actual
+
+A LEDG-2520 encontra-se em **Backlog** e documenta explicitamente que:
+
+* o Backend suporta transferência de Reutilizações;
+* o serviço e os tipos no frontend existem;
+* a função `handleTransferReuse` está implementada;
+* o popup existe;
+* **o botão não está ligado ao ecrã**.
+
+Assim, o Manual não deve indicar actualmente qualquer acção de transferência de Reutilização.
+
+A nota existente na ficha **Resolver dificuldades numa reutilização** deve ser entendida como alerta de funcionalidade incompleta. Para publicação actual, a formulação mais rigorosa é: **a transferência self-service de Reutilizações não está disponível no ecrã actual de PRD, salvo evidência posterior em contrário**.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Criar uma Reutilização com produtor pessoal e, quando aplicável, organização | Confirmar produtores disponíveis, campos exigidos, validações e estado inicial |
+| 2 | Informar URL inválida | Fluxo é bloqueado e mensagem actual é associada ao campo |
+| 3 | Associar vários Conjuntos de Dados do portal | Associação é guardada e aparece no detalhe/edição |
+| 4 | Associar apenas links externos sem título/descrição | É possível avançar e guardar mantendo estes metadados opcionais |
+| 5 | Tentar combinar Conjuntos de Dados do portal e link externo | PRD bloqueia a combinação e apresenta feedback observável |
+| 6 | Guardar como rascunho e publicar | Confirmar acções, estados e visibilidade pública |
+| 7 | Editar uma Reutilização com links externos | Links existentes são apresentados, podem ser alterados/removidos e o resultado persiste |
+| 8 | Procurar acção de transferência | Registar a indisponibilidade actual enquanto LEDG-2520 não estiver implementada |
+| 9 | Operar criação/edição apenas por teclado | Confirmar foco, labels, erros e controlos |
+
+### Estado D09
+
+**Parcialmente validado.**
+
+A consulta pública e a regra de associação estão sustentadas. Criação, edição e publicação necessitam apenas da validação PRD autenticada. Transferência fica explicitamente fora do percurso actual.
+
+## 16. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -966,17 +1078,16 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 16. Prioridade de revisão profunda
+## 17. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D10, D11 e CM.
+Revisões profundas concluídas: D02, D04, D05, D06, D07, D08, D09, D10, D11 e CM.
 
 Próxima vaga prioritária:
 
-1. D09, Reutilizações
-2. D12, Discussões e comunidade
-3. D13, Perfil e actividade
+1. D12, Discussões e comunidade
+2. D13, Perfil e actividade
 
 Motivo: estas áreas têm implementação significativa e impacto transversal, mas ainda exigem harmonização entre comportamento actual, documentação e permissões.
 
@@ -993,7 +1104,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 17. Critério para marcar um guia como Validado
+## 18. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -1005,6 +1116,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 18. Próxima acção
+## 19. Próxima acção
 
-Iniciar revisão profunda de D09, Reutilizações. D02 já foi revisto e permanece parcialmente validado, com a componente pública confirmada em PRD.
+Iniciar revisão profunda de D12, Discussões e comunidade. D09 já foi revisto e permanece parcialmente validado, com a consulta pública confirmada em PRD e a transferência self-service fora do percurso actual.

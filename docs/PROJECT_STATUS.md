@@ -248,12 +248,12 @@ Estado da primeira passagem em 22/09/2026:
 
 * Validado no âmbito actual: D01, D03 e D14.
 * Parcialmente validado: D02, D04, D05, D08, D09, D10, D12 e D13.
-* Por confirmar em PRD para publicação como comportamento actual: D06, D07, D11 e CM.
+* Sem publicação como comportamento actual: D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD. D11 passa a Parcialmente validado após alinhamento editorial com Favoritos em PRD.
 * Sem base funcional suficiente: nenhum guia.
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Revisão profunda: concluída para D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM em 22/09/2026. D01, D03 e D14 já se encontravam validados no âmbito actual. D06, D07, D11 e CM permanecem Por confirmar em PRD; os restantes itens parciais têm testes PRD mínimos identificados.
+Revisão profunda: concluída para D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM em 22/09/2026. D01, D03 e D14 já se encontravam validados no âmbito actual. D06 não está integrado no Frontoffice PRD; D07 e CM não são observáveis no stack público actual; D11 está Parcialmente validado com Favoritos alinhados ao PRD. Os restantes itens parciais têm testes PRD mínimos identificados.
 
 ## 12. Próximos passos recomendados
 
@@ -261,7 +261,7 @@ Revisão profunda: concluída para D02, D04, D05, D06, D07, D08, D09, D10, D11, 
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
 3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem e revisões profundas concluídas em `docs/CONTENT_VALIDATION.md`.
 4. Executar os testes PRD autenticados mínimos registados por guia.
-5. Corrigir primeiro as divergências editoriais objectivas de D04, D11, D13 e D09 e sincronizar todos os artefactos derivados.
+5. Corrigir divergências editoriais objectivas identificadas e sincronizar todos os artefactos derivados. D04, D09, D11 e D13 já receberam correcções baseadas no PRD actual.
 6. Fechar nomenclatura e arquitectura de informação.
 7. Validar acessibilidade e responsividade.
 8. Confirmar modelo de publicação e integração no produto.
@@ -304,7 +304,7 @@ Estado confirmado:
 * revisão profunda concluída para as 15 áreas;
 * D01, D03 e D14 validados no âmbito actual;
 * D02, D04, D05, D08, D09, D10, D12 e D13 parcialmente validados;
-* D06 não integrado no Frontoffice público de PRD; D07 e CM não observáveis no stack público actual de PRD; D11 confirmado como conteúdo alvo ainda não alinhado com PRD actual;
+* D06 não integrado no Frontoffice público de PRD; D07 e CM não observáveis no stack público actual de PRD; D11 alinhado editorialmente a Favoritos e parcialmente validado;
 * fonte editorial permanente em `content/guides.json`;
 * gerador PDF permanente em `scripts/generate_pdf_guides.py`;
 * workflow PDF permanente validado com sucesso;
@@ -483,7 +483,7 @@ O plano separa:
 * D10, Harvester;
 * D12, Discussões;
 * D07 e CM, Validador/Catálogo;
-* D11, Seguir/Notificações;
+* D11, Favoritos/Notificações;
 * D06, Explorador após integração.
 
 Critério: o Manual descreve PRD como Implementação actual quando houver divergência com backlog, requisito alvo ou documentação futura.
@@ -507,7 +507,7 @@ Estado verificado em 22/09/2026.
 A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
 
 1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
-2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 ainda expõe Favoritos em PRD e não a evolução Seguir;
+2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 já alinhado ao comportamento actual de Favoritos, ficando apenas Notificações pendentes de validação autenticada;
 3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
 4. validação manual com NVDA no contexto final ainda pendente;
 5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
@@ -587,20 +587,26 @@ Ressalva comum: a evidência demonstra ausência nas superfícies públicas anal
 
 Decisão: D07 e CM permanecem no protótipo como conteúdo preparado, mas bloqueados para publicação como comportamento actual.
 
-## Actualização D11, Seguir conteúdos e notificações
+## Actualização D11, Favoritos e notificações
 
-Revalidação em PRD concluída em 22/09/2026.
+Em 22/09/2026, D11 foi corrigido para cumprir a regra do projecto de documentar o comportamento actual de PRD.
 
-Exemplos reais de Organização, Conjunto de Dados, Reutilização e API continuam a apresentar **Adicionar aos favoritos / Remover dos favoritos** e não **Seguir / Deixar de seguir**.
+Evidência:
 
-Tickets de evolução:
+* Organização, Conjunto de Dados, Reutilização e API apresentam **Adicionar aos favoritos** / **Remover dos favoritos**;
+* a relação técnica utiliza Follow/Unfollow, mas essa terminologia não é exposta ao utilizador;
+* não existe evidência que permita afirmar que adicionar aos favoritos gera notificações de alterações;
+* as notificações existentes continuam associadas a eventos próprios do portal.
 
-* LEDG-1960: To Do;
-* LEDG-2305: In Progress;
-* LEDG-2306: Backlog;
-* LEDG-2303: To Do.
+Correcções executadas:
 
-Conclusão: D11 representa o comportamento alvo aprovado, mas não o comportamento actual de PRD. Fica bloqueado para publicação actual até a evolução estar integrada.
+* título visível do guia alterado para **Favoritos e notificações**;
+* fichas **Seguir um conteúdo** e **Deixar de seguir um conteúdo** substituídas por **Adicionar aos favoritos** e **Remover dos favoritos**;
+* rotas históricas e nome físico do PDF preservados para compatibilidade;
+* fonte editorial, experiência dinâmica, pesquisa, HTML estático, PDF, matriz funcional e plano PRD sincronizados;
+* guardrail de consistência passou após a alteração.
+
+Estado: **D11 Parcialmente validado**. Favoritos está alinhado ao PRD actual; Notificações requerem apenas a validação autenticada mínima prevista no plano PRD.
 
 ## Actualização D04 e D05, evidência PRD pública
 

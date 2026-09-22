@@ -18,7 +18,7 @@ Principais alterações:
 * QA estrutural sobre 115 páginas: 115/115 HTTP 200 e 134 ligações internas sem quebras.
 * QA responsivo e por teclado em 320, 360, 768 e 1440 px nas páginas representativas.
 * Criação de `docs/PROJECT_STATUS.md`, `docs/CONTENT_VALIDATION.md` e `docs/PRD_TEST_PLAN.md` para continuidade, rastreabilidade e fecho de validação.
-* D06 está confirmado como não integrado no Frontoffice público de PRD; D07 e CM não são observáveis no stack público actual de PRD; D11 foi revalidado e continua a expor Favoritos, não a evolução Seguir.
+* D06 está confirmado como não integrado no Frontoffice público de PRD; D07 e CM não são observáveis no stack público actual de PRD; D11 foi alinhado ao PRD actual: o guia passou a **Favoritos e notificações**, mantendo as rotas históricas; Favoritos e Notificações são documentados como capacidades separadas.
 
 Por confirmar antes de publicação oficial: testes PRD autenticados aplicáveis, validação manual com NVDA, revisão visual final dos PDFs e acessibilidade documental interna dos PDFs.
 

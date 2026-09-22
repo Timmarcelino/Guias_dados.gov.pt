@@ -8,6 +8,7 @@ on:
     paths:
       - "content/guides.json"
       - "assets/js/data.js"
+      - "assets/js/data-d01.js"
       - "assets/js/search-index.json"
       - "assets/js/search.js"
       - "Guias-do-utilizador/**"

@@ -31,6 +31,7 @@ THEMES = [
 ]
 
 TASK_SLUG_OVERRIDES = {
+    ("D01", "Concluir o primeiro acesso quando solicitado"): "Concluir-o-primeiro-acesso-e-confirmar-o-email",
     ("D13", "Consultar o perfil de outro utilizador"): "Consultar-um-perfil-publico",
 }
 

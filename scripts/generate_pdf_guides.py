@@ -1,3 +1,18 @@
+"""Gera a colecção PDF dos Guias do Utilizador a partir da fonte editorial.
+
+O gerador deve permanecer determinístico: content/guides.json é a fonte de
+conteúdo e .build/pdf é sempre descartável. A pasta assets/pdf só é
+actualizada pelo workflow depois de a colecção passar pelas validações.
+
+Notas para ampliações futuras:
+* manter a taxonomia THEMES alinhada com a experiência web;
+* usar overrides de slug apenas para compatibilidade de URLs/nomes históricos;
+* BASE_WEB aponta actualmente para GitHub Pages e deverá ser parametrizado
+  quando o destino oficial dos Guias estiver definido;
+* ao acrescentar elementos visuais, preservar texto seleccionável, ordem de
+  leitura e contraste, e voltar a validar acessibilidade documental do PDF.
+"""
+
 import json, os, re, unicodedata, html, math, shutil, textwrap
 from pathlib import Path
 import qrcode
@@ -8,7 +23,9 @@ REPO = Path(__file__).resolve().parents[1]
 SRC = REPO / 'content' / 'guides.json'
 OUT = REPO / '.build' / 'pdf'
 OUT.mkdir(parents=True, exist_ok=True)
+# D06 pode usar o PDF aprovado quando a implementação ainda não está integrada no Frontoffice.
 APPROVED_D06 = REPO / 'assets' / 'pdf' / 'explorador-de-dados.pdf'
+# Destino actual de revisão; não assumir como URL definitiva do produto.
 BASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'
 
 GUIDES = json.loads(SRC.read_text(encoding='utf-8'))
@@ -32,6 +49,7 @@ def slug(s:str)->str:
     s = re.sub(r'[^A-Za-z0-9]+','-',s).strip('-')
     return s
 
+# Preserva ligações históricas mesmo quando o título editorial muda.
 GUIDE_SLUG_OVERRIDES = {'D11': 'Seguir-conteudos-e-notificacoes'}
 PDF_SLUG_OVERRIDES = {'D11': 'seguir-conteudos-e-notificacoes'}
 

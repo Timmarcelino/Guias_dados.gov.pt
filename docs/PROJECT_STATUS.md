@@ -19,7 +19,7 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | Baseline estável | v0.4 |
 | Commit da baseline | `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
 | Branch activa de evolução | `feature/static-routes-pdf` |
-| Diferença para `main` em 22/09/2026 | 10 commits à frente, 0 atrás, após esta correcção |
+| Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |
 | Guias | 15 |
 | Fichas na baseline estável v0.4 | 91 |
 | Fichas na branch activa | 92 |
@@ -240,7 +240,21 @@ Branches antigas podem ser confundidas com a linha actual de evolução.
 
 Mitigação: considerar `main` como baseline estável e `feature/static-routes-pdf` como branch activa até nova decisão registada.
 
-## 11. Próximos passos recomendados
+## 11. Estado da validação de conteúdo
+
+A matriz detalhada encontra-se em `docs/CONTENT_VALIDATION.md`.
+
+Estado da primeira passagem em 22/09/2026:
+
+* Validado no âmbito actual: D01, D03 e D14.
+* Parcialmente validado: D02, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13 e CM.
+* Por confirmar integralmente: nenhum guia sem base, embora existam regras específicas ainda Por confirmar.
+
+PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
+
+Prioridade de revisão profunda: D04 → D05 → D07 → CM.
+
+## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
@@ -252,7 +266,7 @@ Mitigação: considerar `main` como baseline estável e `feature/static-routes-p
 8. Preparar critérios objectivos para merge da branch em `main`.
 9. Só após validação, preparar a versão candidata a publicação oficial.
 
-## 12. Protocolo de continuidade
+## 13. Protocolo de continuidade
 
 Sempre que o trabalho for retomado:
 
@@ -264,7 +278,7 @@ Sempre que o trabalho for retomado:
 6. Não substituir uma decisão validada por inferência de implementação.
 7. Registar Assunção e Por confirmar quando necessário.
 
-## 13. Função de controlo de continuidade
+## 14. Função de controlo de continuidade
 
 O projecto pode usar uma função de “Secretário do projecto” no processo de análise.
 

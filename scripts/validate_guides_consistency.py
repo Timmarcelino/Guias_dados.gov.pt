@@ -6,6 +6,7 @@ import sys
 import unicodedata
 import xml.etree.ElementTree as ET
 from collections import Counter
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +46,84 @@ FORBIDDEN_TEXT = [
     "percurso em TST",
     "ambiente validado",
 ]
+
+
+class VisibleTextParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.parts = []
+        self.hidden_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() in {"script", "style", "template"}:
+            self.hidden_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag.lower() in {"script", "style", "template"} and self.hidden_depth:
+            self.hidden_depth -= 1
+
+    def handle_data(self, data):
+        if not self.hidden_depth:
+            value = data.strip()
+            if value:
+                self.parts.append(value)
+
+
+def normalise_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value or "").strip()
+
+
+def visible_text_of(html: str) -> str:
+    parser = VisibleTextParser()
+    parser.feed(html)
+    return normalise_text(" ".join(parser.parts))
+
+
+def task_content_values(ficha: dict):
+    values = [
+        ("title", ficha.get("title", "")),
+        ("intro", ficha.get("intro", "")),
+        ("roles", ficha.get("roles", "")),
+    ]
+    values.extend((f"step {index}", step) for index, step in enumerate(ficha.get("steps", []), start=1))
+    values.extend([
+        ("example", ficha.get("example", "")),
+        ("tip", ficha.get("tip", "")),
+        ("media", ficha.get("media", "")),
+    ])
+    for row_index, row in enumerate(ficha.get("table") or [], start=1):
+        for col_index, cell in enumerate(row, start=1):
+            values.append((f"table {row_index}.{col_index}", str(cell)))
+    return [(label, normalise_text(value)) for label, value in values if normalise_text(value)]
+
+
+def validate_task_content(path: Path, ficha: dict, errors: list[str]):
+    if not path.exists():
+        return
+    page_text = visible_text_of(path.read_text(encoding="utf-8"))
+    rel = str(path.relative_to(ROOT))
+    for label, expected in task_content_values(ficha):
+        if expected not in page_text:
+            errors.append(f"{rel}: conteúdo divergente ({label}): {expected!r}")
+
+
+def validate_guide_content(path: Path, guide: dict, errors: list[str]):
+    if not path.exists():
+        return
+    page_text = visible_text_of(path.read_text(encoding="utf-8"))
+    rel = str(path.relative_to(ROOT))
+    for label, expected in [
+        ("title", guide.get("title", "")),
+        ("intro", guide.get("intro", "")),
+        ("audience", guide.get("audience", "")),
+    ]:
+        expected = normalise_text(expected)
+        if expected and expected not in page_text:
+            errors.append(f"{rel}: conteúdo do guia divergente ({label}): {expected!r}")
+    for ficha in guide.get("fichas", []):
+        title = normalise_text(ficha.get("title", ""))
+        if title and title not in page_text:
+            errors.append(f"{rel}: ficha ausente na visão geral: {title!r}")
 
 
 def slug(value: str) -> str:
@@ -156,6 +235,8 @@ def main() -> int:
     expected_search = {}
     expected_sitemap = {SITE_BASE}
     route_files: list[tuple[Path, str]] = [(WEB_ROOT / "index.html", SITE_BASE)]
+    guide_pages = []
+    task_pages = []
 
     for theme, codes in THEMES:
         theme_path = f"{slug(theme)}/"
@@ -167,7 +248,9 @@ def main() -> int:
             guide_path = f"{theme_path}{slug(guide['title'])}/"
             guide_url = SITE_BASE + guide_path
             expected_sitemap.add(guide_url)
-            route_files.append((WEB_ROOT / slug(theme) / slug(guide["title"]) / "index.html", guide_url))
+            guide_file = WEB_ROOT / slug(theme) / slug(guide["title"]) / "index.html"
+            route_files.append((guide_file, guide_url))
+            guide_pages.append((guide_file, guide))
             for ficha in guide["fichas"]:
                 task_path = f"{guide_path}{task_slug(code, ficha['title'])}/"
                 full_url = SITE_BASE + task_path
@@ -175,11 +258,13 @@ def main() -> int:
                 expected_search[ficha["title"]] = {
                     "url": SITE_PREFIX + task_path,
                     "intro": ficha["intro"],
+                    "text": " ".join(
+                        [ficha["title"], ficha["intro"], *ficha.get("steps", []), ficha.get("tip", "")]
+                    ).strip(),
                 }
-                route_files.append((
-                    WEB_ROOT / slug(theme) / slug(guide["title"]) / task_slug(code, ficha["title"]) / "index.html",
-                    full_url,
-                ))
+                task_file = WEB_ROOT / slug(theme) / slug(guide["title"]) / task_slug(code, ficha["title"]) / "index.html"
+                route_files.append((task_file, full_url))
+                task_pages.append((task_file, ficha))
 
     search = json.loads(SEARCH.read_text(encoding="utf-8"))
     if len(search) != 92:
@@ -197,8 +282,8 @@ def main() -> int:
             errors.append(f"search-index: URL divergente para {title!r}")
         if item.get("intro") != expected["intro"]:
             errors.append(f"search-index: intro divergente para {title!r}")
-        if title not in item.get("text", ""):
-            errors.append(f"search-index: título ausente do texto pesquisável para {title!r}")
+        if item.get("text") != expected["text"]:
+            errors.append(f"search-index: texto pesquisável divergente para {title!r}")
 
     tree = ET.parse(SITEMAP)
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -213,6 +298,10 @@ def main() -> int:
     titles: list[tuple[str, str]] = []
     for path, url in route_files:
         validate_html(path, url, errors, titles)
+    for path, guide in guide_pages:
+        validate_guide_content(path, guide, errors)
+    for path, ficha in task_pages:
+        validate_task_content(path, ficha, errors)
 
     title_map: dict[str, list[str]] = {}
     for page_title, rel in titles:

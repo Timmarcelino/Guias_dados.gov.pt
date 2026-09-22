@@ -580,9 +580,23 @@ Não utilizar a existência da Pré-visualização como prova de disponibilidade
 
 ### Estado D06
 
-**Por confirmar em PRD para publicação como comportamento actual.**
+**Não integrado no Frontoffice público de PRD.**
 
 O conteúdo deve permanecer no protótipo porque está alinhado com a LEDG-2276, mas não deve ser apresentado como funcionalidade actualmente disponível até a acção de entrada estar exposta e o conjunto mínimo acima ser validado em PRD.
+
+### Evidência PRD pública adicional, 22/09/2026
+
+Foi verificada a integração do Explorador no comportamento público actual:
+
+* em `ResourceExpandedContent.tsx`, o bloco com título e CTA **Explore os dados** existe, mas está dentro de `className="hidden"`;
+* a pesquisa no frontend actual não encontrou rota pública autónoma denominada Explorador/`explorer`;
+* foi consultado em PRD um dataset real com recurso CSV, **Estudantes da Universidade Politécnica de Viana do Castelo por curso e características sociodemográficas**, recurso `ipvc-estudantes.csv`;
+* no DOM renderizado da página não foi encontrado CTA **Explore os dados**;
+* não foi encontrado percurso público reproduzível para abrir o novo Explorador a partir desse recurso.
+
+**Implementação actual:** o novo Explorador está preparado tecnicamente, mas não está integrado/exposto no Frontoffice público de PRD.
+
+**Impacto editorial:** manter D06 no protótipo como conteúdo preparado, mas não o apresentar como funcionalidade actualmente disponível no portal.
 
 ## 11. Revisão profunda D08, APIs e serviços de dados
 

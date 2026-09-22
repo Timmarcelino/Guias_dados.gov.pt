@@ -528,3 +528,21 @@ Continuar a usar a branch actual como ambiente candidato de revisão.
 
 Não abrir PR, não fazer merge em `main` e não publicar oficialmente enquanto os bloqueios acima não forem tratados ou formalmente aceites.
 
+
+## Sincronização documental corrente 22/09/2026
+
+Após a validação técnica e funcional, foi corrigida a documentação corrente:
+
+* `README.md` actualizado para 15 guias e 92 fichas;
+* estrutura técnica actualizada para incluir fonte editorial, rotas, PDFs, scripts, workflows e documentação viva;
+* D14 actualizado para seis fichas;
+* `CHANGELOG.md` recebeu a secção **Em desenvolvimento · 22/09/2026**, preservando a v0.4 histórica de 15/09;
+* pesquisa no repositório não encontrou referências correntes a `91 fichas` fora do histórico preservado.
+
+Commits:
+
+* `97671ae`, README;
+* `76072ca`, CHANGELOG.
+
+Estado: documentação corrente alinhada com 15 guias, 92 fichas, 115 rotas e 15 PDFs.
+

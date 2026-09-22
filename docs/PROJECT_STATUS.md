@@ -703,3 +703,99 @@ O workflow foi corrigido no commit `d61b5e9` para:
 A estratégia foi validada com sucesso: commits PDF `4fdbb6d` e posteriormente `238141c` foram publicados sem perder alterações concorrentes.
 
 Estado: **workflow PDF robusto para avanço concorrente da branch**.
+
+
+## Checkpoint de fecho acelerado 22/09/2026
+
+Este checkpoint substitui, para efeitos operacionais, os estados anteriores da secção de prontidão quando houver conflito com informação mais recente.
+
+### Estado da branch e do Pull Request
+
+* branch de revisão: `feature/static-routes-pdf`;
+* relação verificada com `main`: **119 commits à frente e 0 atrás** antes deste checkpoint;
+* PR #5, **Guias: rotas estáticas, GitHub Pages e PDFs**, já existe em estado **Draft**;
+* o PR encontrava-se `mergeable=true` na leitura efectuada;
+* a descrição do PR contém informação histórica que necessita de sincronização antes de o marcar Ready for review;
+* não marcar Ready for review, não fazer merge em `main` e não publicar oficialmente antes de cumprir os gates de fecho.
+
+A decisão anterior “não abrir PR” fica ultrapassada pela existência do PR #5. Mantém-se integralmente a proibição de merge/publicação antes do fecho.
+
+### Manutenção e extensibilidade do código
+
+Foram acrescentados comentários de manutenção sem alteração intencional de comportamento:
+
+* `8dab26e`: extensibilidade e contratos do validador de consistência;
+* `fa8d303`: fonte, determinismo, compatibilidade e extensão do gerador PDF;
+* `4626826`: natureza read-only do guardrail de consistência;
+* `11c4e4c`: concorrência e rebase seguro no workflow PDF.
+
+Os comentários documentam especialmente:
+
+* `content/guides.json` como fonte editorial canónica;
+* overrides de slug como contratos de compatibilidade e não como nova regra editorial;
+* GitHub Pages como destino actual de revisão, não como destino definitivo do produto;
+* necessidade de parametrizar origem/caminhos quando existir publicação oficial;
+* preservação de ordem de leitura, texto seleccionável, contraste e nova validação de acessibilidade quando o PDF for ampliado.
+
+### CI e publicação de revisão após a manutenção
+
+Execuções verificadas:
+
+* guardrail **Validar consistência dos Guias**: sucesso nos commits `8dab26e` e `4626826`;
+* workflow **Gerar PDFs dos Guias**: sucesso após as alterações do gerador/workflow;
+* **pages build and deployment**: sucesso no estado posterior da branch;
+* o workflow PDF publicou commits automáticos de sincronização sem perder os commits concorrentes, confirmando novamente a protecção por rebase.
+
+Estado técnico desta frente: **verde**.
+
+### Evidência Jira actualizada
+
+Leitura efectuada em 22/09/2026, sem alterações no Jira:
+
+* LEDG-2046, Publicação e edição de Conjunto de Dados: **IN UAT**;
+* LEDG-2048, Transferência de responsabilidade: **READY FOR UAT**;
+* LEDG-2175, melhorias de licença/ponto de contacto: **Backlog**;
+* LEDG-2296, permissões de Harvester: **Done**;
+* LEDG-2298, pesquisa de Harvesters: **Done**;
+* LEDG-2323, pré-visualização de Harvester: **Done**;
+* LEDG-2031, Validador Automático: **READY FOR TESTING**;
+* LEDG-2049, Catálogo de Modelos: **IN UAT**;
+* LEDG-1960, evolução Seguir: **To Do**;
+* LEDG-2305, Notificações: **In Progress**;
+* LEDG-2390 e LEDG-2391, questões de Discussões/notificações: **Backlog**;
+* LEDG-2520, transferência de Reutilizações: **Backlog**;
+* LEDG-2468, protecção do último administrador: **READY FOR TESTING**;
+* LEDG-2483, mistura de convites/pedidos em Membros: **To Do**.
+
+Estes estados são evidência de evolução do backlog. Não substituem o comportamento observado em PRD como Implementação actual.
+
+### Disciplina de evidência PRD
+
+O `docs/PRD_TEST_PLAN.md` passou a exigir, por execução, ambiente, perfil funcional, área/conteúdo observado, resultado, divergência, evidência e decisão. Não devem ser guardados dados pessoais desnecessários.
+
+A fila mínima mantém-se:
+
+1. PRD-R01, D02 + D13;
+2. PRD-R02, D04;
+3. PRD-R04, D08;
+4. PRD-R05, D09;
+5. PRD-R06, D10;
+6. PRD-R07, D12.
+
+PRD-R03 continua residual para TSV. Não foi localizada evidência pública suficiente para executar o cenário nesta ronda; isso não demonstra inexistência de recurso TSV.
+
+PRD-R08, PRD-R09 e PRD-R10 continuam suspensos segundo os critérios já registados.
+
+### Gates restantes para Ready for review
+
+O PR #5 só deve sair de Draft quando estiverem tratados ou formalmente aceites:
+
+1. leitura autenticada PRD mínima aplicável;
+2. sincronização editorial de qualquer divergência encontrada;
+3. ronda manual/NVDA da experiência final;
+4. revisão visual final dos PDFs;
+5. acessibilidade documental dos PDFs, ou limitação formalmente aceite e documentada;
+6. descrição do PR sincronizada com D01, D06, D07/CM, D11 e o estado real de QA;
+7. CI de consistência, PDF e publicação de revisão verdes no HEAD final.
+
+Para publicação oficial continuam adicionais: destino definitivo, canonicals/caminhos finais, integração no produto e nova verificação de divergências PRD no momento da publicação.

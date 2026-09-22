@@ -463,3 +463,28 @@ Execuções:
 
 Estado: **guardrail activo e verde**.
 
+
+## Plano mínimo de testes PRD autenticados
+
+Criado `docs/PRD_TEST_PLAN.md` no commit `63304df`.
+
+O plano separa:
+
+* **Fase A, leitura/não destrutiva:** 10 Test Cases para validar áreas autenticadas sem alterar dados;
+* **Fase B, escrita controlada:** 7 Test Cases preparados, mas bloqueados até autorização explícita adicional de escrita em PRD.
+
+Áreas cobertas:
+
+* D02 e D13, perfil/organizações;
+* D04, ciclo de vida e transferência;
+* D05, recursos;
+* D08, APIs;
+* D09, Reutilizações;
+* D10, Harvester;
+* D12, Discussões;
+* D07 e CM, Validador/Catálogo;
+* D11, Seguir/Notificações;
+* D06, Explorador após integração.
+
+Critério: o Manual descreve PRD como Implementação actual quando houver divergência com backlog, requisito alvo ou documentação futura.
+

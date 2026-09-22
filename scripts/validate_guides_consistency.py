@@ -47,6 +47,12 @@ THEMES = [
     ("Ajuda e contactos", ["D14"]),
 ]
 
+# Contrato da versão candidata. Manter valores explícitos evita que uma remoção
+# acidental na fonte editorial seja aceite por uma validação puramente derivada.
+EXPECTED_GUIDE_COUNT = 15
+EXPECTED_TASK_COUNT = 92
+EXPECTED_ROUTE_COUNT = 1 + len(THEMES) + EXPECTED_GUIDE_COUNT + EXPECTED_TASK_COUNT
+
 # Contratos de compatibilidade: títulos podem evoluir sem quebrar URLs já publicadas.
 GUIDE_SLUG_OVERRIDES = {
     "D11": "Seguir-conteudos-e-notificacoes",
@@ -246,11 +252,11 @@ def validate_html(path: Path, expected_url: str, errors: list[str], titles: list
 def main() -> int:
     errors: list[str] = []
     guides = json.loads(CONTENT.read_text(encoding="utf-8"))
-    if len(guides) != 15:
-        errors.append(f"Esperados 15 guias; obtidos {len(guides)}")
+    if len(guides) != EXPECTED_GUIDE_COUNT:
+        errors.append(f"Esperados {EXPECTED_GUIDE_COUNT} guias; obtidos {len(guides)}")
     task_count = sum(len(g.get("fichas", [])) for g in guides)
-    if task_count != 92:
-        errors.append(f"Esperadas 92 fichas; obtidas {task_count}")
+    if task_count != EXPECTED_TASK_COUNT:
+        errors.append(f"Esperadas {EXPECTED_TASK_COUNT} fichas; obtidas {task_count}")
 
     by_code = {g["code"]: g for g in guides}
     expected_codes = {code for _, codes in THEMES for code in codes}
@@ -294,8 +300,8 @@ def main() -> int:
                 task_pages.append((task_file, ficha))
 
     search = json.loads(SEARCH.read_text(encoding="utf-8"))
-    if len(search) != 92:
-        errors.append(f"search-index: esperadas 92 entradas; obtidas {len(search)}")
+    if len(search) != EXPECTED_TASK_COUNT:
+        errors.append(f"search-index: esperadas {EXPECTED_TASK_COUNT} entradas; obtidas {len(search)}")
     actual_search = {item.get("title"): item for item in search}
     if set(actual_search) != set(expected_search):
         missing = sorted(set(expected_search) - set(actual_search))
@@ -319,8 +325,8 @@ def main() -> int:
         missing = sorted(expected_sitemap - actual_sitemap)
         extra = sorted(actual_sitemap - expected_sitemap)
         errors.append(f"sitemap divergente; missing={missing}; extra={extra}")
-    if len(actual_sitemap) != 115:
-        errors.append(f"sitemap: esperadas 115 URLs; obtidas {len(actual_sitemap)}")
+    if len(actual_sitemap) != EXPECTED_ROUTE_COUNT:
+        errors.append(f"sitemap: esperadas {EXPECTED_ROUTE_COUNT} URLs; obtidas {len(actual_sitemap)}")
 
     titles: list[tuple[str, str]] = []
     for path, url in route_files:

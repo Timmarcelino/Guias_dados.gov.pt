@@ -342,3 +342,66 @@ O crawler encontrou duas ocorrências de `aria-current="page"` na maioria das p�
 
 Validar responsividade e navegação por teclado nos breakpoints de referência 360, 768 e 1440, incluindo header, menu, pesquisa, sidebar/select, breadcrumbs, cards, navegação entre fichas e 404.
 
+
+## QA web interactivo e responsivo 22/09/2026
+
+Ronda executada com Edge headless/Puppeteer sobre o GitHub Pages publicado.
+
+### Responsividade e reflow
+
+Páginas representativas testadas a 320, 360, 768 e 1440 px:
+
+* página inicial dos Guias;
+* página de tema;
+* página de guia;
+* ficha de tarefa.
+
+Resultado:
+
+* 0 overflow horizontal;
+* 0 alvos interactivos testados abaixo de 24 × 24 px;
+* menu mobile abre com `aria-expanded=true`;
+* navegação principal fica visível após abrir o menu;
+* dropdown Recursos abre e actualiza `aria-expanded`.
+
+### Teclado e foco
+
+Sequência de Tab validada em 360 e 1440 px.
+
+Resultado:
+
+* skip link é o primeiro elemento focável;
+* foco visível detectado com contorno sólido de 3 px;
+* pesquisa, menu, select, breadcrumbs, cards e navegação principal entram na sequência de teclado.
+
+Defeito detectado e corrigido:
+
+* em mobile, Pesquisa e Autenticar perdiam o nome acessível porque o texto era removido com `display:none`;
+* corrigido no commit `d7f5672` com ocultação apenas visual;
+* árvore de acessibilidade revalidada: 0 controlos sem nome; Pesquisa e Autenticar expostos correctamente.
+
+### Pesquisa
+
+Pesquisa real validada com `?q=dados`:
+
+* H1 alterado para Resultados da pesquisa;
+* 56 resultados devolvidos no cenário testado;
+* título da página actualizado;
+* `role="status"` e `aria-live="polite"` confirmados com cache desactivada;
+* correcção implementada no commit `8d8b684`.
+
+### Contraste, tabelas e links
+
+* 0 falhas automáticas de contraste AA nas páginas representativas analisadas;
+* 3 tabelas detectadas, todas com `th` e `scope`;
+* 0 links genéricos do tipo Clique aqui, Aqui, Ver mais ou Saber mais;
+* links de logótipo sem texto visível mantêm nome acessível através de `aria-label` e `alt`.
+
+### Navegação e 404
+
+* select lateral navega para o guia seleccionado;
+* 404 personalizada devolve HTTP 404;
+* 404 contém `noindex`, skip link, `main#conteudo`, H1 e título coerente.
+
+Conclusão desta ronda: não ficaram defeitos web técnicos conhecidos em aberto no âmbito dos checks automatizados executados. Permanecem por fazer validação manual/NVDA no contexto final e validação visual detalhada dos PDFs.
+

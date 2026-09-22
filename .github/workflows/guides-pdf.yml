@@ -33,6 +33,7 @@ jobs:
       - name: Gerar colecção PDF
         run: |
           rm -rf .build/pdf
+          mkdir -p .build
           python scripts/generate_pdf_guides.py > .build/generator-output.json
 
       - name: Instalar PDFs nos caminhos públicos

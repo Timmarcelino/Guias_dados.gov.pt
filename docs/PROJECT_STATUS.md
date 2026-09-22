@@ -252,13 +252,13 @@ Estado da primeira passagem em 22/09/2026:
 
 PDFs: 15/15 validados quanto a integridade e completude editorial da geração v2. Qualidade visual página a página e acessibilidade documental permanecem Por confirmar.
 
-Prioridade de revisão profunda: D04 → D05 → D07 → CM.
+Prioridade de revisão profunda: D05 → D07 → CM. D04 recebeu a primeira revisão profunda em 22/09/2026 e permanece parcialmente validado até UAT e clarificação da LEDG-2175.
 
 ## 12. Próximos passos recomendados
 
 1. Rever a implementação existente em `feature/static-routes-pdf`.
 2. Validar rotas estáticas, pesquisa, PDFs, sitemap e página 404.
-3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar.
+3. Rever os 15 guias e classificar cada um como validado, parcialmente validado ou por validar. Primeira passagem concluída em `docs/CONTENT_VALIDATION.md`; revisão profunda iniciada por D04.
 4. Fechar nomenclatura e arquitectura de informação.
 5. Executar revisão funcional e editorial das fichas prioritárias.
 6. Validar acessibilidade e responsividade.

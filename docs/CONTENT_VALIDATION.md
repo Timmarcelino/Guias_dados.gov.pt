@@ -163,7 +163,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D02 | Organizações e permissões | 6 | **Parcialmente validado** | Pesquisa pública por nome/sigla e emblemas confirmados em PRD; LEDG-1941/1943/1919 suportam edição e gestão de emblemas; fluxos autenticados de membros estão em evolução | Consulta pública sustentada; criar/integrar/gerir membros/editar e emblemas administrativos devem ser confirmados em PRD autenticado, sem antecipar LEDG-2468/2483 |
 | D03 | Encontrar e consultar dados | 5 | **Validado no âmbito actual** | Percurso público simples e orientado a pesquisa, filtros, consulta e acesso aos dados | Revisão final de terminologia/UI e capturas; manter coerência com a pesquisa publicada |
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
-| D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
+| D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em IN UAT; PRD confirma exclusão de SVG/HTML e preview activo para CSV/XLS/XLSX/ODS; TSV suportado em código sem amostra pública encontrada | Pendente: regressão autenticada de integridade upload/substituição, TSV com recurso real e estados/mensagens autenticados quando aplicável |
 | D06 | Explorador de dados | 8 | **Por confirmar em PRD** | LEDG-2276 e LEDG-2199 em READY FOR UAT; documentação técnica consistente; frontend de produção revisto em 22/09/2026 mantém a acção `Explore os dados` oculta no detalhe do recurso | Não publicar como comportamento actual até a entrada no Explorador estar disponível e validada em PRD; distinguir da Pré-visualização simples que já existe no Frontoffice |
 | D07 | Qualidade e validação de dados | 6 | **Não observável no stack público actual de PRD** | LEDG-2031 em READY FOR TESTING; frontend/backend `main` sem rotas/módulos específicos; Swagger PRD sem endpoints/propriedades do novo Validador | Não publicar como comportamento actual. Revalidar quando existir integração PRD observável; ausência pública não prova inexistência de componente privado/separado |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Referência, tutorial e catálogo público validados directamente em PRD em 22/09/2026; implementação actual do frontend contém gating por organização com emblema `public-service` | Fichas públicas sustentadas; criação, publicação e edição devem ser confirmadas numa sessão autenticada de PRD antes de serem tratadas como comportamento actual |
@@ -236,6 +236,25 @@ O conteúdo funcional das sete fichas está suficientemente sustentado para cont
 3. corrigir ou condicionar no guia as afirmações sobre licença inicial e ponto de contacto;
 4. validar mensagens, terminologia e interface final contra o Figma/implementação aplicável.
 
+### Evidência técnica adicional D04, 22/09/2026
+
+Foi aprofundada a divergência entre o requisito alvo da LEDG-2046 e a implementação actual disponível:
+
+* LEDG-2046 passou para **IN UAT** em 22/09/2026;
+* LEDG-2175 permanece **Backlog** e identifica como alterações ainda necessárias a licença por defeito e a opcionalidade do ponto de contacto;
+* o Swagger actual de PRD define `Dataset.license` com `default: "notspecified"` e `license_title` com `License Not Specified`;
+* o frontend `main` utiliza `notspecified` como valor inicial quando não existe licença guardada;
+* a função `validateDatasetDetails` do frontend actual exige pelo menos um contacto guardado ou um contacto novo válido quando o produtor seleccionado é uma organização;
+* no contrato API, `contact_points` não pertence à lista global de propriedades `required`, o que demonstra uma diferença entre validação de UI e contrato de persistência.
+
+**Requisito alvo:** CC BY 4.0 inicial e ponto de contacto opcional.
+
+**Implementação actual identificada:** licença inicialmente não especificada; a UI actual exige contacto para produtor Organização.
+
+**Impacto editorial:** manter a redacção neutra já aplicada no Manual. Não afirmar CC BY 4.0 por defeito nem opcionalidade do contacto enquanto o comportamento PRD autenticado não reflectir a evolução da LEDG-2175.
+
+O Swagger actual também expõe `archived` e `deleted` no Dataset, sendo `deleted` apenas leitura, e não contém endpoint `restore/recover/undelete`. A transferência dispõe de `/transfer/` e `/transfer/{id}/`, com estados `pending`, `accepted` e `refused`, coerentes com a LEDG-2048.
+
 ## 7. Revisão profunda D05, Recursos de um Conjunto de Dados
 
 Data da revisão: 22/09/2026.
@@ -297,6 +316,48 @@ Estas observações confirmam implementação existente, mas não substituem um 
 **Parcialmente validado.**
 
 Não é necessário revalidar toda a gestão de recursos. O fecho fica concentrado nos cinco testes PRD acima e na UAT da LEDG-2047.
+
+### Evidência PRD adicional D05, 22/09/2026
+
+Foram executadas verificações directas no PRD público:
+
+#### Extensões aceites
+
+O endpoint `/api/1/datasets/extensions/` devolveu a lista actual de extensões permitidas.
+
+* `svg` não está presente;
+* `html` não está presente.
+
+Assim, a afirmação do guia de que SVG e HTML não são aceites deixa de estar Por confirmar e passa a estar sustentada pelo contrato actual de PRD.
+
+#### Pré-visualização tabular
+
+O frontend actual declara como formatos tabulares:
+
+`csv`, `tsv`, `xls`, `xlsx`, `ods`.
+
+Foram encontrados recursos públicos e executados os proxies reais de PRD com sucesso para:
+
+* CSV, através de `/internal-api/proxy-csv`;
+* XLS, através de `/internal-api/proxy-spreadsheet`;
+* XLSX, através de `/internal-api/proxy-spreadsheet`;
+* ODS, através de `/internal-api/proxy-spreadsheet`.
+
+Nos três formatos de folha de cálculo, o proxy devolveu cabeçalhos, linhas, total de linhas e total de colunas.
+
+Não foi encontrado um recurso TSV público na amostra pesquisada em PRD. O suporte TSV está presente no frontend, mas permanece **não observado com recurso real** nesta ronda.
+
+#### Explorar dados
+
+Conforme revisão de D06, o CTA **Explore os dados** está preparado no frontend mas oculto e não integrado no Frontoffice público actual. D05 não deve sugerir que o Explorador está actualmente disponível apenas por o recurso ser tabular.
+
+#### Pendência residual de D05
+
+Para o fecho funcional de D05 permanecem essencialmente:
+
+1. regressão autenticada de integridade após upload/substituição, devido ao histórico da LEDG-2149;
+2. observação real de TSV quando existir recurso adequado;
+3. validação autenticada das mensagens e estados de substituição/herança quando necessária.
 
 ## 8. Revisão profunda D07, Qualidade e validação de dados
 

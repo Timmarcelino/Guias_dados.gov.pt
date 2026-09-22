@@ -1114,37 +1114,37 @@ export const guides = [
   },
   {
     "code": "D11",
-    "title": "Seguir conteúdos e notificações",
-    "intro": "Acompanhe conteúdos do seu interesse e consulte os avisos associados à sua actividade no portal.",
+    "title": "Favoritos e notificações",
+    "intro": "Guarde conteúdos nos favoritos e consulte os avisos associados à sua actividade no portal.",
     "audience": "Para utilizadores autenticados e administradores que consultam notificações.",
     "fichas": [
       {
-        "title": "Seguir um conteúdo",
-        "intro": "Acompanhe uma organização, um conjunto de dados, uma reutilização ou uma API.",
+        "title": "Adicionar aos favoritos",
+        "intro": "Adicione uma organização, um conjunto de dados, uma reutilização ou uma API aos favoritos.",
         "roles": "Utilizador autenticado",
         "steps": [
-          "Abra o conteúdo que pretende acompanhar.",
+          "Abra o conteúdo que pretende adicionar aos favoritos.",
           "Inicie sessão se o portal indicar que é necessário.",
-          "Seleccione Seguir na área de acções do conteúdo.",
-          "Confirme que a acção passa a Deixar de seguir."
+          "Seleccione Adicionar aos favoritos na área de acções do conteúdo.",
+          "Confirme que a acção passa a Remover dos favoritos."
         ],
-        "example": "Uma pessoa segue um conjunto de dados sobre transportes que utiliza regularmente.",
-        "tip": "Seguir um conteúdo não dá permissão para o editar nem para integrar a organização que o publica.",
+        "example": "Uma pessoa adiciona aos favoritos um conjunto de dados sobre transportes que consulta regularmente.",
+        "tip": "Adicionar aos favoritos não dá permissão para editar o conteúdo e não garante o envio de notificações sobre as suas alterações.",
         "table": null,
         "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
-        "next": "Deixar de seguir um conteúdo."
+        "next": "Remover dos favoritos."
       },
       {
-        "title": "Deixar de seguir um conteúdo",
-        "intro": "Termine o acompanhamento de um conteúdo que deixou de lhe interessar.",
+        "title": "Remover dos favoritos",
+        "intro": "Remova dos favoritos um conteúdo que deixou de querer guardar nessa relação.",
         "roles": "Utilizador autenticado",
         "steps": [
-          "Abra o conteúdo com a conta que utilizou para o seguir.",
-          "Seleccione Deixar de seguir.",
-          "Confirme que a acção Seguir volta a estar disponível."
+          "Abra o conteúdo com a conta que utilizou para o adicionar aos favoritos.",
+          "Seleccione Remover dos favoritos.",
+          "Confirme que a acção Adicionar aos favoritos volta a estar disponível."
         ],
-        "example": "Uma pessoa deixa de seguir uma reutilização que já não acompanha.",
-        "tip": "Esta acção termina o seguimento do conteúdo. Não deve ser usada como confirmação de que todos os avisos relativos à sua actividade foram desactivados.",
+        "example": "Uma pessoa remove dos favoritos uma reutilização que já não consulta regularmente.",
+        "tip": "Remover dos favoritos altera apenas essa relação com o conteúdo. Não deve ser interpretado como gestão das notificações da conta.",
         "table": null,
         "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Consultar uma notificação."
@@ -1160,7 +1160,7 @@ export const guides = [
           "Se o aviso solicitar uma decisão, consulte o contexto e utilize apenas as acções disponíveis para o seu perfil."
         ],
         "example": "Um administrador abre um aviso sobre uma fonte de harvesting e consulta o detalhe antes de decidir.",
-        "tip": "O tipo de aviso depende do evento e do seu papel. Seguir um conteúdo não garante um aviso para todas as alterações.",
+        "tip": "O tipo de aviso depende do evento e do seu papel. Adicionar um conteúdo aos favoritos não garante o envio de notificações sobre as suas alterações.",
         "table": null,
         "media": "Captura do percurso com conteúdo de demonstração e sem dados pessoais reais.",
         "next": "Tratar um aviso de validação de harvester."

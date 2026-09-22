@@ -31,9 +31,15 @@ THEMES = [
     ("Ajuda e contactos", ["D14"]),
 ]
 
+GUIDE_SLUG_OVERRIDES = {
+    "D11": "Seguir-conteudos-e-notificacoes",
+}
+
 TASK_SLUG_OVERRIDES = {
     ("D01", "Concluir o primeiro acesso quando solicitado"): "Concluir-o-primeiro-acesso-e-confirmar-o-email",
     ("D13", "Consultar o perfil de outro utilizador"): "Consultar-um-perfil-publico",
+    ("D11", "Adicionar aos favoritos"): "Seguir-um-conteudo",
+    ("D11", "Remover dos favoritos"): "Deixar-de-seguir-um-conteudo",
 }
 
 FORBIDDEN_TEXT = [
@@ -130,6 +136,10 @@ def slug(value: str) -> str:
     value = unicodedata.normalize("NFD", value)
     value = "".join(c for c in value if unicodedata.category(c) != "Mn")
     return re.sub(r"[^A-Za-z0-9]+", "-", value).strip("-")
+
+
+def guide_slug(code: str, title: str) -> str:
+    return GUIDE_SLUG_OVERRIDES.get(code, slug(title))
 
 
 def task_slug(code: str, title: str) -> str:
@@ -248,7 +258,7 @@ def main() -> int:
             guide_path = f"{theme_path}{slug(guide['title'])}/"
             guide_url = SITE_BASE + guide_path
             expected_sitemap.add(guide_url)
-            guide_file = WEB_ROOT / slug(theme) / slug(guide["title"]) / "index.html"
+            guide_file = WEB_ROOT / slug(theme) / guide_slug(code, guide["title"]) / "index.html"
             route_files.append((guide_file, guide_url))
             guide_pages.append((guide_file, guide))
             for ficha in guide["fichas"]:
@@ -262,7 +272,7 @@ def main() -> int:
                         [ficha["title"], ficha["intro"], *ficha.get("steps", []), ficha.get("tip", "")]
                     ).strip(),
                 }
-                task_file = WEB_ROOT / slug(theme) / slug(guide["title"]) / task_slug(code, ficha["title"]) / "index.html"
+                task_file = WEB_ROOT / slug(theme) / guide_slug(code, guide["title"]) / task_slug(code, ficha["title"]) / "index.html"
                 route_files.append((task_file, full_url))
                 task_pages.append((task_file, ficha))
 

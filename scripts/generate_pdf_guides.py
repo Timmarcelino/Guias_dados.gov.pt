@@ -168,7 +168,7 @@ summary=[]
 for g in GUIDES:
     code=g['code']; folder=OUT/code
     folder.mkdir(parents=True, exist_ok=True)
-    out_pdf=folder/f'dados-gov-pt-guia-{slug(g["title"]).lower()}-v2.pdf'
+    out_pdf=folder/f'dados-gov-pt-guia-{pdf_slug(g)}-v2.pdf'
     if code=='D06' and APPROVED_D06.exists():
         shutil.copy2(APPROVED_D06,out_pdf)
         # also create qr for consistency

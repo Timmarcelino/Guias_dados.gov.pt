@@ -430,3 +430,36 @@ Limitação mantida:
 
 Estado da frente PDF: **conteúdo e integridade estrutural validados; acessibilidade documental e revisão visual final Por confirmar**.
 
+
+## Guardrail automático de consistência 22/09/2026
+
+Foi criado o validador `scripts/validate_guides_consistency.py` e o workflow `.github/workflows/guides-consistency.yml`.
+
+A validação passa a falhar automaticamente quando existir, entre outros:
+
+* contagem diferente de 15 guias ou 92 fichas;
+* rota estática em falta;
+* pesquisa fora de sincronização;
+* sitemap divergente de 115 URLs;
+* canonical incorrecto;
+* title duplicado nas rotas;
+* mais ou menos de um `main` ou `h1`;
+* ausência de `lang="pt-PT"`, skip link ou `id="conteudo"`;
+* imagem sem `alt`;
+* IDs duplicados;
+* reaparecimento das formulações obsoletas corrigidas em D04, D09 e D13;
+* divergência estrutural entre `content/guides.json`, `assets/js/data.js` e o módulo `data-d01.js`;
+* remoção da semântica de status acessível da pesquisa;
+* perda dos elementos essenciais da página 404.
+
+A rota histórica de D13 `Consultar-um-perfil-publico` é preservada explicitamente para evitar quebra de URLs apesar do novo título editorial.
+
+Execuções:
+
+* primeira execução detectou um falso positivo causado pela modularização intencional de D01;
+* validador ajustado para a arquitectura real;
+* execução subsequente passou;
+* execução final após inclusão de `data-d01.js` nos triggers do CI passou com sucesso.
+
+Estado: **guardrail activo e verde**.
+

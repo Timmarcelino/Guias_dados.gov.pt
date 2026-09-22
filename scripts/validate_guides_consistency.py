@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content" / "guides.json"
 SEARCH = ROOT / "assets" / "js" / "search-index.json"
 DYNAMIC = ROOT / "assets" / "js" / "data.js"
+DYNAMIC_D01 = ROOT / "assets" / "js" / "data-d01.js"
 SITEMAP = ROOT / "sitemap.xml"
 WEB_ROOT = ROOT / "Guias-do-utilizador"
 
@@ -217,9 +218,16 @@ def main() -> int:
 
     dynamic = extract_js_guides(DYNAMIC.read_text(encoding="utf-8"))
     dyn_by_code = {g["code"]: g for g in dynamic}
-    if set(dyn_by_code) != set(by_code):
-        errors.append("assets/js/data.js: conjunto de códigos difere da fonte editorial")
+    expected_dynamic_codes = set(by_code) - {"D01"}
+    if set(dyn_by_code) != expected_dynamic_codes:
+        errors.append(
+            "assets/js/data.js: conjunto de códigos difere da fonte editorial "
+            f"(esperado sem D01 modularizado: {sorted(expected_dynamic_codes)}; "
+            f"obtido: {sorted(dyn_by_code)})"
+        )
     for code, guide in by_code.items():
+        if code == "D01":
+            continue
         dg = dyn_by_code.get(code)
         if not dg:
             continue
@@ -229,6 +237,19 @@ def main() -> int:
         dynamic_titles = [f["title"] for f in dg.get("fichas", [])]
         if source_titles != dynamic_titles:
             errors.append(f"assets/js/data.js: sequência de fichas divergente em {code}")
+
+    d01_text = DYNAMIC_D01.read_text(encoding="utf-8")
+    d01 = by_code["D01"]
+    if 'code: "D01"' not in d01_text:
+        errors.append("assets/js/data-d01.js: código D01 em falta")
+    if f'title: "{d01["title"]}"' not in d01_text:
+        errors.append("assets/js/data-d01.js: título D01 divergente")
+    for ficha in d01["fichas"]:
+        if f'title: "{ficha["title"]}"' not in d01_text:
+            errors.append(
+                "assets/js/data-d01.js: ficha D01 em falta ou divergente: "
+                f'{ficha["title"]}'
+            )
 
     page404 = ROOT / "404.html"
     if not page404.exists():

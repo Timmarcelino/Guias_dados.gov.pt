@@ -801,3 +801,121 @@ O PR #5 só deve sair de Draft quando estiverem tratados ou formalmente aceites:
 7. CI de consistência, PDF e publicação de revisão verdes no HEAD final.
 
 Para publicação oficial continuam adicionais: destino definitivo, canonicals/caminhos finais, integração no produto e nova verificação de divergências PRD no momento da publicação.
+
+
+## Execução autenticada PRD com ponte gráfica local, 22/09/2026
+
+Foi criada na Windows Sandbox uma ponte gráfica **temporária e descartável** em `C:\ChicoRuntime\Chico-GuiBridge.ps1`, usada exclusivamente como ferramenta de teste. Não integra o código dos Guias nem altera o produto.
+
+Capacidades verificadas:
+
+* captura de ecrã da Sandbox;
+* envio controlado de teclado;
+* clique de rato quando necessário;
+* leitura do título e posição das janelas;
+* navegação por URL directa no Edge autenticado.
+
+A execução foi mantida em **modo de leitura**. Não foram submetidos formulários nem alterados dados em PRD.
+
+### PRD-R01, Perfil e Organizações
+
+Estado: **Parcialmente executado**.
+
+Confirmado em PRD:
+
+* `/pt/admin/me/profile` acessível;
+* áreas pessoais de Conjuntos de dados, API, Reutilizações, Recursos comunitários, Perfil e Estatísticas acessíveis;
+* aba **Atividades** acessível com listagem por Utilizador, Acção e Data;
+* listagens pessoais de Conjuntos de dados, API, Reutilizações, Recursos comunitários e Estatísticas carregam na sessão autenticada.
+
+Limitação observada:
+
+* a conta utilizada não possui organização disponível no contexto actual;
+* o próprio PRD apresenta **“Não pertence a uma organização”**;
+* o redirect de Organização regressa à área pessoal.
+
+Decisão: área pessoal confirmada. Membros, permissões e edição de Organização permanecem **Por confirmar com uma conta adequada**. Esta limitação da conta não é tratada como regra global do produto.
+
+### PRD-R02, Conjuntos de Dados
+
+Estado: **Parcialmente executado**.
+
+Confirmado no formulário PRD:
+
+* Produtor é obrigatório;
+* a conta observada não possui organização disponível como produtor;
+* licença inicial apresentada como **“Licença não especificada”**;
+* Frequência de atualização é obrigatória;
+* a frequência inicia sem valor seleccionado, com placeholder de selecção;
+* a listagem pessoal apresenta estado e acções por item.
+
+Por confirmar:
+
+* comportamento do Ponto de contacto quando o produtor é Organização;
+* estados Arquivado e Eliminado;
+* transferência;
+* restantes acções de ciclo de vida.
+
+### PRD-R04, APIs
+
+Estado: **Parcialmente executado**.
+
+Confirmado em PRD:
+
+* wizard de criação acessível;
+* criação de API restrita a organização com emblema **Serviço público**;
+* a conta utilizada não pertence a organização elegível e o próprio PRD impede a criação;
+* Nome da API e Descrição aparecem como obrigatórios no ecrã observado.
+
+Por confirmar com contexto elegível:
+
+* tipos de acesso;
+* associação de Conjuntos de Dados;
+* edição de API existente.
+
+### PRD-R05, Reutilizações
+
+Estado: **Parcialmente executado**.
+
+Confirmado em PRD:
+
+* criação disponível com produtor pessoal;
+* conta sem organização disponível;
+* Nome, URL da reutilização e Tipo apresentados como obrigatórios no passo inicial;
+* passo de associação disponível em leitura;
+* associação permite Conjuntos de Dados do portal **ou** links externos, não ambas as modalidades na mesma Reutilização;
+* Título e Descrição dos links externos aparecem como opcionais.
+
+Por confirmar:
+
+* edição de Reutilização existente;
+* estado persistido;
+* disponibilidade final da transferência no ecrã actual.
+
+### PRD-R06, Harvester
+
+Estado: **Parcialmente executado**.
+
+Confirmado:
+
+* wizard `/pt/admin/harvesters/new` acessível;
+* tentativa de acesso a `/pt/admin/system/harvesters` com a conta actual regressou à área pessoal.
+
+Decisão: criação/wizard observável, mas administração de sistema, comparação de perfis, preview e Trabalhos permanecem **Por confirmar com perfil e fonte adequados**.
+
+### PRD-R07, Discussões
+
+Não foi recolhida nesta passagem evidência autenticada nova suficiente para promover o estado. Mantém-se a evidência pública já registada e a participação autenticada continua pendente, sem executar qualquer escrita.
+
+### Impacto na fila de fecho
+
+A fila deixa de representar seis grupos totalmente por executar. O estado actual passa a ser:
+
+1. PRD-R01: parcialmente executado; dependência de conta com Organização;
+2. PRD-R02: parcialmente executado; ciclo de vida/transferência pendentes;
+3. PRD-R04: parcialmente executado; dependência de Organização elegível/API gerível;
+4. PRD-R05: parcialmente executado; edição/transferência pendentes;
+5. PRD-R06: parcialmente executado; dependência de perfil administrativo/fonte;
+6. PRD-R07: ainda activo para evidência autenticada não destrutiva.
+
+Não foram encontradas nesta ronda divergências editoriais objectivas que justifiquem alteração imediata de `content/guides.json`.

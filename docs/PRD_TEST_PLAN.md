@@ -43,6 +43,23 @@ Inclui:
 
 Dados de teste, contas e conteúdos a utilizar: **Por confirmar** antes da execução da Fase B.
 
+## 2.1 Estado operacional da Fase A
+
+| TC | Área | Estado actual | Motivo |
+| --- | --- | --- | --- |
+| PRD-R01 | D02 + D13 | **Activo** | Requer sessão autenticada para áreas pessoais, membros e permissões |
+| PRD-R02 | D04 | **Activo** | Requer sessão autenticada para formulário, ciclo de vida e transferência |
+| PRD-R03 | D05 | **Residual público** | Apenas TSV quando existir recurso real; não depende de sessão autenticada |
+| PRD-R04 | D08 | **Activo** | Requer sessão autenticada para criação/edição de API |
+| PRD-R05 | D09 | **Activo** | Requer sessão autenticada para criação/edição de Reutilização |
+| PRD-R06 | D10 | **Activo** | Requer sessão autenticada para perfis, preview e administração de Harvester |
+| PRD-R07 | D12 | **Activo** | Requer sessão autenticada para criação/resposta e contexto administrativo |
+| PRD-R08 | D07 + CM | **Suspenso** | Reabrir apenas quando Validador/Catálogo forem observáveis no stack PRD |
+| PRD-R09 | D11 | **Suspenso** | Reabrir apenas quando a evolução Seguir/Notificações estiver integrada |
+| PRD-R10 | D06 | **Suspenso** | Reabrir apenas quando o Explorador estiver integrado no Frontoffice PRD |
+
+**Resumo:** 6 grupos activos com sessão autenticada, 1 residual público e 3 suspensos por ausência de integração actual.
+
 ## 3. Test Cases, Fase A
 
 ### PRD-R01, Perfil e Organizações

@@ -304,7 +304,7 @@ Estado confirmado:
 * revisão profunda concluída para as 15 áreas;
 * D01, D03 e D14 validados no âmbito actual;
 * D02, D04, D05, D08, D09, D10, D12 e D13 parcialmente validados;
-* D06 não integrado no Frontoffice público de PRD; D07 e CM não observáveis no stack público actual de PRD; D11 desalinhado com a terminologia actual de PRD;
+* D06 não integrado no Frontoffice público de PRD; D07 e CM não observáveis no stack público actual de PRD; D11 confirmado como conteúdo alvo ainda não alinhado com PRD actual;
 * fonte editorial permanente em `content/guides.json`;
 * gerador PDF permanente em `scripts/generate_pdf_guides.py`;
 * workflow PDF permanente validado com sucesso;
@@ -507,7 +507,7 @@ Estado verificado em 22/09/2026.
 A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
 
 1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
-2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 ainda não alinhado em PRD com a evolução Seguir;
+2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 ainda expõe Favoritos em PRD e não a evolução Seguir;
 3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
 4. validação manual com NVDA no contexto final ainda pendente;
 5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
@@ -586,3 +586,18 @@ Estado: **não observável no stack público actual de PRD**.
 Ressalva comum: a evidência demonstra ausência nas superfícies públicas analisadas, não inexistência absoluta de componente privado, serviço separado ou feature flag.
 
 Decisão: D07 e CM permanecem no protótipo como conteúdo preparado, mas bloqueados para publicação como comportamento actual.
+
+## Actualização D11, Seguir conteúdos e notificações
+
+Revalidação em PRD concluída em 22/09/2026.
+
+Exemplos reais de Organização, Conjunto de Dados, Reutilização e API continuam a apresentar **Adicionar aos favoritos / Remover dos favoritos** e não **Seguir / Deixar de seguir**.
+
+Tickets de evolução:
+
+* LEDG-1960: To Do;
+* LEDG-2305: In Progress;
+* LEDG-2306: Backlog;
+* LEDG-2303: To Do.
+
+Conclusão: D11 representa o comportamento alvo aprovado, mas não o comportamento actual de PRD. Fica bloqueado para publicação actual até a evolução estar integrada.

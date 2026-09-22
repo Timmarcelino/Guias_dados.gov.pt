@@ -470,7 +470,7 @@ Criado `docs/PRD_TEST_PLAN.md` no commit `63304df`.
 
 O plano separa:
 
-* **Fase A, leitura/não destrutiva:** 10 Test Cases para validar áreas autenticadas sem alterar dados;
+* **Fase A:** 6 grupos activos com sessão autenticada, 1 residual público e 3 suspensos até integração PRD;
 * **Fase B, escrita controlada:** 7 Test Cases preparados, mas bloqueados até autorização explícita adicional de escrita em PRD.
 
 Áreas cobertas:
@@ -638,3 +638,18 @@ Actualização em 22/09/2026 após D04/D05/D06/D13:
 * PRD-R10 fica suspenso até integração efectiva do Explorador.
 
 Objectivo: manter apenas testes autenticados que acrescentem evidência nova.
+
+## Fila operacional autenticada
+
+Após redução do plano, permanecem activos apenas:
+
+1. PRD-R01, D02 + D13;
+2. PRD-R02, D04;
+3. PRD-R04, D08;
+4. PRD-R05, D09;
+5. PRD-R06, D10;
+6. PRD-R07, D12.
+
+PRD-R03 é residual público para TSV. PRD-R08, PRD-R09 e PRD-R10 ficam suspensos até existir integração observável em PRD.
+
+Esta fila representa o mínimo necessário de leitura autenticada antes de decidir se algum dos guias parciais pode subir para **Validado no âmbito actual**.

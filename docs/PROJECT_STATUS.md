@@ -19,14 +19,14 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | Baseline estável | v0.4 |
 | Commit da baseline | `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
 | Branch activa de evolução | `feature/static-routes-pdf` |
-| Diferença para `main` em 22/09/2026 | 8 commits à frente, 0 atrás |
+| Diferença para `main` em 22/09/2026 | 10 commits à frente, 0 atrás, após esta correcção |
 | Guias | 15 |
 | Fichas orientadas a tarefas | 91 |
 | Temas funcionais | 7 |
 | Publicação oficial no dados.gov.pt | Não confirmada |
 | Estado funcional do conteúdo | Em revisão funcional, editorial e UX/UI |
 
-Regra: a contagem de referência mantém-se em 91 fichas enquanto não existir evidência técnica reproduzível de uma 92.ª ficha.
+Regra: a contagem de referência é 91 fichas. Em 22/09/2026 foi detectada uma 92.ª rota gerada, “Reportar um problema técnico”, sem correspondência em `assets/js/data.js` e sem decisão editorial aprovada. A deriva foi removida da geração estática e não altera a baseline.
 
 ## 3. Branch activa
 
@@ -53,6 +53,16 @@ A comparação com `main` evidencia, entre outros:
 * evolução do `index.html`.
 
 Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.
+
+### Correcção de consistência em 22/09/2026
+
+Foi detectada uma divergência entre a fonte editorial e os artefactos estáticos: a geração continha 92 fichas, enquanto a baseline aprovada contém 91.
+
+A entrada adicional era `Reportar um problema técnico`, no guia Ajuda e contactos.
+
+Decisão já validada no trabalho editorial: D14 mantém cinco fichas. A entrada adicional não estava presente em `assets/js/data.js` e não corresponde a nova decisão funcional.
+
+Correcção aplicada: removida a rota adicional, a entrada de pesquisa, a entrada do sitemap e as referências de navegação associadas. A fonte editorial não foi alterada.
 
 ## 4. Baseline v0.4
 

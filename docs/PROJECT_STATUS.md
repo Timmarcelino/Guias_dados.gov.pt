@@ -312,3 +312,33 @@ Estado confirmado:
 * próximo objectivo: executar apenas os testes PRD autenticados mínimos já identificados, começando por D04/D05, e actualizar a matriz apenas com evidência observada.
 
 Regra de continuidade: quando não existir regra funcional confirmada, documentar exclusivamente o comportamento reproduzível em PRD como Implementação actual. Não antecipar backlog, Figma futuro ou comportamento esperado.
+
+## QA web estrutural 22/09/2026
+
+Ronda executada sobre a publicação GitHub Pages da branch `feature/static-routes-pdf`.
+
+### Evidência
+
+* 115 URLs do sitemap verificadas;
+* 115/115 responderam HTTP 200;
+* 134 ligações internas únicas verificadas;
+* 0 ligações internas quebradas;
+* `lang="pt-PT"`, `main`, um `h1` e skip link presentes nas 115 páginas;
+* nenhum `id` duplicado detectado;
+* nenhuma imagem sem `alt` detectada pelo crawler estrutural;
+* nenhum botão sem nome acessível detectado;
+* nenhum campo de formulário sem associação de label detectado;
+* nenhum salto de heading detectado no conteúdo principal;
+* canonicals presentes e únicos na ronda;
+* resíduos editoriais de D13 detectados em 3 páginas e corrigidos no commit `b96ba58`;
+* pesquisa dinâmica passou a anunciar resultados com `role="status"` e `aria-live="polite"` no commit `8d8b684`;
+* título duplicado entre tema e guia `Ajuda e contactos` corrigido no commit `e943752`.
+
+### Nota sobre `aria-current`
+
+O crawler encontrou duas ocorrências de `aria-current="page"` na maioria das páginas. A revisão confirmou que pertencem a contextos de navegação distintos, breadcrumb e navegação lateral. Não é tratado como defeito.
+
+### Próxima frente
+
+Validar responsividade e navegação por teclado nos breakpoints de referência 360, 768 e 1440, incluindo header, menu, pesquisa, sidebar/select, breadcrumbs, cards, navegação entre fichas e 404.
+

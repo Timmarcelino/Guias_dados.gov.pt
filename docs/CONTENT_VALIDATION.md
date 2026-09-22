@@ -111,7 +111,7 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D04 | Publicar e gerir Conjuntos de Dados | 7 | **Parcialmente validado** | LEDG-2187 Done; LEDG-2046, LEDG-2191 e LEDG-2048 em READY FOR UAT | Validar em UAT a implementação de publicação/ciclo de vida/transferência e, em especial, não apresentar como comportamento actual `CC BY 4.0` por defeito nem ponto de contacto opcional enquanto a LEDG-2175 permanecer por implementar |
 | D05 | Recursos de um Conjunto de Dados | 6 | **Parcialmente validado** | LEDG-2047 em READY FOR UAT; LEDG-1997/2102/2051/2254/2309 com evidência de implementação; PRD público revisto em 22/09/2026 | Manter por confirmar em PRD: proibição efectiva de SVG/HTML, formatos actualmente pré-visualizáveis, apresentação efectiva de Explorar dados por recurso e regressão de integridade após upload/substituição |
 | D06 | Explorador de dados | 8 | **Parcialmente validado** | Implementação documentada com quatro vistas; LEDG-2199 em READY FOR UAT; LEDG-2188 Done | Harmonizar requisito, implementação e UX/UI final; validar em UAT filtros, paginação, ordenação, exportações, URL persistente, estados vazios, erros e acessibilidade |
-| D07 | Qualidade e validação de dados | 6 | **Parcialmente validado** | Princípios do Validador consolidados; LEDG-2031 em READY FOR TESTING | Fechar contrato de não conformidades, aviso perante não conformidade, paginação/exportação/retenção do histórico, concorrência e volumetria |
+| D07 | Qualidade e validação de dados | 6 | **Por confirmar em PRD** | LEDG-2031 funcionalmente consolidada e em READY FOR TESTING; PRD público revisto em 22/09/2026 não expõe os estados/acções específicos do novo Validador | Não publicar o fluxo como comportamento actual até validação autenticada em PRD; executar apenas o conjunto mínimo de testes definido nesta matriz |
 | D08 | APIs e serviços de dados | 6 | **Parcialmente validado** | Conteúdo v2 inclui referência API, X-API-KEY, OpenAPI e registo de APIs | Resolver divergência entre fonte PDF/estática e fonte dinâmica; revalidar gating por organização/emblema, operações de escrita e terminologia da referência actual |
 | D09 | Reutilizações | 6 | **Parcialmente validado** | Fluxos de consulta, criação, rascunho, publicação e edição estruturados | Validar integralmente transferência, permissões e estados; a própria ficha de dificuldades ainda assinala o percurso completo de transferência como dependente de validação |
 | D10 | Harvester | 6 | **Parcialmente validado** | Conteúdo cobre preparação, configuração, filtros, preview, trabalhos e aprovação | Confirmar matriz actual de perfis, campos editáveis, preview, aprovação/rejeição e comportamento por ambiente; manter alinhamento com testes PPR |
@@ -244,7 +244,90 @@ Estas observações confirmam implementação existente, mas não substituem um 
 
 Não é necessário revalidar toda a gestão de recursos. O fecho fica concentrado nos cinco testes PRD acima e na UAT da LEDG-2047.
 
-## 8. Decisões e lacunas transversais
+## 8. Revisão profunda D07, Qualidade e validação de dados
+
+Data da revisão: 22/09/2026.
+
+### Resultado
+
+As seis fichas de D07 estão fortemente alinhadas com a LEDG-2031. A História define de forma testável elegibilidade, associação, estados, execução, não conformidades, histórico, permissões e acessibilidade.
+
+Contudo, a LEDG-2031 encontra-se em **READY FOR TESTING**. De acordo com a regra de fallback do projecto, isto não é suficiente para apresentar o fluxo como comportamento actual do portal.
+
+### Requisito confirmado pela LEDG-2031
+
+A especificação funcional define:
+
+* formatos elegíveis CSV, TXT tabular, XLS, XLSX e ODS;
+* recursos remotos, APIs e serviços de dados como Não aplicável;
+* associação opcional de modelo;
+* nova associação apenas com modelo Activo e versão Em vigor;
+* associação a uma versão exacta e imutável;
+* opção `Validar a ordem das colunas` activa por defeito;
+* comparação por nome quando a ordem está desactivada, mantendo faltas/adicionais como não conformidades;
+* execução apenas por acção explícita e de forma assíncrona;
+* estados Sem modelo, Por validar, Em validação, Válido, Não conforme, Erro técnico e Não aplicável;
+* Não conforme e Erro técnico como não bloqueantes para gestão/publicação;
+* alteração de associação a colocar o recurso em Por validar;
+* remoção da associação a colocar o recurso em Sem modelo;
+* nova versão do modelo sem migração automática da associação existente;
+* preservação do histórico ligado ao conteúdo e à versão utilizados;
+* controlo de permissões no contexto aplicável;
+* requisitos de acessibilidade WCAG 2.2 AA.
+
+Estes pontos são **Requisito**, não evidência suficiente de **Implementação actual em PRD**.
+
+### Evidência observada em PRD
+
+Em 22/09/2026 foi revisto um Conjunto de Dados público recente com recurso CSV.
+
+No HTML público não foram encontradas ocorrências específicas do novo Validador para:
+
+* `Sem modelo`;
+* `Por validar`;
+* `Em validação`;
+* `Não conforme`;
+* `Validar a ordem das colunas`;
+* `modelo de validação`.
+
+As ocorrências de `Válido` e `Erro técnico` pertenciam a validações genéricas do frontend e ao formulário de suporte, não ao Validador de Dados.
+
+A API pública do recurso CSV expôs os campos:
+
+`checksum, created_at, description, extras, filesize, filetype, format, harvest, id, internal, last_modified, latest, metrics, mime, preview_url, schema, title, type, url`.
+
+Não foram observados campos públicos específicos para estado, resultado ou associação do novo Validador.
+
+### Interpretação
+
+A ausência destes elementos no Frontoffice público **não prova** que o fluxo autenticado de Backoffice não esteja disponível em PRD.
+
+Prova apenas que o comportamento do Validador não pode ser confirmado através da superfície pública analisada.
+
+Por isso, as seis fichas de D07 permanecem no protótipo como conteúdo funcional preparado, mas **não devem ser apresentadas como comportamento actual do PRD até validação autenticada**.
+
+### Conjunto mínimo de testes PRD autenticados
+
+| Prioridade | Teste | Resultado observável necessário |
+| --- | --- | --- |
+| 1 | Abrir a gestão de um recurso CSV com Editor/Administrador autorizado | A área de validação existe e apresenta o estado actual aplicável |
+| 2 | Associar um modelo a um recurso elegível | São apresentados modelos disponíveis; confirmar estado real do modelo/versão, configuração da ordem e estado resultante do recurso |
+| 3 | Executar uma validação | A acção é explícita; observar transição de estado e resultado final real em PRD |
+| 4 | Produzir ou utilizar um caso Não conforme | Confirmar detalhe efectivamente apresentado e verificar que o recurso/dataset continua gerível e acessível |
+| 5 | Alterar ou remover a associação | Registar os estados reais resultantes e verificar preservação do resultado anterior/histórico |
+| 6 | Substituir o ficheiro de um recurso previamente validado | Confirmar que o resultado anterior não é apresentado como resultado actual e observar a opção real de herança do modelo |
+| 7 | Consultar histórico | Confirmar exactamente quais campos e detalhes estão disponíveis em PRD |
+| 8 | Repetir as operações principais com teclado | Confirmar foco, nomes acessíveis, estados/mensagens e ausência de dependência exclusiva da cor |
+
+### Estado D07
+
+**Por confirmar em PRD para publicação como comportamento actual.**
+
+Não é necessário rediscutir a LEDG-2031. O que falta é comprovar, através dos oito testes acima, quais partes da especificação já correspondem ao comportamento efectivamente disponível em produção.
+
+Se PRD divergir da LEDG-2031, o Manual deve descrever **PRD como Implementação actual** e registar separadamente a divergência para correcção do produto.
+
+## 9. Decisões e lacunas transversais
 
 ### Requisito/decisão confirmada
 
@@ -261,16 +344,13 @@ Continuam a exigir decisão ou evidência suficiente, conforme aplicável:
 * acessibilidade real dos PDFs;
 * acessibilidade e responsividade da experiência web no contexto final.
 
-## 9. Prioridade de revisão profunda
+## 10. Prioridade de revisão profunda
 
 ### Prioridade 1
 
-1. D04, Publicar e gerir Conjuntos de Dados
-2. D05, Recursos de um Conjunto de Dados
-3. D07, Qualidade e validação de dados
-4. CM, Catálogo de Modelos
+1. CM, Catálogo de Modelos
 
-Motivo: concentram regras de ciclo de vida, permissões, estados e operações com maior risco funcional e estão actualmente em UAT/Testes.
+Motivo: D04, D05 e D07 já receberam revisão profunda. CM permanece como a área de maior risco funcional ainda não aprofundada, encontrando-se em UAT.
 
 ### Prioridade 2
 
@@ -294,7 +374,7 @@ Motivo: fluxos base estão definidos, mas faltam verificações de detalhe, sobr
 
 D01, D03 e D14 devem receber uma passagem final de consistência, terminologia, acessibilidade e imagens, sem reabrir regras já validadas sem nova evidência.
 
-## 10. Critério para marcar um guia como Validado
+## 11. Critério para marcar um guia como Validado
 
 Um guia só passa a **Validado no âmbito actual** quando:
 
@@ -306,6 +386,6 @@ Um guia só passa a **Validado no âmbito actual** quando:
 6. a experiência web foi verificada quanto a navegação, responsividade e acessibilidade;
 7. o PDF correspondente foi validado quanto a conteúdo e, antes de publicação oficial, também quanto a apresentação visual e acessibilidade documental.
 
-## 11. Próxima acção
+## 12. Próxima acção
 
-Iniciar revisão profunda de D07, Qualidade e validação de dados. D05 já recebeu revisão profunda e permanece parcialmente validado apenas nos pontos PRD explicitamente listados.
+Iniciar revisão profunda de CM, Catálogo de Modelos. D07 já foi revisto e fica Por confirmar em PRD para publicação como comportamento actual.

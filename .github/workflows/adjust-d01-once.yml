@@ -1,0 +1,183 @@
+name: Ajustar D01 Autenticação
+
+on:
+  push:
+    branches:
+      - feature/static-routes-pdf
+    paths:
+      - ".github/workflows/adjust-d01-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  adjust-d01:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/static-routes-pdf
+          fetch-depth: 0
+
+      - name: Preparar dependências PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Aplicar ajustes editoriais D01
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import html
+          import json
+          import re
+
+          root = Path('.')
+          content_path = root / 'content/guides.json'
+          guides = json.loads(content_path.read_text(encoding='utf-8'))
+          d01 = next(g for g in guides if g['code'] == 'D01')
+          by_title = {f['title']: f for f in d01['fichas']}
+
+          login = by_title['Iniciar sessão com email e palavra-passe']
+          login['tip'] = 'O acesso por email e palavra-passe destina-se a contas que ainda utilizam este método. Se o portal apresentar um percurso de migração ou associação, siga as instruções apresentadas.'
+
+          first = by_title['Concluir o primeiro acesso quando solicitado']
+          first['steps'] = [
+              'Depois de concluir a autenticação por CMD ou eIDAS, verifique se o dados.gov.pt apresenta algum passo adicional.',
+              'Se o portal solicitar um endereço de email, confirme ou indique o endereço pretendido no campo apresentado.',
+              'Consulte a mensagem enviada para esse endereço e siga a ligação apresentada, quando aplicável.',
+              'Conclua o passo de validação exactamente pelo método apresentado no portal.',
+              'Depois da conclusão, confirme que regressa ao dados.gov.pt e consegue continuar com a sua conta.'
+          ]
+
+          trouble = by_title['Resolver dificuldades de acesso']
+          old_trouble = 'Se o portal apresentar um passo adicional de registo ou migração, conclua esse percurso antes de tentar novamente as funcionalidades da conta.'
+          new_trouble = 'Se o portal apresentar um passo adicional de conclusão, migração ou associação da conta, conclua esse percurso antes de voltar a tentar.'
+          assert old_trouble in trouble['steps']
+          trouble['steps'][trouble['steps'].index(old_trouble)] = new_trouble
+
+          content_path.write_text(json.dumps(guides, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          d01_js_path = root / 'assets/js/data-d01.js'
+          js = d01_js_path.read_text(encoding='utf-8')
+          replacements = {
+              '// Este guia descreve o comportamento alvo validado em TST para autenticação e acesso à conta.': '// Este guia descreve o comportamento editorial actualmente consolidado para autenticação e acesso à conta.',
+              'O separador E-mail e palavra-passe continua disponível no PRD actual para utilizadores antigos. Em determinadas contas, o portal pode exigir a migração para CMD ou eIDAS antes de concluir o acesso.': login['tip'],
+              'Se o portal pedir que escolha entre associar uma conta existente e criar uma nova conta, seleccione a opção adequada à sua situação.': first['steps'][1],
+              'Se o portal pedir um endereço de email ou outra forma de confirmação, utilize apenas os campos e métodos apresentados nesse momento.': first['steps'][2],
+              'Consulte a caixa de correio indicada quando o portal informar que enviou uma mensagem de confirmação ou recuperação.': first['steps'][3],
+              'Conclua o passo de validação exactamente pelo método apresentado no portal.': first['steps'][4],
+              old_trouble: new_trouble,
+          }
+          # A nova ficha de primeiro acesso tem menos um passo. Reconstruir apenas o array dessa ficha evita duplicações.
+          for old, new in list(replacements.items())[:3]:
+              assert old in js, old
+              js = js.replace(old, new, 1)
+          # Substituir integralmente o bloco de passos da ficha de primeiro acesso.
+          marker = 'title: "Concluir o primeiro acesso quando solicitado"'
+          start = js.index(marker)
+          steps_start = js.index('steps: [', start)
+          steps_end = js.index('      ],', steps_start) + len('      ],')
+          rendered = 'steps: [\n' + ',\n'.join('        ' + json.dumps(x, ensure_ascii=False) for x in first['steps']) + '\n      ],'
+          js = js[:steps_start] + rendered + js[steps_end:]
+          assert old_trouble in js
+          js = js.replace(old_trouble, new_trouble, 1)
+          d01_js_path.write_text(js, encoding='utf-8')
+
+          search_path = root / 'assets/js/search-index.json'
+          search = json.loads(search_path.read_text(encoding='utf-8'))
+          search_by_title = {item['title']: item for item in search}
+          for ficha in d01['fichas']:
+              item = search_by_title[ficha['title']]
+              item['intro'] = ficha['intro']
+              item['text'] = ' '.join([ficha['title'], ficha['intro'], *ficha.get('steps', []), ficha.get('tip', '')]).strip()
+          search_path.write_text(json.dumps(search, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+
+          base = root / 'Guias-do-utilizador/Acesso-perfil-e-participacao/Autenticacao-e-acesso-a-conta'
+          pages = {
+              'Iniciar sessão com email e palavra-passe': base / 'Iniciar-sessao-com-email-e-palavra-passe/index.html',
+              'Concluir o primeiro acesso quando solicitado': base / 'Concluir-o-primeiro-acesso-e-confirmar-o-email/index.html',
+              'Resolver dificuldades de acesso': base / 'Resolver-dificuldades-de-acesso/index.html',
+          }
+          for title, page in pages.items():
+              ficha = by_title[title]
+              page_text = page.read_text(encoding='utf-8')
+              steps_html = '<h2>Como fazer</h2><ol class="dg-steps">' + ''.join('<li><span>' + html.escape(step) + '</span></li>' for step in ficha['steps']) + '</ol>'
+              page_text, n = re.subn(r'<h2>Como fazer</h2><ol class="dg-steps">.*?</ol>', steps_html, page_text, count=1, flags=re.S)
+              assert n == 1, title
+              tip_html = '<div class="dg-tip"><strong>Dica</strong><p>' + html.escape(ficha['tip']) + '</p></div>'
+              page_text, n = re.subn(r'<div class="dg-tip"><strong>Dica</strong><p>.*?</p></div>', tip_html, page_text, count=1, flags=re.S)
+              assert n == 1, title
+              page.write_text(page_text, encoding='utf-8')
+
+          readme_path = root / 'README.md'
+          readme = readme_path.read_text(encoding='utf-8')
+          old_readme = 'O D01 representa o comportamento alvo validado em TST e as decisões funcionais registadas para esta fase. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.'
+          new_readme = 'O D01 representa o comportamento actualmente consolidado pelas evidências funcionais e de implementação disponíveis. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.'
+          assert old_readme in readme
+          readme_path.write_text(readme.replace(old_readme, new_readme, 1), encoding='utf-8')
+
+          validation_path = root / 'docs/CONTENT_VALIDATION.md'
+          validation = validation_path.read_text(encoding='utf-8')
+          section = '## 5.1 Revalidação D01, Autenticação e acesso à conta'
+          pos = validation.index(section)
+          next_section = validation.index('\n## 6.', pos)
+          block = validation[pos:next_section]
+          block = block.replace('Data da revisão: 22/09/2026.', 'Data da revisão: 23/09/2026.', 1)
+          anchor = '### Decisão editorial\n'
+          note = ('### Ajuste editorial de 23/09/2026\n\n'
+                  'Foi removida a instrução que pressupunha uma escolha explícita entre associar uma conta existente e criar uma nova conta. '
+                  'A ficha passa a orientar a confirmação ou indicação do endereço de email e a consulta da mensagem de validação quando esse percurso for apresentado, mantendo a formulação condicional para não transformar uma implementação em regra universal. '
+                  'Foi também removida da ficha de login por email e palavra-passe a referência ao ambiente PRD e clarificado o encaminhamento para conclusão, migração ou associação da conta quando aplicável.\n\n')
+          assert anchor in block
+          block = block.replace(anchor, note + anchor, 1)
+          validation = validation[:pos] + block + validation[next_section:]
+          validation_path.write_text(validation, encoding='utf-8')
+          PY
+
+      - name: Validar consistência web
+        run: |
+          python scripts/validate_guides_consistency.py
+
+      - name: Gerar e instalar PDFs
+        run: |
+          rm -rf .build/pdf
+          mkdir -p .build
+          python scripts/generate_pdf_guides.py > .build/generator-output.json
+          rm -f assets/pdf/*.pdf
+          for f in .build/pdf/*/dados-gov-pt-guia-*-v2.pdf; do
+            name="$(basename "$f")"
+            target="$(printf '%s' "$name" | sed -e 's/^dados-gov-pt-guia-//' -e 's/-v2\.pdf$/.pdf/')"
+            cp "$f" "assets/pdf/$target"
+          done
+
+      - name: Validar colecção PDF
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+          qa = json.loads(Path('.build/pdf/qa-summary.json').read_text(encoding='utf-8'))
+          assert len(qa) == 15
+          assert not [x for x in qa if x['missing_items'] != 0]
+          pdfs = sorted(Path('assets/pdf').glob('*.pdf'))
+          assert len(pdfs) == 15
+          for pdf in pdfs:
+              reader = PdfReader(str(pdf))
+              assert len(reader.pages) >= 1
+              assert pdf.stat().st_size > 50000
+          print('QA PDF: 15/15 ficheiros válidos; conteúdo editorial sem omissões.')
+          PY
+
+      - name: Publicar ajustes D01
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/guides.json assets/js/data-d01.js assets/js/search-index.json Guias-do-utilizador/Acesso-perfil-e-participacao/Autenticacao-e-acesso-a-conta assets/pdf README.md docs/CONTENT_VALIDATION.md
+          git status --short
+          git commit -m "docs(guides): alinha D01 com fluxo actual de autenticação"
+          git fetch origin feature/static-routes-pdf
+          git rebase origin/feature/static-routes-pdf
+          git push origin HEAD:feature/static-routes-pdf

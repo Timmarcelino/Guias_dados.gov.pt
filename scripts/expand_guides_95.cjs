@@ -84,7 +84,7 @@ D14.fichas[1].next = feedback.title + '.';
 D14.fichas.splice(2, 0, feedback);
 
 write('content/guides.json', JSON.stringify(guides, null, 2) + '\n');
-write('assets/js/data.js', '// Dados de conteúdo do protótipo.\n// Mantém os conteúdos editoriais separados da lógica de apresentação.\n\nexport const guides = ' + JSON.stringify(guides, null, 2) + ';\n');
+write('assets/js/data.js', '// Dados de conteúdo do protótipo.\n// Mantém os conteúdos editoriais separados da lógica de apresentação.\n\nexport const guides = ' + JSON.stringify(guides.filter((g) => g.code !== 'D01'), null, 2) + ';\n');
 
 const routes = {
   'Alterar o email e a palavra-passe da conta': '/Guias_dados.gov.pt/Guias-do-utilizador/Acesso-perfil-e-participacao/Perfil-e-actividade/Alterar-o-email-e-a-palavra-passe-da-conta/',
@@ -159,7 +159,7 @@ function updateTaskPage(g, c, f, i, isNew) {
   let html = isNew ? read(c.dir + '/' + c.template) : read(rel);
   html = html.replace(/<title>.*?<\/title>/, '<title>' + esc(f.title) + ' | Guias do utilizador | dados.gov.pt</title>');
   html = html.replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="' + esc(f.intro) + '">');
-  html = html.replace(/<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="https://timmarcelino.github.io/Guias_dados.gov.pt' + routeFor(f) + '">');
+  html = html.replace(/<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="https://timmarcelino.github.io' + routeFor(f) + '">');
   html = html.replace(/<nav aria-label="Assuntos do guia">.*?<\/nav>/, guideNav(g, c, f.title));
   html = html.replace(/<main id="conteudo" tabindex="-1">.*?<\/main>/, taskMain(g, c, f, i));
   write(rel, html);

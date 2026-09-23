@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-PT" data-author-branding="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protótipo de autoria no footer | Guias dados.gov.pt</title>
+  <link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/base.css">
+  <link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/portal.css">
+  <style>
+    /*
+      Protótipo isolado do crédito de autoria.
+      Não altera o footer global dos Guides.
+      A marca pode ser desligada futuramente mudando data-author-branding="on" para "off".
+    */
+    [data-author-branding="off"] .vp-author-credit {
+      display: none;
+    }
+
+    body {
+      margin: 0;
+      background: #f6f7f9;
+      color: #17253a;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .prototype-main {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 96px;
+    }
+
+    .prototype-main h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    .prototype-main p {
+      max-width: 760px;
+      margin: 0;
+      color: #516176;
+      font-size: 1.075rem;
+      line-height: 1.7;
+    }
+
+    .vp-author-credit {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 6px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .vp-author-credit__identity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 0;
+    }
+
+    .vp-author-credit__mark {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.46);
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.96);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+    }
+
+    .vp-author-credit__copy {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .vp-author-credit__eyebrow {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.71rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .vp-author-credit__signature {
+      color: #fff;
+      font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
+      font-size: 1.22rem;
+      font-weight: 400;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .vp-author-credit__role {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .vp-author-credit__note {
+      max-width: 390px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      text-align: right;
+    }
+
+    .prototype-footer-version {
+      grid-column: 1 / -1;
+      margin-top: 2px;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    @media (max-width: 760px) {
+      .vp-author-credit {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .vp-author-credit__note {
+        max-width: none;
+        text-align: left;
+      }
+
+      .vp-author-credit__signature {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="prototype-main" id="conteudo">
+    <p style="margin-bottom:12px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#66758a;">Protótipo isolado</p>
+    <h1>Crédito de autoria nos Guias</h1>
+    <p>Esta página testa apenas a integração visual da autoria pessoal no rodapé. O objectivo é identificar a concepção funcional e editorial sem competir com a identidade institucional do dados.gov.pt.</p>
+  </main>
+
+  <footer class="portal-footer" aria-label="Rodapé do portal">
+    <div class="portal-footer__inner portal-footer__navigation">
+      <h2>Mais para descobrir no portal</h2>
+      <nav class="portal-footer__columns" aria-label="Navegação do rodapé">
+        <section>
+          <h3>Dados abertos</h3>
+          <ul>
+            <li><a href="https://dados.gov.pt/areas-tematicas">Áreas Temáticas</a></li>
+            <li><a href="https://dados.gov.pt/roadmap">Roadmap</a></li>
+            <li><a href="https://data.europa.eu/">Portal de dados europeu</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Portal</h3>
+          <ul>
+            <li><a href="https://dados.gov.pt/pt/noticias">Notícias</a></li>
+            <li><a href="https://dados.gov.pt/ajuda-e-contactos">Ajuda e contactos</a></li>
+            <li><a href="https://dados.gov.pt/termos-de-utilizacao">Termos de utilização</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Desenvolvimento</h3>
+          <ul>
+            <li><a href="https://dados.gov.pt/recursos/desenvolvimento/referencia-api">Referência API</a></li>
+            <li><a href="https://github.com/amagovpt/udata-pt">Mecanismo de código aberto: udata</a></li>
+            <li><a href="https://github.com/amagovpt/dadosgov-fe">Frontend dados.gov.pt</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <div class="portal-footer__inner portal-footer__bottom">
+      <p>Portal aberto de dados públicos portugueses.</p>
+      <div class="portal-footer__related">
+        <a href="https://portugal.gov.pt/">República Portuguesa</a>
+        <a href="https://eur-lex.europa.eu/legal-content/PT/LSU/?uri=CELEX:32019L1024">Comissão Europeia</a>
+      </div>
+
+      <section class="vp-author-credit" aria-label="Crédito de autoria">
+        <div class="vp-author-credit__identity">
+          <span class="vp-author-credit__mark" aria-hidden="true">VP</span>
+          <div class="vp-author-credit__copy">
+            <span class="vp-author-credit__eyebrow">Concepção funcional e editorial</span>
+            <strong class="vp-author-credit__signature">Valentim Pinto</strong>
+            <span class="vp-author-credit__role">Analista Funcional Sénior | Business Analyst</span>
+          </div>
+        </div>
+        <p class="vp-author-credit__note">Crédito de autoria do protótipo. A apresentação pode ser desactivada na versão institucional sem alterar o conteúdo dos Guias.</p>
+      </section>
+
+      <div class="prototype-footer-version">© dados.gov.pt · Protótipo v0.5.0 em revisão</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -13,7 +13,7 @@ Notas para ampliações futuras:
   leitura e contraste, e voltar a validar acessibilidade documental do PDF.
 """
 
-import json, os, re, unicodedata, html, math, shutil, textwrap
+import json, os, re, unicodedata, html, math, textwrap
 from pathlib import Path
 import qrcode
 from weasyprint import HTML
@@ -21,14 +21,23 @@ from pypdf import PdfReader
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = REPO / 'content' / 'guides.json'
+SITE_CONFIG = REPO / 'content' / 'site.json'
 OUT = REPO / '.build' / 'pdf'
 OUT.mkdir(parents=True, exist_ok=True)
-# D06 pode usar o PDF aprovado quando a implementação ainda não está integrada no Frontoffice.
-APPROVED_D06 = REPO / 'assets' / 'pdf' / 'explorador-de-dados.pdf'
 # Destino actual de revisão; não assumir como URL definitiva do produto.
 BASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'
-AUTHOR_LINK = 'https://www.linkedin.com/in/valentimmarcelino/'
-AUTHOR_LOGO_URI = (REPO / 'assets' / 'brand' / 'valentim-pinto-vp.jpg').resolve().as_uri()
+
+SITE = json.loads(SITE_CONFIG.read_text(encoding='utf-8'))
+AUTHOR = SITE['author']
+PROTOTYPE = SITE['prototype']
+AUTHOR_NAME = AUTHOR['name']
+AUTHOR_ROLE = AUTHOR['role']
+AUTHOR_LINK = AUTHOR['linkedin']
+AUTHOR_LOGO_ALT = AUTHOR['logo_alt']
+AUTHOR_LOGO_URI = (REPO / AUTHOR['logo_file']).resolve().as_uri()
+PROTOTYPE_NAME = PROTOTYPE['name']
+PROTOTYPE_VERSION = PROTOTYPE['version']
+PROTOTYPE_STATUS = PROTOTYPE['status']
 
 GUIDES = json.loads(SRC.read_text(encoding='utf-8'))
 BY_CODE = {g['code']: g for g in GUIDES}
@@ -172,7 +181,7 @@ def build_html(g, qr_name):
     resources=''
     if g.get('resources'):
         resources='<section class="resources"><h3>Ligações úteis</h3><ul>'+''.join(f'<li><a href="{esc(r["url"])}">{esc(r["title"])}</a><br><span style="font-size:6.5pt;color:#708394;word-break:break-all">{esc(r["url"])}</span></li>' for r in g['resources'])+'</ul></section>'
-    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>22/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div><div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="VP, marca pessoal de Valentim Pinto"><p>Concepção funcional e editorial: <a href="{AUTHOR_LINK}">Valentim Pinto</a><br><span>© dados.gov.pt · Protótipo Guias v0.5.0 em revisão</span></p></div></section>'''
+    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>22/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div><div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="{esc(AUTHOR_LOGO_ALT)}"><p>{esc(AUTHOR_ROLE)}: <a href="{AUTHOR_LINK}">{esc(AUTHOR_NAME)}</a><br><span>© dados.gov.pt · Protótipo {esc(PROTOTYPE_NAME)} {esc(PROTOTYPE_VERSION)} {esc(PROTOTYPE_STATUS)}</span></p></div></section>'''
     return f'''<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>{esc(title)} | Guias do utilizador | dados.gov.pt</title><meta name="author" content="dados.gov.pt"><meta name="description" content="{esc(g['intro'])}"><meta name="keywords" content="dados abertos, dados.gov.pt, guia do utilizador, {esc(theme)}"><style>{css}</style></head><body>{cover}{overview}{''.join(tasks)}{closing}</body></html>'''
 
 def norm(s):
@@ -195,15 +204,10 @@ for g in GUIDES:
     code=g['code']; folder=OUT/code
     folder.mkdir(parents=True, exist_ok=True)
     out_pdf=folder/f'dados-gov-pt-guia-{pdf_slug(g)}-v2.pdf'
-    if code=='D06' and APPROVED_D06.exists():
-        shutil.copy2(APPROVED_D06,out_pdf)
-        # also create qr for consistency
-        qr=qrcode.make(guide_url(g)); qr.save(folder/'qr.png')
-    else:
-        qr=qrcode.make(guide_url(g)); qr_path=folder/'qr.png'; qr.save(qr_path)
-        html_text=build_html(g,'qr.png')
-        html_path=folder/'index.html'; html_path.write_text(html_text,encoding='utf-8')
-        HTML(filename=str(html_path), base_url=str(folder)).write_pdf(str(out_pdf), pdf_tags=True, srgb=True)
+    qr=qrcode.make(guide_url(g)); qr_path=folder/'qr.png'; qr.save(qr_path)
+    html_text=build_html(g,'qr.png')
+    html_path=folder/'index.html'; html_path.write_text(html_text,encoding='utf-8')
+    HTML(filename=str(html_path), base_url=str(folder)).write_pdf(str(out_pdf), pdf_tags=True, srgb=True)
     reader=PdfReader(str(out_pdf))
     text='\n'.join((p.extract_text() or '') for p in reader.pages)
     ntext=norm(text)

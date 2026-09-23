@@ -1401,7 +1401,7 @@
   {
     "code": "D13",
     "title": "Perfil e actividade",
-    "intro": "Actualize a informação do seu perfil, encontre os seus conteúdos e consulte a actividade apresentada na sua área pessoal.",
+    "intro": "Actualize a informação do seu perfil e da conta, gira as Chaves da API, encontre os seus conteúdos e consulte a actividade apresentada na sua área pessoal.",
     "audience": "Para utilizadores com conta no dados.gov.pt. A consulta do perfil de outros utilizadores exige autenticação e é distinguida da gestão da própria conta.",
     "fichas": [
       {
@@ -1419,6 +1419,40 @@
         "tip": "Inclua apenas informação que pretende apresentar a outros utilizadores do portal.",
         "table": null,
         "media": "Edição do perfil com dados fictícios e opções de carregar e remover fotografia.",
+        "next": "Alterar o email e a palavra-passe da conta."
+      },
+      {
+        "title": "Alterar o email e a palavra-passe da conta",
+        "intro": "Actualize os dados de acesso da conta quando o portal disponibiliza essas opções no seu perfil.",
+        "roles": "Utilizador autenticado com conta aplicável",
+        "steps": [
+          "Inicie sessão e abra Meu perfil.",
+          "Na área Perfil, localize a opção para alterar o endereço de email ou a palavra-passe.",
+          "Escolha a alteração pretendida e preencha os campos apresentados.",
+          "Conclua a confirmação solicitada pelo portal, incluindo a consulta da caixa de correio quando for enviado um link de validação.",
+          "Volte ao perfil ou ao acesso à conta e confirme que a alteração ficou concluída."
+        ],
+        "example": "Uma utilizadora altera o endereço de email da conta e conclui a validação através da mensagem recebida.",
+        "tip": "Não partilhe palavras-passe nem links de validação. Se a conta estiver associada a CMD ou eIDAS, siga apenas o percurso apresentado pelo portal para a alteração pretendida.",
+        "table": null,
+        "media": "Área de Perfil com as opções de alteração de email e palavra-passe, usando dados de demonstração.",
+        "next": "Gerir Chaves da API."
+      },
+      {
+        "title": "Gerir Chaves da API",
+        "intro": "Crie e elimine Chaves da API a partir da sua área pessoal quando precisar de autenticar pedidos programáticos.",
+        "roles": "Utilizador autenticado",
+        "steps": [
+          "Inicie sessão e abra Meu perfil.",
+          "Abra a área Chaves da API.",
+          "Para criar uma chave, utilize a acção de geração apresentada pelo portal.",
+          "Guarde a chave de forma segura quando o portal a apresentar e utilize-a apenas nas integrações autorizadas.",
+          "Para deixar de utilizar uma chave, identifique-a na listagem, utilize a acção de eliminação e confirme o resultado apresentado."
+        ],
+        "example": "Uma pessoa cria uma Chave da API para uma integração e elimina-a quando deixa de ser necessária.",
+        "tip": "Trate a Chave da API como uma credencial. Não a inclua em capturas, exemplos públicos, repositórios ou pedidos de apoio.",
+        "table": null,
+        "media": "Área Chaves da API com dados de demonstração e sem expor uma chave real.",
         "next": "Consultar o perfil de outro utilizador."
       },
       {
@@ -1525,6 +1559,23 @@
         "tip": "Ao pedir apoio, indique a página e a acção em causa e evite incluir palavras-passe, chaves da API ou dados pessoais desnecessários.",
         "table": null,
         "media": "Captura do formulário Tenho uma pergunta com dados de demonstração.",
+        "next": "Enviar feedback sobre o dados.gov.pt."
+      },
+      {
+        "title": "Enviar feedback sobre o dados.gov.pt",
+        "intro": "Utilize o formulário Envie o seu feedback para partilhar uma sugestão ou comentário sobre o portal.",
+        "roles": "Pessoa que pretende enviar feedback",
+        "steps": [
+          "Aceda à página Ajuda e contactos e seleccione Envie o seu feedback.",
+          "Preencha os campos apresentados, incluindo o endereço de email, o assunto e o detalhe.",
+          "Descreva de forma clara a sugestão, comentário ou experiência que pretende partilhar.",
+          "Reveja a informação e submeta o formulário.",
+          "Confirme a mensagem apresentada após o envio."
+        ],
+        "example": "Uma pessoa envia uma sugestão para tornar mais clara a informação apresentada numa página do portal.",
+        "tip": "Não inclua palavras-passe, Chaves da API ou dados pessoais desnecessários no feedback.",
+        "table": null,
+        "media": "Formulário Envie o seu feedback preenchido com dados de demonstração.",
         "next": "Pedir informação ou sugerir um conjunto de dados."
       },
       {

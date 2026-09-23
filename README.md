@@ -26,7 +26,7 @@ A documentação existente foi analisada, consolidada e reorganizada numa arquit
 
 ## O que construímos
 
-O protótipo actual reúne o conhecimento funcional do portal em **15 guias e 92 fichas práticas**, organizados por objectivo e não pela estrutura interna do sistema.
+O protótipo actual reúne o conhecimento funcional do portal em **15 guias e 95 fichas práticas**, organizados por objectivo e não pela estrutura interna do sistema.
 
 Cada ficha procura responder a uma necessidade concreta, por exemplo:
 
@@ -47,7 +47,7 @@ O valor deste trabalho não está apenas em ter mais documentação. Está em to
 | Indicador | Estado actual |
 | --- | ---: |
 | Guias práticos | **15** |
-| Fichas orientadas a tarefas | **92** |
+| Fichas orientadas a tarefas | **95** |
 | Temas funcionais | **7** |
 | Pesquisa transversal | **1 experiência única sobre os guias** |
 | Versões de referência preservadas | **4** |
@@ -138,7 +138,7 @@ A `main` preserva a referência estável v0.4. A evolução corrente é preparad
 
 Nesta fase, o projecto inclui:
 
-* 15 guias e 92 fichas;
+* 15 guias e 95 fichas;
 * sete temas funcionais;
 * pesquisa transversal;
 * navegação por tema, guia e tarefa;
@@ -166,7 +166,7 @@ A sua função é traduzir conhecimento técnico e funcional em orientação cla
 .
 ├── index.html
 ├── 404.html
-├── Guias-do-utilizador/       # 115 rotas publicadas
+├── Guias-do-utilizador/       # 118 rotas publicadas
 ├── content/
 │   └── guides.json            # fonte editorial versionada
 ├── assets/
@@ -202,7 +202,7 @@ Responsabilidades principais:
 * `content/guides.json`: fonte editorial versionada usada pela colecção PDF;
 * `assets/js/data.js`: conteúdo estruturado dos guias consolidados para a experiência dinâmica;
 * `assets/js/data-d01.js`: módulo editorial do D01;
-* `assets/js/search-index.json`: índice das 92 fichas para pesquisa estática;
+* `assets/js/search-index.json`: índice das 95 fichas para pesquisa estática;
 * `assets/js/app.js`: apresentação, pesquisa, navegação e interacções da experiência dinâmica;
 * `assets/js/header.js`: comportamento do header do protótipo;
 * `scripts/generate_pdf_guides.py`: geração controlada dos PDFs;

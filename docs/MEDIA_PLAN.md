@@ -1,10 +1,10 @@
 # Plano de media dos Guias do Utilizador
 
-Última actualização: 22/09/2026
+Última actualização: 23/09/2026
 
 ## 1. Objectivo
 
-Definir quais imagens e vídeos previstos nas 92 fichas podem ser produzidos a partir do comportamento actual de PRD, quais exigem sessão autenticada controlada e quais devem permanecer suspensos até existir integração funcional observável.
+Definir quais imagens e vídeos previstos nas 95 fichas podem ser produzidos a partir do comportamento actual de PRD, quais exigem sessão autenticada controlada e quais devem permanecer suspensos até existir integração funcional observável.
 
 Este documento controla apenas a produção de media editorial. Não substitui requisitos, Test Cases ou validação funcional.
 
@@ -35,10 +35,10 @@ Quando uma funcionalidade não estiver disponível em PRD, o media permanece **S
 
 | Estado | Fichas |
 | --- | ---: |
-| PRD público | **25** |
-| PRD autenticado | **39** |
+| PRD público | **26** |
+| PRD autenticado | **41** |
 | Suspenso | **28** |
-| **Total** | **92** |
+| **Total** | **95** |
 
 ## 5. Classificação por guia
 
@@ -157,20 +157,21 @@ Em emails/notificações, ocultar endereços e outros dados pessoais.
 
 ### D13, Perfil e actividade
 
-As cinco fichas estão em **PRD autenticado**.
+As sete fichas estão em **PRD autenticado**. As novas fichas `Alterar o email e a palavra-passe da conta` e `Gerir Chaves da API` exigem sessão e devem ser capturadas sem expor credenciais ou chaves reais.
 
 Os perfis de utilizador exigem autenticação no PRD actual. Utilizar conta de teste e dados fictícios/autorizados.
 
 ### D14, Ajuda e contactos
 
-As seis fichas podem ser preparadas em **PRD público**:
+As sete fichas podem ser preparadas em **PRD público**:
 
 1. Consultar Ajuda e contactos;
 2. Enviar uma pergunta à equipa do dados.gov.pt;
-3. Pedir informação ou sugerir um conjunto de dados;
-4. Reportar uma questão sobre um conjunto de dados;
-5. Solicitar atribuição ou alteração de um emblema;
-6. Reportar um problema técnico.
+3. Enviar feedback sobre o dados.gov.pt;
+4. Pedir informação ou sugerir um conjunto de dados;
+5. Reportar uma questão sobre um conjunto de dados;
+6. Solicitar atribuição ou alteração de um emblema;
+7. Reportar um problema técnico.
 
 Não submeter formulários apenas para obter uma captura. Capturar antes da submissão, com dados fictícios quando necessário.
 
@@ -244,7 +245,7 @@ Só iniciar após nova evidência de integração em PRD:
 
 ## 9. Critério de fecho
 
-A frente de media só está fechada quando cada uma das 92 fichas possui:
+A frente de media só está fechada quando cada uma das 95 fichas possui:
 
 * media validado, quando o media acrescenta valor real;
 * ou decisão editorial explícita de que não necessita de imagem/vídeo;

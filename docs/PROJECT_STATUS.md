@@ -1,6 +1,6 @@
 # Estado do projecto: Guias do Utilizador do dados.gov.pt
 
-Última actualização validada: 22/09/2026
+Última actualização validada: 23/09/2026
 
 ## 1. Objectivo deste ficheiro
 
@@ -22,12 +22,26 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |
 | Guias | 15 |
 | Fichas na baseline estável v0.4 | 91 |
-| Fichas na branch activa | 92 |
+| Fichas na branch activa | 95 |
 | Temas funcionais | 7 |
 | Publicação oficial no dados.gov.pt | Não confirmada |
 | Estado funcional do conteúdo | Em revisão funcional, editorial e UX/UI |
 
-Regra: a baseline estável v0.4 mantém 91 fichas. A branch activa evolui para 92 fichas após a validação da 6.ª ficha de D14, “Reportar um problema técnico”.
+Regra: a baseline estável v0.4 mantém 91 fichas. Em 22/09/2026 a branch activa evoluiu para 92 fichas após a validação da 6.ª ficha de D14, “Reportar um problema técnico”. Em 23/09/2026 foi aprovada a expansão para 95 fichas: duas novas fichas em D13 e uma nova ficha em D14.
+
+
+### Expansão D13/D14 em 23/09/2026
+
+Decisão aprovada: ampliar a branch activa de 92 para **95 fichas**, sem alterar os 15 guias nem os 7 temas.
+
+* D13 recebe `Alterar o email e a palavra-passe da conta` e `Gerir Chaves da API`.
+* D14 recebe `Enviar feedback sobre o dados.gov.pt`.
+* O sitemap passa de 115 para **118 rotas**.
+* O índice de pesquisa passa para **95 entradas**.
+* O guardrail passa a exigir 15 guias, 95 fichas e 118 rotas.
+* Os 15 PDFs são regenerados no mesmo workflow da expansão e validados quanto a presença integral das fichas.
+
+Fonte da decisão: validação funcional em PPR, confrontada com o comportamento existente, LEDG-1422/LEDG-1656 para Feedback e evidência técnica/funcional de Perfil e Chaves da API. A promoção PPR para PRD não é assumida; diferenças de ambiente continuam a ser tratadas como evidência de implementação.
 
 ## 3. Branch activa
 
@@ -437,10 +451,10 @@ Foi criado o validador `scripts/validate_guides_consistency.py` e o workflow `.g
 
 A validação passa a falhar automaticamente quando existir, entre outros:
 
-* contagem diferente de 15 guias ou 92 fichas;
+* contagem diferente de 15 guias ou 95 fichas;
 * rota estática em falta;
 * pesquisa fora de sincronização;
-* sitemap divergente de 115 URLs;
+* sitemap divergente de 118 URLs;
 * canonical incorrecto;
 * title duplicado nas rotas;
 * mais ou menos de um `main` ou `h1`;
@@ -500,7 +514,7 @@ Estado verificado em 22/09/2026.
 * GitHub Pages do commit `d1522a8`: sucesso;
 * CI de consistência: verde;
 * workflow de geração PDF: verde na última execução aplicável;
-* 15 guias, 92 fichas, 115 URLs e 15 PDFs controlados.
+* 15 guias, 95 fichas, 118 URLs e 15 PDFs controlados.
 
 ### Bloqueios antes de candidatura a merge
 
@@ -544,7 +558,7 @@ Commits:
 * `97671ae`, README;
 * `76072ca`, CHANGELOG.
 
-Estado: documentação corrente alinhada com 15 guias, 92 fichas, 115 rotas e 15 PDFs.
+Estado: documentação corrente alinhada com 15 guias, 95 fichas, 118 rotas e 15 PDFs.
 
 
 ## Actualização D06, Explorador de dados

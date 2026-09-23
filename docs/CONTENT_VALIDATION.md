@@ -4,7 +4,7 @@
 
 ## 1. Objectivo
 
-Este documento controla a validação funcional e editorial dos 15 guias e 92 fichas existentes na branch `feature/static-routes-pdf`.
+Este documento controla a validação funcional e editorial dos 15 guias e 95 fichas existentes na branch `feature/static-routes-pdf`.
 
 Não substitui Requirements, User Stories, critérios de aceitação, Figma aprovado, Jira, documentação técnica nem evidência de testes.
 
@@ -29,15 +29,15 @@ A colecção actualmente publicada na branch contém:
 | Indicador | Estado |
 | --- | ---: |
 | Guias | 15 |
-| Fichas | 92 |
+| Fichas | 95 |
 | Temas | 7 |
 | PDFs | 15 |
-| Entradas no índice de pesquisa | 92 |
-| URLs no sitemap | 115 |
+| Entradas no índice de pesquisa | 95 |
+| URLs no sitemap | 118 |
 
 A fonte editorial utilizada na geração PDF v2 foi preservada no histórico Git no commit `9f420bf7bb0811ac809d416dd1a5f051e92cf581`, em `.pdfv2_tmp/conteudo_revisado.json`.
 
-Esta fonte contém os 15 guias e as 92 fichas, incluindo as seis fichas de D14.
+Esta fonte contém os 15 guias e as 95 fichas, incluindo sete fichas em D13 e sete fichas em D14.
 
 ## 3. Validação dos PDFs
 
@@ -86,8 +86,8 @@ Resultado:
 | Harvester | 9 | 6 | 6 |
 | Seguir conteúdos e notificações | 7 | 5 | 5 |
 | Discussões e comunidade | 8 | 5 | 5 |
-| Perfil e actividade | 8 | 5 | 5 |
-| Ajuda e contactos | 9 | 6 | 6 |
+| Perfil e actividade | 8 | 7 | 7 |
+| Ajuda e contactos | 9 | 7 | 7 |
 | Catálogo de Modelos | 12 | 9 | 9 |
 
 Para os 15 PDFs foi confirmado:
@@ -98,7 +98,7 @@ Para os 15 PDFs foi confirmado:
 * denominador das tarefas coerente com o número esperado;
 * ausência de `undefined`;
 * ausência das formulações antigas corrigidas em D04, D09 e D13;
-* D14 contém as 6 fichas, incluindo `Reportar um problema técnico`.
+* D13 contém 7 fichas e D14 contém 7 fichas, incluindo as três fichas acrescentadas em 23/09/2026.
 
 A leitura directa confirma conteúdo e paginação lógica, mas não substitui a inspecção visual pixel a pixel.
 
@@ -155,6 +155,13 @@ Uma mesma tarefa pode apresentar texto diferente consoante o utilizador navegue 
 
 Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e D14 contra as fontes funcionais aplicáveis e, depois da decisão, estabelecer uma única fonte editorial versionada capaz de gerar experiência web, pesquisa, sitemap e PDFs.
 
+
+## 4.1 Expansão validada em 23/09/2026
+
+A expansão aprovada acrescenta três fichas: duas em D13 e uma em D14. A consistência técnica é verificada no mesmo workflow que publica a alteração, com contrato de **15 guias, 95 fichas, 95 entradas de pesquisa, 118 rotas e 15 PDFs**.
+
+A nova ficha de Feedback é suportada por LEDG-1422 e LEDG-1656 e foi observada no PPR. As novas fichas de D13 correspondem a capacidades observadas no perfil autenticado do PPR. A equivalência final com PRD deve ser novamente confirmada antes da publicação oficial dos Guides.
+
 ## 5. Matriz das 15 áreas
 
 | Código interno | Guia | Fichas | Estado | Evidência principal | Pendências para fecho |
@@ -171,8 +178,8 @@ Não copiar automaticamente uma fonte sobre a outra. Rever as diferenças D08 e 
 | D10 | Harvester | 6 | **Parcialmente validado** | API pública de PRD confirma 15 backends habilitados, 42 fontes, metadados de configuração, trabalhos e estados de validação; LEDG-2323 fecha a política de preview; frontend actual implementa separação de edição por perfil | Fluxos autenticados de edição, preview, trabalhos e aprovação/rejeição devem ser confirmados em PRD; não documentar particularidades de backends ainda em READY FOR TESTING |
 | D11 | Favoritos e notificações | 5 | **Parcialmente validado** | PRD revalidado em 22/09/2026 apresenta `Adicionar aos favoritos`/`Remover dos favoritos` em Organização, Conjunto de Dados, Reutilização e API; notificações existentes são independentes desta relação | Fichas de Favoritos alinhadas ao PRD actual. Percurso autenticado de Notificações permanece a confirmar; não afirmar que Favoritos gera notificações |
 | D12 | Discussões e comunidade | 5 | **Parcialmente validado** | Discussões públicas confirmadas na API de PRD, incluindo 7 conversas num dataset real e URL directa para `?tab=discussions`; frontend actual suporta datasets, reutilizações, APIs e contexto de organização | Consulta pública sustentada; criação/resposta/contexto administrativo requerem sessão PRD; não prometer fiabilidade total dos emails enquanto LEDG-2390/2391 estiverem abertos |
-| D13 | Perfil e actividade | 5 | **Parcialmente validado** | LEDG-2113 e PRD confirmam autenticação obrigatória; correcção editorial de actor/título/data de registo já aplicada e sincronizada | Pendente apenas validação autenticada das áreas pessoais, campos editáveis, actividade e diferenças de visibilidade/permissão |
-| D14 | Ajuda e contactos | 6 | **Validado no âmbito actual** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
+| D13 | Perfil e actividade | 7 | **Parcialmente validado** | LEDG-2113 e PRD confirmam autenticação obrigatória; correcção editorial de actor/título/data de registo já aplicada e sincronizada | Pendente apenas validação autenticada das áreas pessoais, campos editáveis, actividade e diferenças de visibilidade/permissão |
+| D14 | Ajuda e contactos | 7 | **Parcialmente validado após expansão** | LEDG-2475 Done; submissão em PPR já validada; sexta ficha recuperada e sincronizada | Não prometer confirmação automática por email enquanto LEDG-2029 estiver To Do; manter funcionalidades futuras de certificação/emblemas fora do percurso actual |
 | CM | Catálogo de Modelos | 9 | **Não observável no stack público actual de PRD** | LEDG-2049 em IN UAT; frontend/backend `main` sem rota/módulo do novo Catálogo; Swagger PRD sem endpoints equivalentes | Não publicar como comportamento actual. Revalidar após integração PRD observável; distinguir explicitamente o endpoint legado `/datasets/schemas/` do novo Catálogo |
 
 ## 5.1 Revalidação D01, Autenticação e acesso à conta

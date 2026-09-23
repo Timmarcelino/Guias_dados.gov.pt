@@ -50,7 +50,7 @@ THEMES = [
 # Contrato da versão candidata. Manter valores explícitos evita que uma remoção
 # acidental na fonte editorial seja aceite por uma validação puramente derivada.
 EXPECTED_GUIDE_COUNT = 15
-EXPECTED_TASK_COUNT = 92
+EXPECTED_TASK_COUNT = 95
 EXPECTED_ROUTE_COUNT = 1 + len(THEMES) + EXPECTED_GUIDE_COUNT + EXPECTED_TASK_COUNT
 
 # Contratos de compatibilidade: títulos podem evoluir sem quebrar URLs já publicadas.

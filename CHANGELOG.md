@@ -6,9 +6,9 @@ Evolução da branch `feature/static-routes-pdf` após a referência v0.4.
 
 Principais alterações:
 
-* Evolução da colecção para **15 guias e 92 fichas**, com inclusão da sexta ficha de D14, `Reportar um problema técnico`.
-* Publicação de **115 rotas estáticas** com sitemap, canonicals, pesquisa transversal e página 404 dedicada.
-* Publicação e validação estrutural de **15 PDFs**, cobrindo as 92 fichas.
+* Evolução da colecção para **15 guias e 95 fichas**. Em 23/09/2026 foram acrescentadas duas fichas a D13, `Alterar o email e a palavra-passe da conta` e `Gerir Chaves da API`, e uma ficha a D14, `Enviar feedback sobre o dados.gov.pt`.
+* Publicação de **118 rotas estáticas** com sitemap, canonicals, pesquisa transversal e página 404 dedicada.
+* Publicação e validação estrutural de **15 PDFs**, cobrindo as 95 fichas após a expansão de 23/09/2026.
 * Criação da fonte editorial permanente `content/guides.json` e do gerador `scripts/generate_pdf_guides.py`.
 * Criação do guardrail `scripts/validate_guides_consistency.py` e workflow de CI para validar fonte, rotas, pesquisa, sitemap e estrutura HTML.
 * Correcções editoriais baseadas em PRD para D04, D09 e D13.

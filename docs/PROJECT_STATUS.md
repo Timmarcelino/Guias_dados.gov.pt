@@ -23,10 +23,9 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | Branch de origem da release | `feature/static-routes-pdf` |
 | PR de promoção | #5, integrado em 23/09/2026 |
 | Branch activa para próxima evolução | Por confirmar |
-| Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |
+| Relação com `main` | v0.5.0 integrada; próxima branch de evolução ainda Por confirmar |
 | Guias | 15 |
-| Fichas na baseline estável v0.4 | 91 |
-| Fichas na branch activa | 95 |
+| Fichas na baseline estável actual | 95 |
 | Temas funcionais | 7 |
 | Publicação oficial no dados.gov.pt | Não confirmada |
 | Estado funcional do conteúdo | Em revisão funcional, editorial e UX/UI |
@@ -47,19 +46,15 @@ Decisão aprovada: ampliar a branch activa de 92 para **95 fichas**, sem alterar
 
 Fonte da decisão: validação funcional em PPR, confrontada com o comportamento existente, LEDG-1422/LEDG-1656 para Feedback e evidência técnica/funcional de Perfil e Chaves da API. A promoção PPR para PRD não é assumida; diferenças de ambiente continuam a ser tratadas como evidência de implementação.
 
-## 3. Branch activa
+## 3. Estado após a release v0.5.0
 
 ### Implementação
 
-O trabalho corrente encontra-se em:
+O trabalho consolidado da v0.5.0 encontra-se em `main`.
 
-`feature/static-routes-pdf`
+A branch `feature/static-routes-pdf` foi a origem do PR #5 e deixou de ser a referência activa após o merge. A branch da próxima evolução está **Por confirmar**.
 
-Esta branch parte integralmente da baseline v0.4 e contém evolução posterior ainda não integrada em `main`.
-
-### Alterações já existentes na branch
-
-A comparação com `main` evidencia, entre outros:
+A baseline actual inclui, entre outros:
 
 * rotas estáticas em `Guias-do-utilizador/`;
 * páginas próprias para temas, guias e tarefas;
@@ -69,15 +64,15 @@ A comparação com `main` evidencia, entre outros:
 * `sitemap.xml`;
 * `404.html`;
 * `.nojekyll`;
-* evolução do `index.html`.
+* fonte editorial e workflows permanentes de QA e PDF.
 
-Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.
+As limitações conhecidas da v0.5.0 estão registadas no checkpoint de release e transitam para a próxima evolução sem alteração do respectivo estado funcional.
 
 ### Defeitos técnicos web fechados em 22/09/2026
 
 * Corrigido o título duplicado da entrada principal para `Guias do utilizador | dados.gov.pt`.
 * A página 404 passou a ter estrutura semântica, viewport responsivo, skip link, foco no conteúdo, navegação de retorno e `noindex`.
-* Por confirmar: o processo que gera rotas estáticas e PDFs não está versionado no repositório. Deve ser incorporado antes de nova regeneração para evitar reintrodução de defeitos já corrigidos.
+* O gerador PDF e os workflows permanentes estão versionados e foram validados na v0.5.0. A automatização integral da geração das rotas estáticas pode ser aprofundada na próxima evolução, sem afectar o guardrail actual que valida as 118 rotas publicadas.
 
 ### Actualização de D14 em 22/09/2026
 

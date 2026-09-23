@@ -124,7 +124,6 @@ def patch_page(path: Path):
     if 'class="portal-footer"' not in text:
         raise RuntimeError(f"Footer institucional não encontrado: {path.relative_to(REPO)}")
 
-    # Remove uma versão anterior do crédito, se existir.
     text = re.sub(
         r'\s*<section class="vp-author-credit".*?</section>',
         '',
@@ -169,20 +168,29 @@ def patch_pdf_generator():
         count=1,
     )
 
-    css = (
-        ".pdf-author-credit{margin-top:6mm;padding-top:4mm;border-top:1px solid #dce5eb;"
+    # build_css() é uma f-string. As chavetas CSS ficam duplicadas no código
+    # fonte para produzirem chavetas simples no HTML/CSS final.
+    pdf_css = (
+        "/* PDF_AUTHOR_BRANDING_START */"
+        ".pdf-author-credit{{margin-top:6mm;padding-top:4mm;border-top:1px solid #dce5eb;"
         "display:grid;grid-template-columns:24mm 1fr;grid-template-rows:auto auto;column-gap:4mm;"
-        "row-gap:1mm;align-items:center;break-inside:avoid}"
-        ".pdf-author-credit img{grid-column:1;grid-row:1/3;width:22mm;height:auto;border-radius:1mm}"
-        ".pdf-author-credit p{grid-column:2;margin:0;font-size:7.5pt;line-height:1.35;color:#526779}"
-        ".pdf-author-credit p:first-of-type{align-self:end}"
-        ".pdf-author-credit p:last-of-type{align-self:start;color:#708394}"
-        ".pdf-author-credit a{font-weight:700;color:#103454;text-decoration:none}"
+        "row-gap:1mm;align-items:center;break-inside:avoid}}"
+        ".pdf-author-credit img{{grid-column:1;grid-row:1/3;width:22mm;height:auto;border-radius:1mm}}"
+        ".pdf-author-credit p{{grid-column:2;margin:0;font-size:7.5pt;line-height:1.35;color:#526779}}"
+        ".pdf-author-credit p:first-of-type{{align-self:end}}"
+        ".pdf-author-credit p:last-of-type{{align-self:start;color:#708394}}"
+        ".pdf-author-credit a{{font-weight:700;color:#103454;text-decoration:none}}"
+        "/* PDF_AUTHOR_BRANDING_END */"
     )
-    text = re.sub(r"\.pdf-author-credit\{.*?\.pdf-author-credit a\{.*?\}", "", text, flags=re.S)
+    text = re.sub(
+        r'/\* PDF_AUTHOR_BRANDING_START \*/.*?/\* PDF_AUTHOR_BRANDING_END \*/\n?',
+        '',
+        text,
+        flags=re.S,
+    )
     if "@media print" not in text:
         raise RuntimeError("Marcador @media print não encontrado no gerador PDF")
-    text = text.replace("@media print", css + "\n@media print", 1)
+    text = text.replace("@media print", pdf_css + "\n@media print", 1)
 
     credit = (
         '<div class="pdf-author-credit">'
@@ -192,10 +200,10 @@ def patch_pdf_generator():
         '</div>'
     )
     text = re.sub(r'<div class="pdf-author-credit">.*?</div>', '', text, flags=re.S)
-    needle = '<div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div></section>\'\'\''
+    needle = '<div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div>'
     if needle not in text:
         raise RuntimeError("Ponto de inserção do crédito PDF não encontrado")
-    text = text.replace(needle, needle.replace('</section>\'\'\'', credit + '</section>\'\'\''), 1)
+    text = text.replace(needle, needle + credit, 1)
 
     PDF_GENERATOR.write_text(text, encoding="utf-8")
 

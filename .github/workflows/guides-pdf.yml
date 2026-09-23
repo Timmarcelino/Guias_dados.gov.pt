@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - main
       - feature/static-routes-pdf
     paths:
       - "content/guides.json"
@@ -13,19 +14,20 @@ on:
 permissions:
   contents: write
 
-# Impede dois geradores de publicarem PDFs concorrentes na mesma branch.
+# Mantém uma única publicação PDF por branch. A ref faz parte do grupo para
+# permitir que main e a branch de evolução sejam validadas de forma independente.
 concurrency:
-  group: guides-pdf-feature-static-routes-pdf
+  group: guides-pdf-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   generate-pdfs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout da branch
+      - name: Checkout da branch actual
         uses: actions/checkout@v4
         with:
-          ref: feature/static-routes-pdf
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Preparar dependências
@@ -72,6 +74,8 @@ jobs:
           PY
 
       - name: Publicar PDFs actualizados
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -80,9 +84,17 @@ jobs:
             echo "Sem alterações nos PDFs."
           else
             git commit -m "chore(pdf): sincroniza PDFs com fonte editorial"
-            # A branch pode avançar enquanto os PDFs são gerados; rebasear evita
-            # sobrescrever alterações concorrentes antes do push automatizado.
-            git fetch origin feature/static-routes-pdf
-            git rebase origin/feature/static-routes-pdf
-            git push origin HEAD:feature/static-routes-pdf
+
+            # O gerador usa .build como área de trabalho. Alguns artefactos dessa
+            # pasta existem no histórico e ficam modificados após a geração, mas
+            # não pertencem ao commit público dos PDFs. Repor esses ficheiros é
+            # obrigatório antes do rebase para evitar 'unstaged changes'.
+            git restore --worktree -- .build || true
+
+            # A branch pode avançar enquanto os PDFs são gerados. Rebasear antes
+            # do push evita sobrescrever alterações concorrentes e funciona tanto
+            # na branch de evolução como em main após uma futura release.
+            git fetch origin "$TARGET_BRANCH"
+            git rebase "origin/$TARGET_BRANCH"
+            git push origin "HEAD:$TARGET_BRANCH"
           fi

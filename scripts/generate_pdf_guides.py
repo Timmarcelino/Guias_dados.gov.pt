@@ -5,8 +5,7 @@ conteúdo e .build/pdf é sempre descartável. A pasta assets/pdf só é
 actualizada pelo workflow depois de a colecção passar pelas validações.
 
 Notas para ampliações futuras:
-* manter a taxonomia THEMES alinhada com a experiência web;
-* usar overrides de slug apenas para compatibilidade de URLs/nomes históricos;
+* temas, slugs e relações são lidos directamente da fonte single-source;
 * BASE_WEB aponta actualmente para GitHub Pages e deverá ser parametrizado
   quando o destino oficial dos Guias estiver definido;
 * ao acrescentar elementos visuais, preservar texto seleccionável, ordem de
@@ -25,7 +24,7 @@ SITE_CONFIG = REPO / 'content' / 'site.json'
 OUT = REPO / '.build' / 'pdf'
 OUT.mkdir(parents=True, exist_ok=True)
 # Destino actual de revisão; não assumir como URL definitiva do produto.
-BASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'
+BASE_WEB = ''  # preenchido a partir de content/site.json
 
 SITE = json.loads(SITE_CONFIG.read_text(encoding='utf-8'))
 AUTHOR = SITE['author']
@@ -38,20 +37,14 @@ AUTHOR_LOGO_URI = (REPO / AUTHOR['logo_file']).resolve().as_uri()
 PROTOTYPE_NAME = PROTOTYPE['name']
 PROTOTYPE_VERSION = PROTOTYPE['version']
 PROTOTYPE_STATUS = PROTOTYPE['status']
+DEPLOYMENT = SITE['site']
+BASE_WEB = f"{DEPLOYMENT['reviewOrigin']}{DEPLOYMENT['basePath']}{DEPLOYMENT['guidesPath']}/"
 
-GUIDES = json.loads(SRC.read_text(encoding='utf-8'))
-BY_CODE = {g['code']: g for g in GUIDES}
-
-THEMES = [
-    ('Encontrar, consultar e explorar dados', ['D03','D06']),
-    ('Publicar e gerir dados', ['D04','D05']),
-    ('Qualidade e modelos de dados', ['D07','CM']),
-    ('Organizações', ['D02']),
-    ('APIs, reutilizações e automatização', ['D08','D09','D10']),
-    ('Acesso, perfil e participação', ['D01','D13','D11','D12']),
-    ('Ajuda e contactos', ['D14']),
-]
-THEME_OF = {code: theme for theme,codes in THEMES for code in codes}
+CONTENT = json.loads(SRC.read_text(encoding='utf-8'))
+GUIDES = CONTENT['guides']
+THEMES = CONTENT['themes']
+BY_CODE = {g['id']: g for g in GUIDES}
+THEME_BY_ID = {t['id']: t for t in THEMES}
 
 
 def slug(s:str)->str:
@@ -61,15 +54,14 @@ def slug(s:str)->str:
     return s
 
 # Preserva ligações históricas mesmo quando o título editorial muda.
-GUIDE_SLUG_OVERRIDES = {'D11': 'Seguir-conteudos-e-notificacoes'}
 PDF_SLUG_OVERRIDES = {'D11': 'seguir-conteudos-e-notificacoes'}
 
 def esc(s): return html.escape(str(s or ''), quote=True)
 
-def theme_url(theme): return BASE_WEB + slug(theme) + '/'
-def guide_slug(g): return GUIDE_SLUG_OVERRIDES.get(g['code'], slug(g['title']))
+def theme_url(theme): return BASE_WEB + theme['slug'] + '/'
+def guide_slug(g): return g['slug']
 def pdf_slug(g): return PDF_SLUG_OVERRIDES.get(g['code'], slug(g['title']).lower())
-def guide_url(g): return theme_url(THEME_OF[g['code']]) + guide_slug(g) + '/'
+def guide_url(g): return theme_url(THEME_BY_ID[g['themeId']]) + guide_slug(g) + '/'
 
 def icon(name, size=28):
     paths = {
@@ -166,7 +158,7 @@ a{{color:#005ce6;text-decoration:none}}h1,h2,h3,p{{margin-top:0}}h2{{font-size:1
 '''
 
 def build_html(g, qr_name):
-    title=g['title']; url=guide_url(g); theme=THEME_OF[g['code']];
+    title=g['title']; url=guide_url(g); theme=THEME_BY_ID[g['themeId']]['title'];
     css=build_css(title)
     hero_steps=''.join(f'<div class="hero-step"><b>{i}</b><span>{esc(f["title"])}</span></div>' for i,f in list(enumerate(g['fichas'],1))[:4])
     cover=f'''<section class="cover"><div class="wordmark">dados.gov.pt</div><div class="cover-kicker">Guias do utilizador · {esc(theme)}</div><h1>{esc(title)}</h1><p class="cover-sub">{esc(g['intro'])}</p><div class="hero"><div class="hero-icon">{icon(GUIDE_ICON.get(g['code'],'file'),90)}</div><div class="hero-steps">{hero_steps}</div></div><div class="cover-meta"><span><strong>Formato</strong> B5 digital-first</span><span><strong>Actualização</strong> 22/09/2026</span></div></section>'''

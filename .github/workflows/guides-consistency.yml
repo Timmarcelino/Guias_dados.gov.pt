@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - main
       - feature/static-routes-pdf
     paths:
       - "content/guides.json"
@@ -18,6 +19,8 @@ on:
       - ".github/workflows/guides-consistency.yml"
 
 # Guardrail read-only: nunca escreve na branch nem em sistemas externos.
+# Corre em main e na branch de evolução para manter o mesmo contrato de QA
+# antes e depois de cada release.
 jobs:
   validate:
     runs-on: ubuntu-latest

@@ -60,7 +60,7 @@ test("cartões expõem ligações focáveis e com nome acessível", async ({ pag
 
 test("pesquisa anuncia resultados e expõe ligações navegáveis", async ({ page }) => {
   await page.goto(`${prefix}/Guias-do-utilizador/`);
-  const search = page.getByLabel("Pesquisar nos guias");
+  const search = page.getByRole("searchbox", { name: "Pesquisar nos guias" });
   await search.fill("publicar dados");
   await expect(page.getByRole("status")).toContainText(/resultado/);
   const firstResult = page.locator('section[aria-labelledby="pesquisa-guias"] ul a').first();

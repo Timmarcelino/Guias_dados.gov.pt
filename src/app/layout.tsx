@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import "@ama-pt/agora-design-system/artifacts/dist/style.css";
 import "./globals.css";
 import { PortalHeader } from "@/components/agora/PortalHeader";
 import { PortalFooter } from "@/components/agora/PortalFooter";

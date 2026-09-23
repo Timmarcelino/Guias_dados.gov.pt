@@ -42,7 +42,7 @@ function Breadcrumb({ route }: { route: GuideRoute }) {
           <li key={`${item.label}-${index}`} className="flex items-center gap-8">
             {index > 0 ? <span aria-hidden="true">/</span> : null}
             {item.href ? (
-              <a className="underline underline-offset-4" href={item.href}>
+              <a className="inline-flex min-h-[24px] items-center underline underline-offset-4" href={item.href}>
                 {item.label}
               </a>
             ) : (

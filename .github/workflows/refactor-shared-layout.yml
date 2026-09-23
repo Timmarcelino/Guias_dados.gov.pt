@@ -1,0 +1,152 @@
+name: Migrar layout transversal e autoria
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/footer-autoria
+    paths:
+      - ".github/workflows/refactor-shared-layout.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refactor-shared-layout-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Migrar gerador PDF para configuração transversal
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('scripts/generate_pdf_guides.py')
+          text = path.read_text(encoding='utf-8')
+
+          old = """SRC = REPO / 'content' / 'guides.json'\nOUT = REPO / '.build' / 'pdf'\nOUT.mkdir(parents=True, exist_ok=True)\n# D06 pode usar o PDF aprovado quando a implementação ainda não está integrada no Frontoffice.\nAPPROVED_D06 = REPO / 'assets' / 'pdf' / 'explorador-de-dados.pdf'\n# Destino actual de revisão; não assumir como URL definitiva do produto.\nBASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'\nAUTHOR_LINK = 'https://www.linkedin.com/in/valentimmarcelino/'\nAUTHOR_LOGO_URI = (REPO / 'assets' / 'brand' / 'valentim-pinto-vp.jpg').resolve().as_uri()\n\nGUIDES = json.loads(SRC.read_text(encoding='utf-8'))\n"""
+          new = """SRC = REPO / 'content' / 'guides.json'\nSITE_CONFIG = REPO / 'content' / 'site.json'\nOUT = REPO / '.build' / 'pdf'\nOUT.mkdir(parents=True, exist_ok=True)\n# Destino actual de revisão; não assumir como URL definitiva do produto.\nBASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'\n\nSITE = json.loads(SITE_CONFIG.read_text(encoding='utf-8'))\nAUTHOR = SITE['author']\nPROTOTYPE = SITE['prototype']\nAUTHOR_NAME = AUTHOR['name']\nAUTHOR_ROLE = AUTHOR['role']\nAUTHOR_LINK = AUTHOR['linkedin']\nAUTHOR_LOGO_ALT = AUTHOR['logo_alt']\nAUTHOR_LOGO_URI = (REPO / AUTHOR['logo_file']).resolve().as_uri()\nPROTOTYPE_NAME = PROTOTYPE['name']\nPROTOTYPE_VERSION = PROTOTYPE['version']\nPROTOTYPE_STATUS = PROTOTYPE['status']\n\nGUIDES = json.loads(SRC.read_text(encoding='utf-8'))\n"""
+          if old not in text:
+              raise RuntimeError('Bloco de configuração esperado não encontrado no gerador PDF')
+          text = text.replace(old, new, 1)
+
+          old_credit = '<div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="VP, marca pessoal de Valentim Pinto"><p>Concepção funcional e editorial: <a href="{AUTHOR_LINK}">Valentim Pinto</a><br><span>© dados.gov.pt · Protótipo Guias v0.5.0 em revisão</span></p></div>'
+          new_credit = '<div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="{esc(AUTHOR_LOGO_ALT)}"><p>{esc(AUTHOR_ROLE)}: <a href="{AUTHOR_LINK}">{esc(AUTHOR_NAME)}</a><br><span>© dados.gov.pt · Protótipo {esc(PROTOTYPE_NAME)} {esc(PROTOTYPE_VERSION)} {esc(PROTOTYPE_STATUS)}</span></p></div>'
+          if old_credit not in text:
+              raise RuntimeError('Crédito PDF esperado não encontrado')
+          text = text.replace(old_credit, new_credit, 1)
+
+          special = re.compile(
+              r"    if code=='D06' and APPROVED_D06\.exists\(\):\n"
+              r"        shutil\.copy2\(APPROVED_D06,out_pdf\)\n"
+              r"        # also create qr for consistency\n"
+              r"        qr=qrcode\.make\(guide_url\(g\)\); qr\.save\(folder/'qr\.png'\)\n"
+              r"    else:\n"
+              r"        qr=qrcode\.make\(guide_url\(g\)\); qr_path=folder/'qr\.png'; qr\.save\(qr_path\)\n"
+              r"        html_text=build_html\(g,'qr\.png'\)\n"
+              r"        html_path=folder/'index\.html'; html_path\.write_text\(html_text,encoding='utf-8'\)\n"
+              r"        HTML\(filename=str\(html_path\), base_url=str\(folder\)\)\.write_pdf\(str\(out_pdf\), pdf_tags=True, srgb=True\)\n"
+          )
+          replacement = (
+              "    qr=qrcode.make(guide_url(g)); qr_path=folder/'qr.png'; qr.save(qr_path)\n"
+              "    html_text=build_html(g,'qr.png')\n"
+              "    html_path=folder/'index.html'; html_path.write_text(html_text,encoding='utf-8')\n"
+              "    HTML(filename=str(html_path), base_url=str(folder)).write_pdf(str(out_pdf), pdf_tags=True, srgb=True)\n"
+          )
+          text, count = special.subn(replacement, text, count=1)
+          if count != 1:
+              raise RuntimeError(f'Esperada uma regra especial D06, removidas {count}')
+
+          text = text.replace('import json, os, re, unicodedata, html, math, shutil, textwrap',
+                              'import json, os, re, unicodedata, html, math, textwrap', 1)
+          path.write_text(text, encoding='utf-8')
+          print('Gerador PDF migrado: configuração transversal e D06 integrado no fluxo comum.')
+          PY
+
+      - name: Sincronizar header e footer transversais
+        run: |
+          python scripts/sync_shared_layout.py
+          python scripts/sync_shared_layout.py --check
+
+      - name: Validar Web
+        run: python scripts/validate_guides_consistency.py
+
+      - name: Preparar dependências PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar os 15 PDFs sem excepções
+        run: |
+          rm -rf .build/pdf
+          mkdir -p .build
+          python scripts/generate_pdf_guides.py > .build/generator-output.json
+          rm -f assets/pdf/*.pdf
+          for f in .build/pdf/*/dados-gov-pt-guia-*-v2.pdf; do
+            name="$(basename "$f")"
+            target="$(printf '%s' "$name" | sed -e 's/^dados-gov-pt-guia-//' -e 's/-v2\.pdf$/.pdf/')"
+            cp "$f" "assets/pdf/$target"
+          done
+
+      - name: Validar Web, PDFs e autoria integral
+        run: |
+          python scripts/sync_shared_layout.py --check
+          python scripts/validate_guides_consistency.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          site = json.loads(Path('content/site.json').read_text(encoding='utf-8'))
+          author = site['author']['name']
+          version = site['prototype']['version']
+          qa = json.loads(Path('.build/pdf/qa-summary.json').read_text(encoding='utf-8'))
+          assert len(qa) == 15, f'Esperados 15 guias, obtidos {len(qa)}'
+          assert not [x for x in qa if x['missing_items'] != 0], 'Há omissões editoriais nos PDFs'
+
+          pdfs = sorted(Path('assets/pdf').glob('*.pdf'))
+          assert len(pdfs) == 15, f'Esperados 15 PDFs, obtidos {len(pdfs)}'
+          missing = []
+          for pdf in pdfs:
+              reader = PdfReader(str(pdf))
+              assert len(reader.pages) >= 1, f'PDF sem páginas: {pdf}'
+              assert pdf.stat().st_size > 50000, f'PDF anormalmente pequeno: {pdf}'
+              text = '\n'.join((page.extract_text() or '') for page in reader.pages)
+              if author not in text or version not in text:
+                  missing.append(pdf.name)
+          assert not missing, f'Autoria em falta: {missing}'
+          assert 'explorador-de-dados.pdf' not in missing
+          generator = Path('scripts/generate_pdf_guides.py').read_text(encoding='utf-8')
+          assert 'APPROVED_D06' not in generator
+          assert "code=='D06'" not in generator
+          print('QA integral: 118 páginas sincronizadas; 15/15 PDFs com autoria; D06 sem excepção.')
+          PY
+
+      - name: Publicar migração na branch
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Guias-do-utilizador index.html 404.html prototypes scripts/generate_pdf_guides.py assets/pdf
+          if git diff --cached --quiet; then
+            echo "Sem alterações para publicar."
+            exit 0
+          fi
+          git commit -m "refactor(layout): transversaliza Web e aplica autoria aos 15 PDFs"
+          git restore --worktree -- .build || true
+          git fetch origin "$TARGET_BRANCH"
+          git rebase "origin/$TARGET_BRANCH"
+          git push origin "HEAD:$TARGET_BRANCH"

@@ -3,6 +3,7 @@ import { GuideCard } from "@/components/agora/GuideCard";
 import { GuideSearch } from "@/components/guides/GuideSearch";
 import { loadContent } from "@/lib/content/repository";
 import { buildRoutes } from "@/lib/content/routes";
+import { buildSearchIndex } from "@/lib/content/search";
 import { canonicalUrl, withBasePath } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,16 +14,7 @@ export const metadata: Metadata = {
 export default function GuidesHome() {
   const content = loadContent();
   const routes = buildRoutes(content);
-  const search = routes
-    .filter((route) => route.kind === "task")
-    .map((route) => ({
-      id: route.task!.id,
-      guideId: route.guide!.id,
-      title: route.task!.title,
-      intro: route.task!.intro,
-      text: [route.task!.title, route.task!.intro, ...route.task!.steps, route.task!.tip].join(" "),
-      url: route.path,
-    }));
+  const search = buildSearchIndex(content);
 
   return (
     <>

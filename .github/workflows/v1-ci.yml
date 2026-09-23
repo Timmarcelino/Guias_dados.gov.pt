@@ -39,6 +39,8 @@ jobs:
         run: |
           npm run content:validate
           npm run routes:check
+      - name: Validar fronteiras da arquitectura
+        run: npx tsx scripts/v1/check-architecture.ts
       - name: Gerar artefactos derivados
         run: npm run content:derive
       - name: Typecheck

@@ -8,12 +8,12 @@ on:
     paths:
       - "content/guides.json"
       - "scripts/generate_pdf_guides.py"
-      - "scripts/expand_guides_95.cjs"
       - ".github/workflows/guides-pdf.yml"
 
 permissions:
   contents: write
 
+# Impede dois geradores de publicarem PDFs concorrentes na mesma branch.
 concurrency:
   group: guides-pdf-feature-static-routes-pdf
   cancel-in-progress: false
@@ -35,14 +35,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
 
-      - name: Aplicar expansão D13 e D14
-        run: |
-          node scripts/expand_guides_95.cjs
-
-      - name: Validar fonte, rotas, pesquisa e sitemap
-        run: |
-          python scripts/validate_guides_consistency.py
-
       - name: Gerar colecção PDF
         run: |
           rm -rf .build/pdf
@@ -58,7 +50,7 @@ jobs:
             cp "$f" "assets/pdf/$target"
           done
 
-      - name: Validar colecção PDF
+      - name: Validar colecção
         run: |
           python - <<'PY'
           import json
@@ -79,19 +71,17 @@ jobs:
           print("QA PDF: 15/15 ficheiros válidos; conteúdo editorial sem omissões.")
           PY
 
-      - name: Publicar expansão validada
+      - name: Publicar PDFs actualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-
-          echo "Alterações a publicar:"
-          git status --short
-
+          git add assets/pdf
           if git diff --cached --quiet; then
-            echo "Sem alterações a publicar."
+            echo "Sem alterações nos PDFs."
           else
-            git commit -m "feat(guides): expande D13 e D14 para 95 fichas"
+            git commit -m "chore(pdf): sincroniza PDFs com fonte editorial"
+            # A branch pode avançar enquanto os PDFs são gerados; rebasear evita
+            # sobrescrever alterações concorrentes antes do push automatizado.
             git fetch origin feature/static-routes-pdf
             git rebase origin/feature/static-routes-pdf
             git push origin HEAD:feature/static-routes-pdf

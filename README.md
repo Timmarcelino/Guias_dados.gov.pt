@@ -259,7 +259,7 @@ A aproximação do header e footer utiliza como referência a implementação p�
 
 A réplica presente neste projecto é deliberadamente estática. Não implementa autenticação real, gestão de sessão, CMS ou conteúdo dinâmico do Ecossistema.
 
-O D01 representa o comportamento alvo validado em TST e as decisões funcionais registadas para esta fase. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.
+O D01 representa o comportamento actualmente consolidado pelas evidências funcionais e de implementação disponíveis. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.
 
 O D14 apresenta sete fichas suportadas pelo comportamento e evidência actualmente consolidados para Ajuda e contactos, incluindo feedback e reporte de problema técnico, sem antecipar funcionalidades futuras ainda não estabilizadas.
 

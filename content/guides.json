@@ -17,7 +17,7 @@
           "Confirme que regressa ao portal com a sessão iniciada."
         ],
         "example": "Uma utilizadora que já tem conta introduz o email e a palavra-passe e entra no portal para gerir os seus conteúdos.",
-        "tip": "O separador E-mail e palavra-passe continua disponível no PRD actual para utilizadores antigos. Em determinadas contas, o portal pode exigir a migração para CMD ou eIDAS antes de concluir o acesso.",
+        "tip": "O acesso por email e palavra-passe destina-se a contas que ainda utilizam este método. Se o portal apresentar um percurso de migração ou associação, siga as instruções apresentadas.",
         "table": null,
         "media": "Captura da página Autenticação com o separador Email e palavra-passe, usando dados de demonstração.",
         "next": "Iniciar sessão com Chave Móvel Digital"
@@ -62,9 +62,8 @@
         "roles": "Utilizador autenticado por CMD ou eIDAS com passos adicionais de registo ou associação apresentados pelo portal",
         "steps": [
           "Depois de concluir a autenticação por CMD ou eIDAS, verifique se o dados.gov.pt apresenta algum passo adicional.",
-          "Se o portal pedir que escolha entre associar uma conta existente e criar uma nova conta, seleccione a opção adequada à sua situação.",
-          "Se o portal pedir um endereço de email ou outra forma de confirmação, utilize apenas os campos e métodos apresentados nesse momento.",
-          "Consulte a caixa de correio indicada quando o portal informar que enviou uma mensagem de confirmação ou recuperação.",
+          "Se o portal solicitar um endereço de email, confirme ou indique o endereço pretendido no campo apresentado.",
+          "Consulte a mensagem enviada para esse endereço e siga a ligação apresentada, quando aplicável.",
           "Conclua o passo de validação exactamente pelo método apresentado no portal.",
           "Depois da conclusão, confirme que regressa ao dados.gov.pt e consegue continuar com a sua conta."
         ],
@@ -99,7 +98,7 @@
           "Confirme qual o método de autenticação que está a utilizar: email e palavra-passe, Chave Móvel Digital ou Autenticação Europeia.",
           "Se utiliza email e palavra-passe e não se recorda da credencial, tente a recuperação antes de repetir várias vezes o login.",
           "Se o processo CMD ou eIDAS for interrompido, volte à página Autenticação e reinicie o percurso pelo mesmo método.",
-          "Se o portal apresentar um passo adicional de registo ou migração, conclua esse percurso antes de tentar novamente as funcionalidades da conta.",
+          "Se o portal apresentar um passo adicional de conclusão, migração ou associação da conta, conclua esse percurso antes de voltar a tentar.",
           "Se a dificuldade persistir, abra Ajuda e contactos e indique o método utilizado, a página, o momento aproximado e a mensagem apresentada, sem incluir palavras-passe, códigos, tokens ou outros segredos."
         ],
         "example": "Uma utilizadora regressa do Autenticação.gov mas não consegue concluir o acesso. Regista o método utilizado e a mensagem apresentada e envia esses elementos através de Ajuda e contactos.",

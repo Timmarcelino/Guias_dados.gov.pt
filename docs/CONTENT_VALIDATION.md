@@ -184,7 +184,7 @@ A nova ficha de Feedback é suportada por LEDG-1422 e LEDG-1656 e foi observada 
 
 ## 5.1 Revalidação D01, Autenticação e acesso à conta
 
-Data da revisão: 22/09/2026.
+Data da revisão: 23/09/2026.
 
 ### Evidência actual de PRD
 
@@ -213,6 +213,10 @@ A ficha foi revista para indicar apenas:
 2. observar se o portal apresenta passos adicionais;
 3. seguir os campos, mensagens e método de validação efectivamente apresentados;
 4. não partilhar códigos, links, palavras-passe ou outros segredos.
+
+### Ajuste editorial de 23/09/2026
+
+Foi removida a instrução que pressupunha uma escolha explícita entre associar uma conta existente e criar uma nova conta. A ficha passa a orientar a confirmação ou indicação do endereço de email e a consulta da mensagem de validação quando esse percurso for apresentado, mantendo a formulação condicional para não transformar uma implementação em regra universal. Foi também removida da ficha de login por email e palavra-passe a referência ao ambiente PRD e clarificado o encaminhamento para conclusão, migração ou associação da conta quando aplicável.
 
 ### Decisão editorial
 

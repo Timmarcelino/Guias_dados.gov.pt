@@ -5,22 +5,29 @@ on:
   push:
     branches:
       - main
-      - feature/static-routes-pdf
+      - "feature/**"
     paths:
       - "content/guides.json"
+      - "content/site.json"
+      - "templates/**"
+      - "assets/brand/**"
+      - "assets/css/portal.css"
       - "assets/js/data.js"
       - "assets/js/data-d01.js"
       - "assets/js/search-index.json"
       - "assets/js/search.js"
       - "Guias-do-utilizador/**"
+      - "prototypes/**"
       - "sitemap.xml"
       - "404.html"
+      - "index.html"
+      - "scripts/sync_shared_layout.py"
       - "scripts/validate_guides_consistency.py"
       - ".github/workflows/guides-consistency.yml"
 
 # Guardrail read-only: nunca escreve na branch nem em sistemas externos.
-# Corre em main e na branch de evolução para manter o mesmo contrato de QA
-# antes e depois de cada release.
+# O markup transversal tem uma única fonte em templates/partials/. As páginas
+# estáticas são saídas materializadas e devem permanecer sincronizadas.
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -29,3 +36,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Validar fonte, rotas, pesquisa e sitemap
         run: python scripts/validate_guides_consistency.py
+      - name: Validar layout transversal
+        run: python scripts/sync_shared_layout.py --check

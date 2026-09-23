@@ -1,0 +1,100 @@
+name: Gerar PDFs dos Guias
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feature/static-routes-pdf
+    paths:
+      - "content/guides.json"
+      - "scripts/generate_pdf_guides.py"
+      - ".github/workflows/guides-pdf.yml"
+
+permissions:
+  contents: write
+
+# Mantém uma única publicação PDF por branch. A ref faz parte do grupo para
+# permitir que main e a branch de evolução sejam validadas de forma independente.
+concurrency:
+  group: guides-pdf-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da branch actual
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Preparar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar colecção PDF
+        run: |
+          rm -rf .build/pdf
+          mkdir -p .build
+          python scripts/generate_pdf_guides.py > .build/generator-output.json
+
+      - name: Instalar PDFs nos caminhos públicos
+        run: |
+          rm -f assets/pdf/*.pdf
+          for f in .build/pdf/*/dados-gov-pt-guia-*-v2.pdf; do
+            name="$(basename "$f")"
+            target="$(printf '%s' "$name" | sed -e 's/^dados-gov-pt-guia-//' -e 's/-v2\.pdf$/.pdf/')"
+            cp "$f" "assets/pdf/$target"
+          done
+
+      - name: Validar colecção
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          qa = json.loads(Path(".build/pdf/qa-summary.json").read_text(encoding="utf-8"))
+          assert len(qa) == 15, f"Esperados 15 guias, obtidos {len(qa)}"
+          bad = [x for x in qa if x["missing_items"] != 0]
+          assert not bad, f"Conteúdo em falta: {bad}"
+
+          pdfs = sorted(Path("assets/pdf").glob("*.pdf"))
+          assert len(pdfs) == 15, f"Esperados 15 PDFs públicos, obtidos {len(pdfs)}"
+          for pdf in pdfs:
+              reader = PdfReader(str(pdf))
+              assert len(reader.pages) >= 1, f"PDF sem páginas: {pdf}"
+              assert pdf.stat().st_size > 50000, f"PDF anormalmente pequeno: {pdf}"
+          print("QA PDF: 15/15 ficheiros válidos; conteúdo editorial sem omissões.")
+          PY
+
+      - name: Publicar PDFs actualizados
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/pdf
+          if git diff --cached --quiet; then
+            echo "Sem alterações nos PDFs."
+          else
+            git commit -m "chore(pdf): sincroniza PDFs com fonte editorial"
+
+            # O gerador usa .build como área de trabalho. Alguns artefactos dessa
+            # pasta existem no histórico e ficam modificados após a geração, mas
+            # não pertencem ao commit público dos PDFs. Repor esses ficheiros é
+            # obrigatório antes do rebase para evitar 'unstaged changes'.
+            git restore --worktree -- .build || true
+
+            # A branch pode avançar enquanto os PDFs são gerados. Rebasear antes
+            # do push evita sobrescrever alterações concorrentes e funciona tanto
+            # na branch de evolução como em main após uma futura release.
+            git fetch origin "$TARGET_BRANCH"
+            git rebase "origin/$TARGET_BRANCH"
+            git push origin "HEAD:$TARGET_BRANCH"
+          fi

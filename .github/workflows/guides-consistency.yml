@@ -1,0 +1,31 @@
+name: Validar consistência dos Guias
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feature/static-routes-pdf
+    paths:
+      - "content/guides.json"
+      - "assets/js/data.js"
+      - "assets/js/data-d01.js"
+      - "assets/js/search-index.json"
+      - "assets/js/search.js"
+      - "Guias-do-utilizador/**"
+      - "sitemap.xml"
+      - "404.html"
+      - "scripts/validate_guides_consistency.py"
+      - ".github/workflows/guides-consistency.yml"
+
+# Guardrail read-only: nunca escreve na branch nem em sistemas externos.
+# Corre em main e na branch de evolução para manter o mesmo contrato de QA
+# antes e depois de cada release.
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validar fonte, rotas, pesquisa e sitemap
+        run: python scripts/validate_guides_consistency.py

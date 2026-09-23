@@ -20,12 +20,10 @@ if (fs.existsSync(brandSource)) {
   fs.cpSync(brandSource, path.join(pub, "assets", "brand"), { recursive: true });
 }
 
-fs.writeFileSync(path.join(pub, "search-index.json"), JSON.stringify(search, null, 2) + "
-");
+fs.writeFileSync(path.join(pub, "search-index.json"), JSON.stringify(search, null, 2) + "\n");
 fs.writeFileSync(
   path.join(root, "generated", "guides.schema.json"),
-  JSON.stringify(z.toJSONSchema(guidesContentSchema), null, 2) + "
-",
+  JSON.stringify(z.toJSONSchema(guidesContentSchema), null, 2) + "\n",
 );
 fs.writeFileSync(
   path.join(root, "generated", "routes.json"),
@@ -41,8 +39,7 @@ fs.writeFileSync(
     })),
     null,
     2,
-  ) + "
-",
+  ) + "\n",
 );
 
 const site = JSON.parse(fs.readFileSync(path.join(root, "content", "site.json"), "utf8"));
@@ -53,16 +50,12 @@ const xml = [
   ...routes.map((route) => `  <url><loc>${prefix}${route.path}</loc></url>`),
   "</urlset>",
   "",
-].join("
-");
+].join("\n");
 
 fs.writeFileSync(path.join(pub, "sitemap.xml"), xml);
 fs.writeFileSync(
   path.join(pub, "robots.txt"),
-  `User-agent: *
-Allow: /
-Sitemap: ${prefix}/sitemap.xml
-`,
+  `User-agent: *\nAllow: /\nSitemap: ${prefix}/sitemap.xml\n`,
 );
 
 console.log(`Derivados: ${routes.length} rotas, ${search.length} entradas de pesquisa.`);

@@ -24,72 +24,76 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          import re
 
           path = Path('docs/PROJECT_STATUS.md')
           text = path.read_text(encoding='utf-8')
 
-          # O topo deve descrever a baseline actual, não a branch que já foi promovida.
-          text = text.replace(
-              '| Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |\n'
-              '| Guias | 15 |\n'
-              '| Fichas na baseline estável v0.4 | 91 |\n'
+          # O topo passa a descrever a baseline actual, não a branch já promovida.
+          old_rows = '\n'.join([
+              '| Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |',
+              '| Guias | 15 |',
+              '| Fichas na baseline estável v0.4 | 91 |',
               '| Fichas na branch activa | 95 |',
-              '| Relação com `main` | v0.5.0 integrada; próxima branch de evolução ainda Por confirmar |\n'
-              '| Guias | 15 |\n'
+          ])
+          new_rows = '\n'.join([
+              '| Relação com `main` | v0.5.0 integrada; próxima branch de evolução ainda Por confirmar |',
+              '| Guias | 15 |',
               '| Fichas na baseline estável actual | 95 |',
-              1,
-          )
+          ])
+          assert old_rows in text, 'Linhas antigas do estado resumido não encontradas'
+          text = text.replace(old_rows, new_rows, 1)
 
-          # A secção 3 deixa de tratar a antiga feature branch como trabalho corrente.
-          old_intro = '''## 3. Branch activa
-
-### Implementação
-
-O trabalho corrente encontra-se em:
-
-`feature/static-routes-pdf`
-
-Esta branch parte integralmente da baseline v0.4 e contém evolução posterior ainda não integrada em `main`.
-
-### Alterações já existentes na branch
-
-A comparação com `main` evidencia, entre outros:
-
-* rotas estáticas em `Guias-do-utilizador/`;
-* páginas próprias para temas, guias e tarefas;
-* índice de pesquisa em `assets/js/search-index.json`;
-* lógica de pesquisa em `assets/js/search.js`;
-* PDFs dos 15 guias em `assets/pdf/`;
-* `sitemap.xml`;
-* `404.html`;
-* `.nojekyll`;
-* evolução do `index.html`.
-
-Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.
-'''
-          new_intro = '''## 3. Estado após a release v0.5.0
-
-### Implementação
-
-O trabalho consolidado da v0.5.0 encontra-se em `main`.
-
-A branch `feature/static-routes-pdf` foi a origem do PR #5 e deixou de ser a referência activa após o merge. A branch da próxima evolução está **Por confirmar**.
-
-A baseline actual inclui, entre outros:
-
-* rotas estáticas em `Guias-do-utilizador/`;
-* páginas próprias para temas, guias e tarefas;
-* índice de pesquisa em `assets/js/search-index.json`;
-* lógica de pesquisa em `assets/js/search.js`;
-* PDFs dos 15 guias em `assets/pdf/`;
-* `sitemap.xml`;
-* `404.html`;
-* `.nojekyll`;
-* fonte editorial e workflows permanentes de QA e PDF.
-
-As limitações conhecidas da v0.5.0 estão registadas no checkpoint de release e transitam para a próxima evolução sem alteração do respectivo estado funcional.
-'''
+          # A antiga feature branch deixa de ser apresentada como trabalho corrente.
+          old_intro = '\n'.join([
+              '## 3. Branch activa',
+              '',
+              '### Implementação',
+              '',
+              'O trabalho corrente encontra-se em:',
+              '',
+              '`feature/static-routes-pdf`',
+              '',
+              'Esta branch parte integralmente da baseline v0.4 e contém evolução posterior ainda não integrada em `main`.',
+              '',
+              '### Alterações já existentes na branch',
+              '',
+              'A comparação com `main` evidencia, entre outros:',
+              '',
+              '* rotas estáticas em `Guias-do-utilizador/`;',
+              '* páginas próprias para temas, guias e tarefas;',
+              '* índice de pesquisa em `assets/js/search-index.json`;',
+              '* lógica de pesquisa em `assets/js/search.js`;',
+              '* PDFs dos 15 guias em `assets/pdf/`;',
+              '* `sitemap.xml`;',
+              '* `404.html`;',
+              '* `.nojekyll`;',
+              '* evolução do `index.html`.',
+              '',
+              'Por confirmar: comportamento completo, acessibilidade, qualidade editorial e prontidão destas alterações para integração em `main`.',
+          ]) + '\n'
+          new_intro = '\n'.join([
+              '## 3. Estado após a release v0.5.0',
+              '',
+              '### Implementação',
+              '',
+              'O trabalho consolidado da v0.5.0 encontra-se em `main`.',
+              '',
+              'A branch `feature/static-routes-pdf` foi a origem do PR #5 e deixou de ser a referência activa após o merge. A branch da próxima evolução está **Por confirmar**.',
+              '',
+              'A baseline actual inclui, entre outros:',
+              '',
+              '* rotas estáticas em `Guias-do-utilizador/`;',
+              '* páginas próprias para temas, guias e tarefas;',
+              '* índice de pesquisa em `assets/js/search-index.json`;',
+              '* lógica de pesquisa em `assets/js/search.js`;',
+              '* PDFs dos 15 guias em `assets/pdf/`;',
+              '* `sitemap.xml`;',
+              '* `404.html`;',
+              '* `.nojekyll`;',
+              '* fonte editorial e workflows permanentes de QA e PDF.',
+              '',
+              'As limitações conhecidas da v0.5.0 estão registadas no checkpoint de release e transitam para a próxima evolução sem alteração do respectivo estado funcional.',
+          ]) + '\n'
           assert old_intro in text, 'Introdução antiga da branch activa não encontrada'
           text = text.replace(old_intro, new_intro, 1)
 

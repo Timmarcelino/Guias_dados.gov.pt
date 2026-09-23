@@ -41,7 +41,7 @@ Esta fonte contém os 15 guias e as 95 fichas, incluindo sete fichas em D13 e se
 
 ## 2.1 Decisão de âmbito da release v0.5.0, 23/09/2026
 
-A release v0.5.0 foi aprovada para integração em `main` com o conteúdo actualmente consolidado dos 15 guias e 95 fichas.
+A release v0.5.0 foi integrada em `main` pelo PR #5 em 23/09/2026 com o conteúdo consolidado dos 15 guias e 95 fichas. O merge da release corresponde ao commit `260034099ae643c4ee06139671ab5ad8ecd0a82c`.
 
 Esta decisão é uma **decisão de release** e não altera a classificação funcional das áreas ainda não observáveis ou não integradas:
 

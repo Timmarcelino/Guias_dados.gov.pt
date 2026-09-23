@@ -16,11 +16,13 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | --- | --- |
 | Repositório | `Timmarcelino/Guias_dados.gov.pt` |
 | Branch estável | `main` |
-| Baseline estável antes desta release | v0.4 |
-| Commit da baseline v0.4 | `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
-| Branch activa de evolução | `feature/static-routes-pdf` |
-| Release candidata | `v0.5.0` |
-| Promoção para `main` | PR #5, aprovada em 23/09/2026 |
+| Baseline estável actual | `v0.5.0` |
+| Commit de merge da release | `260034099ae643c4ee06139671ab5ad8ecd0a82c` |
+| Commit pós merge dos PDFs | `329e6e2ce9623545f3524d79c97167ecc61b4a8f` |
+| Baseline anterior | `v0.4`, commit `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
+| Branch de origem da release | `feature/static-routes-pdf` |
+| PR de promoção | #5, integrado em 23/09/2026 |
+| Branch activa para próxima evolução | Por confirmar |
 | Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |
 | Guias | 15 |
 | Fichas na baseline estável v0.4 | 91 |
@@ -505,60 +507,48 @@ O plano separa:
 Critério: o Manual descreve PRD como Implementação actual quando houver divergência com backlog, requisito alvo ou documentação futura.
 
 
-## Prontidão para integração e release v0.5.0
+## Release v0.5.0 integrada em main
 
-Estado revisto em 23/09/2026.
+Checkpoint pós release: 23/09/2026.
 
-### Decisão de release
+### Resultado da promoção
 
-Foi aprovada a promoção do estado actualmente consolidado da branch `feature/static-routes-pdf` para `main` através do PR #5.
+* PR #5 integrado com sucesso em `main`;
+* commit de merge: `260034099ae643c4ee06139671ab5ad8ecd0a82c`;
+* workflow PDF executado em `main` e sincronização publicada no commit `329e6e2ce9623545f3524d79c97167ecc61b4a8f`;
+* guardrail pós merge: execução `35853966260`, sucesso;
+* workflow PDF pós merge: execução `35853966165`, sucesso.
 
-A release candidata v0.5.0 contém:
+### Baseline v0.5.0
 
 * 15 guias;
 * 95 fichas;
 * 7 temas;
 * 118 rotas estáticas e 118 URLs de sitemap;
 * 95 entradas de pesquisa;
-* 15 PDFs gerados a partir da fonte editorial versionada;
-* guardrail automático de consistência;
-* workflow PDF permanente e preparado para funcionar também em `main`.
+* 15 PDFs;
+* workflows permanentes activos em `main` para consistência e PDFs.
 
-### Gates técnicos desta release
+### Limitações conhecidas transferidas para a próxima release
 
-Em 23/09/2026:
+As limitações seguintes permanecem abertas e não são consideradas resolvidas:
 
-* o guardrail de consistência terminou com sucesso na execução GitHub Actions `35853185102`;
-* o workflow PDF permanente corrigido terminou com sucesso na execução `35853158371`, incluindo geração, QA e publicação dos PDFs;
-* a branch encontrava-se sem commits em atraso face a `main` no último compare aplicável antes da preparação da release.
+1. D06 sem integração pública reproduzível nas superfícies PRD/PPR analisadas;
+2. D07 sem integração observável nas superfícies analisadas;
+3. CM sem integração observável nas superfícies analisadas;
+4. validação manual final com NVDA no contexto final;
+5. revisão visual detalhada e validação documental final dos PDFs;
+6. evoluções e correcções funcionais posteriores à baseline.
 
-### Limitações conhecidas aceites para a próxima release
-
-As seguintes limitações deixam de bloquear o merge desta baseline, mas **não são consideradas resolvidas**:
-
-1. D06 continua sem integração pública reproduzível nas superfícies PRD/PPR analisadas;
-2. D07 continua sem integração observável nas superfícies analisadas;
-3. CM continua sem integração observável nas superfícies analisadas;
-4. validação manual final com NVDA permanece pendente no contexto final;
-5. revisão visual detalhada e validação documental final dos PDFs permanecem pendentes;
-6. evoluções e correcções funcionais posteriores à baseline serão tratadas na próxima release.
-
-Esta aceitação é uma decisão de âmbito da release. Não transforma ausência de evidência em requisito validado.
+A transferência destas limitações para a próxima release é uma decisão de âmbito. Não altera o respectivo estado funcional.
 
 ### Publicação oficial
 
-O merge em `main` produz uma baseline estável de demonstração e revisão. Não equivale, por si só, à publicação oficial no dados.gov.pt.
+A v0.5.0 em `main` é a baseline estável de demonstração e revisão. Não representa, por si só, publicação oficial no dados.gov.pt.
 
-A publicação oficial continua a exigir, quando aplicável:
+### Próxima evolução
 
-1. confirmação do destino definitivo e integração no produto;
-2. parametrização dos canonicals e caminhos quando o destino oficial for conhecido;
-3. validação no contexto final do portal;
-4. tratamento das limitações que forem consideradas obrigatórias para a publicação oficial.
-
-### Decisão operacional
-
-O PR #5 pode ser promovido a Ready for review e integrado em `main` quando os checks técnicos da preparação de release estiverem verdes e a documentação do PR estiver sincronizada com esta decisão.
+A branch e o âmbito da próxima release devem ser definidos antes de novos desenvolvimentos. D06, D07, CM, validação final dos PDFs e novas correcções/evoluções constituem a fila inicial conhecida.
 
 ## Sincronização documental corrente 22/09/2026
 

@@ -134,7 +134,7 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A release **v0.5.0** consolida a evolução preparada na branch `feature/static-routes-pdf` para integração em `main` através do PR #5. Inclui rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto. Após a promoção, `main` passa a representar esta baseline de demonstração e revisão. A publicação oficial no dados.gov.pt continua dependente da integração no produto.
+A release **v0.5.0** está integrada em `main` através do PR #5 e representa a baseline estável actual de demonstração e revisão. Inclui rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto. A publicação oficial no dados.gov.pt continua dependente da integração no produto.
 
 Nesta fase, o projecto inclui:
 

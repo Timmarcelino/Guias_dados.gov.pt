@@ -29,8 +29,8 @@ FOOTER_TEMPLATE = REPO / "templates" / "partials" / "footer.html"
 SITEMAP = REPO / "sitemap.xml"
 SITE_PREFIX = "https://timmarcelino.github.io/Guias_dados.gov.pt/"
 
-HEADER_RE = re.compile(r'<header class="portal-header"\b.*?</header>', re.S)
-FOOTER_RE = re.compile(r'<footer class="portal-footer"\b.*?</footer>', re.S)
+HEADER_RE = re.compile(r'<header class="portal-header"[^>]*>.*?</header>', re.S)
+FOOTER_RE = re.compile(r'<footer class="portal-footer"[^>]*>.*?</footer>', re.S)
 
 
 def load_site() -> dict:

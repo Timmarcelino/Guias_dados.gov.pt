@@ -50,8 +50,7 @@ jobs:
           readme_path.write_text(readme, encoding='utf-8')
 
           # CHANGELOG: transformar a secção em desenvolvimento numa release explícita e
-          # registar as limitações conhecidas que foram conscientemente transferidas para
-          # a release seguinte. Isto não altera o estado funcional dessas áreas.
+          # registar as limitações conhecidas que transitam para a release seguinte.
           changelog_path = Path('CHANGELOG.md')
           changelog = changelog_path.read_text(encoding='utf-8')
           changelog = changelog.replace('## Em desenvolvimento · 22/09/2026', '## v0.5.0 · 23/09/2026', 1)
@@ -81,35 +80,36 @@ jobs:
           changelog = changelog.replace(old_pending, new_pending, 1)
           changelog_path.write_text(changelog, encoding='utf-8')
 
-          # CONTENT_VALIDATION: registar explicitamente que a decisão de release é uma
-          # decisão de âmbito e não uma promoção artificial dos estados de validação.
+          # CONTENT_VALIDATION: a decisão de release é uma decisão de âmbito e não
+          # promove artificialmente os estados funcionais ainda não confirmados.
           validation_path = Path('docs/CONTENT_VALIDATION.md')
           validation = validation_path.read_text(encoding='utf-8')
-          release_block = '''## 2.1 Decisão de âmbito da release v0.5.0, 23/09/2026
-
-A release v0.5.0 foi aprovada para integração em `main` com o conteúdo actualmente consolidado dos 15 guias e 95 fichas.
-
-Esta decisão é uma **decisão de release** e não altera a classificação funcional das áreas ainda não observáveis ou não integradas:
-
-* D06 permanece não integrado no Frontoffice actual observado;
-* D07 permanece não observável nas superfícies analisadas;
-* CM permanece não observável nas superfícies analisadas;
-* a validação manual final com NVDA e a revisão visual e documental detalhada dos PDFs transitam para a release seguinte.
-
-Os guias destas áreas permanecem como conteúdo preparado no protótipo e não devem ser interpretados como prova de disponibilidade actual no portal.
-
-A release mantém a natureza de **baseline de demonstração e revisão**. A publicação oficial no dados.gov.pt continua dependente da integração no produto e das validações aplicáveis ao contexto final.
-
-'''
+          release_lines = [
+              '## 2.1 Decisão de âmbito da release v0.5.0, 23/09/2026',
+              '',
+              'A release v0.5.0 foi aprovada para integração em `main` com o conteúdo actualmente consolidado dos 15 guias e 95 fichas.',
+              '',
+              'Esta decisão é uma **decisão de release** e não altera a classificação funcional das áreas ainda não observáveis ou não integradas:',
+              '',
+              '* D06 permanece não integrado no Frontoffice actual observado;',
+              '* D07 permanece não observável nas superfícies analisadas;',
+              '* CM permanece não observável nas superfícies analisadas;',
+              '* a validação manual final com NVDA e a revisão visual e documental detalhada dos PDFs transitam para a release seguinte.',
+              '',
+              'Os guias destas áreas permanecem como conteúdo preparado no protótipo e não devem ser interpretados como prova de disponibilidade actual no portal.',
+              '',
+              'A release mantém a natureza de **baseline de demonstração e revisão**. A publicação oficial no dados.gov.pt continua dependente da integração no produto e das validações aplicáveis ao contexto final.',
+              '',
+          ]
+          release_block = '\n'.join(release_lines) + '\n'
           anchor = '## 3. Validação dos PDFs\n'
           assert anchor in validation, 'Secção de PDF não encontrada em CONTENT_VALIDATION'
           if '## 2.1 Decisão de âmbito da release v0.5.0' not in validation:
               validation = validation.replace(anchor, release_block + anchor, 1)
           validation_path.write_text(validation, encoding='utf-8')
 
-          # PROJECT_STATUS: substituir a secção antiga de prontidão, que bloqueava o merge,
-          # pela decisão de release actualmente aprovada. O histórico das validações é
-          # preservado nas restantes secções datadas.
+          # PROJECT_STATUS: substituir a antiga secção de bloqueio do merge pela
+          # decisão de release aprovada, preservando as secções históricas datadas.
           status_path = Path('docs/PROJECT_STATUS.md')
           status = status_path.read_text(encoding='utf-8')
           status = status.replace('| Baseline estável | v0.4 |', '| Baseline estável antes desta release | v0.4 |', 1)
@@ -121,62 +121,64 @@ A release mantém a natureza de **baseline de demonstração e revisão**. A pub
           if '| Release candidata | `v0.5.0` |' not in status:
               status = status.replace(top_anchor, top_anchor + '\n' + release_rows, 1)
 
-          new_readiness = '''## Prontidão para integração e release v0.5.0
-
-Estado revisto em 23/09/2026.
-
-### Decisão de release
-
-Foi aprovada a promoção do estado actualmente consolidado da branch `feature/static-routes-pdf` para `main` através do PR #5.
-
-A release candidata v0.5.0 contém:
-
-* 15 guias;
-* 95 fichas;
-* 7 temas;
-* 118 rotas estáticas e 118 URLs de sitemap;
-* 95 entradas de pesquisa;
-* 15 PDFs gerados a partir da fonte editorial versionada;
-* guardrail automático de consistência;
-* workflow PDF permanente e preparado para funcionar também em `main`.
-
-### Gates técnicos desta release
-
-Em 23/09/2026:
-
-* o guardrail de consistência terminou com sucesso na execução GitHub Actions `35853185102`;
-* o workflow PDF permanente corrigido terminou com sucesso na execução `35853158371`, incluindo geração, QA e publicação dos PDFs;
-* a branch encontrava-se sem commits em atraso face a `main` no último compare aplicável antes da preparação da release.
-
-### Limitações conhecidas aceites para a próxima release
-
-As seguintes limitações deixam de bloquear o merge desta baseline, mas **não são consideradas resolvidas**:
-
-1. D06 continua sem integração pública reproduzível nas superfícies PRD/PPR analisadas;
-2. D07 continua sem integração observável nas superfícies analisadas;
-3. CM continua sem integração observável nas superfícies analisadas;
-4. validação manual final com NVDA permanece pendente no contexto final;
-5. revisão visual detalhada e validação documental final dos PDFs permanecem pendentes;
-6. evoluções e correcções funcionais posteriores à baseline serão tratadas na próxima release.
-
-Esta aceitação é uma decisão de âmbito da release. Não transforma ausência de evidência em requisito validado.
-
-### Publicação oficial
-
-O merge em `main` produz uma baseline estável de demonstração e revisão. Não equivale, por si só, à publicação oficial no dados.gov.pt.
-
-A publicação oficial continua a exigir, quando aplicável:
-
-1. confirmação do destino definitivo e integração no produto;
-2. parametrização dos canonicals e caminhos quando o destino oficial for conhecido;
-3. validação no contexto final do portal;
-4. tratamento das limitações que forem consideradas obrigatórias para a publicação oficial.
-
-### Decisão operacional
-
-O PR #5 pode ser promovido a Ready for review e integrado em `main` quando os checks técnicos da preparação de release estiverem verdes e a documentação do PR estiver sincronizada com esta decisão.
-
-'''
+          readiness_lines = [
+              '## Prontidão para integração e release v0.5.0',
+              '',
+              'Estado revisto em 23/09/2026.',
+              '',
+              '### Decisão de release',
+              '',
+              'Foi aprovada a promoção do estado actualmente consolidado da branch `feature/static-routes-pdf` para `main` através do PR #5.',
+              '',
+              'A release candidata v0.5.0 contém:',
+              '',
+              '* 15 guias;',
+              '* 95 fichas;',
+              '* 7 temas;',
+              '* 118 rotas estáticas e 118 URLs de sitemap;',
+              '* 95 entradas de pesquisa;',
+              '* 15 PDFs gerados a partir da fonte editorial versionada;',
+              '* guardrail automático de consistência;',
+              '* workflow PDF permanente e preparado para funcionar também em `main`.',
+              '',
+              '### Gates técnicos desta release',
+              '',
+              'Em 23/09/2026:',
+              '',
+              '* o guardrail de consistência terminou com sucesso na execução GitHub Actions `35853185102`;',
+              '* o workflow PDF permanente corrigido terminou com sucesso na execução `35853158371`, incluindo geração, QA e publicação dos PDFs;',
+              '* a branch encontrava-se sem commits em atraso face a `main` no último compare aplicável antes da preparação da release.',
+              '',
+              '### Limitações conhecidas aceites para a próxima release',
+              '',
+              'As seguintes limitações deixam de bloquear o merge desta baseline, mas **não são consideradas resolvidas**:',
+              '',
+              '1. D06 continua sem integração pública reproduzível nas superfícies PRD/PPR analisadas;',
+              '2. D07 continua sem integração observável nas superfícies analisadas;',
+              '3. CM continua sem integração observável nas superfícies analisadas;',
+              '4. validação manual final com NVDA permanece pendente no contexto final;',
+              '5. revisão visual detalhada e validação documental final dos PDFs permanecem pendentes;',
+              '6. evoluções e correcções funcionais posteriores à baseline serão tratadas na próxima release.',
+              '',
+              'Esta aceitação é uma decisão de âmbito da release. Não transforma ausência de evidência em requisito validado.',
+              '',
+              '### Publicação oficial',
+              '',
+              'O merge em `main` produz uma baseline estável de demonstração e revisão. Não equivale, por si só, à publicação oficial no dados.gov.pt.',
+              '',
+              'A publicação oficial continua a exigir, quando aplicável:',
+              '',
+              '1. confirmação do destino definitivo e integração no produto;',
+              '2. parametrização dos canonicals e caminhos quando o destino oficial for conhecido;',
+              '3. validação no contexto final do portal;',
+              '4. tratamento das limitações que forem consideradas obrigatórias para a publicação oficial.',
+              '',
+              '### Decisão operacional',
+              '',
+              'O PR #5 pode ser promovido a Ready for review e integrado em `main` quando os checks técnicos da preparação de release estiverem verdes e a documentação do PR estiver sincronizada com esta decisão.',
+              '',
+          ]
+          new_readiness = '\n'.join(readiness_lines) + '\n'
           pattern = r'## Prontidão para integração e publicação\n.*?(?=## Sincronização documental corrente 22/09/2026)'
           status, count = re.subn(pattern, new_readiness, status, count=1, flags=re.S)
           assert count == 1, 'Secção antiga de prontidão não foi substituída'

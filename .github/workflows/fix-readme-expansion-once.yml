@@ -1,0 +1,41 @@
+name: Corrigir referência residual D14
+
+on:
+  push:
+    branches:
+      - feature/static-routes-pdf
+    paths:
+      - ".github/workflows/fix-readme-expansion-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/static-routes-pdf
+          fetch-depth: 0
+      - name: Corrigir referência residual
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          old = 'O D14 apresenta seis fichas suportadas pelo comportamento e evidência actualmente consolidados para Ajuda e contactos, incluindo o reporte de problema técnico, sem antecipar funcionalidades futuras ainda não estabilizadas.'
+          new = 'O D14 apresenta sete fichas suportadas pelo comportamento e evidência actualmente consolidados para Ajuda e contactos, incluindo feedback e reporte de problema técnico, sem antecipar funcionalidades futuras ainda não estabilizadas.'
+          if old not in s:
+              raise SystemExit('Texto residual esperado não encontrado')
+          p.write_text(s.replace(old, new), encoding='utf-8')
+          PY
+      - name: Publicar correcção
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs(guides): actualiza D14 para sete fichas"
+          git fetch origin feature/static-routes-pdf
+          git rebase origin/feature/static-routes-pdf
+          git push origin HEAD:feature/static-routes-pdf

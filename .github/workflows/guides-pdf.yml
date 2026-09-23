@@ -79,15 +79,10 @@ jobs:
           print("QA PDF: 15/15 ficheiros válidos; conteúdo editorial sem omissões.")
           PY
 
-      - name: Publicar expansão e restaurar workflow
+      - name: Publicar expansão validada
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # O mecanismo de migração é deliberadamente temporário.
-          # O commit final repõe explicitamente a versão estável anterior ao mecanismo temporário.
-          git checkout f0c1b8c998b323b55446ad4745369fbf5cee2415 -- .github/workflows/guides-pdf.yml
-          git rm scripts/expand_guides_95.cjs
           git add -A
 
           echo "Alterações a publicar:"

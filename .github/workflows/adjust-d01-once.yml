@@ -66,16 +66,11 @@ jobs:
               '// Este guia descreve o comportamento alvo validado em TST para autenticação e acesso à conta.': '// Este guia descreve o comportamento editorial actualmente consolidado para autenticação e acesso à conta.',
               'O separador E-mail e palavra-passe continua disponível no PRD actual para utilizadores antigos. Em determinadas contas, o portal pode exigir a migração para CMD ou eIDAS antes de concluir o acesso.': login['tip'],
               'Se o portal pedir que escolha entre associar uma conta existente e criar uma nova conta, seleccione a opção adequada à sua situação.': first['steps'][1],
-              'Se o portal pedir um endereço de email ou outra forma de confirmação, utilize apenas os campos e métodos apresentados nesse momento.': first['steps'][2],
-              'Consulte a caixa de correio indicada quando o portal informar que enviou uma mensagem de confirmação ou recuperação.': first['steps'][3],
-              'Conclua o passo de validação exactamente pelo método apresentado no portal.': first['steps'][4],
-              old_trouble: new_trouble,
           }
-          # A nova ficha de primeiro acesso tem menos um passo. Reconstruir apenas o array dessa ficha evita duplicações.
-          for old, new in list(replacements.items())[:3]:
+          for old, new in replacements.items():
               assert old in js, old
               js = js.replace(old, new, 1)
-          # Substituir integralmente o bloco de passos da ficha de primeiro acesso.
+
           marker = 'title: "Concluir o primeiro acesso quando solicitado"'
           start = js.index(marker)
           steps_start = js.index('steps: [', start)
@@ -178,6 +173,7 @@ jobs:
           git add content/guides.json assets/js/data-d01.js assets/js/search-index.json Guias-do-utilizador/Acesso-perfil-e-participacao/Autenticacao-e-acesso-a-conta assets/pdf README.md docs/CONTENT_VALIDATION.md
           git status --short
           git commit -m "docs(guides): alinha D01 com fluxo actual de autenticação"
+          git restore .build || true
           git fetch origin feature/static-routes-pdf
           git rebase origin/feature/static-routes-pdf
           git push origin HEAD:feature/static-routes-pdf

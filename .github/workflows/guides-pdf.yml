@@ -85,8 +85,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # O mecanismo de migração é deliberadamente temporário.
-          # O commit final repõe o workflow anterior e remove o script one-shot.
-          git checkout HEAD^ -- .github/workflows/guides-pdf.yml
+          # O commit final repõe explicitamente a versão estável anterior ao mecanismo temporário.
+          git checkout f0c1b8c998b323b55446ad4745369fbf5cee2415 -- .github/workflows/guides-pdf.yml
           git rm scripts/expand_guides_95.cjs
           git add -A
 

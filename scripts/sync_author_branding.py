@@ -169,16 +169,15 @@ def patch_pdf_generator():
     )
 
     # build_css() é uma f-string. As chavetas CSS ficam duplicadas no código
-    # fonte para produzirem chavetas simples no HTML/CSS final.
+    # fonte para produzirem chavetas simples no HTML/CSS final. Flexbox é usado
+    # no PDF por maior estabilidade no WeasyPrint 68.
     pdf_css = (
         "/* PDF_AUTHOR_BRANDING_START */"
         ".pdf-author-credit{{margin-top:6mm;padding-top:4mm;border-top:1px solid #dce5eb;"
-        "display:grid;grid-template-columns:24mm 1fr;grid-template-rows:auto auto;column-gap:4mm;"
-        "row-gap:1mm;align-items:center;break-inside:avoid}}"
-        ".pdf-author-credit img{{grid-column:1;grid-row:1/3;width:22mm;height:auto;border-radius:1mm}}"
-        ".pdf-author-credit p{{grid-column:2;margin:0;font-size:7.5pt;line-height:1.35;color:#526779}}"
-        ".pdf-author-credit p:first-of-type{{align-self:end}}"
-        ".pdf-author-credit p:last-of-type{{align-self:start;color:#708394}}"
+        "display:flex;gap:4mm;align-items:center;break-inside:avoid}}"
+        ".pdf-author-credit img{{width:22mm;height:auto;flex:0 0 22mm;border-radius:1mm}}"
+        ".pdf-author-credit p{{margin:0;font-size:7.5pt;line-height:1.42;color:#526779}}"
+        ".pdf-author-credit p span{{display:inline-block;margin-top:1mm;color:#708394}}"
         ".pdf-author-credit a{{font-weight:700;color:#103454;text-decoration:none}}"
         "/* PDF_AUTHOR_BRANDING_END */"
     )
@@ -195,8 +194,8 @@ def patch_pdf_generator():
     credit = (
         '<div class="pdf-author-credit">'
         '<img src="{AUTHOR_LOGO_URI}" alt="VP, marca pessoal de Valentim Pinto">'
-        '<p>Concepção funcional e editorial: <a href="{AUTHOR_LINK}">Valentim Pinto</a></p>'
-        '<p>© dados.gov.pt · Protótipo Guias v0.5.0 em revisão</p>'
+        '<p>Concepção funcional e editorial: <a href="{AUTHOR_LINK}">Valentim Pinto</a><br>'
+        '<span>© dados.gov.pt · Protótipo Guias v0.5.0 em revisão</span></p>'
         '</div>'
     )
     text = re.sub(r'<div class="pdf-author-credit">.*?</div>', '', text, flags=re.S)

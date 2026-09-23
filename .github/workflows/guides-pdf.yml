@@ -5,9 +5,11 @@ on:
   push:
     branches:
       - main
-      - feature/static-routes-pdf
+      - "feature/**"
     paths:
       - "content/guides.json"
+      - "content/site.json"
+      - "assets/brand/**"
       - "scripts/generate_pdf_guides.py"
       - ".github/workflows/guides-pdf.yml"
 
@@ -15,7 +17,7 @@ permissions:
   contents: write
 
 # Mantém uma única publicação PDF por branch. A ref faz parte do grupo para
-# permitir que main e a branch de evolução sejam validadas de forma independente.
+# permitir que main e branches de evolução sejam validadas de forma independente.
 concurrency:
   group: guides-pdf-${{ github.ref }}
   cancel-in-progress: false
@@ -52,12 +54,16 @@ jobs:
             cp "$f" "assets/pdf/$target"
           done
 
-      - name: Validar colecção
+      - name: Validar colecção, autoria e D06
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           from pypdf import PdfReader
+
+          site = json.loads(Path("content/site.json").read_text(encoding="utf-8"))
+          author = site["author"]["name"]
+          version = site["prototype"]["version"]
 
           qa = json.loads(Path(".build/pdf/qa-summary.json").read_text(encoding="utf-8"))
           assert len(qa) == 15, f"Esperados 15 guias, obtidos {len(qa)}"
@@ -66,11 +72,20 @@ jobs:
 
           pdfs = sorted(Path("assets/pdf").glob("*.pdf"))
           assert len(pdfs) == 15, f"Esperados 15 PDFs públicos, obtidos {len(pdfs)}"
+          missing_author = []
           for pdf in pdfs:
               reader = PdfReader(str(pdf))
               assert len(reader.pages) >= 1, f"PDF sem páginas: {pdf}"
               assert pdf.stat().st_size > 50000, f"PDF anormalmente pequeno: {pdf}"
-          print("QA PDF: 15/15 ficheiros válidos; conteúdo editorial sem omissões.")
+              text = "\n".join((page.extract_text() or "") for page in reader.pages)
+              if author not in text or version not in text:
+                  missing_author.append(pdf.name)
+          assert not missing_author, f"Autoria em falta: {missing_author}"
+
+          generator = Path("scripts/generate_pdf_guides.py").read_text(encoding="utf-8")
+          assert "APPROVED_D06" not in generator, "D06 voltou a ter tratamento especial"
+          assert "code=='D06'" not in generator, "D06 voltou a ter ramo especial"
+          print("QA PDF: 15/15 ficheiros válidos, com autoria e sem excepção D06.")
           PY
 
       - name: Publicar PDFs actualizados
@@ -83,17 +98,13 @@ jobs:
           if git diff --cached --quiet; then
             echo "Sem alterações nos PDFs."
           else
-            git commit -m "chore(pdf): sincroniza PDFs com fonte editorial"
+            git commit -m "chore(pdf): sincroniza 15 PDFs com fonte editorial e autoria"
 
-            # O gerador usa .build como área de trabalho. Alguns artefactos dessa
-            # pasta existem no histórico e ficam modificados após a geração, mas
-            # não pertencem ao commit público dos PDFs. Repor esses ficheiros é
-            # obrigatório antes do rebase para evitar 'unstaged changes'.
+            # .build é descartável e não pertence ao commit público dos PDFs.
             git restore --worktree -- .build || true
 
             # A branch pode avançar enquanto os PDFs são gerados. Rebasear antes
-            # do push evita sobrescrever alterações concorrentes e funciona tanto
-            # na branch de evolução como em main após uma futura release.
+            # do push evita sobrescrever alterações concorrentes.
             git fetch origin "$TARGET_BRANCH"
             git rebase "origin/$TARGET_BRANCH"
             git push origin "HEAD:$TARGET_BRANCH"

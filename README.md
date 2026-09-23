@@ -134,7 +134,7 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A `main` preserva a referência estável v0.4. A evolução corrente é preparada na branch `feature/static-routes-pdf`, que acrescenta rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto.
+A release **v0.5.0** consolida a evolução preparada na branch `feature/static-routes-pdf` para integração em `main` através do PR #5. Inclui rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto. Após a promoção, `main` passa a representar esta baseline de demonstração e revisão. A publicação oficial no dados.gov.pt continua dependente da integração no produto.
 
 Nesta fase, o projecto inclui:
 
@@ -241,6 +241,7 @@ O histórico visual e funcional é preservado na pasta `versions`.
 | `v0.2` | Aproximação visual ao portal e melhoria estrutural. |
 | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
 | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
+| `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes preparados para `main`. |
 
 O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
 

@@ -1,8 +1,8 @@
 # Histórico de versões
 
-## Em desenvolvimento · 22/09/2026
+## v0.5.0 · 23/09/2026
 
-Evolução da branch `feature/static-routes-pdf` após a referência v0.4.
+Release de demonstração e revisão preparada a partir da branch `feature/static-routes-pdf` para promoção a `main` pelo PR #5.
 
 Principais alterações:
 
@@ -11,16 +11,17 @@ Principais alterações:
 * Publicação e validação estrutural de **15 PDFs**, cobrindo as 95 fichas após a expansão de 23/09/2026.
 * Criação da fonte editorial permanente `content/guides.json` e do gerador `scripts/generate_pdf_guides.py`.
 * Criação do guardrail `scripts/validate_guides_consistency.py` e workflow de CI para validar fonte, rotas, pesquisa, sitemap e estrutura HTML.
+* Correcção do workflow PDF permanente: limpeza dos artefactos temporários de `.build` antes do `rebase`, publicação concorrente controlada por branch e suporte equivalente para `main` e para a branch de evolução.
 * Correcções editoriais baseadas em PRD para D04, D09 e D13.
 * D01 foi revalidado segundo o comportamento público actual de PRD; a ficha de primeiro acesso foi generalizada para não antecipar o mecanismo de migração/associação.
 * Correcção de acessibilidade da pesquisa dinâmica com anúncio de resultados por `role="status"` e `aria-live="polite"`.
 * Correcção dos nomes acessíveis de Pesquisa e Autenticar no header mobile.
-* QA estrutural sobre 115 páginas: 115/115 HTTP 200 e 134 ligações internas sem quebras.
+* Guardrail final validado sobre **118 páginas HTML**, 95 entradas de pesquisa e 118 URLs de sitemap. A ronda HTTP anterior à expansão confirmou 115/115 páginas e 134 ligações internas sem quebras.
 * QA responsivo e por teclado em 320, 360, 768 e 1440 px nas páginas representativas.
 * Criação de `docs/PROJECT_STATUS.md`, `docs/CONTENT_VALIDATION.md` e `docs/PRD_TEST_PLAN.md` para continuidade, rastreabilidade e fecho de validação.
 * D06 está confirmado como não integrado no Frontoffice público de PRD; D07 e CM não são observáveis no stack público actual de PRD; D11 foi alinhado ao PRD actual: o guia passou a **Favoritos e notificações**, mantendo as rotas históricas; Favoritos e Notificações são documentados como capacidades separadas.
 
-Por confirmar antes de publicação oficial: testes PRD autenticados aplicáveis, validação manual com NVDA, revisão visual final dos PDFs e acessibilidade documental interna dos PDFs.
+Limitações conhecidas transferidas para a próxima release: integração efectiva de D06 no Frontoffice; observabilidade de D07 e CM; validação manual final com NVDA; revisão visual detalhada e validação documental dos PDFs; e evoluções funcionais ou correcções que surjam após esta baseline. Esta decisão de âmbito não equivale a validar funcionalmente essas limitações nem transforma o protótipo em publicação oficial.
 
 ## v0.4 · 15/09/2026
 

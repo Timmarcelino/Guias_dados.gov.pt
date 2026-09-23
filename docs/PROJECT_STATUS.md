@@ -16,9 +16,11 @@ A actualização deste ficheiro não substitui Jira, Figma, requisitos aprovados
 | --- | --- |
 | Repositório | `Timmarcelino/Guias_dados.gov.pt` |
 | Branch estável | `main` |
-| Baseline estável | v0.4 |
-| Commit da baseline | `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
+| Baseline estável antes desta release | v0.4 |
+| Commit da baseline v0.4 | `58c65e205c38ad810e122a57f2dff4b612aa39dd` |
 | Branch activa de evolução | `feature/static-routes-pdf` |
+| Release candidata | `v0.5.0` |
+| Promoção para `main` | PR #5, aprovada em 23/09/2026 |
 | Relação com `main` | Confirmar no início de cada retoma; a branch activa deriva integralmente da baseline v0.4 |
 | Guias | 15 |
 | Fichas na baseline estável v0.4 | 91 |
@@ -503,53 +505,68 @@ O plano separa:
 Critério: o Manual descreve PRD como Implementação actual quando houver divergência com backlog, requisito alvo ou documentação futura.
 
 
-## Prontidão para integração e publicação
+## Prontidão para integração e release v0.5.0
 
-Estado verificado em 22/09/2026.
+Estado revisto em 23/09/2026.
 
-### Branch candidata
+### Decisão de release
 
-* branch: `feature/static-routes-pdf`;
-* relação com `main`: 58 commits à frente, 0 atrás no momento da verificação;
-* GitHub Pages do commit `d1522a8`: sucesso;
-* CI de consistência: verde;
-* workflow de geração PDF: verde na última execução aplicável;
-* 15 guias, 95 fichas, 118 URLs e 15 PDFs controlados.
+Foi aprovada a promoção do estado actualmente consolidado da branch `feature/static-routes-pdf` para `main` através do PR #5.
 
-### Bloqueios antes de candidatura a merge
+A release candidata v0.5.0 contém:
 
-A branch **não deve ser tratada ainda como candidata final a merge** enquanto permanecerem:
+* 15 guias;
+* 95 fichas;
+* 7 temas;
+* 118 rotas estáticas e 118 URLs de sitemap;
+* 95 entradas de pesquisa;
+* 15 PDFs gerados a partir da fonte editorial versionada;
+* guardrail automático de consistência;
+* workflow PDF permanente e preparado para funcionar também em `main`.
 
-1. Test Cases PRD autenticados da Fase A ainda não executados nas áreas aplicáveis;
-2. D06 não integrado no Frontoffice PRD; D07 e CM não observáveis no stack público actual de PRD; D11 já alinhado ao comportamento actual de Favoritos, ficando apenas Notificações pendentes de validação autenticada;
-3. resultados dos testes PRD ainda não reflectidos, quando necessário, em `content/guides.json`;
-4. validação manual com NVDA no contexto final ainda pendente;
-5. revisão visual final e acessibilidade documental dos PDFs ainda Por confirmar.
+### Gates técnicos desta release
 
-### Bloqueios adicionais antes de publicação oficial
+Em 23/09/2026:
 
-Mesmo após eventual merge, a publicação oficial exige ainda:
+* o guardrail de consistência terminou com sucesso na execução GitHub Actions `35853185102`;
+* o workflow PDF permanente corrigido terminou com sucesso na execução `35853158371`, incluindo geração, QA e publicação dos PDFs;
+* a branch encontrava-se sem commits em atraso face a `main` no último compare aplicável antes da preparação da release.
 
-1. confirmar o destino definitivo de publicação e integração no produto;
-2. substituir/parametrizar os canonicals e caminhos actualmente orientados ao GitHub Pages quando o destino oficial for conhecido;
-3. confirmar nomenclatura e arquitectura de informação finais;
-4. executar os testes de escrita da Fase B apenas quando forem indispensáveis e após autorização explícita;
-5. confirmar que não existem divergências funcionais novas entre PRD e o Manual no momento da publicação.
+### Limitações conhecidas aceites para a próxima release
+
+As seguintes limitações deixam de bloquear o merge desta baseline, mas **não são consideradas resolvidas**:
+
+1. D06 continua sem integração pública reproduzível nas superfícies PRD/PPR analisadas;
+2. D07 continua sem integração observável nas superfícies analisadas;
+3. CM continua sem integração observável nas superfícies analisadas;
+4. validação manual final com NVDA permanece pendente no contexto final;
+5. revisão visual detalhada e validação documental final dos PDFs permanecem pendentes;
+6. evoluções e correcções funcionais posteriores à baseline serão tratadas na próxima release.
+
+Esta aceitação é uma decisão de âmbito da release. Não transforma ausência de evidência em requisito validado.
+
+### Publicação oficial
+
+O merge em `main` produz uma baseline estável de demonstração e revisão. Não equivale, por si só, à publicação oficial no dados.gov.pt.
+
+A publicação oficial continua a exigir, quando aplicável:
+
+1. confirmação do destino definitivo e integração no produto;
+2. parametrização dos canonicals e caminhos quando o destino oficial for conhecido;
+3. validação no contexto final do portal;
+4. tratamento das limitações que forem consideradas obrigatórias para a publicação oficial.
 
 ### Decisão operacional
 
-Continuar a usar a branch actual como ambiente candidato de revisão.
-
-Não abrir PR, não fazer merge em `main` e não publicar oficialmente enquanto os bloqueios acima não forem tratados ou formalmente aceites.
-
+O PR #5 pode ser promovido a Ready for review e integrado em `main` quando os checks técnicos da preparação de release estiverem verdes e a documentação do PR estiver sincronizada com esta decisão.
 
 ## Sincronização documental corrente 22/09/2026
 
 Após a validação técnica e funcional, foi corrigida a documentação corrente:
 
-* `README.md` actualizado para 15 guias e 92 fichas;
+* `README.md` actualizado para 15 guias e 95 fichas;
 * estrutura técnica actualizada para incluir fonte editorial, rotas, PDFs, scripts, workflows e documentação viva;
-* D14 actualizado para seis fichas;
+* D13 e D14 actualizados para sete fichas cada;
 * `CHANGELOG.md` recebeu a secção **Em desenvolvimento · 22/09/2026**, preservando a v0.4 histórica de 15/09;
 * pesquisa no repositório não encontrou referências correntes a `91 fichas` fora do histórico preservado.
 

@@ -39,6 +39,21 @@ A fonte editorial utilizada na geração PDF v2 foi preservada no histórico Git
 
 Esta fonte contém os 15 guias e as 95 fichas, incluindo sete fichas em D13 e sete fichas em D14.
 
+## 2.1 Decisão de âmbito da release v0.5.0, 23/09/2026
+
+A release v0.5.0 foi aprovada para integração em `main` com o conteúdo actualmente consolidado dos 15 guias e 95 fichas.
+
+Esta decisão é uma **decisão de release** e não altera a classificação funcional das áreas ainda não observáveis ou não integradas:
+
+* D06 permanece não integrado no Frontoffice actual observado;
+* D07 permanece não observável nas superfícies analisadas;
+* CM permanece não observável nas superfícies analisadas;
+* a validação manual final com NVDA e a revisão visual e documental detalhada dos PDFs transitam para a release seguinte.
+
+Os guias destas áreas permanecem como conteúdo preparado no protótipo e não devem ser interpretados como prova de disponibilidade actual no portal.
+
+A release mantém a natureza de **baseline de demonstração e revisão**. A publicação oficial no dados.gov.pt continua dependente da integração no produto e das validações aplicáveis ao contexto final.
+
 ## 3. Validação dos PDFs
 
 ### Evidência confirmada

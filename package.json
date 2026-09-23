@@ -1,0 +1,30 @@
+{
+  "name": "guias-dados-gov-pt",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "content:validate": "tsx scripts/v1/validate-content.ts",
+    "content:derive": "tsx scripts/v1/build-derived.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
+    "routes:check": "tsx scripts/v1/check-route-contract.ts"
+  },
+  "dependencies": {
+    "@ama-pt/agora-design-system": "3.7.0",
+    "next": "16.3.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.17",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "autoprefixer": "10.4.27",
+    "postcss": "8.5.28",
+    "tailwindcss": "3.4.19",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+generated/
+public/search-index.json
+public/sitemap.xml
+public/robots.txt
+public/assets/brand/
+*.tsbuildinfo

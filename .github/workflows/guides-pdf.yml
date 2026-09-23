@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - "feature/**"
+      - feature/footer-autoria
     paths:
       - "content/guides.json"
       - "content/site.json"
@@ -24,6 +24,7 @@ concurrency:
 
 jobs:
   generate-pdfs:
+    if: github.ref_name != 'feature/v1-single-source-agora'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout da branch actual

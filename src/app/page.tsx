@@ -1,0 +1,1 @@
+import { withBasePath } from "@/lib/site"; export default function Page(){return <><h1 className="text-3xl-bold mb-16">Guias do utilizador do dados.gov.pt</h1><p className="mb-24">Orientação prática para utilizar o portal de dados abertos.</p><a className="underline" href={withBasePath("/Guias-do-utilizador/")}>Abrir os Guias</a></>}

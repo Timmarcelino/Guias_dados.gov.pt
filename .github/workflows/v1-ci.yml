@@ -1,0 +1,50 @@
+name: Validar arquitectura v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v1-single-source-agora
+    paths:
+      - "content/**"
+      - "src/**"
+      - "scripts/v1/**"
+      - "tests/contracts/**"
+      - "package.json"
+      - "package-lock.json"
+      - "next.config.ts"
+      - "tailwind.config.ts"
+      - "postcss.config.mjs"
+      - "tsconfig.json"
+      - ".github/workflows/v1-ci.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar dependências
+        run: npm install --no-audit --no-fund
+      - name: Validar fonte única e contrato de URLs
+        run: |
+          npm run content:validate
+          npm run routes:check
+      - name: Gerar artefactos derivados
+        run: npm run content:derive
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Static export
+        env:
+          NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt
+        run: npm run build
+      - name: Confirmar saída estática
+        run: |
+          test -f out/Guias-do-utilizador/index.html
+          test -f out/search-index.json
+          test -f out/sitemap.xml
+          count=$(find out/Guias-do-utilizador -name index.html | wc -l)
+          test "$count" -eq 118
+          echo "Static export v1: $count rotas dos Guias."

@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - "feature/**"
+      - feature/footer-autoria
     paths:
       - "content/guides.json"
       - "content/site.json"
@@ -30,6 +30,7 @@ on:
 # estáticas são saídas materializadas e devem permanecer sincronizadas.
 jobs:
   validate:
+    if: github.ref_name != 'feature/v1-single-source-agora'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import {
+  normalizeSquidexGraphQLPayload,
+  SQUIDEX_GUIDES_GRAPHQL_QUERY,
+  SquidexGraphQLTransport,
+} from "../../src/lib/content/squidex-graphql";
 import { mapProvisionalSquidexPayload } from "../../src/lib/content/squidex-mapper";
 
 const fixturePath = path.join(
@@ -9,38 +14,86 @@ const fixturePath = path.join(
   "fixtures",
   "squidex-pilot.json",
 );
-
-const payload = JSON.parse(fs.readFileSync(fixturePath, "utf8"));
-const content = mapProvisionalSquidexPayload(payload);
-
-assert.equal(content.schemaVersion, "1.0");
-assert.equal(content.locale, "pt-PT");
-assert.equal(content.themes.length, 1);
-assert.deepEqual(content.themes[0].guideIds, ["D99"]);
-
-assert.equal(content.guides.length, 1);
-const guide = content.guides[0];
-assert.equal(guide.id, "D99");
-assert.equal(guide.themeId, "tema-piloto");
-assert.deepEqual(
-  guide.fichas.map((task) => task.id),
-  ["D99-T01", "D99-T02"],
+const graphqlFixturePath = path.join(
+  process.cwd(),
+  "tests",
+  "fixtures",
+  "squidex-graphql-pilot.json",
 );
-assert.deepEqual(guide.fichas[0].steps, [
-  "Executar o primeiro passo técnico.",
-  "Confirmar o resultado técnico.",
-]);
-assert.deepEqual(guide.fichas[0].nextRef, {
-  type: "task",
-  id: "D99-T02",
-});
-assert.deepEqual(guide.fichas[1].nextRef, {
-  type: "overview",
-  id: "D99",
-});
-assert.deepEqual(guide.fichas[1].table, [
-  ["Campo", "Valor"],
-  ["piloto", "ok"],
-]);
 
-console.log("Squidex mapper pilot: OK");
+const provisionalFixture = JSON.parse(fs.readFileSync(fixturePath, "utf8"));
+const graphqlFixture = JSON.parse(fs.readFileSync(graphqlFixturePath, "utf8"));
+
+async function main(): Promise<void> {
+  const normalized = normalizeSquidexGraphQLPayload(graphqlFixture);
+  assert.deepEqual(normalized, provisionalFixture);
+
+  const calls: Array<{ input: RequestInfo | URL; init?: RequestInit }> = [];
+  const fetchImpl = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    calls.push({ input, init });
+    return new Response(JSON.stringify(graphqlFixture), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  }) as typeof fetch;
+
+  const endpoint =
+    "https://cloud.squidex.io/api/content/guias-dados-gov-pt-piloto/graphql";
+  const transport = new SquidexGraphQLTransport({
+    endpoint,
+    accessToken: "test-token",
+    includeDrafts: true,
+    fetchImpl,
+  });
+
+  const transported = await transport.fetchContent();
+  assert.deepEqual(transported, graphqlFixture);
+  assert.equal(calls.length, 1);
+  assert.equal(String(calls[0].input), endpoint);
+  assert.equal(calls[0].init?.method, "POST");
+
+  const requestHeaders = new Headers(calls[0].init?.headers);
+  assert.equal(requestHeaders.get("Authorization"), "Bearer test-token");
+  assert.equal(requestHeaders.get("X-Unpublished"), "true");
+  assert.match(String(calls[0].init?.body), /queryGuideThemeContentsWithTotal/);
+  assert.match(SQUIDEX_GUIDES_GRAPHQL_QUERY, /queryGuideTaskContentsWithTotal/);
+
+  const content = mapProvisionalSquidexPayload(normalized);
+
+  assert.equal(content.schemaVersion, "1.0");
+  assert.equal(content.locale, "pt-PT");
+  assert.equal(content.themes.length, 1);
+  assert.deepEqual(content.themes[0].guideIds, ["D99"]);
+
+  assert.equal(content.guides.length, 1);
+  const guide = content.guides[0];
+  assert.equal(guide.id, "D99");
+  assert.equal(guide.themeId, "tema-piloto");
+  assert.deepEqual(
+    guide.fichas.map((task) => task.id),
+    ["D99-T01", "D99-T02"],
+  );
+  assert.deepEqual(guide.fichas[0].steps, [
+    "Executar o primeiro passo técnico.",
+    "Confirmar o resultado técnico.",
+  ]);
+  assert.deepEqual(guide.fichas[0].nextRef, {
+    type: "task",
+    id: "D99-T02",
+  });
+  assert.deepEqual(guide.fichas[1].nextRef, {
+    type: "overview",
+    id: "D99",
+  });
+  assert.deepEqual(guide.fichas[1].table, [
+    ["Campo", "Valor"],
+    ["piloto", "ok"],
+  ]);
+
+  console.log("Squidex GraphQL -> normalizer -> mapper -> GuidesContent: OK");
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

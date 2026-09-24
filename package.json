@@ -6,6 +6,7 @@
     "dev": "next dev",
     "content:validate": "tsx scripts/v1/validate-content.ts",
     "content:derive": "tsx scripts/v1/build-derived.ts",
+    "content:source:check": "tsx scripts/v1/check-content-source.ts",
     "typecheck": "tsc --noEmit",
     "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
     "routes:check": "tsx scripts/v1/check-route-contract.ts",

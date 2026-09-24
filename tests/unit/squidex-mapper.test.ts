@@ -6,6 +6,7 @@ import {
   GUIDES_SQUIDEX_DRAFTS_ENV,
   GUIDES_SQUIDEX_ENDPOINT_ENV,
   GUIDES_SQUIDEX_TOKEN_ENV,
+  loadConfiguredContent,
   resolveGuidesContentOptions,
 } from "../../src/lib/content/config";
 import {
@@ -174,8 +175,13 @@ async function main(): Promise<void> {
     /esperado "true" ou "false"/,
   );
 
+  const configuredLocal = await loadConfiguredContent({});
+  assert.equal(configuredLocal.locale, "pt-PT");
+  assert.equal(configuredLocal.themes.length, 7);
+  assert.equal(configuredLocal.guides.length, 15);
+
   console.log(
-    "Local default + Squidex opt-in + configuração server-only: OK",
+    "Local default + Squidex opt-in + configuração server-only + loadConfiguredContent: OK",
   );
 }
 

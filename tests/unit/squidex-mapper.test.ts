@@ -2,6 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import {
+  GUIDES_CONTENT_SOURCE_ENV,
+  GUIDES_SQUIDEX_DRAFTS_ENV,
+  GUIDES_SQUIDEX_ENDPOINT_ENV,
+  GUIDES_SQUIDEX_TOKEN_ENV,
+  resolveGuidesContentOptions,
+} from "../../src/lib/content/config";
+import {
   normalizeSquidexGraphQLPayload,
   SQUIDEX_GUIDES_GRAPHQL_QUERY,
   SquidexGraphQLTransport,
@@ -126,8 +133,49 @@ async function main(): Promise<void> {
     /sem configuração do transporte GraphQL/,
   );
 
+  assert.deepEqual(resolveGuidesContentOptions({}), { source: "local" });
+  assert.deepEqual(
+    resolveGuidesContentOptions({
+      [GUIDES_CONTENT_SOURCE_ENV]: "squidex",
+      [GUIDES_SQUIDEX_ENDPOINT_ENV]: endpoint,
+      [GUIDES_SQUIDEX_TOKEN_ENV]: "server-token",
+      [GUIDES_SQUIDEX_DRAFTS_ENV]: "true",
+    }),
+    {
+      source: "squidex",
+      squidex: {
+        endpoint,
+        accessToken: "server-token",
+        includeDrafts: true,
+      },
+    },
+  );
+  assert.throws(
+    () =>
+      resolveGuidesContentOptions({
+        [GUIDES_CONTENT_SOURCE_ENV]: "squidex",
+      }),
+    new RegExp(GUIDES_SQUIDEX_ENDPOINT_ENV),
+  );
+  assert.throws(
+    () =>
+      resolveGuidesContentOptions({
+        [GUIDES_CONTENT_SOURCE_ENV]: "remote",
+      }),
+    /esperado "local" ou "squidex"/,
+  );
+  assert.throws(
+    () =>
+      resolveGuidesContentOptions({
+        [GUIDES_CONTENT_SOURCE_ENV]: "squidex",
+        [GUIDES_SQUIDEX_ENDPOINT_ENV]: endpoint,
+        [GUIDES_SQUIDEX_DRAFTS_ENV]: "yes",
+      }),
+    /esperado "true" ou "false"/,
+  );
+
   console.log(
-    "Local default + Squidex opt-in -> normalizer -> mapper -> GuidesContent: OK",
+    "Local default + Squidex opt-in + configuração server-only: OK",
   );
 }
 

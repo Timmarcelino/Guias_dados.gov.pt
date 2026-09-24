@@ -2,6 +2,7 @@ node_modules/
 .next/
 out/
 generated/
+.build/
 public/search-index.json
 public/sitemap.xml
 public/robots.txt

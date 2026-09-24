@@ -3,6 +3,7 @@ import {
   type CreateContentRepositoryOptions,
   type GuidesContentSource,
 } from "./source";
+import type { GuidesContent } from "./schema";
 import type { AsyncContentRepository } from "./squidex-repository";
 
 export const GUIDES_CONTENT_SOURCE_ENV = "GUIDES_CONTENT_SOURCE";
@@ -51,6 +52,17 @@ export function createConfiguredContentRepository(
   env: GuidesEnvironment = process.env,
 ): AsyncContentRepository {
   return createAsyncContentRepository(resolveGuidesContentOptions(env));
+}
+
+/**
+ * Fronteira async explícita para consumidores que, no futuro, optem pela fonte
+ * configurada. A UI actual continua a usar loadContent() de repository.ts e,
+ * por isso, permanece Local JSON independentemente destas variáveis.
+ */
+export async function loadConfiguredContent(
+  env: GuidesEnvironment = process.env,
+): Promise<GuidesContent> {
+  return createConfiguredContentRepository(env).load();
 }
 
 function parseSource(value: string | undefined): GuidesContentSource {

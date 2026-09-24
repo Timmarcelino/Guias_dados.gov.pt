@@ -20,21 +20,21 @@ const graphqlFixture = JSON.parse(fs.readFileSync(graphqlFixturePath, "utf8"));
 async function main(): Promise<void> {
   const originalFetch = globalThis.fetch;
   const calls: Array<{ input: RequestInfo | URL; init?: RequestInit }> = [];
-
-  globalThis.fetch = (async (
-    input: RequestInfo | URL,
-    init?: RequestInit,
-  ) => {
-    calls.push({ input, init });
-    return new Response(JSON.stringify(graphqlFixture), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  }) as typeof fetch;
+  const endpoint =
+    "https://cloud.squidex.io/api/content/guias-dados-gov-pt-piloto/graphql";
 
   try {
-    const endpoint =
-      "https://cloud.squidex.io/api/content/guias-dados-gov-pt-piloto/graphql";
+    globalThis.fetch = (async (
+      input: RequestInfo | URL,
+      init?: RequestInit,
+    ) => {
+      calls.push({ input, init });
+      return new Response(JSON.stringify(graphqlFixture), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }) as typeof fetch;
+
     const repository = createConfiguredContentRepository({
       [GUIDES_CONTENT_SOURCE_ENV]: "squidex",
       [GUIDES_SQUIDEX_ENDPOINT_ENV]: endpoint,
@@ -67,8 +67,25 @@ async function main(): Promise<void> {
       id: "D99",
     });
 
+    globalThis.fetch = (async () =>
+      new Response(JSON.stringify({ message: "upstream unavailable" }), {
+        status: 503,
+        headers: { "Content-Type": "application/json" },
+      })) as typeof fetch;
+
+    const failingRepository = createConfiguredContentRepository({
+      [GUIDES_CONTENT_SOURCE_ENV]: "squidex",
+      [GUIDES_SQUIDEX_ENDPOINT_ENV]: endpoint,
+      [GUIDES_SQUIDEX_DRAFTS_ENV]: "true",
+    });
+
+    await assert.rejects(
+      () => failingRepository.load(),
+      /Squidex GraphQL respondeu HTTP 503/,
+    );
+
     console.log(
-      "Config -> Squidex transport -> normalizer -> mapper -> GuidesContent: OK",
+      "Config -> Squidex -> GuidesContent: OK; falha remota não faz fallback silencioso",
     );
   } finally {
     globalThis.fetch = originalFetch;

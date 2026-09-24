@@ -44,6 +44,8 @@ jobs:
         run: npx tsx scripts/v1/check-architecture.ts
       - name: Validar mapper Squidex provisório
         run: npm run test:squidex
+      - name: Validar fonte configurada com default local
+        run: npm run content:source:check
       - name: Gerar artefactos derivados
         run: npm run content:derive
       - name: Typecheck

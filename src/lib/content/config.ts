@@ -10,6 +10,8 @@ export const GUIDES_SQUIDEX_ENDPOINT_ENV = "GUIDES_SQUIDEX_GRAPHQL_ENDPOINT";
 export const GUIDES_SQUIDEX_TOKEN_ENV = "GUIDES_SQUIDEX_ACCESS_TOKEN";
 export const GUIDES_SQUIDEX_DRAFTS_ENV = "GUIDES_SQUIDEX_INCLUDE_DRAFTS";
 
+export type GuidesEnvironment = Readonly<Record<string, string | undefined>>;
+
 /**
  * Resolve a configuração da futura fonte de conteúdo exclusivamente no servidor.
  *
@@ -17,7 +19,7 @@ export const GUIDES_SQUIDEX_DRAFTS_ENV = "GUIDES_SQUIDEX_INCLUDE_DRAFTS";
  * Squidex só é activado por GUIDES_CONTENT_SOURCE=squidex.
  */
 export function resolveGuidesContentOptions(
-  env: NodeJS.ProcessEnv = process.env,
+  env: GuidesEnvironment = process.env,
 ): CreateContentRepositoryOptions {
   const source = parseSource(env[GUIDES_CONTENT_SOURCE_ENV]);
 
@@ -46,7 +48,7 @@ export function resolveGuidesContentOptions(
 }
 
 export function createConfiguredContentRepository(
-  env: NodeJS.ProcessEnv = process.env,
+  env: GuidesEnvironment = process.env,
 ): AsyncContentRepository {
   return createAsyncContentRepository(resolveGuidesContentOptions(env));
 }

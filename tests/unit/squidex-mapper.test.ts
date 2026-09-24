@@ -7,6 +7,7 @@ import {
   SquidexGraphQLTransport,
 } from "../../src/lib/content/squidex-graphql";
 import { mapProvisionalSquidexPayload } from "../../src/lib/content/squidex-mapper";
+import { createAsyncContentRepository } from "../../src/lib/content/source";
 
 const fixturePath = path.join(
   process.cwd(),
@@ -90,7 +91,44 @@ async function main(): Promise<void> {
     ["piloto", "ok"],
   ]);
 
-  console.log("Squidex GraphQL -> normalizer -> mapper -> GuidesContent: OK");
+  const localRepository = createAsyncContentRepository({
+    localRepository: { load: () => content },
+  });
+  assert.deepEqual(await localRepository.load(), content);
+
+  const sourceCalls: Array<{ input: RequestInfo | URL; init?: RequestInit }> = [];
+  const sourceFetchImpl = (async (
+    input: RequestInfo | URL,
+    init?: RequestInit,
+  ) => {
+    sourceCalls.push({ input, init });
+    return new Response(JSON.stringify(graphqlFixture), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  }) as typeof fetch;
+
+  const squidexRepository = createAsyncContentRepository({
+    source: "squidex",
+    squidex: {
+      endpoint,
+      accessToken: "test-token",
+      includeDrafts: true,
+      fetchImpl: sourceFetchImpl,
+    },
+  });
+
+  assert.deepEqual(await squidexRepository.load(), content);
+  assert.equal(sourceCalls.length, 1);
+
+  assert.throws(
+    () => createAsyncContentRepository({ source: "squidex" }),
+    /sem configuração do transporte GraphQL/,
+  );
+
+  console.log(
+    "Local default + Squidex opt-in -> normalizer -> mapper -> GuidesContent: OK",
+  );
 }
 
 main().catch((error) => {

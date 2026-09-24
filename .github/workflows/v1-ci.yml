@@ -46,6 +46,10 @@ jobs:
         run: npm run test:squidex
       - name: Validar fonte configurada com default local
         run: npm run content:source:check
+      - name: Validar dry run de migração Squidex
+        run: |
+          npm run squidex:import:dry-run
+          cat .build/squidex-import-report.json
       - name: Gerar artefactos derivados
         run: npm run content:derive
       - name: Typecheck

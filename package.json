@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
     "routes:check": "tsx scripts/v1/check-route-contract.ts",
+    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts"
   },
   "dependencies": {

@@ -32,7 +32,7 @@ export interface SquidexGuideCreatePlan {
   intro: string;
   audience: string;
   taskKeys: string[];
-  resources: Array<{ title: string; url: string }>;
+  resources?: Array<{ title: string; url: string }>;
 }
 
 export interface SquidexGuideRelationsPatchPlan {
@@ -152,7 +152,9 @@ export function buildSquidexImportPlan(content: GuidesContent): SquidexImportPla
       intro: guide.intro,
       audience: guide.audience,
       taskKeys: guide.fichas.map((task) => task.id),
-      resources: (guide.resources ?? []).map((resource) => ({ ...resource })),
+      ...(guide.resources
+        ? { resources: guide.resources.map((resource) => ({ ...resource })) }
+        : {}),
     };
   });
 

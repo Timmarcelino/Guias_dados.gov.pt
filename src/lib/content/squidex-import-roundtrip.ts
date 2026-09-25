@@ -18,9 +18,19 @@ export function materializeSquidexImportPlan(
     locale: plan.locale,
     themes: plan.phases.createThemes.map((item) => ({ ...item })),
     guides: plan.phases.createGuides.map((item) => ({
-      ...item,
+      key: item.key,
+      code: item.code,
+      slug: item.slug,
+      themeKey: item.themeKey,
+      order: item.order,
+      title: item.title,
+      intro: item.intro,
+      audience: item.audience,
+      taskKeys: [...item.taskKeys],
       relatedGuideKeys: [...(relatedByGuide.get(item.key) ?? [])],
-      resources: item.resources.map((resource) => ({ ...resource })),
+      ...(item.resources
+        ? { resources: item.resources.map((resource) => ({ ...resource })) }
+        : {}),
     })),
     tasks: plan.phases.createTasks.map((item) => {
       const next = nextByTask.get(item.key);

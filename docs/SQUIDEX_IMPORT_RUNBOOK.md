@@ -1,6 +1,6 @@
 # Runbook de importação Squidex provisório
 
-Estado: preparação técnica da v1. Nenhuma importação integral foi autorizada ou executada.
+Estado: `PREPARED_NOT_AUTHORIZED_LIVE_REHEARSAL_PENDING`. Nenhuma importação integral foi autorizada ou executada.
 
 ## Objectivo
 
@@ -10,7 +10,7 @@ Migrar de forma controlada os 7 temas, 15 guias e 95 tarefas da fonte local para
 
 1. O modo normal é sempre `dry-run`.
 2. Não existe comando npm de `apply` exposto nesta fase.
-3. Uma futura escrita exige autorização explícita, frase de confirmação e `planHash` exacto.
+3. Uma futura escrita exige autorização explícita, frase de confirmação, `planHash` exacto e `destinationHash` exacto.
 4. O inventário live deve ser recolhido imediatamente antes de qualquer escrita.
 5. Keys duplicadas, colisões de schema ou divergências de conteúdo bloqueiam a execução.
 6. Não existe fallback silencioso entre Squidex e JSON local.
@@ -41,31 +41,96 @@ npm run content:validate
 npm run squidex:import:dry-run
 npm run test:squidex
 npm run squidex:import:preflight
+npm run squidex:import:safety-check
 npm run typecheck
 ```
 
-O preflight determinístico deve indicar:
+O preflight determinístico continua a validar plano, contagens, manifesto, inventário sintético conhecido e round trip. O safety check valida os controlos adicionais de concorrência e operação.
 
-* `status=PREPARED_NOT_AUTHORIZED`;
-* `applyAuthorized=false`;
-* `writesToSquidex=0`;
-* `roundTripEquivalent=true`;
-* `blockers=[]` para os gates que o preflight consegue validar;
-* 225 `operationId` únicos.
+## Controlos técnicos resolvidos
 
-`blockers=[]` no preflight não autoriza escrita e não elimina os blockers de implementação listados abaixo.
+### 1. Concorrência e versão remota
 
-## Blockers antes do primeiro apply real
+Implementado.
 
-Por confirmar e implementar antes de qualquer autorização de escrita real:
+* creates usam IDs determinísticos derivados de `schema + key`;
+* updates exigem a versão remota observada;
+* a integração real deverá enviar essa versão em `If-Match`;
+* alteração concorrente entre leitura e escrita bloqueia o update.
 
-1. **Concorrência e versão remota.** Cada update deve usar a versão/ETag lida imediatamente antes da escrita e falhar perante alteração concorrente. O inventário inicial, por si só, não é suficiente.
-2. **Resultado ambíguo de escrita.** Se o Squidex aceitar uma operação mas o processo falhar antes de actualizar o journal, a retoma deve reconciliar o estado remoto antes de repetir a operação.
-3. **Rollback condicionado.** Antes de eliminar ou restaurar um item, confirmar que o estado remoto ainda corresponde à versão produzida pela migração. Divergências posteriores devem interromper o rollback.
-4. **Identidade do destino.** O futuro apply deve validar explicitamente app/ambiente e schemas esperados, além do `planHash`, para evitar aplicar o plano num destino diferente do inventariado.
-5. **Ensaio real do executor final.** Depois de implementadas as condições anteriores, executar primeiro um ensaio controlado sobre conteúdo sintético antes da baseline de 117 conteúdos.
+O comportamento está alinhado com a API oficial Squidex, que aceita ID explícito no create e usa `If-Match` nos updates `PUT/PATCH`.
 
-Enquanto estes pontos não estiverem resolvidos, o estado correcto é `PREPARED_NOT_AUTHORIZED`.
+### 2. Resultado ambíguo de escrita
+
+Implementado.
+
+O journal v2 distingue `pending`, `in-flight`, `confirmed` e `ambiguous`. Se houver erro ou timeout depois da tentativa de escrita, a retoma não repete automaticamente a operação. O estado remoto é relido e comparado por identidade e hash do payload esperado:
+
+* igual: operação reconciliada como aplicada;
+* ausente: pode ser considerada não aplicada;
+* diferente: conflito, execução bloqueada;
+* evidência insuficiente: indeterminado, execução bloqueada.
+
+### 3. Rollback condicionado
+
+Implementado.
+
+Cada mutação futura deve guardar a `writtenVersion`. O rollback protegido só elimina ou restaura um conteúdo se a versão remota actual continuar exactamente igual à versão deixada pela migração. A acção de rollback transporta essa versão como precondição `If-Match`.
+
+Se alguém editar o conteúdo depois da migração, o rollback desse item é bloqueado.
+
+### 4. Identidade do destino
+
+Implementado.
+
+Além do `planHash`, o destino tem um `destinationHash` que vincula:
+
+* API base URL;
+* nome da app Squidex;
+* ID do schema `guide-theme`;
+* ID do schema `guide`;
+* ID do schema `guide-task`.
+
+Um apply futuro deve validar os dois hashes antes de qualquer escrita.
+
+## Evidência live de concorrência
+
+Em 25/09/2026 foi realizada apenas uma leitura do item piloto `D99`, sem qualquer mutação.
+
+Confirmado no Squidex provisório:
+
+* app: `guias-dados-gov-pt-piloto`;
+* schema: `guide`;
+* ID: `30f2d310-cc71-452b-a0eb-5ad727fbb147`;
+* key: `D99`;
+* estado: `Draft`;
+* versão: `0`;
+* método de alteração exposto: `PATCH`;
+* href: `/api/content/guias-dados-gov-pt-piloto/guide/30f2d310-cc71-452b-a0eb-5ad727fbb147`.
+
+Esta evidência confirma que a instância live fornece a versão e o link necessários para o controlo optimista. Não prova ainda a execução de uma escrita protegida.
+
+## Blocker restante antes do primeiro apply real
+
+### Ensaio live do executor protegido
+
+**Pendente e não autorizado.**
+
+Antes da baseline de 117 conteúdos, é necessário executar um ensaio controlado de escrita sobre conteúdo exclusivamente sintético que valide no Squidex real:
+
+1. create com ID determinístico;
+2. leitura de volta e confirmação do payload;
+3. update com `If-Match`;
+4. rejeição de versão incorrecta;
+5. reconciliação após resultado ambíguo, quando possível simular com segurança;
+6. rollback condicionado à `writtenVersion`;
+7. confirmação de que o item sintético regressa ao estado acordado no final do ensaio.
+
+Este ensaio exige autorização explícita específica porque altera o CMS. A autorização de implementação dos checkpoints 31 a 40 não autoriza esta escrita live.
+
+Enquanto o ensaio não for autorizado e concluído, o estado correcto é:
+
+`PREPARED_NOT_AUTHORIZED_LIVE_REHEARSAL_PENDING`
 
 ## Inventário live
 
@@ -79,15 +144,18 @@ Reexecutar `assessSquidexImportInventory` com esse inventário. A snapshot versi
 
 ## Autorização futura
 
-A escrita só pode ser iniciada numa conversa em que exista autorização explícita para executar a importação real. A autorização deve limitar-se à instância e plano identificados pelo `planHash` mostrado pelo preflight.
+Uma escrita só pode ser iniciada numa conversa em que exista autorização explícita para a operação concreta.
 
-O executor exige simultaneamente:
+O futuro apply da baseline deverá exigir simultaneamente:
 
 * `mode=apply`;
 * confirmação `APPLY-SQUIDEX-IMPORT`;
-* `expectedPlanHash` igual ao hash do plano corrente;
-* zero blockers de inventário;
-* blockers técnicos acima resolvidos.
+* `expectedPlanHash` igual ao plano corrente;
+* `expectedDestinationHash` igual ao destino corrente;
+* inventário live fresco sem blockers;
+* journal sem operações `in-flight` ou `ambiguous` não reconciliadas;
+* ensaio live sintético concluído com sucesso;
+* autorização explícita para a importação da baseline.
 
 ## Execução e retoma
 
@@ -99,16 +167,18 @@ O manifesto contém `operationId` determinísticos para as cinco fases:
 4. aplicar relações entre guias;
 5. aplicar `nextRef` das tarefas.
 
-Após cada mutação confirmada, persistir o `operationId` no journal. Em retoma, executar apenas operações pendentes do mesmo `planHash`, depois de reconciliar qualquer operação com resultado remoto ambíguo.
+Antes da chamada remota a operação passa para `in-flight`. Depois de resposta confirmada passa para `confirmed`. Erros de transporte com resultado remoto incerto passam a `ambiguous` e exigem reconciliação antes de qualquer repetição.
 
 ## Rollback
 
-Antes de substituir conteúdo existente, guardar o payload anterior. Para novos conteúdos, guardar o ID criado. O rollback é calculado em ordem inversa:
+Antes de substituir conteúdo existente, guardar o payload e versão anteriores. Para novos conteúdos, guardar o ID criado. Depois de cada mutação, guardar também a `writtenVersion`.
 
-* conteúdo criado: eliminar apenas o item criado por esta execução;
-* conteúdo actualizado: restaurar exactamente o snapshot anterior.
+O rollback é calculado em ordem inversa e só executa se a versão remota actual continuar igual à `writtenVersion`:
 
-Nunca executar rollback com `planHash` diferente do journal nem sobre um estado remoto que tenha divergido da versão produzida pela migração.
+* conteúdo criado: eliminar apenas o item criado pela execução, usando `If-Match`;
+* conteúdo actualizado: restaurar exactamente o snapshot anterior, usando `If-Match`.
+
+Qualquer divergência posterior bloqueia a reversão automática desse item.
 
 ## Verificação pós-importação
 

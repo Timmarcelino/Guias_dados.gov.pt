@@ -96,7 +96,7 @@ export function mapProvisionalSquidexPayload(payload: unknown): GuidesContent {
       };
     }),
     relatedGuideIds: guide.relatedGuideKeys,
-    ...(guide.resources ? { resources: guide.resources } : {}),
+    ...(guide.resources?.length ? { resources: guide.resources } : {}),
   }));
 
   const themes = [...source.themes]

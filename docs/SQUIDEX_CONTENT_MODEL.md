@@ -1,6 +1,6 @@
 # Modelo de conteúdo Squidex provisório
 
-Estado: proposta técnica para a v1.
+Estado: implementado e validado na instância provisória da v1.
 
 Objectivo: permitir uma instância Squidex provisória sem acoplar a UI ao formato do CMS e mantendo `GuidesContent` como contrato interno da aplicação.
 
@@ -43,6 +43,8 @@ Não guardar `guideIds` no tema. O mapper deriva `Theme.guideIds` a partir dos g
 | `relatedGuides` | References para `guide` | Não | Não | Constrói `relatedGuideIds` |
 | `resources` | Components `guide-resource` | Não | Não | Ligações auxiliares do guia |
 
+Quando o Squidex materializa `resources` opcional como uma colecção vazia, o mapper normaliza esse valor para ausência da propriedade opcional em `GuidesContent`. Na baseline actual não existe `resources: []` com significado próprio.
+
 ### `guide-task`
 
 | Campo | Tipo Squidex | Obrigatório | Localizável | Observação |
@@ -51,7 +53,7 @@ Não guardar `guideIds` no tema. O mapper deriva `Theme.guideIds` a partir dos g
 | `slug` | String | Sim | Não | Segmento estável de URL |
 | `title` | String | Sim | Sim | `Task.title` |
 | `intro` | String | Sim | Sim | `Task.intro` |
-| `roles` | String | Sim | Sim | `Task.roles` |
+| `roles` | String | Não | Sim | `Task.roles`; a baseline contém valores legitimamente vazios |
 | `steps` | Components `guide-step` | Sim | Não | Lista ordenada de passos |
 | `example` | String | Não | Sim | `Task.example` |
 | `tip` | String | Não | Sim | `Task.tip` |
@@ -82,12 +84,27 @@ Estes schemas são componentes embebidos, não conteúdos autónomos.
 * `Guide.themeId`: derivado de `guide.theme.key`.
 * `Guide.fichas`: derivado de `guide.tasks` mantendo a ordem das referências.
 * `Guide.relatedGuideIds`: derivado de `relatedGuides[].key`.
+* `Guide.resources`: preservado quando existem componentes; colecção vazia do CMS é normalizada para ausência da propriedade opcional.
 * `Task.steps`: derivado de `steps[].text`.
 * `Task.nextRef`: reconstruído a partir de `nextType`, `nextTask` e `nextGuide`.
 
+## Estado da implementação provisória
+
+A instância `guias-dados-gov-pt-piloto` contém a baseline v1 integral em Draft:
+
+* 7 temas;
+* 15 guias;
+* 95 tarefas;
+* 11 resources;
+* 409 steps;
+* 3 tabelas.
+
+O piloto técnico `tema-piloto / D99 / D99-T01 / D99-T02` permanece separado e também em Draft.
+
+A equivalência semântica da baseline importada foi validada depois da normalização das representações próprias do CMS, incluindo referências por ID, componentes `steps`, campos localizados `media` e `table`, e `resources` vazio.
+
 ## Fora de âmbito nesta fase
 
-* criação da instância Squidex;
 * integração com o Squidex oficial do dados.gov.pt;
 * conteúdo em inglês;
 * autenticação e permissões editoriais definitivas;
@@ -95,7 +112,8 @@ Estes schemas são componentes embebidos, não conteúdos autónomos.
 * canonicals finais do portal;
 * assets reais para capturas, vídeos ou outros media;
 * geração de pesquisa, sitemap ou PDFs dentro do CMS;
-* alterações funcionais ao conteúdo dos 7 temas, 15 guias e 95 fichas.
+* alterações funcionais ao conteúdo dos 7 temas, 15 guias e 95 fichas;
+* publicação dos conteúdos Draft da instância provisória.
 
 ## Riscos controlados
 
@@ -103,15 +121,8 @@ Estes schemas são componentes embebidos, não conteúdos autónomos.
 2. Campos localizáveis devem ser definidos como tal desde a criação no Squidex, pois a configuração de localização do campo não deve ser tratada como algo a alterar posteriormente.
 3. A relação tema guia não é duplicada. `guide.theme` e `guide.order` são a fonte de verdade e `Theme.guideIds` é derivado.
 4. `nextRef` mantém o discriminador explícito para evitar que detalhes de referências polimórficas do CMS cheguem ao domínio.
+5. Escritas protegidas usam concorrência optimista por versão e `If-Match` no formato aceite pelo Squidex.
 
-## Decisão para o piloto
+## Resultado do piloto e expansão
 
-Quando o Squidex provisório for criado, o primeiro ensaio deve conter apenas:
-
-* 1 tema;
-* 1 guia;
-* 2 tarefas;
-* relações `theme`, `tasks` e `nextRef`;
-* conteúdo `pt-PT`.
-
-O piloto só deve expandir para todo o conteúdo depois de o mapper produzir um `GuidesContent` válido e equivalente ao JSON local.
+O piloto de 1 tema, 1 guia e 2 tarefas foi executado antes da expansão. Depois de o mapper produzir `GuidesContent` válido e a leitura GraphQL real ser comprovada, a baseline integral foi importada em Draft e validada por equivalência semântica.

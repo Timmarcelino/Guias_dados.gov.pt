@@ -54,6 +54,10 @@ jobs:
         run: |
           npm run squidex:import:preflight
           cat .build/squidex-import-preflight.json
+      - name: Validar concorrência e prontidão operacional Squidex
+        run: |
+          npm run squidex:import:safety-check
+          cat .build/squidex-import-safety-check.json
       - name: Gerar artefactos derivados
         run: npm run content:derive
       - name: Typecheck

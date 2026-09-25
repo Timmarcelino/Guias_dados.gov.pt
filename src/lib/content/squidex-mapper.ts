@@ -43,9 +43,6 @@ export interface ProvisionalSquidexPayload {
   }>;
 }
 
-/**
- * Converte um payload Squidex no contrato interno dos Guides.
- */
 export function mapSquidexPayload(
   payload: unknown,
   mapper: SquidexPayloadMapper,
@@ -53,13 +50,6 @@ export function mapSquidexPayload(
   return guidesContentSchema.parse(mapper(payload));
 }
 
-/**
- * Mapeia o modelo Squidex provisório para GuidesContent.
- *
- * Este contrato representa a saída normalizada do transporte Squidex, não o
- * JSON bruto da API GraphQL. A futura camada de transporte poderá absorver
- * wrappers de localização e referências sem os propagar para o domínio.
- */
 export function mapProvisionalSquidexPayload(payload: unknown): GuidesContent {
   const source = payload as ProvisionalSquidexPayload;
   const tasksByKey = new Map(source.tasks.map((task) => [task.key, task]));
@@ -106,7 +96,7 @@ export function mapProvisionalSquidexPayload(payload: unknown): GuidesContent {
       };
     }),
     relatedGuideIds: guide.relatedGuideKeys,
-    resources: guide.resources,
+    ...(guide.resources ? { resources: guide.resources } : {}),
   }));
 
   const themes = [...source.themes]

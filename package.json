@@ -8,10 +8,11 @@
     "content:derive": "tsx scripts/v1/build-derived.ts",
     "content:source:check": "tsx scripts/v1/check-content-source.ts",
     "squidex:import:dry-run": "tsx scripts/v1/squidex-import-dry-run.ts",
+    "squidex:import:preflight": "tsx scripts/v1/squidex-import-preflight.ts",
     "typecheck": "tsc --noEmit",
     "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
     "routes:check": "tsx scripts/v1/check-route-contract.ts",
-    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/integration/squidex-source.test.ts",
+    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/integration/squidex-source.test.ts && tsx tests/integration/squidex-import-readiness.test.ts && tsx tests/integration/squidex-import-safety.test.ts",
     "test:squidex:live": "tsx tests/integration/squidex-live.test.ts",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts"
   },

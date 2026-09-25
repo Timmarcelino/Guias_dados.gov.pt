@@ -14,7 +14,7 @@ export const GUIDES_SQUIDEX_DRAFTS_ENV = "GUIDES_SQUIDEX_INCLUDE_DRAFTS";
 export type GuidesEnvironment = Readonly<Record<string, string | undefined>>;
 
 /**
- * Resolve a configuração da futura fonte de conteúdo exclusivamente no servidor.
+ * Resolve a fonte de conteúdo exclusivamente no servidor.
  *
  * Ausência de configuração mantém o comportamento seguro: Local JSON.
  * Squidex só é activado por GUIDES_CONTENT_SOURCE=squidex.
@@ -55,9 +55,8 @@ export function createConfiguredContentRepository(
 }
 
 /**
- * Fronteira async explícita para consumidores que, no futuro, optem pela fonte
- * configurada. A UI actual continua a usar loadContent() de repository.ts e,
- * por isso, permanece Local JSON independentemente destas variáveis.
+ * Fronteira async usada pelos consumidores server-side da UI.
+ * O default continua Local JSON; Squidex exige opt in explícito por ambiente.
  */
 export async function loadConfiguredContent(
   env: GuidesEnvironment = process.env,

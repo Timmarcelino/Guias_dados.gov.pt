@@ -1,5 +1,42 @@
-import { notFound } from "next/navigation"; import type { Metadata } from "next"; import { loadContent } from "@/lib/content/repository"; import { buildRoutes, findRoute } from "@/lib/content/routes"; import { RouteContent } from "@/components/guides/RouteContent"; import { canonicalUrl } from "@/lib/site";
-export const dynamicParams=false;
-export function generateStaticParams(){return buildRoutes(loadContent()).filter(r=>r.segments.length>0).map(r=>({segments:r.segments}))}
-export async function generateMetadata({params}:{params:Promise<{segments:string[]}>}):Promise<Metadata>{const {segments}=await params;const r=findRoute(loadContent(),segments);if(!r)return {};return {title:r.title,alternates:{canonical:canonicalUrl(r.path)}}}
-export default async function GuideRoutePage({params}:{params:Promise<{segments:string[]}>}){const {segments}=await params;const r=findRoute(loadContent(),segments);if(!r)notFound();return <RouteContent route={r}/>}
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { RouteContent } from "@/components/guides/RouteContent";
+import { loadConfiguredContent } from "@/lib/content/config";
+import { buildRoutes, findRoute } from "@/lib/content/routes";
+import { canonicalUrl } from "@/lib/site";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const content = await loadConfiguredContent();
+  return buildRoutes(content)
+    .filter((route) => route.segments.length > 0)
+    .map((route) => ({ segments: route.segments }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ segments: string[] }>;
+}): Promise<Metadata> {
+  const { segments } = await params;
+  const content = await loadConfiguredContent();
+  const route = findRoute(content, segments);
+  if (!route) return {};
+  return {
+    title: route.title,
+    alternates: { canonical: canonicalUrl(route.path) },
+  };
+}
+
+export default async function GuideRoutePage({
+  params,
+}: {
+  params: Promise<{ segments: string[] }>;
+}) {
+  const { segments } = await params;
+  const content = await loadConfiguredContent();
+  const route = findRoute(content, segments);
+  if (!route) notFound();
+  return <RouteContent route={route} />;
+}

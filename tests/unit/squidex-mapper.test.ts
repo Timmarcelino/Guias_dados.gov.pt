@@ -64,8 +64,18 @@ async function main(): Promise<void> {
   const requestHeaders = new Headers(calls[0].init?.headers);
   assert.equal(requestHeaders.get("Authorization"), "Bearer test-token");
   assert.equal(requestHeaders.get("X-Unpublished"), "true");
-  assert.match(String(calls[0].init?.body), /queryGuideThemeContentsWithTotal/);
-  assert.match(SQUIDEX_GUIDES_GRAPHQL_QUERY, /queryGuideTaskContentsWithTotal/);
+  assert.match(
+    String(calls[0].init?.body),
+    /queryGuideThemeContentsWithTotal\(top: 200\)/,
+  );
+  assert.match(
+    SQUIDEX_GUIDES_GRAPHQL_QUERY,
+    /queryGuideContentsWithTotal\(top: 200\)/,
+  );
+  assert.match(
+    SQUIDEX_GUIDES_GRAPHQL_QUERY,
+    /queryGuideTaskContentsWithTotal\(top: 200\)/,
+  );
 
   const content = mapProvisionalSquidexPayload(normalized);
 

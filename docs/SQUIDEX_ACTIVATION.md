@@ -7,9 +7,9 @@ A v1 suporta duas fontes de conteúdo na camada técnica:
 - Local JSON, fonte activa por defeito.
 - Squidex GraphQL, disponível apenas por opt in explícito.
 
-A UI dos Guias continua a usar `loadContent()` de `src/lib/content/repository.ts`. Por esse motivo, definir variáveis de ambiente Squidex não altera, por si só, o conteúdo apresentado pela aplicação.
+A UI server-side dos Guias usa `loadConfiguredContent()` de `src/lib/content/config.ts`. Sem configuração, a aplicação continua a carregar Local JSON.
 
-A fronteira async preparada para consumidores futuros é `loadConfiguredContent()` em `src/lib/content/config.ts`.
+Definir `GUIDES_CONTENT_SOURCE=squidex` activa explicitamente a cadeia Squidex para a geração/renderização dos Guias. Não existe fallback silencioso para Local JSON.
 
 ## Configuração server only
 
@@ -97,10 +97,14 @@ O CI valida sempre:
 
 O CI normal não necessita de acesso ao Squidex Cloud nem de segredos.
 
-## Activação futura na aplicação
+## Activação na aplicação
 
-A activação efectiva do Squidex na UI ainda não foi realizada.
+A fronteira configurada está ligada à UI no branch v1. O comportamento continua seguro por defeito:
 
-Antes dessa mudança deve existir uma decisão explícita para alterar os consumidores que actualmente chamam `loadContent()` para uma fronteira async configurada. Essa alteração deve ser tratada como mudança própria, com validação do comportamento de build/runtime e da estratégia de publicação do conteúdo CMS.
+- sem `GUIDES_CONTENT_SOURCE`, usa Local JSON;
+- com `GUIDES_CONTENT_SOURCE=local`, usa Local JSON;
+- com `GUIDES_CONTENT_SOURCE=squidex`, usa Squidex GraphQL e falha explicitamente se a fonte remota não puder ser carregada ou validada.
 
-Não activar Squidex em runtime apenas através de configuração de ambiente enquanto os consumidores continuarem síncronos e locais.
+As três colecções GraphQL são pedidas com `top: 200`, acima da baseline actual de 7 temas, 15 guias e 95 tarefas e dentro do máximo suportado pelo Squidex.
+
+A publicação dos conteúdos no CMS e a integração em `main` continuam decisões separadas deste mecanismo de selecção de fonte.

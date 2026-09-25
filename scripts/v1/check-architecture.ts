@@ -43,6 +43,21 @@ for (const relative of requiredSingleSourceConsumers) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`${relative} em falta`);
 }
 
+
+const configuredUiConsumers = [
+  "src/app/Guias-do-utilizador/page.tsx",
+  "src/app/Guias-do-utilizador/[...segments]/page.tsx",
+];
+for (const relative of configuredUiConsumers) {
+  const source = fs.readFileSync(path.join(root, relative), "utf8");
+  if (!source.includes("loadConfiguredContent")) {
+    errors.push(`${relative} não usa a fronteira configurada loadConfiguredContent()`);
+  }
+  if (source.includes("loadContent")) {
+    errors.push(`${relative} regressou ao acesso directo loadContent()`);
+  }
+}
+
 if (errors.length) {
   console.error(`Arquitectura v1 inválida: ${errors.length} problema(s).`);
   for (const error of errors) console.error(`- ${error}`);
@@ -50,5 +65,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Arquitectura v1 válida: componentes Ágora confinados aos wrappers, stylesheet global carregado e consumidores single-source presentes.",
+  "Arquitectura v1 válida: componentes Ágora confinados aos wrappers, stylesheet global carregado e consumidores single-source presentes e UI ligada à fronteira configurada.",
 );

@@ -6,7 +6,7 @@ import type {
 
 export const SQUIDEX_GUIDES_GRAPHQL_QUERY = /* GraphQL */ `
   query GetGuidesContent {
-    queryGuideThemeContentsWithTotal {
+    queryGuideThemeContentsWithTotal(top: 200) {
       items {
         id
         status
@@ -19,7 +19,7 @@ export const SQUIDEX_GUIDES_GRAPHQL_QUERY = /* GraphQL */ `
         }
       }
     }
-    queryGuideContentsWithTotal {
+    queryGuideContentsWithTotal(top: 200) {
       items {
         id
         status
@@ -47,7 +47,7 @@ export const SQUIDEX_GUIDES_GRAPHQL_QUERY = /* GraphQL */ `
         }
       }
     }
-    queryGuideTaskContentsWithTotal {
+    queryGuideTaskContentsWithTotal(top: 200) {
       items {
         id
         status

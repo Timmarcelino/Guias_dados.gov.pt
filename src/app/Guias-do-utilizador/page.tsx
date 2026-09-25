@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GuideCard } from "@/components/agora/GuideCard";
 import { GuideSearch } from "@/components/guides/GuideSearch";
-import { loadContent } from "@/lib/content/repository";
+import { loadConfiguredContent } from "@/lib/content/config";
 import { buildRoutes } from "@/lib/content/routes";
 import { buildSearchIndex } from "@/lib/content/search";
 import { canonicalUrl, withBasePath } from "@/lib/site";
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: canonicalUrl("/Guias-do-utilizador/") },
 };
 
-export default function GuidesHome() {
-  const content = loadContent();
+export default async function GuidesHome() {
+  const content = await loadConfiguredContent();
   const routes = buildRoutes(content);
   const search = buildSearchIndex(content);
 

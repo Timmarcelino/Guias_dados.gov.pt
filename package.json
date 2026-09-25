@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
     "routes:check": "tsx scripts/v1/check-route-contract.ts",
-    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/integration/squidex-source.test.ts && tsx tests/integration/squidex-import-readiness.test.ts && tsx tests/integration/squidex-import-safety.test.ts && tsx tests/integration/squidex-import-concurrency.test.ts",
+    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/unit/squidex-if-match.test.ts && tsx tests/integration/squidex-source.test.ts && tsx tests/integration/squidex-import-readiness.test.ts && tsx tests/integration/squidex-import-safety.test.ts && tsx tests/integration/squidex-import-concurrency.test.ts",
     "test:squidex:live": "tsx tests/integration/squidex-live.test.ts",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts"
   },

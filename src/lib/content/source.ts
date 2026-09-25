@@ -33,11 +33,11 @@ class AsyncLocalContentRepository implements AsyncContentRepository {
 }
 
 /**
- * Composition root opcional para a futura migração de fonte de conteúdo.
+ * Composition root da fonte de conteúdo dos Guias.
  *
  * O default permanece Local JSON. Squidex só é seleccionado quando o chamador
  * pede explicitamente source="squidex" e fornece a configuração do transporte.
- * Esta função não está ligada à UI actual.
+ * A UI server-side consome esta fronteira através de loadConfiguredContent().
  */
 export function createAsyncContentRepository(
   options: CreateContentRepositoryOptions = {},

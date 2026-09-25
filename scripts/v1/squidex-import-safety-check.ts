@@ -5,6 +5,7 @@ import { computeSquidexDestinationHash } from "../../src/lib/content/squidex-imp
 import { computeSquidexImportPlanHash } from "../../src/lib/content/squidex-import-executor";
 import { buildSquidexImportPlan } from "../../src/lib/content/squidex-import-plan";
 import { assessSquidexOperationalReadiness } from "../../src/lib/content/squidex-import-operational-readiness";
+import { assessSquidexImportInventory } from "../../src/lib/content/squidex-import-readiness";
 import { loadContent } from "../../src/lib/content/repository";
 
 const source = loadContent();
@@ -27,6 +28,13 @@ const liveFixture = JSON.parse(
     "utf8",
   ),
 );
+const inventoryFixture = JSON.parse(
+  fs.readFileSync(
+    path.join(process.cwd(), "tests", "fixtures", "squidex-inventory-pilot.json"),
+    "utf8",
+  ),
+);
+const inventoryAssessment = assessSquidexImportInventory(plan, inventoryFixture);
 
 const deterministicIds = [
   ...plan.phases.createThemes.map((item) => deterministicSquidexContentId("guide-theme", item.key)),
@@ -34,6 +42,15 @@ const deterministicIds = [
   ...plan.phases.createTasks.map((item) => deterministicSquidexContentId("guide-task", item.key)),
 ];
 const uniqueDeterministicIds = new Set(deterministicIds).size;
+const rehearsal = liveFixture.liveWriteRehearsal;
+const liveWriteRehearsal =
+  rehearsal?.freshPatchStatus === 200 &&
+  rehearsal?.postFreshVersion === rehearsal?.initialVersion + 1 &&
+  rehearsal?.stalePatchStatus === 412 &&
+  rehearsal?.staleRejected === true &&
+  rehearsal?.rollbackStatus === 200 &&
+  rehearsal?.finalEqual === true &&
+  rehearsal?.finalStatus === "Draft";
 
 const readiness = assessSquidexOperationalReadiness({
   deterministicCreateIds: uniqueDeterministicIds === 117,
@@ -45,7 +62,7 @@ const readiness = assessSquidexOperationalReadiness({
     liveFixture.readOnlyProbe === true &&
     typeof liveFixture.version === "string" &&
     liveFixture.updateMethod === "PATCH",
-  liveWriteRehearsal: false,
+  liveWriteRehearsal,
 });
 
 const report = {
@@ -62,7 +79,14 @@ const report = {
     updateMethod: liveFixture.updateMethod,
     readOnly: liveFixture.readOnlyProbe,
   },
-  liveWriteRehearsalPerformed: false,
+  liveWriteRehearsalPerformed: liveWriteRehearsal,
+  liveInventory: {
+    capturedItems: inventoryFixture.length,
+    knownPilotItems: inventoryAssessment.knownPilotItems.length,
+    existingTargets: inventoryAssessment.existingTargets.length,
+    unrelatedItems: inventoryAssessment.unrelatedItems.length,
+    blockers: inventoryAssessment.blockers,
+  },
   writesToSquidex: 0,
 };
 
@@ -73,4 +97,4 @@ fs.writeFileSync(
   "utf8",
 );
 console.log(JSON.stringify(report, null, 2));
-if (report.status === "BLOCKED") process.exitCode = 1;
+if (report.status === "BLOCKED" || inventoryAssessment.blockers.length > 0) process.exitCode = 1;

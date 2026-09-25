@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   deterministicSquidexContentId,
+  formatSquidexIfMatchVersion,
   type SquidexObservedContent,
 } from "../../src/lib/content/squidex-import-concurrency";
 import {
@@ -55,6 +56,7 @@ class MemoryGateway implements SquidexProtectedMutationGateway {
     payload: unknown,
     ifMatchVersion: string,
   ): Promise<SquidexObservedContent> {
+    assert.equal(formatSquidexIfMatchVersion(ifMatchVersion), `"${ifMatchVersion}"`);
     const current = this.items.get(id);
     if (!current || current.version !== ifMatchVersion) throw new Error("412 precondition failed");
     const result = {
@@ -170,8 +172,11 @@ async function main(): Promise<void> {
     fs.readFileSync(path.join(process.cwd(), "tests", "fixtures", "squidex-live-capability-d99.json"), "utf8"),
   );
   assert.equal(liveFixture.readOnlyProbe, true);
-  assert.equal(liveFixture.version, "0");
+  assert.equal(liveFixture.version, "10");
   assert.equal(liveFixture.updateMethod, "PATCH");
+  assert.equal(liveFixture.liveWriteRehearsal.stalePatchStatus, 412);
+  assert.equal(liveFixture.liveWriteRehearsal.finalEqual, true);
+  assert.equal(liveFixture.liveWriteRehearsal.finalStatus, "Draft");
 
   const readiness = assessSquidexOperationalReadiness({
     deterministicCreateIds: true,
@@ -180,14 +185,14 @@ async function main(): Promise<void> {
     guardedRollback: true,
     destinationBinding: true,
     liveVersionMetadata: true,
-    liveWriteRehearsal: false,
+    liveWriteRehearsal: true,
   });
-  assert.equal(readiness.status, "PREPARED_NOT_AUTHORIZED_LIVE_REHEARSAL_PENDING");
+  assert.equal(readiness.status, "TECHNICALLY_READY_NOT_AUTHORIZED");
   assert.equal(readiness.applyAuthorized, false);
-  assert.equal(readiness.blockers.length, 1);
+  assert.equal(readiness.blockers.length, 0);
 
   console.log(
-    `Squidex concurrency safety: OK; destinationHash=${destinationHash}; liveRehearsal=pending`,
+    `Squidex concurrency safety: OK; destinationHash=${destinationHash}; liveRehearsal=passed`,
   );
 }
 

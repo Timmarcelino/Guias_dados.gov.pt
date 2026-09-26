@@ -4,11 +4,9 @@
 
 O dados.gov.pt reúne funcionalidades, regras, permissões, conceitos, percursos e decisões que atravessam todo o ciclo de utilização de dados abertos: encontrar informação, consultar conjuntos de dados, publicar, gerir recursos, trabalhar com organizações, validar qualidade, utilizar APIs, acompanhar conteúdos, autenticar-se e pedir apoio.
 
-Grande parte desse conhecimento existe em fontes diferentes, com objectivos diferentes. Há requisitos, User Stories, tickets Jira, protótipos, decisões funcionais, evidência de testes, documentação técnica e comportamento efectivamente implementado.
+Este projecto transforma esse conhecimento disperso em **guias práticos, pesquisáveis e orientados a tarefas**, escritos a partir da perspectiva de quem precisa de perceber rapidamente o que fazer, onde ir e o que esperar.
 
-Este projecto transforma esse conhecimento disperso num produto muito mais simples de utilizar: **guias práticos, pesquisáveis e orientados a tarefas**, escritos a partir da perspectiva de quem precisa de perceber rapidamente o que fazer, onde ir e o que esperar.
-
-Em vez de obrigar o utilizador a conhecer a arquitectura interna do portal, os módulos técnicos ou o histórico de cada requisito, os guias começam por uma pergunta muito mais útil:
+Em vez de obrigar o utilizador a conhecer a arquitectura interna do portal, os módulos técnicos ou o histórico de cada requisito, os guias começam por uma pergunta mais útil:
 
 > **O que pretende fazer?**
 
@@ -18,9 +16,7 @@ A partir daí, o utilizador escolhe um tema, encontra o guia adequado e segue um
 
 Documentação completa nem sempre significa documentação fácil de usar.
 
-Um portal como o dados.gov.pt evolui através de requisitos, decisões, implementações e correcções sucessivas. Para uma equipa de produto ou desenvolvimento, essa granularidade é essencial. Para um utilizador final, porém, o problema é outro: ele não quer descobrir qual ticket implementou uma funcionalidade, qual versão alterou um fluxo ou em que documento está descrita uma permissão. Quer simplesmente concluir uma tarefa.
-
-Foi esse o problema que este trabalho procurou resolver.
+Um portal como o dados.gov.pt evolui através de requisitos, decisões, implementações e correcções sucessivas. Para uma equipa de produto ou desenvolvimento, essa granularidade é essencial. Para um utilizador final, porém, o problema é outro: quer concluir uma tarefa.
 
 A documentação existente foi analisada, consolidada e reorganizada numa arquitectura de informação centrada em necessidades reais de utilização. O resultado aproxima o conhecimento funcional do portal de quem efectivamente precisa dele, sem perder a rastreabilidade necessária para manutenção, revisão e evolução futura.
 
@@ -48,8 +44,10 @@ O valor deste trabalho não está apenas em ter mais documentação. Está em to
 | --- | ---: |
 | Guias práticos | **15** |
 | Fichas orientadas a tarefas | **95** |
+| Rotas publicadas no sitemap | **118** |
 | Temas funcionais | **7** |
-| Pesquisa transversal | **1 experiência única sobre os guias** |
+| PDFs publicados | **15** |
+| Pesquisa transversal | **95 entradas** |
 | Versões de referência preservadas | **4** |
 
 Estes números representam a versão actual do protótipo e evoluem com o trabalho funcional e editorial do projecto.
@@ -78,51 +76,19 @@ A experiência foi desenhada segundo um percurso simples:
 
 Na página inicial, o utilizador pode explorar os temas ou utilizar a pesquisa transversal. Dentro de cada guia encontra uma visão geral e as tarefas disponíveis. Cada tarefa é apresentada numa ficha própria.
 
-As fichas podem incluir:
-
-* objectivo e contexto;
-* público ou perfil aplicável;
-* passos principais;
-* exemplos de utilização;
-* dicas e alertas;
-* tabelas de apoio quando melhoram a compreensão;
-* indicação de imagens ou vídeos previstos;
-* ligação para a tarefa seguinte ou para outro guia relacionado.
-
-Esta estrutura foi pensada para permitir leitura rápida sem impedir uma navegação mais profunda quando o utilizador precisa de compreender todo o percurso.
+As fichas podem incluir objectivo e contexto, público aplicável, passos principais, exemplos, dicas e alertas, tabelas de apoio, indicação de media previsto e ligações para tarefas relacionadas.
 
 ## Como o conteúdo foi construído
 
 Os guias não resultam de uma simples transcrição de documentação existente.
 
-A construção exigiu trabalho de análise funcional e editorial para consolidar informação proveniente de diferentes fontes do projecto, incluindo quando aplicável:
-
-* requisitos e especificações funcionais;
-* User Stories e critérios de aceitação;
-* tickets Jira e decisões registadas;
-* protótipos e referências de UI;
-* comportamento implementado nos ambientes disponíveis;
-* resultados de testes funcionais;
-* documentação técnica e repositórios públicos do dados.gov.pt;
-* decisões de produto tomadas ao longo da evolução do portal.
+A construção exigiu trabalho de análise funcional e editorial para consolidar informação proveniente de diferentes fontes do projecto, incluindo quando aplicável requisitos e especificações funcionais, User Stories e critérios de aceitação, tickets Jira e decisões registadas, protótipos e referências de UI, comportamento implementado, resultados de testes, documentação técnica e repositórios públicos.
 
 Quando uma fonte descreve um comportamento futuro, esse comportamento não é automaticamente apresentado como funcionalidade actual. Quando existe divergência entre documentação e implementação, a diferença deve ser analisada antes de ser convertida em instrução para o utilizador.
 
-Isto permite simplificar a linguagem sem perder rigor funcional.
-
-## Da complexidade interna para uma experiência simples
-
-Por detrás de uma instrução aparentemente simples como “publique um conjunto de dados” podem existir regras sobre permissões, estados, recursos, licenças, metadados obrigatórios, validações e comportamento pós-publicação.
-
-O trabalho dos guias consiste em esconder complexidade desnecessária sem esconder informação importante.
-
-O utilizador vê um percurso claro. A equipa mantém, por detrás desse percurso, a preocupação com requisito, evidência, excepções, riscos, rastreabilidade e evolução do produto.
-
-Esta é a principal proposta de valor do projecto: **converter conhecimento funcional complexo em orientação que uma pessoa consegue realmente usar**.
-
 ## Rastreabilidade e confiança
 
-O protótipo foi construído com uma separação consciente entre diferentes níveis de informação:
+O protótipo mantém uma separação consciente entre diferentes níveis de informação:
 
 * **Requisito**, quando existe uma regra funcional aprovada;
 * **Implementação**, quando há evidência de comportamento num ambiente;
@@ -134,102 +100,117 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A release **v0.5.0** está integrada em `main` através do PR #5 e representa a baseline estável actual de demonstração e revisão. Inclui rotas estáticas, pesquisa indexada, PDFs, validação automática de consistência e documentação viva do estado do projecto. A publicação oficial no dados.gov.pt continua dependente da integração no produto.
+A release candidate **v1.0.0-rc.1** representa a baseline técnica actual preparada para integração em `main` neste repositório.
 
-Nesta fase, o projecto inclui:
+A v1 preserva os 15 guias, 95 fichas, sete temas funcionais e 118 rotas históricas, mas substitui a arquitectura de manutenção baseada em HTML materializado por uma aplicação Next.js com domínio estruturado e fonte configurável.
 
-* 15 guias e 95 fichas;
-* sete temas funcionais;
-* pesquisa transversal;
-* navegação por tema, guia e tarefa;
-* relações entre guias;
-* header e footer aproximados à implementação pública do dados.gov.pt;
-* estrutura modular em HTML, CSS e JavaScript;
-* versões anteriores preservadas para comparação;
-* conteúdo editorial revisto e rastreado para os 15 guias, com D01, D03 e D14 validados no âmbito actual e restantes áreas classificadas segundo a evidência disponível.
+A publicação oficial no dados.gov.pt não faz parte deste repositório. O objectivo é disponibilizar à equipa responsável código, documentação e mecanismos de migração preparados para futura integração.
 
-O conteúdo continua destinado a revisão funcional, editorial e UX/UI antes de qualquer publicação como manual oficial.
+A autoria pessoal permanece nesta versão de demonstração e deverá ser substituída pelo footer institucional quando a solução for integrada oficialmente no portal.
 
-## O que este projecto não pretende ser
+A validação de acessibilidade também fica fora do âmbito desta release e deverá ser realizada no contexto real do portal integrado.
 
-Este repositório não substitui as fontes de verdade do projecto.
+## Arquitectura técnica v1
 
-Os guias não substituem requisitos aprovados, User Stories, decisões registadas, Figma, Jira, documentação técnica ou evidência de testes. Também não devem ser utilizados para inferir regras que não estejam suportadas pelas fontes funcionais aplicáveis.
+O contrato interno é `GuidesContent`, validado por Zod.
 
-O protótipo funciona como uma **camada editorial orientada ao utilizador**, construída a partir dessas fontes.
+```text
+UI server-side
+    ↓
+loadConfiguredContent()
+    ↓
+Local JSON (default)  ou  Squidex GraphQL (opt in)
+    ↓
+GuidesContent
+    ↓
+rotas e componentes Next.js
+```
 
-A sua função é traduzir conhecimento técnico e funcional em orientação clara e utilizável.
+A fonte por defeito é `content/guides.json`. Squidex só é activado com `GUIDES_CONTENT_SOURCE=squidex` e não existe fallback silencioso se a fonte remota falhar.
 
-## Estrutura técnica
+A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 3 e `@ama-pt/agora-design-system` 3.7 através de wrappers locais.
+
+O static export preserva as 118 rotas existentes. Pesquisa, sitemap e PDFs da release actual continuam derivados do JSON local, garantindo reprodutibilidade da baseline versionada.
+
+A instância Squidex provisória contém a baseline integral em Draft, com 7 temas, 15 guias e 95 tarefas. O piloto técnico D99 permanece separado. Nenhum conteúdo foi publicado.
+
+### Fonte única e artefactos derivados
+
+`content/guides.json` é a fonte editorial versionada por defeito. A partir dela são validados ou gerados:
+
+* contrato das 118 rotas;
+* índice de pesquisa;
+* sitemap;
+* 15 PDFs;
+* static export da aplicação;
+* fixtures e gates de equivalência do Squidex.
+
+A futura activação do Squidex oficial deve também decidir se pesquisa, sitemap e PDFs passam a ser derivados da fonte remota.
+
+### Compatibilidade histórica
+
+As pastas HTML, partials e scripts anteriores permanecem no repositório como materialização histórica e compatibilidade durante a transição. Não devem ser tratadas como nova fonte funcional da v1.
+
+A publicação actual em GitHub Pages é uma etapa separada do merge. O build v1 produz a pasta `out/`; a estratégia de publicação dessa saída será fechada antes da release `v1.0.0`.
+
+## Estrutura técnica principal
 
 ```text
 .
-├── index.html
-├── 404.html
-├── Guias-do-utilizador/       # 118 rotas publicadas
 ├── content/
-│   └── guides.json            # fonte editorial versionada
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── pdf/                   # 15 PDFs publicados
-├── scripts/
-│   ├── generate_pdf_guides.py
-│   └── validate_guides_consistency.py
+│   ├── guides.json
+│   └── site.json
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── lib/content/
+├── scripts/v1/
+├── tests/
 ├── docs/
-│   ├── PROJECT_STATUS.md
-│   ├── CONTENT_VALIDATION.md
-│   └── PRD_TEST_PLAN.md
+├── assets/
 ├── .github/workflows/
-│   ├── guides-pdf.yml
-│   └── guides-consistency.yml
-├── versions/
-│   ├── v0.1/
-│   ├── v0.2/
-│   ├── v0.3/
-│   └── v0.4/
-├── README.md
-├── CHANGELOG.md
-└── LICENSE
+├── next.config.ts
+├── package.json
+└── README.md
 ```
 
-Responsabilidades principais:
+## Fluxo de manutenção v1
 
-* `index.html`: estrutura semântica da página;
-* `assets/css/base.css`: reset, tokens partilhados e utilitários de acessibilidade;
-* `assets/css/portal.css`: estrutura e responsividade do header e footer;
-* `assets/css/guides.css`: apresentação e responsividade da área dos guias;
-* `content/guides.json`: fonte editorial versionada usada pela colecção PDF;
-* `assets/js/data.js`: conteúdo estruturado dos guias consolidados para a experiência dinâmica;
-* `assets/js/data-d01.js`: módulo editorial do D01;
-* `assets/js/search-index.json`: índice das 95 fichas para pesquisa estática;
-* `assets/js/app.js`: apresentação, pesquisa, navegação e interacções da experiência dinâmica;
-* `assets/js/header.js`: comportamento do header do protótipo;
-* `scripts/generate_pdf_guides.py`: geração controlada dos PDFs;
-* `scripts/validate_guides_consistency.py`: guardrail entre fonte, rotas, pesquisa, sitemap e HTML;
-* `docs/PROJECT_STATUS.md`: estado operacional vivo do projecto;
-* `docs/CONTENT_VALIDATION.md`: matriz de validação funcional;
-* `docs/PRD_TEST_PLAN.md`: plano mínimo de validação autenticada em PRD.
+1. Alterar conteúdo funcional/editorial em `content/guides.json`.
+2. Alterar autoria/configuração transversal em `content/site.json` quando aplicável.
+3. Executar validação de conteúdo, rotas e typecheck.
+4. Gerar artefactos derivados e static export.
+5. Integrar alterações através de Pull Request com CI verde.
 
-Os módulos JavaScript são carregados com `type="module"`. Por esse motivo, o protótipo deve ser servido através de HTTP local e não aberto directamente por `file://`.
+Os workflows não devem efectuar commits automáticos em `main`. Divergências em artefactos versionados devem falhar a validação e ser corrigidas por commit/PR controlado.
 
 ## Executar localmente
 
-Clone o repositório:
+Clone o repositório e instale as dependências:
 
 ```bash
 git clone https://github.com/Timmarcelino/Guias_dados.gov.pt.git
 cd Guias_dados.gov.pt
+npm ci
 ```
 
-Abra a pasta no Visual Studio Code e inicie um servidor local, por exemplo através da extensão Live Server, a partir de `index.html`.
-
-Para actualizar a versão local:
+Para desenvolvimento:
 
 ```bash
-git switch main
-git pull origin main
+npm run dev
 ```
+
+Para validar e gerar o static export:
+
+```bash
+npm run content:validate
+npm run routes:check
+npm run test:squidex
+npm run typecheck
+npm run build
+```
+
+O build estático fica em `out/`. Para simular o caminho usado no GitHub Pages, definir `NEXT_PUBLIC_BASE_PATH=/Guias_dados.gov.pt` no build.
 
 ## Versionamento do protótipo
 
@@ -241,7 +222,8 @@ O histórico visual e funcional é preservado na pasta `versions`.
 | `v0.2` | Aproximação visual ao portal e melhoria estrutural. |
 | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
 | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
-| `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes preparados para `main`. |
+| `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes. |
+| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 3.7, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
 
 O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
 
@@ -254,36 +236,8 @@ O histórico Git continua a ser a fonte técnica principal de versionamento. Nem
 
 A `main` representa a versão considerada estável para demonstração ou revisão. O trabalho é preparado em branches próprias e integrado através de Pull Request.
 
-## Fontes técnicas da v0.4
+## O que este projecto não pretende ser
 
-A aproximação do header e footer utiliza como referência a implementação pública do frontend `amagovpt/dadosgov-fe`, incluindo componentes de header e footer, configuração de navegação, estilos globais e testes E2E disponíveis no repositório.
+Este repositório não substitui as fontes de verdade do projecto.
 
-A réplica presente neste projecto é deliberadamente estática. Não implementa autenticação real, gestão de sessão, CMS ou conteúdo dinâmico do Ecossistema.
-
-O D01 representa o comportamento actualmente consolidado pelas evidências funcionais e de implementação disponíveis. Não antecipa como comportamento actual a futura consolidação de contas nem a eventual descontinuação do login por email e palavra-passe.
-
-O D14 apresenta sete fichas suportadas pelo comportamento e evidência actualmente consolidados para Ajuda e contactos, incluindo feedback e reporte de problema técnico, sem antecipar funcionalidades futuras ainda não estabilizadas.
-
-## Critério para evolução dos guias
-
-Antes de publicar conteúdo como guia oficial devem ser confirmados, quando aplicável:
-
-* requisitos e regras funcionais;
-* permissões e perfis;
-* estados e transições;
-* validações e mensagens relevantes;
-* rotas e terminologia da interface;
-* acessibilidade no contexto real;
-* comportamento nos ambientes aplicáveis;
-* alinhamento com as fontes funcionais aprovadas;
-* rastreabilidade das decisões que afectam o percurso do utilizador.
-
-## Resultado
-
-Este repositório começou como um protótipo de documentação.
-
-Hoje representa algo mais concreto: uma forma de transformar o conhecimento funcional do dados.gov.pt numa experiência de orientação que pode ser lida, pesquisada, revista, testada e evoluída.
-
-A documentação deixa de ser apenas um conjunto de fontes dispersas e passa a aproximar-se de um produto para o utilizador.
-
-**Esse é o objectivo dos Guias do Utilizador do dados.gov.pt: tornar simples encontrar não apenas os dados, mas também a forma correcta de utilizar o portal.**
+Os guias não substituem requisitos aprovados, User Stories, decisões registadas, Figma, Jira, documentação técnica ou evidência de testes. O protótipo funciona como uma **camada editorial orientada ao utilizador**, construída a partir dessas fontes.

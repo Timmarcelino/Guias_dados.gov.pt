@@ -1,0 +1,10 @@
+import { loadContent } from "../../src/lib/content/repository";
+import { buildRoutes } from "../../src/lib/content/routes";
+const c=loadContent(); const routes=buildRoutes(c);
+const tasks=c.guides.reduce((n,g)=>n+g.fichas.length,0);
+if(c.guides.length!==15) throw new Error(`Esperados 15 guias; obtidos ${c.guides.length}`);
+if(tasks!==95) throw new Error(`Esperadas 95 fichas; obtidas ${tasks}`);
+if(c.themes.length!==7) throw new Error(`Esperados 7 temas; obtidos ${c.themes.length}`);
+if(routes.length!==118) throw new Error(`Esperadas 118 rotas; obtidas ${routes.length}`);
+if(new Set(routes.map(r=>r.path)).size!==routes.length) throw new Error("Rotas duplicadas");
+console.log(`Conteúdo v1 válido: ${c.guides.length} guias; ${tasks} fichas; ${c.themes.length} temas; ${routes.length} rotas.`);

@@ -39,7 +39,6 @@ jobs:
       - name: Checkout da branch actual
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Preparar dependências

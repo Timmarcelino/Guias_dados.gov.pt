@@ -5,15 +5,14 @@ conteúdo e .build/pdf é sempre descartável. A pasta assets/pdf só é
 actualizada pelo workflow depois de a colecção passar pelas validações.
 
 Notas para ampliações futuras:
-* manter a taxonomia THEMES alinhada com a experiência web;
-* usar overrides de slug apenas para compatibilidade de URLs/nomes históricos;
+* temas, slugs e relações são lidos directamente da fonte single-source;
 * BASE_WEB aponta actualmente para GitHub Pages e deverá ser parametrizado
   quando o destino oficial dos Guias estiver definido;
 * ao acrescentar elementos visuais, preservar texto seleccionável, ordem de
   leitura e contraste, e voltar a validar acessibilidade documental do PDF.
 """
 
-import json, os, re, unicodedata, html, math, shutil, textwrap
+import json, os, re, unicodedata, html, math, textwrap
 from pathlib import Path
 import qrcode
 from weasyprint import HTML
@@ -21,26 +20,31 @@ from pypdf import PdfReader
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = REPO / 'content' / 'guides.json'
+SITE_CONFIG = REPO / 'content' / 'site.json'
 OUT = REPO / '.build' / 'pdf'
 OUT.mkdir(parents=True, exist_ok=True)
-# D06 pode usar o PDF aprovado quando a implementação ainda não está integrada no Frontoffice.
-APPROVED_D06 = REPO / 'assets' / 'pdf' / 'explorador-de-dados.pdf'
 # Destino actual de revisão; não assumir como URL definitiva do produto.
-BASE_WEB = 'https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/'
+BASE_WEB = ''  # preenchido a partir de content/site.json
 
-GUIDES = json.loads(SRC.read_text(encoding='utf-8'))
-BY_CODE = {g['code']: g for g in GUIDES}
+SITE = json.loads(SITE_CONFIG.read_text(encoding='utf-8'))
+AUTHOR = SITE['author']
+PROTOTYPE = SITE['prototype']
+AUTHOR_NAME = AUTHOR['name']
+AUTHOR_ROLE = AUTHOR['role']
+AUTHOR_LINK = AUTHOR['linkedin']
+AUTHOR_LOGO_ALT = AUTHOR['logo_alt']
+AUTHOR_LOGO_URI = (REPO / AUTHOR['logo_file']).resolve().as_uri()
+PROTOTYPE_NAME = PROTOTYPE['name']
+PROTOTYPE_VERSION = PROTOTYPE['version']
+PROTOTYPE_STATUS = PROTOTYPE['status']
+DEPLOYMENT = SITE['site']
+BASE_WEB = f"{DEPLOYMENT['reviewOrigin']}{DEPLOYMENT['basePath']}{DEPLOYMENT['guidesPath']}/"
 
-THEMES = [
-    ('Encontrar, consultar e explorar dados', ['D03','D06']),
-    ('Publicar e gerir dados', ['D04','D05']),
-    ('Qualidade e modelos de dados', ['D07','CM']),
-    ('Organizações', ['D02']),
-    ('APIs, reutilizações e automatização', ['D08','D09','D10']),
-    ('Acesso, perfil e participação', ['D01','D13','D11','D12']),
-    ('Ajuda e contactos', ['D14']),
-]
-THEME_OF = {code: theme for theme,codes in THEMES for code in codes}
+CONTENT = json.loads(SRC.read_text(encoding='utf-8'))
+GUIDES = CONTENT['guides']
+THEMES = CONTENT['themes']
+BY_CODE = {g['id']: g for g in GUIDES}
+THEME_BY_ID = {t['id']: t for t in THEMES}
 
 
 def slug(s:str)->str:
@@ -50,15 +54,14 @@ def slug(s:str)->str:
     return s
 
 # Preserva ligações históricas mesmo quando o título editorial muda.
-GUIDE_SLUG_OVERRIDES = {'D11': 'Seguir-conteudos-e-notificacoes'}
 PDF_SLUG_OVERRIDES = {'D11': 'seguir-conteudos-e-notificacoes'}
 
 def esc(s): return html.escape(str(s or ''), quote=True)
 
-def theme_url(theme): return BASE_WEB + slug(theme) + '/'
-def guide_slug(g): return GUIDE_SLUG_OVERRIDES.get(g['code'], slug(g['title']))
+def theme_url(theme): return BASE_WEB + theme['slug'] + '/'
+def guide_slug(g): return g['slug']
 def pdf_slug(g): return PDF_SLUG_OVERRIDES.get(g['code'], slug(g['title']).lower())
-def guide_url(g): return theme_url(THEME_OF[g['code']]) + guide_slug(g) + '/'
+def guide_url(g): return theme_url(THEME_BY_ID[g['themeId']]) + guide_slug(g) + '/'
 
 def icon(name, size=28):
     paths = {
@@ -150,11 +153,12 @@ a{{color:#005ce6;text-decoration:none}}h1,h2,h3,p{{margin-top:0}}h2{{font-size:1
 .callouts{{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin:2mm 0 .5mm}}.callout{{display:grid;grid-template-columns:5.5mm 1fr;gap:1.5mm;border-radius:3mm;padding:1.8mm 2mm;break-inside:avoid}}.callout svg{{color:#005ce6}}.callout strong{{font-size:7.8pt;color:#103454}}.callout p{{font-size:6.8pt;line-height:1.3;margin:.4mm 0 0;color:#435d73}}.callout.example{{background:#edf4fd}}.callout.tip{{background:#eaf5ef}}.callout.tip svg{{color:#237352}}
 .resources{{margin:3mm 0;padding:3mm 4mm;background:#f7faff;border:1px solid #dce5eb;border-radius:3mm;break-inside:avoid}}.resources h3{{margin:0 0 2mm;font-size:10pt}}.resources ul{{margin:0;padding-left:5mm}}.resources li{{font-size:7.8pt;margin:1mm 0}}
 .closing{{break-before:page;padding-top:8mm}}.closing-grid{{display:grid;grid-template-columns:1fr 36mm;gap:7mm;align-items:start}}.closing-qr{{background:#103454;color:#fff;border-radius:5mm;padding:4mm;text-align:center}}.closing-qr img{{width:27mm;height:27mm;background:#fff;padding:2mm;border-radius:3mm}}.closing-qr strong{{display:block;font-size:8pt;margin-top:2mm}}.guide-info{{margin-top:7mm;background:#f7faff;border:1px solid #dce5eb;border-radius:4mm;padding:3.5mm 4mm}}.guide-info h3{{margin:0 0 2mm;font-size:9.5pt;color:#103454}}.guide-info dl{{display:grid;grid-template-columns:32mm 1fr;margin:0;font-size:7.7pt}}.guide-info dt,.guide-info dd{{padding:1.7mm 0;border-top:1px solid #e6edf2;margin:0}}.guide-info dt{{font-weight:700;color:#526779}}.guide-info dd{{color:#25354a}}.internal-note{{margin-top:4mm;background:#fff8e8;border-left:3px solid #d49b2a;padding:2.5mm 3.5mm;font-size:7.2pt;color:#645124}}
+/* PDF_AUTHOR_BRANDING_START */.pdf-author-credit{{margin-top:6mm;padding-top:4mm;border-top:1px solid #dce5eb;display:flex;gap:4mm;align-items:center;break-inside:avoid}}.pdf-author-credit img{{width:22mm;height:auto;flex:0 0 22mm;border-radius:1mm}}.pdf-author-credit p{{margin:0;font-size:7.5pt;line-height:1.42;color:#526779}}.pdf-author-credit p span{{display:inline-block;margin-top:1mm;color:#708394}}.pdf-author-credit a{{font-weight:700;color:#103454;text-decoration:none}}/* PDF_AUTHOR_BRANDING_END */
 @media print{{.task-head,h2,h3,.result-box,.visual-title{{break-after:avoid}}}}
 '''
 
 def build_html(g, qr_name):
-    title=g['title']; url=guide_url(g); theme=THEME_OF[g['code']];
+    title=g['title']; url=guide_url(g); theme=THEME_BY_ID[g['themeId']]['title'];
     css=build_css(title)
     hero_steps=''.join(f'<div class="hero-step"><b>{i}</b><span>{esc(f["title"])}</span></div>' for i,f in list(enumerate(g['fichas'],1))[:4])
     cover=f'''<section class="cover"><div class="wordmark">dados.gov.pt</div><div class="cover-kicker">Guias do utilizador · {esc(theme)}</div><h1>{esc(title)}</h1><p class="cover-sub">{esc(g['intro'])}</p><div class="hero"><div class="hero-icon">{icon(GUIDE_ICON.get(g['code'],'file'),90)}</div><div class="hero-steps">{hero_steps}</div></div><div class="cover-meta"><span><strong>Formato</strong> B5 digital-first</span><span><strong>Actualização</strong> 22/09/2026</span></div></section>'''
@@ -169,7 +173,7 @@ def build_html(g, qr_name):
     resources=''
     if g.get('resources'):
         resources='<section class="resources"><h3>Ligações úteis</h3><ul>'+''.join(f'<li><a href="{esc(r["url"])}">{esc(r["title"])}</a><br><span style="font-size:6.5pt;color:#708394;word-break:break-all">{esc(r["url"])}</span></li>' for r in g['resources'])+'</ul></section>'
-    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>22/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div></section>'''
+    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>22/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div><div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="{esc(AUTHOR_LOGO_ALT)}"><p>{esc(AUTHOR_ROLE)}: <a href="{AUTHOR_LINK}">{esc(AUTHOR_NAME)}</a><br><span>© dados.gov.pt · Protótipo {esc(PROTOTYPE_NAME)} {esc(PROTOTYPE_VERSION)} {esc(PROTOTYPE_STATUS)}</span></p></div></section>'''
     return f'''<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>{esc(title)} | Guias do utilizador | dados.gov.pt</title><meta name="author" content="dados.gov.pt"><meta name="description" content="{esc(g['intro'])}"><meta name="keywords" content="dados abertos, dados.gov.pt, guia do utilizador, {esc(theme)}"><style>{css}</style></head><body>{cover}{overview}{''.join(tasks)}{closing}</body></html>'''
 
 def norm(s):
@@ -192,15 +196,10 @@ for g in GUIDES:
     code=g['code']; folder=OUT/code
     folder.mkdir(parents=True, exist_ok=True)
     out_pdf=folder/f'dados-gov-pt-guia-{pdf_slug(g)}-v2.pdf'
-    if code=='D06' and APPROVED_D06.exists():
-        shutil.copy2(APPROVED_D06,out_pdf)
-        # also create qr for consistency
-        qr=qrcode.make(guide_url(g)); qr.save(folder/'qr.png')
-    else:
-        qr=qrcode.make(guide_url(g)); qr_path=folder/'qr.png'; qr.save(qr_path)
-        html_text=build_html(g,'qr.png')
-        html_path=folder/'index.html'; html_path.write_text(html_text,encoding='utf-8')
-        HTML(filename=str(html_path), base_url=str(folder)).write_pdf(str(out_pdf), pdf_tags=True, srgb=True)
+    qr=qrcode.make(guide_url(g)); qr_path=folder/'qr.png'; qr.save(qr_path)
+    html_text=build_html(g,'qr.png')
+    html_path=folder/'index.html'; html_path.write_text(html_text,encoding='utf-8')
+    HTML(filename=str(html_path), base_url=str(folder)).write_pdf(str(out_pdf), pdf_tags=True, srgb=True)
     reader=PdfReader(str(out_pdf))
     text='\n'.join((p.extract_text() or '') for p in reader.pages)
     ntext=norm(text)

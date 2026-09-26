@@ -14,10 +14,10 @@ export interface AsyncContentRepository {
 }
 
 /**
- * Repositório remoto preparado para Squidex, ainda não ligado à aplicação.
+ * Repositório remoto para Squidex, consumido pela fronteira configurável da UI.
  *
- * O transporte e o mapper são injectados para não assumir endpoint GraphQL,
- * nomes de schemas ou estrutura de campos antes de o modelo CMS ser definido.
+ * O transporte e o mapper mantêm o formato do CMS fora do domínio e permitem
+ * validar referências antes de devolver GuidesContent aos consumidores.
  */
 export class SquidexRepository implements AsyncContentRepository {
   constructor(

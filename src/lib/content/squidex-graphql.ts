@@ -87,8 +87,8 @@ export interface SquidexGraphQLTransportOptions {
 /**
  * Transporte mínimo para o endpoint GraphQL de uma App Squidex.
  *
- * Não é ligado automaticamente à aplicação. A escolha da fonte continua a ser
- * responsabilidade do composition root futuro.
+ * Só é instanciado quando o composition root selecciona explicitamente Squidex.
+ * A selecção da fonte permanece server-side e não existe fallback silencioso.
  */
 export class SquidexGraphQLTransport implements SquidexTransport {
   private readonly fetchImpl: typeof fetch;

@@ -14,9 +14,9 @@ on:
       - ".github/workflows/guides-pdf.yml"
 
 permissions:
-  contents: write
+  contents: read
 
-# Mantém uma única publicação PDF por branch. A ref faz parte do grupo para
+# Valida a colecção PDF por branch sem efectuar commits automáticos. A ref faz parte do grupo para
 # permitir que main e branches de evolução sejam validadas de forma independente.
 concurrency:
   group: guides-pdf-${{ github.ref }}
@@ -89,24 +89,12 @@ jobs:
           print("QA PDF: 15/15 ficheiros válidos, com autoria e sem excepção D06.")
           PY
 
-      - name: Publicar PDFs actualizados
-        env:
-          TARGET_BRANCH: ${{ github.ref_name }}
+      - name: Validar que os PDFs versionados estão sincronizados
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/pdf
-          if git diff --cached --quiet; then
-            echo "Sem alterações nos PDFs."
+          if git diff --quiet -- assets/pdf; then
+            echo "PDFs versionados sincronizados."
           else
-            git commit -m "chore(pdf): sincroniza 15 PDFs com fonte editorial e autoria"
-
-            # .build é descartável e não pertence ao commit público dos PDFs.
-            git restore --worktree -- .build || true
-
-            # A branch pode avançar enquanto os PDFs são gerados. Rebasear antes
-            # do push evita sobrescrever alterações concorrentes.
-            git fetch origin "$TARGET_BRANCH"
-            git rebase "origin/$TARGET_BRANCH"
-            git push origin "HEAD:$TARGET_BRANCH"
+            echo "::error::Os PDFs versionados divergem da fonte editorial. Regere-os e inclua a alteração num commit/PR controlado."
+            git diff --stat -- assets/pdf
+            exit 1
           fi

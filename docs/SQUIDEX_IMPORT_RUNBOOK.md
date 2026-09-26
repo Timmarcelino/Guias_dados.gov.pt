@@ -1,40 +1,42 @@
 # Runbook de importação Squidex provisório
 
-Estado: `PREPARED_NOT_AUTHORIZED_LIVE_REHEARSAL_PENDING`. Nenhuma importação integral foi autorizada ou executada.
+Estado actual: `IMPORTED_DRAFT_VALIDATED`.
+
+A baseline integral foi importada para a instância Squidex provisória, permanece em Draft e foi validada por equivalência semântica com `content/guides.json`.
 
 ## Objectivo
 
-Migrar de forma controlada os 7 temas, 15 guias e 95 tarefas da fonte local para a instância Squidex provisória, preservando `GuidesContent` como contrato interno e mantendo a UI na fonte local até decisão posterior.
+Documentar o modelo de segurança usado na migração dos Guias e fornecer à equipa dados.gov.pt uma referência para futura repetição, reconciliação ou migração para outra instância Squidex.
 
-## Princípios de segurança
+Este runbook não autoriza novas escritas. Qualquer nova importação ou reimportação exige decisão operacional própria e inventário live fresco.
 
-1. O modo normal é sempre `dry-run`.
-2. Não existe comando npm de `apply` exposto nesta fase.
-3. Uma futura escrita exige autorização explícita, frase de confirmação, `planHash` exacto e `destinationHash` exacto.
-4. O inventário live deve ser recolhido imediatamente antes de qualquer escrita.
-5. Keys duplicadas, colisões de schema ou divergências de conteúdo bloqueiam a execução.
-6. Não existe fallback silencioso entre Squidex e JSON local.
-7. Cada operação deve ser registada no journal de retoma.
-8. Cada mutação deve ser registada no journal de rollback.
-9. O conteúdo importado só é aceite após leitura de volta e equivalência exacta com a fonte.
-10. Activar Squidex na UI é uma decisão separada da importação.
-
-## Baseline esperada
+## Baseline importada
 
 * 7 `guide-theme`;
 * 15 `guide`;
 * 95 `guide-task`;
-* 117 conteúdos autónomos;
-* 225 operações do plano actual;
+* 117 conteúdos funcionais;
+* 225 operações no plano determinístico;
 * 409 componentes `guide-step`;
 * 11 componentes `guide-resource`;
 * 3 tabelas.
 
-O piloto sintético `tema-piloto`, `D99`, `D99-T01` e `D99-T02` não pertence à baseline e deve permanecer distinguível do conteúdo real.
+O piloto sintético `tema-piloto`, `D99`, `D99-T01` e `D99-T02` permanece separado da baseline e também em Draft.
 
-## Gates antes de qualquer autorização de escrita
+## Princípios de segurança preservados
 
-Executar:
+1. O modo normal dos scripts versionados continua a ser `dry-run`.
+2. Não existe comando npm genérico de `apply` exposto.
+3. O plano usa IDs determinísticos derivados de schema e key.
+4. O destino é vinculado por `destinationHash` e o conteúdo por `planHash`.
+5. Inventário, colisões e equivalência devem ser verificados antes de qualquer nova escrita.
+6. Não existe fallback silencioso entre Squidex e Local JSON.
+7. Operações remotas devem ser registadas para retoma e rollback.
+8. Updates protegidos usam a versão remota observada e `If-Match` no formato aceite pelo Squidex.
+9. Um resultado de transporte ambíguo deve ser reconciliado por leitura remota antes de repetir a operação.
+10. Rollback automático só é seguro enquanto a versão remota continuar a ser a versão deixada pela migração.
+
+## Gates disponíveis no repositório
 
 ```bash
 npm run content:validate
@@ -45,162 +47,96 @@ npm run squidex:import:safety-check
 npm run typecheck
 ```
 
-O preflight determinístico continua a validar plano, contagens, manifesto, inventário sintético conhecido e round trip. O safety check valida os controlos adicionais de concorrência e operação.
+O preflight e o safety check são determinísticos. As fixtures versionadas servem para CI e não substituem um inventário live antes de futuras mutações.
 
-## Controlos técnicos resolvidos
+## Concorrência validada no Squidex live
 
-### 1. Concorrência e versão remota
+O piloto `D99` foi usado para validar o contrato real de concorrência sem tocar na baseline funcional.
 
-Implementado.
+Sequência comprovada:
 
-* creates usam IDs determinísticos derivados de `schema + key`;
-* updates exigem a versão remota observada;
-* a integração real deverá enviar essa versão em `If-Match`;
-* alteração concorrente entre leitura e escrita bloqueia o update.
+1. leitura da versão `8`;
+2. PATCH com `If-Match: "8"` aceite e nova versão `9`;
+3. repetição com a versão obsoleta `8` rejeitada com HTTP `412`;
+4. rollback com a versão corrente aceite e versão final `10`;
+5. conteúdo do piloto restaurado e mantido em Draft.
 
-O comportamento está alinhado com a API oficial Squidex, que aceita ID explícito no create e usa `If-Match` nos updates `PUT/PATCH`.
+A investigação confirmou que o Squidex espera um Entity Tag HTTP numérico entre aspas. Valor sem aspas ou ETag de cache não representa correctamente a precondição de versão usada pelo comando de conteúdo.
 
-### 2. Resultado ambíguo de escrita
+## Importação integral executada
 
-Implementado.
+Depois do ensaio sintético e do inventário live sem colisões, a baseline foi importada em cinco fases:
 
-O journal v2 distingue `pending`, `in-flight`, `confirmed` e `ambiguous`. Se houver erro ou timeout depois da tentativa de escrita, a retoma não repete automaticamente a operação. O estado remoto é relido e comparado por identidade e hash do payload esperado:
+1. criação de 7 temas;
+2. criação de 95 tarefas;
+3. criação de 15 guias com referências de tema e tarefas;
+4. aplicação de 13 patches de relações entre guias, totalizando 29 links;
+5. aplicação de 95 destinos `nextRef`, com 82 `nextTask` e 13 `nextGuide`.
 
-* igual: operação reconciliada como aplicada;
-* ausente: pode ser considerada não aplicada;
-* diferente: conflito, execução bloqueada;
-* evidência insuficiente: indeterminado, execução bloqueada.
+Nenhum conteúdo da baseline foi publicado.
 
-### 3. Rollback condicionado
+## Divergência `roles` detectada durante a importação
 
-Implementado.
+Quinze tarefas da fonte têm legitimamente `roles=""`.
 
-Cada mutação futura deve guardar a `writtenVersion`. O rollback protegido só elimina ou restaura um conteúdo se a versão remota actual continuar exactamente igual à versão deixada pela migração. A acção de rollback transporta essa versão como precondição `If-Match`.
+O schema inicial do Squidex marcava `roles` como obrigatório e uma tentativa intermédia introduziu `N/A`. Esse valor não fazia parte da fonte e não foi aceite como solução funcional.
 
-Se alguém editar o conteúdo depois da migração, o rollback desse item é bloqueado.
+A implementação foi corrigida:
 
-### 4. Identidade do destino
+* `guide-task.roles` passou a não obrigatório;
+* as 15 tarefas foram repostas exactamente para `roles=""`;
+* a validação confirmou ausência de `N/A` inventado.
 
-Implementado.
+## Verificação pós importação
 
-Além do `planHash`, o destino tem um `destinationHash` que vincula:
+A validação live reconstruiu o domínio a partir dos 117 conteúdos e comparou-o com `content/guides.json`.
 
-* API base URL;
-* nome da app Squidex;
-* ID do schema `guide-theme`;
-* ID do schema `guide`;
-* ID do schema `guide-task`.
+Foram normalizadas apenas diferenças estruturais do CMS:
 
-Um apply futuro deve validar os dois hashes antes de qualquer escrita.
+* referências Squidex por ID para IDs funcionais;
+* components `steps` para `string[]`;
+* wrappers localizados de `media` e `table`;
+* colecção `resources` vazia para ausência da propriedade opcional.
 
-## Evidência live de concorrência
+Resultado final: `normalizedEquivalent = true`, com zero diferenças funcionais após normalização.
 
-Em 25/09/2026 foi realizada apenas uma leitura do item piloto `D99`, sem qualquer mutação.
+## Estado da UI
 
-Confirmado no Squidex provisório:
+A UI já consome `loadConfiguredContent()`.
 
-* app: `guias-dados-gov-pt-piloto`;
-* schema: `guide`;
-* ID: `30f2d310-cc71-452b-a0eb-5ad727fbb147`;
-* key: `D99`;
-* estado: `Draft`;
-* versão: `0`;
-* método de alteração exposto: `PATCH`;
-* href: `/api/content/guias-dados-gov-pt-piloto/guide/30f2d310-cc71-452b-a0eb-5ad727fbb147`.
+Comportamento actual:
 
-Esta evidência confirma que a instância live fornece a versão e o link necessários para o controlo optimista. Não prova ainda a execução de uma escrita protegida.
+* sem `GUIDES_CONTENT_SOURCE`, usa Local JSON;
+* com `GUIDES_CONTENT_SOURCE=local`, usa Local JSON;
+* com `GUIDES_CONTENT_SOURCE=squidex`, usa Squidex GraphQL;
+* se Squidex for seleccionado e falhar, a aplicação falha explicitamente em vez de regressar silenciosamente ao conteúdo local.
 
-## Blocker restante antes do primeiro apply real
+A activação de Squidex continua opt in. A release deste repositório não altera a fonte por defeito.
 
-### Ensaio live do executor protegido
+## Limites para futura integração
 
-**Pendente e não autorizado.**
+As queries GraphQL usam `top: 200`, suficiente para a baseline actual. Uma instância com mais de 200 conteúdos num schema deve implementar paginação ou bloquear o build quando existir risco de truncamento.
 
-Antes da baseline de 117 conteúdos, é necessário executar um ensaio controlado de escrita sobre conteúdo exclusivamente sintético que valide no Squidex real:
+Pesquisa, sitemap e PDFs continuam derivados do JSON local na release actual. Se o Squidex oficial passar a ser a fonte editorial, esses derivados também devem ser alinhados à mesma fonte ou a separação deve ser explicitamente documentada.
 
-1. create com ID determinístico;
-2. leitura de volta e confirmação do payload;
-3. update com `If-Match`;
-4. rejeição de versão incorrecta;
-5. reconciliação após resultado ambíguo, quando possível simular com segurança;
-6. rollback condicionado à `writtenVersion`;
-7. confirmação de que o item sintético regressa ao estado acordado no final do ensaio.
+## Procedimento para futura reimportação
 
-Este ensaio exige autorização explícita específica porque altera o CMS. A autorização de implementação dos checkpoints 31 a 40 não autoriza esta escrita live.
+Antes de qualquer nova escrita:
 
-Enquanto o ensaio não for autorizado e concluído, o estado correcto é:
+1. recolher inventário live de `guide-theme`, `guide` e `guide-task`;
+2. validar destino e identidade dos schemas;
+3. executar dry run, testes, preflight e safety check;
+4. comparar targets existentes antes de decidir create ou update;
+5. usar `If-Match` com a versão remota corrente em qualquer update;
+6. reconciliar operações ambíguas antes de repetir;
+7. guardar versões e snapshots necessários para rollback;
+8. reler o CMS e exigir equivalência após a execução.
 
-`PREPARED_NOT_AUTHORIZED_LIVE_REHEARSAL_PENDING`
-
-## Inventário live
-
-Antes do futuro apply, recolher em leitura todos os conteúdos de:
-
-* `guide-theme`;
-* `guide`;
-* `guide-task`.
-
-Reexecutar `assessSquidexImportInventory` com esse inventário. A snapshot versionada do piloto serve apenas para CI determinístico e nunca substitui o inventário live anterior à escrita.
-
-## Autorização futura
-
-Uma escrita só pode ser iniciada numa conversa em que exista autorização explícita para a operação concreta.
-
-O futuro apply da baseline deverá exigir simultaneamente:
-
-* `mode=apply`;
-* confirmação `APPLY-SQUIDEX-IMPORT`;
-* `expectedPlanHash` igual ao plano corrente;
-* `expectedDestinationHash` igual ao destino corrente;
-* inventário live fresco sem blockers;
-* journal sem operações `in-flight` ou `ambiguous` não reconciliadas;
-* ensaio live sintético concluído com sucesso;
-* autorização explícita para a importação da baseline.
-
-## Execução e retoma
-
-O manifesto contém `operationId` determinísticos para as cinco fases:
-
-1. criar temas;
-2. criar tarefas;
-3. criar guias;
-4. aplicar relações entre guias;
-5. aplicar `nextRef` das tarefas.
-
-Antes da chamada remota a operação passa para `in-flight`. Depois de resposta confirmada passa para `confirmed`. Erros de transporte com resultado remoto incerto passam a `ambiguous` e exigem reconciliação antes de qualquer repetição.
-
-## Rollback
-
-Antes de substituir conteúdo existente, guardar o payload e versão anteriores. Para novos conteúdos, guardar o ID criado. Depois de cada mutação, guardar também a `writtenVersion`.
-
-O rollback é calculado em ordem inversa e só executa se a versão remota actual continuar igual à `writtenVersion`:
-
-* conteúdo criado: eliminar apenas o item criado pela execução, usando `If-Match`;
-* conteúdo actualizado: restaurar exactamente o snapshot anterior, usando `If-Match`.
-
-Qualquer divergência posterior bloqueia a reversão automática desse item.
-
-## Verificação pós-importação
-
-Depois de concluídas as operações:
-
-1. ler o conteúdo real por GraphQL;
-2. normalizar referências `ID → key`;
-3. mapear para `GuidesContent`;
-4. comparar com a fonte local através de `compareGuidesContent`;
-5. bloquear qualquer avanço se existir uma diferença.
-
-A equivalência deve cobrir valores, ordenação, relações, steps, resources, tabelas e a distinção entre campo opcional ausente e lista vazia.
-
-## Cutover
-
-Mesmo com importação bem sucedida, a aplicação continua em Local JSON por defeito. A alteração da UI para `loadConfiguredContent()` e a selecção efectiva de Squidex constituem um checkpoint posterior e exigem decisão própria.
-
-## Fora de âmbito deste runbook
+## Fora de âmbito
 
 * integração com o Squidex oficial do dados.gov.pt;
-* publicação dos conteúdos importados;
+* publicação dos conteúdos Draft;
 * remoção do JSON local;
-* alteração funcional ou editorial dos conteúdos;
-* activação de Squidex como fonte da UI;
-* acessibilidade, que permanece pausada até à v1 em `main`.
+* alterações funcionais ou editoriais da baseline;
+* deploy no portal oficial;
+* acessibilidade da solução integrada, que deverá ser tratada pela equipa no contexto real do portal.

@@ -2,58 +2,79 @@
 
 ## Estado
 
-Decisão arquitectural em implementação na branch `feature/v1-single-source-agora`. A `main` mantém a baseline v0.5.0 até todos os gates da v1.0 estarem concluídos.
+A arquitectura v1.0 está implementada e validada como release candidate `v1.0.0-rc.1` deste repositório.
+
+A fonte activa por defeito continua a ser Local JSON. A fonte Squidex existe por opt in explícito e não tem fallback silencioso.
+
+A integração oficial no portal dados.gov.pt, a substituição pelo shell institucional e a validação de acessibilidade no contexto real do portal ficam fora do âmbito desta release.
 
 ## Objectivo
 
-Transformar os Guias numa arquitectura *single source*: `content/guides.json` é a única fonte editável de conteúdo funcional/editorial. Web, pesquisa, sitemap, navegação e PDFs são artefactos derivados.
+Manter `GuidesContent` como contrato interno único e `content/guides.json` como fonte editorial versionada por defeito. A UI, rotas, pesquisa, sitemap e PDFs são derivados a partir desse domínio sem transformar HTML materializado em fonte funcional.
 
-## Decisões
+## Stack
 
-1. **Stack alinhada com dadosgov-fe**: Next.js 16.3, React 19.2, TypeScript 5, `@ama-pt/agora-design-system` 3.7 e Tailwind 3.4.
-2. **Ágora atrás de wrappers locais**: os componentes dos Guias não dependem directamente de detalhes internos do Design System. A futura migração para Ágora 4 deve ficar confinada a essa camada.
-3. **IDs e slugs persistentes**: títulos podem evoluir sem alterar relações ou URLs. As relações usam IDs, nunca títulos.
-4. **Contrato de URLs**: as 118 rotas da v0.5.0 são um contrato de compatibilidade e são verificadas automaticamente.
-5. **Static export**: `output: export` e `trailingSlash: true`, compatíveis com GitHub Pages e com as URLs históricas em `index.html`.
-6. **Conteúdo sem duplicação**: `data.js`, `data-d01.js`, HTML de conteúdo, pesquisa, sitemap e PDFs deixam de ser fontes manuais. São eliminados ou convertidos em saídas de build antes da release v1.0.
-7. **Autoria transversal**: `content/site.json` é a configuração única da marca pessoal e da versão do protótipo.
+1. Next.js 16.3.6, React 19.2.3 e TypeScript 5.9.
+2. `@ama-pt/agora-design-system` 3.7.0 através de wrappers locais.
+3. Tailwind 3.4, Zod 4.6 e Playwright para validação automatizada.
+4. `output: export` e `trailingSlash: true` para preservar a demonstração estática e o contrato histórico de URLs.
 
-## Modelo editorial
+## Decisões arquitecturais
 
-`content/guides.json` contém:
+1. IDs e slugs são persistentes. Relações usam IDs funcionais e não títulos.
+2. As 118 rotas da v0.5.0 são um contrato de compatibilidade validado automaticamente.
+3. A UI consome `loadConfiguredContent()` e não lê directamente a fonte editorial.
+4. Sem configuração, `GUIDES_CONTENT_SOURCE=local` é o comportamento efectivo.
+5. Squidex só é seleccionado explicitamente e é normalizado antes de chegar a `GuidesContent`.
+6. Não existe fallback silencioso de Squidex para Local JSON.
+7. A autoria pessoal permanece transversal nesta release e deverá ser substituída pelo footer institucional quando a equipa integrar a solução no portal oficial.
 
-- `schemaVersion` e `locale`;
-- sete temas com `id`, `slug`, título, introdução e `guideIds`;
-- quinze guias com `id`, `slug`, `themeId` e `relatedGuideIds`;
-- noventa e cinco fichas com `id`, `slug` e `nextRef` tipado.
+## Pipeline da release
 
-IDs são estáveis. Slugs são explícitos e preservam as URLs da v0.5.0. `nextRef` substitui relações frágeis por título.
+`guides.json → Zod → validação de referências → contrato de rotas → Next.js → static export`
 
-## Pipeline alvo
+A pesquisa, o sitemap e os PDFs da release actual continuam derivados da fonte Local JSON. Esta decisão mantém todos os artefactos reproduzíveis e coerentes com a baseline versionada.
 
-`guides.json` -> validação Zod -> contrato de rotas -> Web Next estática -> pesquisa -> sitemap -> PDFs -> QA automatizado -> QA manual -> release.
+Se a equipa activar Squidex como fonte editorial oficial no futuro, deverá alinhar também pesquisa, sitemap e PDFs à mesma fonte ou documentar explicitamente a separação.
 
-O build deve falhar se houver referências inexistentes, contagens inesperadas, URL removida, duplicação de IDs/slugs ou divergência dos artefactos derivados.
+## Squidex provisório
 
-## Ágora Design System
+A instância provisória contém a baseline integral em Draft:
 
-A v1.0 adopta a versão já utilizada pelo frontend do dados.gov.pt em vez de introduzir simultaneamente a major 4 e Tailwind 4. Isto maximiza portabilidade e reduz risco de regressão visual/acessível. Uma migração para Ágora 4 deve ser avaliada em *spike* separado e sincronizada com a evolução do próprio portal.
+* 7 temas;
+* 15 guias;
+* 95 tarefas;
+* 117 conteúdos funcionais;
+* 409 componentes de passos;
+* 11 resources;
+* 3 tabelas.
 
-Usar um componente Ágora não prova conformidade automaticamente. Todos os componentes são validados no contexto real dos Guias, incluindo teclado, foco, semântica, contraste, responsividade e NVDA.
+O piloto técnico `tema-piloto / D99 / D99-T01 / D99-T02` permanece separado. A equivalência semântica da baseline importada com `content/guides.json` foi validada após normalização das representações próprias do CMS.
 
-## Gates v1.0
+As queries GraphQL usam `top: 200`, valor suficiente para a baseline actual. Uma expansão que possa ultrapassar 200 conteúdos por schema deve implementar paginação ou um guardrail de overflow antes da activação oficial.
 
-- 15 guias, 95 fichas, 7 temas e 118 rotas;
-- 118/118 URLs v0.5 preservadas;
-- zero conteúdo editorial duplicado como fonte manual;
-- static export reconstruível a partir de clone limpo;
-- pesquisa e sitemap derivados;
-- 15/15 PDFs derivados da mesma fonte;
-- autoria em Web e PDF;
-- typecheck e build verdes;
-- validação automática de acessibilidade sem violações críticas/sérias;
-- teclado e foco nas jornadas críticas;
-- NVDA manual;
-- validação PDF estrutural e acessível;
-- revisão visual a 360, 768 e 1440 px;
-- `main` só recebe a v1.0 após os gates acordados.
+## Gates desta release
+
+* 15 guias, 95 fichas, 7 temas e 118 rotas;
+* 118/118 URLs históricas preservadas;
+* referências internas válidas e IDs sem duplicação;
+* static export reconstruível a partir de clone limpo;
+* pesquisa e sitemap derivados;
+* 15/15 PDFs gerados e validados;
+* autoria transversal em Web e PDF;
+* testes Squidex, dry run, preflight e safety check verdes;
+* typecheck e build verdes;
+* CI executado em Pull Requests para `main` e novamente em `main` após integração.
+
+A acessibilidade não é gate desta release. A sua validação deve ocorrer quando a solução for integrada no portal dados.gov.pt, no shell, componentes, conteúdo e ambiente institucionais reais.
+
+## Entrega à equipa dados.gov.pt
+
+Este repositório entrega código preparado para futura integração. Não executa por conta própria:
+
+* publicação oficial dos Guias;
+* activação do Squidex oficial;
+* deploy no portal dados.gov.pt;
+* substituição pelo header ou footer oficial;
+* validação WCAG/NVDA do portal integrado;
+* definição de autenticação, permissões editoriais ou workflows oficiais do CMS.

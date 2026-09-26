@@ -100,98 +100,117 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A release **v0.5.0** representa a baseline estável actual de demonstração e revisão. A publicação oficial no dados.gov.pt continua dependente da integração no produto.
+A release candidate **v1.0.0-rc.1** representa a baseline técnica actual preparada para integração em `main` neste repositório.
 
-Nesta fase, o projecto inclui 15 guias, 95 fichas, sete temas funcionais, pesquisa transversal, navegação por tema, guia e tarefa, relações entre guias, header e footer aproximados à implementação pública do dados.gov.pt, 118 rotas estáticas, 15 PDFs e validações automáticas de consistência.
+A v1 preserva os 15 guias, 95 fichas, sete temas funcionais e 118 rotas históricas, mas substitui a arquitectura de manutenção baseada em HTML materializado por uma aplicação Next.js com domínio estruturado e fonte configurável.
 
-O conteúdo continua destinado a revisão funcional, editorial e UX/UI antes de qualquer publicação como manual oficial.
+A publicação oficial no dados.gov.pt não faz parte deste repositório. O objectivo é disponibilizar à equipa responsável código, documentação e mecanismos de migração preparados para futura integração.
 
-## Arquitectura técnica e transversalização
+A autoria pessoal permanece nesta versão de demonstração e deverá ser substituída pelo footer institucional quando a solução for integrada oficialmente no portal.
 
-O protótipo é publicado em GitHub Pages e, por isso, a saída Web é estática. Isto significa que o navegador recebe HTML já materializado em cada rota. **O HTML repetido nas rotas é saída de build, não a fonte de manutenção dos elementos transversais.**
+A validação de acessibilidade também fica fora do âmbito desta release e deverá ser realizada no contexto real do portal integrado.
 
-Os elementos comuns são mantidos uma única vez e propagados automaticamente:
+## Arquitectura técnica v1
 
-* `templates/partials/header.html`: fonte única do header;
-* `templates/partials/footer.html`: fonte única do footer e do bloco de autoria;
-* `content/site.json`: fonte única da identidade do protótipo, versão e autoria;
-* `scripts/sync_shared_layout.py`: materializa os partials nas 118 rotas correntes, `index.html`, `404.html` e protótipos aplicáveis;
-* `scripts/sync_shared_layout.py --check`: guardrail read-only que falha quando uma saída diverge dos partials;
-* `scripts/generate_pdf_guides.py`: gera os 15 PDFs a partir da fonte editorial e da mesma configuração de autoria;
-* `.github/workflows/guides-consistency.yml`: valida fonte, rotas, pesquisa, sitemap e sincronização do layout transversal;
-* `.github/workflows/guides-pdf.yml`: regenera e valida os 15 PDFs e exige autoria em todos eles.
+O contrato interno é `GuidesContent`, validado por Zod.
 
-A autoria é configurada em `content/site.json`. A alteração do nome, função, LinkedIn, logótipo, versão ou estado do protótipo deve ser feita nessa configuração, e não repetida manualmente nas páginas ou no gerador PDF.
+```text
+UI server-side
+    ↓
+loadConfiguredContent()
+    ↓
+Local JSON (default)  ou  Squidex GraphQL (opt in)
+    ↓
+GuidesContent
+    ↓
+rotas e componentes Next.js
+```
 
-A pasta `versions/` é deliberadamente excluída da sincronização automática. Contém snapshots históricos preservados para comparação e evidência, não a versão corrente publicada do protótipo.
+A fonte por defeito é `content/guides.json`. Squidex só é activado com `GUIDES_CONTENT_SOURCE=squidex` e não existe fallback silencioso se a fonte remota falhar.
 
-### Limite actual da transversalização
+A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 3 e `@ama-pt/agora-design-system` 3.7 através de wrappers locais.
 
-Header, footer, autoria, configuração do protótipo e geração PDF estão centralizados. O conteúdo principal das 118 rotas continua materializado em HTML estático. A fonte editorial estruturada existe em `content/guides.json`, mas a totalidade do corpo Web ainda não é reconstruída automaticamente a partir dessa fonte.
+O static export preserva as 118 rotas existentes. Pesquisa, sitemap e PDFs da release actual continuam derivados do JSON local, garantindo reprodutibilidade da baseline versionada.
 
-Assim, a arquitectura transversal está resolvida para os elementos comuns, mas uma futura evolução pode ainda transformar todo o corpo das páginas em saída de um gerador único, reduzindo mais duplicação e risco de divergência.
+A instância Squidex provisória contém a baseline integral em Draft, com 7 temas, 15 guias e 95 tarefas. O piloto técnico D99 permanece separado. Nenhum conteúdo foi publicado.
 
-## Estrutura técnica
+### Fonte única e artefactos derivados
+
+`content/guides.json` é a fonte editorial versionada por defeito. A partir dela são validados ou gerados:
+
+* contrato das 118 rotas;
+* índice de pesquisa;
+* sitemap;
+* 15 PDFs;
+* static export da aplicação;
+* fixtures e gates de equivalência do Squidex.
+
+A futura activação do Squidex oficial deve também decidir se pesquisa, sitemap e PDFs passam a ser derivados da fonte remota.
+
+### Compatibilidade histórica
+
+As pastas HTML, partials e scripts anteriores permanecem no repositório como materialização histórica e compatibilidade durante a transição. Não devem ser tratadas como nova fonte funcional da v1.
+
+A publicação actual em GitHub Pages é uma etapa separada do merge. O build v1 produz a pasta `out/`; a estratégia de publicação dessa saída será fechada antes da release `v1.0.0`.
+
+## Estrutura técnica principal
 
 ```text
 .
-├── index.html
-├── 404.html
-├── Guias-do-utilizador/       # 118 rotas materializadas
 ├── content/
-│   ├── guides.json            # fonte editorial versionada
-│   └── site.json              # configuração transversal e autoria
-├── templates/
-│   └── partials/
-│       ├── header.html        # fonte única do header
-│       └── footer.html        # fonte única do footer e autoria
-├── assets/
-│   ├── brand/                 # marca pessoal usada no protótipo
-│   ├── css/
-│   ├── js/
-│   └── pdf/                   # 15 PDFs publicados
-├── scripts/
-│   ├── generate_pdf_guides.py
-│   ├── sync_shared_layout.py
-│   └── validate_guides_consistency.py
+│   ├── guides.json
+│   └── site.json
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── lib/content/
+├── scripts/v1/
+├── tests/
 ├── docs/
-│   ├── PROJECT_STATUS.md
-│   ├── CONTENT_VALIDATION.md
-│   └── PRD_TEST_PLAN.md
+├── assets/
 ├── .github/workflows/
-│   ├── guides-pdf.yml
-│   └── guides-consistency.yml
-├── versions/
-│   ├── v0.1/
-│   ├── v0.2/
-│   ├── v0.3/
-│   └── v0.4/
-├── README.md
-├── CHANGELOG.md
-└── LICENSE
+├── next.config.ts
+├── package.json
+└── README.md
 ```
 
-## Fluxo de manutenção
+## Fluxo de manutenção v1
 
-Para alterar header, footer ou autoria:
+1. Alterar conteúdo funcional/editorial em `content/guides.json`.
+2. Alterar autoria/configuração transversal em `content/site.json` quando aplicável.
+3. Executar validação de conteúdo, rotas e typecheck.
+4. Gerar artefactos derivados e static export.
+5. Integrar alterações através de Pull Request com CI verde.
 
-1. alterar o partial ou `content/site.json`;
-2. executar `python scripts/sync_shared_layout.py`;
-3. validar com `python scripts/sync_shared_layout.py --check` e `python scripts/validate_guides_consistency.py`;
-4. deixar os workflows permanentes validarem a consistência e os PDFs antes da integração.
-
-Não se deve editar manualmente o header, footer ou bloco de autoria nas 118 páginas materializadas.
+Os workflows não devem efectuar commits automáticos em `main`. Divergências em artefactos versionados devem falhar a validação e ser corrigidas por commit/PR controlado.
 
 ## Executar localmente
 
-Clone o repositório:
+Clone o repositório e instale as dependências:
 
 ```bash
 git clone https://github.com/Timmarcelino/Guias_dados.gov.pt.git
 cd Guias_dados.gov.pt
+npm ci
 ```
 
-Abra a pasta no Visual Studio Code e inicie um servidor HTTP local, por exemplo através da extensão Live Server, a partir de `index.html`. Os módulos JavaScript são carregados com `type="module"`, pelo que o protótipo não deve ser aberto directamente por `file://`.
+Para desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Para validar e gerar o static export:
+
+```bash
+npm run content:validate
+npm run routes:check
+npm run test:squidex
+npm run typecheck
+npm run build
+```
+
+O build estático fica em `out/`. Para simular o caminho usado no GitHub Pages, definir `NEXT_PUBLIC_BASE_PATH=/Guias_dados.gov.pt` no build.
 
 ## Versionamento do protótipo
 
@@ -204,6 +223,7 @@ O histórico visual e funcional é preservado na pasta `versions`.
 | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
 | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
 | `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes. |
+| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 3.7, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
 
 O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
 

@@ -154,3 +154,12 @@ jobs:
           )
           print("QA PDF semântica: PDFs versionados equivalentes aos regenerados; diferenças binárias de metadata são toleradas.")
           PY
+
+      - name: Disponibilizar PDFs regenerados em caso de divergência
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-regenerados
+          path: assets/pdf/*.pdf
+          retention-days: 1
+          if-no-files-found: error

@@ -47,6 +47,9 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt
         run: npm run build
 
+      - name: Validar CSS Ágora 4 e Tailwind 4
+        run: npx tsx scripts/v1/check-tailwind-output.ts
+
       - name: Validar artefacto para GitHub Pages
         run: |
           test -f out/index.html

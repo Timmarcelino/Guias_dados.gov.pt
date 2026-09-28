@@ -15,10 +15,12 @@
     "routes:check": "tsx scripts/v1/check-route-contract.ts",
     "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/unit/squidex-if-match.test.ts && tsx tests/integration/squidex-source.test.ts && tsx tests/integration/squidex-import-readiness.test.ts && tsx tests/integration/squidex-import-safety.test.ts && tsx tests/integration/squidex-import-concurrency.test.ts",
     "test:squidex:live": "tsx tests/integration/squidex-live.test.ts",
-    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts"
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "tailwind:check": "node scripts/v1/check-tailwind-v4.mjs",
+    "ui:smoke": "node scripts/v1/check-agora4-responsive.mjs"
   },
   "dependencies": {
-    "@ama-pt/agora-design-system": "3.7.0",
+    "@ama-pt/agora-design-system": "4.0.1",
     "next": "16.3.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -27,12 +29,12 @@
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
     "@types/node": "20.19.17",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "autoprefixer": "10.4.27",
     "postcss": "8.5.28",
-    "tailwindcss": "3.4.19",
+    "tailwindcss": "4.3.3",
     "tsx": "4.23.15",
     "typescript": "5.9.3"
   }

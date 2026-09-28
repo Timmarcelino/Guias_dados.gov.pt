@@ -1,19 +1,24 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const cssRoot = path.join(process.cwd(), "out", "_next", "static", "css");
-if (!fs.existsSync(cssRoot)) {
-  console.error(`CSS exportado em falta: ${path.relative(process.cwd(), cssRoot)}`);
+const staticRoot = path.join(process.cwd(), "out", "_next", "static");
+if (!fs.existsSync(staticRoot)) {
+  console.error(`Static export do Next em falta: ${path.relative(process.cwd(), staticRoot)}`);
   process.exit(1);
 }
 
-const cssFiles = fs
-  .readdirSync(cssRoot)
-  .filter((name) => name.endsWith(".css"))
-  .map((name) => path.join(cssRoot, name));
+function findCssFiles(directory: string): string[] {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return findCssFiles(fullPath);
+    return entry.isFile() && entry.name.endsWith(".css") ? [fullPath] : [];
+  });
+}
+
+const cssFiles = findCssFiles(staticRoot);
 
 if (cssFiles.length === 0) {
-  console.error("Nenhum ficheiro CSS foi produzido pelo static export.");
+  console.error(`Nenhum ficheiro CSS foi produzido em ${path.relative(process.cwd(), staticRoot)}.`);
   process.exit(1);
 }
 

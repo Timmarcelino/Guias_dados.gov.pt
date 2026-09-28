@@ -127,39 +127,14 @@ jobs:
               )
 
           differences = []
-          snapshots = {}
           for name in sorted(generated):
               expected = page_texts(versioned[name])
               actual = page_texts(generated[name])
-              snapshots[name] = (expected, actual)
               if expected != actual:
                   differences.append(name)
-
-          for name in differences[:3]:
-              expected, actual = snapshots[name]
-              print(f"DIAG {name}: pages versioned={len(expected)} generated={len(actual)}")
-              for page_index, (expected_page, actual_page) in enumerate(zip(expected, actual), start=1):
-                  if expected_page != actual_page:
-                      limit = min(len(expected_page), len(actual_page))
-                      pos = next((i for i in range(limit) if expected_page[i] != actual_page[i]), limit)
-                      start = max(0, pos - 160)
-                      end = pos + 240
-                      print(f"  page={page_index} lens={len(expected_page)}/{len(actual_page)} first_diff_pos={pos}")
-                      print("  versioned=" + repr(expected_page[start:end]))
-                      print("  generated=" + repr(actual_page[start:end]))
-                      break
 
           assert not differences, (
               "Conteúdo textual/paginação divergente nos PDFs: " + ", ".join(differences)
           )
           print("QA PDF semântica: PDFs versionados equivalentes aos regenerados; diferenças binárias de metadata são toleradas.")
           PY
-
-      - name: Disponibilizar PDFs regenerados em caso de divergência
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdf-regenerados
-          path: assets/pdf/*.pdf
-          retention-days: 1
-          if-no-files-found: error

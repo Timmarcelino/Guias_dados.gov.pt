@@ -36,7 +36,7 @@ function Breadcrumb({ route }: { route: GuideRoute }) {
   if (route.kind === "task" && route.task) items.push({ label: route.task.title });
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-24 text-sm">
+    <nav aria-label="Breadcrumb" className="mb-24 text-s-regular">
       <ol className="flex flex-wrap items-center gap-x-8 gap-y-4">
         {items.map((item, index) => (
           <li key={`${item.label}-${index}`} className="flex items-center gap-8">
@@ -189,9 +189,9 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <article>
         <Breadcrumb route={route} />
-        {task.roles ? <p className="mt-24 text-sm-semibold">{task.roles}</p> : null}
+        {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
         <h1 className="text-3xl-bold my-16">{task.title}</h1>
-        <p className="text-l mb-32">{task.intro}</p>
+        <p className="text-l-regular mb-32">{task.intro}</p>
 
         <h2 className="text-xl-bold mb-16">Como fazer</h2>
         <ol className="list-decimal space-y-12 pl-24">

@@ -128,7 +128,7 @@ rotas e componentes Next.js
 
 A fonte por defeito é `content/guides.json`. Squidex só é activado com `GUIDES_CONTENT_SOURCE=squidex` e não existe fallback silencioso se a fonte remota falhar.
 
-A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 3 e `@ama-pt/agora-design-system` 3.7 através de wrappers locais.
+A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 4.3 e `@ama-pt/agora-design-system` 4.0 através de wrappers locais. A configuração segue o modelo CSS-first do frontend oficial dados.gov.pt, com `@tailwindcss/postcss` e tokens Ágora no `globals.css`.
 
 O static export preserva as 118 rotas existentes. Pesquisa, sitemap e PDFs da release actual continuam derivados do JSON local, garantindo reprodutibilidade da baseline versionada.
 
@@ -151,7 +151,7 @@ A futura activação do Squidex oficial deve também decidir se pesquisa, sitema
 
 As pastas HTML, partials e scripts anteriores permanecem no repositório como materialização histórica e compatibilidade durante a transição. Não devem ser tratadas como nova fonte funcional da v1.
 
-A publicação actual em GitHub Pages é uma etapa separada do merge. O build v1 produz a pasta `out/`; a estratégia de publicação dessa saída será fechada antes da release `v1.0.0`.
+O GitHub Pages publica o static export da pasta `out/` através de GitHub Actions, com `NEXT_PUBLIC_BASE_PATH=/Guias_dados.gov.pt`.
 
 ## Estrutura técnica principal
 
@@ -223,7 +223,7 @@ O histórico visual e funcional é preservado na pasta `versions`.
 | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
 | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
 | `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes. |
-| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 3.7, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
+| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 4.0/Tailwind 4.3 alinhados com o portal oficial, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
 
 O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
 

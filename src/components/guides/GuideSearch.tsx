@@ -26,7 +26,7 @@ export function GuideSearch({ items }: { items: SearchItem[] }) {
         onChange={(event) => setQuery(event.currentTarget.value)}
         placeholder="Ex.: publicar dados"
       />
-      <p className="mt-8 text-sm" role="status" aria-live="polite">
+      <p className="mt-8 text-s-regular" role="status" aria-live="polite">
         {query ? `${hits.length} ${hits.length === 1 ? "resultado" : "resultados"}` : ""}
       </p>
       {hits.length > 0 ? (

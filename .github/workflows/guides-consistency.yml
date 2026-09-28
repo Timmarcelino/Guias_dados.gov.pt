@@ -1,41 +1,18 @@
-name: Validar consistência dos Guias
+name: Validar consistência legacy dos Guias
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - feature/footer-autoria
-    paths:
-      - "content/guides.json"
-      - "content/site.json"
-      - "templates/**"
-      - "assets/brand/**"
-      - "assets/css/portal.css"
-      - "assets/js/data.js"
-      - "assets/js/data-d01.js"
-      - "assets/js/search-index.json"
-      - "assets/js/search.js"
-      - "Guias-do-utilizador/**"
-      - "prototypes/**"
-      - "sitemap.xml"
-      - "404.html"
-      - "index.html"
-      - "scripts/sync_shared_layout.py"
-      - "scripts/validate_guides_consistency.py"
-      - ".github/workflows/guides-consistency.yml"
 
-# Guardrail read-only: nunca escreve na branch nem em sistemas externos.
-# O markup transversal tem uma única fonte em templates/partials/. As páginas
-# estáticas são saídas materializadas e devem permanecer sincronizadas.
+# Guardrail legacy, apenas manual. A arquitectura v1 é validada por v1-ci.yml.
+# Este workflow conserva verificações da materialização HTML anterior para diagnóstico
+# durante a transição, sem bloquear nem escrever em main.
 jobs:
   validate:
-    if: github.ref_name != 'feature/v1-single-source-agora'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validar fonte, rotas, pesquisa e sitemap
+      - name: Validar fonte, rotas, pesquisa e sitemap legacy
         run: python scripts/validate_guides_consistency.py
-      - name: Validar layout transversal
+      - name: Validar layout transversal legacy
         run: python scripts/sync_shared_layout.py --check

@@ -2,6 +2,15 @@ name: Gerar PDFs dos Guias
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "content/guides.json"
+      - "content/site.json"
+      - "assets/brand/**"
+      - "scripts/generate_pdf_guides.py"
+      - ".github/workflows/guides-pdf.yml"
   push:
     branches:
       - main
@@ -30,7 +39,6 @@ jobs:
       - name: Checkout da branch actual
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Preparar dependências
@@ -46,6 +54,11 @@ jobs:
           mkdir -p .build
           python scripts/generate_pdf_guides.py > .build/generator-output.json
 
+      - name: Preservar PDFs versionados para comparação semântica
+        run: |
+          rm -rf .build/pdf-versioned
+          mkdir -p .build/pdf-versioned
+          cp assets/pdf/*.pdf .build/pdf-versioned/
       - name: Instalar PDFs nos caminhos públicos
         run: |
           rm -f assets/pdf/*.pdf
@@ -89,12 +102,39 @@ jobs:
           print("QA PDF: 15/15 ficheiros válidos, com autoria e sem excepção D06.")
           PY
 
-      - name: Validar que os PDFs versionados estão sincronizados
+      - name: Validar equivalência semântica dos PDFs versionados
         run: |
-          if git diff --quiet -- assets/pdf; then
-            echo "PDFs versionados sincronizados."
-          else
-            echo "::error::Os PDFs versionados divergem da fonte editorial. Regere-os e inclua a alteração num commit/PR controlado."
-            git diff --stat -- assets/pdf
-            exit 1
-          fi
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          versioned_dir = Path(".build/pdf-versioned")
+          generated_dir = Path("assets/pdf")
+          versioned = {p.name: p for p in versioned_dir.glob("*.pdf")}
+          generated = {p.name: p for p in generated_dir.glob("*.pdf")}
+
+          assert set(versioned) == set(generated), (
+              f"Conjunto de PDFs divergente: versionados={sorted(versioned)}, "
+              f"gerados={sorted(generated)}"
+          )
+
+          def page_texts(path):
+              reader = PdfReader(str(path))
+              return tuple(
+                  re.sub(r"\s+", " ", page.extract_text() or "").strip()
+                  for page in reader.pages
+              )
+
+          differences = []
+          for name in sorted(generated):
+              expected = page_texts(versioned[name])
+              actual = page_texts(generated[name])
+              if expected != actual:
+                  differences.append(name)
+
+          assert not differences, (
+              "Conteúdo textual/paginação divergente nos PDFs: " + ", ".join(differences)
+          )
+          print("QA PDF semântica: PDFs versionados equivalentes aos regenerados; diferenças binárias de metadata são toleradas.")
+          PY

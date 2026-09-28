@@ -1,0 +1,590 @@
+diff --git a/.github/workflows/pages-v1.yml b/.github/workflows/pages-v1.yml
+index 21d6b69..d1ce16d 100644
+--- a/.github/workflows/pages-v1.yml
++++ b/.github/workflows/pages-v1.yml
+@@ -47,6 +47,9 @@ jobs:
+           NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt
+         run: npm run build
+ 
++      - name: Validar CSS Ágora 4 e Tailwind 4
++        run: npx tsx scripts/v1/check-tailwind-output.ts
++
+       - name: Validar artefacto para GitHub Pages
+         run: |
+           test -f out/index.html
+diff --git a/.github/workflows/v1-ci.yml b/.github/workflows/v1-ci.yml
+index c04be8b..6a65661 100644
+--- a/.github/workflows/v1-ci.yml
++++ b/.github/workflows/v1-ci.yml
+@@ -20,7 +20,6 @@ on:
+       - "package.json"
+       - "package-lock.json"
+       - "next.config.ts"
+-      - "tailwind.config.ts"
+       - "postcss.config.mjs"
+       - "tsconfig.json"
+       - ".github/workflows/v1-ci.yml"
+@@ -78,6 +77,9 @@ jobs:
+         env:
+           NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt
+         run: npm run build
++      - name: Validar CSS Ágora 4 e Tailwind 4
++        run: npx tsx scripts/v1/check-tailwind-output.ts
++
+       - name: Confirmar saída estática
+         run: |
+           test -f out/Guias-do-utilizador/index.html
+diff --git a/README.md b/README.md
+index a1e9487..00157d7 100644
+--- a/README.md
++++ b/README.md
+@@ -128,7 +128,7 @@ rotas e componentes Next.js
+ 
+ A fonte por defeito é `content/guides.json`. Squidex só é activado com `GUIDES_CONTENT_SOURCE=squidex` e não existe fallback silencioso se a fonte remota falhar.
+ 
+-A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 3 e `@ama-pt/agora-design-system` 3.7 através de wrappers locais.
++A aplicação utiliza Next.js 16, React 19, TypeScript, Tailwind 4.3 e `@ama-pt/agora-design-system` 4.0 através de wrappers locais. A configuração segue o modelo CSS-first do frontend oficial dados.gov.pt, com `@tailwindcss/postcss` e tokens Ágora no `globals.css`.
+ 
+ O static export preserva as 118 rotas existentes. Pesquisa, sitemap e PDFs da release actual continuam derivados do JSON local, garantindo reprodutibilidade da baseline versionada.
+ 
+@@ -151,7 +151,7 @@ A futura activação do Squidex oficial deve também decidir se pesquisa, sitema
+ 
+ As pastas HTML, partials e scripts anteriores permanecem no repositório como materialização histórica e compatibilidade durante a transição. Não devem ser tratadas como nova fonte funcional da v1.
+ 
+-A publicação actual em GitHub Pages é uma etapa separada do merge. O build v1 produz a pasta `out/`; a estratégia de publicação dessa saída será fechada antes da release `v1.0.0`.
++O GitHub Pages publica o static export da pasta `out/` através de GitHub Actions, com `NEXT_PUBLIC_BASE_PATH=/Guias_dados.gov.pt`.
+ 
+ ## Estrutura técnica principal
+ 
+@@ -223,7 +223,7 @@ O histórico visual e funcional é preservado na pasta `versions`.
+ | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
+ | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
+ | `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes. |
+-| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 3.7, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
++| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 4.0/Tailwind 4.3 alinhados com o portal oficial, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
+ 
+ O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
+ 
+diff --git a/docs/V1_ARCHITECTURE.md b/docs/V1_ARCHITECTURE.md
+index 240e3f8..021dace 100644
+--- a/docs/V1_ARCHITECTURE.md
++++ b/docs/V1_ARCHITECTURE.md
+@@ -15,8 +15,8 @@ Manter `GuidesContent` como contrato interno único e `content/guides.json` como
+ ## Stack
+ 
+ 1. Next.js 16.3.6, React 19.2.3 e TypeScript 5.9.
+-2. `@ama-pt/agora-design-system` 3.7.0 através de wrappers locais.
+-3. Tailwind 3.4, Zod 4.6 e Playwright para validação automatizada.
++2. `@ama-pt/agora-design-system` 4.0.1 através de wrappers locais, alinhado com o frontend oficial.
++3. Tailwind 4.3 em configuração CSS-first com `@tailwindcss/postcss`, Zod 4.6 e Playwright para validação automatizada.
+ 4. `output: export` e `trailingSlash: true` para preservar a demonstração estática e o contrato histórico de URLs.
+ 
+ ## Decisões arquitecturais
+diff --git a/package.json b/package.json
+index ff0bbcb..f62601b 100644
+--- a/package.json
++++ b/package.json
+@@ -18,7 +18,7 @@
+     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts"
+   },
+   "dependencies": {
+-    "@ama-pt/agora-design-system": "3.7.0",
++    "@ama-pt/agora-design-system": "4.0.1",
+     "next": "16.3.6",
+     "react": "19.2.3",
+     "react-dom": "19.2.3",
+@@ -27,12 +27,12 @@
+   "devDependencies": {
+     "@axe-core/playwright": "4.13.0",
+     "@playwright/test": "1.63.0",
++    "@tailwindcss/postcss": "4.3.3",
+     "@types/node": "20.19.17",
+     "@types/react": "19.3.0",
+     "@types/react-dom": "19.3.0",
+-    "autoprefixer": "10.4.27",
+     "postcss": "8.5.28",
+-    "tailwindcss": "3.4.19",
++    "tailwindcss": "4.3.3",
+     "tsx": "4.23.15",
+     "typescript": "5.9.3"
+   }
+diff --git a/postcss.config.mjs b/postcss.config.mjs
+index 99417eb..61e3684 100644
+--- a/postcss.config.mjs
++++ b/postcss.config.mjs
+@@ -1 +1,7 @@
+-export default { plugins: { tailwindcss: {}, autoprefixer: {} } };
++const config = {
++  plugins: {
++    "@tailwindcss/postcss": {},
++  },
++};
++
++export default config;
+diff --git a/scripts/v1/check-architecture.ts b/scripts/v1/check-architecture.ts
+index 035eb20..af07935 100644
+--- a/scripts/v1/check-architecture.ts
++++ b/scripts/v1/check-architecture.ts
+@@ -5,7 +5,9 @@ const root = process.cwd();
+ const srcRoot = path.join(root, "src");
+ const agoraBoundary = path.join(srcRoot, "components", "agora") + path.sep;
+ const rootLayout = path.join(srcRoot, "app", "layout.tsx");
+-const agoraStylesImport = 'import "@ama-pt/agora-design-system/artifacts/dist/style.css";';
++const globalsCss = path.join(srcRoot, "app", "globals.css");
++const postcssConfig = path.join(root, "postcss.config.mjs");
++const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+ const errors: string[] = [];
+ 
+ function walk(directory: string): string[] {
+@@ -18,19 +20,59 @@ function walk(directory: string): string[] {
+ 
+ for (const file of walk(srcRoot)) {
+   const source = fs.readFileSync(file, "utf8");
+-  if (!source.includes("@ama-pt/agora-design-system") || file.startsWith(agoraBoundary)) continue;
++  if (source.includes("@ama-pt/agora-design-system") && !file.startsWith(agoraBoundary)) {
++    errors.push(`${path.relative(root, file)} importa componentes Ágora fora de src/components/agora`);
++  }
++}
+ 
+-  const sourceWithoutAllowedStyles =
+-    file === rootLayout ? source.replace(agoraStylesImport, "") : source;
++const css = fs.readFileSync(globalsCss, "utf8");
++const requiredImports = [
++  '@import "@ama-pt/agora-design-system/theme.css";',
++  '@import "tailwindcss/preflight";',
++  '@import "@ama-pt/agora-design-system/index.css";',
++  '@import "tailwindcss/utilities";',
++];
++let previousIndex = -1;
++for (const requiredImport of requiredImports) {
++  const index = css.indexOf(requiredImport);
++  if (index === -1) errors.push(`src/app/globals.css não contém ${requiredImport}`);
++  if (index !== -1 && index < previousIndex) errors.push("ordem dos imports Ágora/Tailwind 4 está incorrecta");
++  if (index !== -1) previousIndex = index;
++}
+ 
+-  if (sourceWithoutAllowedStyles.includes("@ama-pt/agora-design-system")) {
+-    errors.push(`${path.relative(root, file)} importa componentes Ágora fora da fronteira src/components/agora`);
+-  }
++for (const token of ["--breakpoint-sm: 576px", "--breakpoint-lg: 1024px", "--spacing-4: 4px", "--spacing-12: 12px"]) {
++  if (!css.includes(token)) errors.push(`src/app/globals.css não repõe o token oficial ${token}`);
++}
++
++const postcss = fs.readFileSync(postcssConfig, "utf8");
++if (!postcss.includes('"@tailwindcss/postcss"')) {
++  errors.push("postcss.config.mjs não usa @tailwindcss/postcss");
++}
++if (fs.existsSync(path.join(root, "tailwind.config.ts"))) {
++  errors.push("tailwind.config.ts deve ser removido na arquitectura Tailwind 4 CSS-first");
++}
++
++const agoraVersion = packageJson.dependencies?.["@ama-pt/agora-design-system"] ?? "";
++const tailwindVersion = packageJson.devDependencies?.tailwindcss ?? "";
++const tailwindPostcssVersion = packageJson.devDependencies?.["@tailwindcss/postcss"] ?? "";
++if (!/^4\./.test(agoraVersion)) errors.push(`Ágora deve estar em major 4; encontrado ${agoraVersion || "em falta"}`);
++if (!/^4\./.test(tailwindVersion)) errors.push(`Tailwind deve estar em major 4; encontrado ${tailwindVersion || "em falta"}`);
++if (!/^4\./.test(tailwindPostcssVersion)) {
++  errors.push(`@tailwindcss/postcss deve estar em major 4; encontrado ${tailwindPostcssVersion || "em falta"}`);
+ }
+ 
+ const layoutSource = fs.readFileSync(rootLayout, "utf8");
+-if (!layoutSource.includes(agoraStylesImport)) {
+-  errors.push("src/app/layout.tsx não carrega o stylesheet oficial do Ágora 3.7");
++if (layoutSource.includes("artifacts/dist/style.css")) {
++  errors.push("src/app/layout.tsx ainda importa o stylesheet legado do Ágora 3");
++}
++
++const headerPath = path.join(srcRoot, "components", "agora", "PortalHeader.tsx");
++const headerSource = fs.readFileSync(headerPath, "utf8");
++if (!headerSource.includes("NavigationSection")) {
++  errors.push("PortalHeader não usa NavigationSection exigido pelo Ágora 4");
++}
++if (/<NavigationLink[^>]*>\s*<a\b/s.test(headerSource)) {
++  errors.push("PortalHeader contém <a> aninhado em NavigationLink do Ágora 4");
+ }
+ 
+ const requiredSingleSourceConsumers = [
+@@ -43,7 +85,6 @@ for (const relative of requiredSingleSourceConsumers) {
+   if (!fs.existsSync(path.join(root, relative))) errors.push(`${relative} em falta`);
+ }
+ 
+-
+ const configuredUiConsumers = [
+   "src/app/Guias-do-utilizador/page.tsx",
+   "src/app/Guias-do-utilizador/[...segments]/page.tsx",
+@@ -65,5 +106,5 @@ if (errors.length) {
+ }
+ 
+ console.log(
+-  "Arquitectura v1 válida: componentes Ágora confinados aos wrappers, stylesheet global carregado e consumidores single-source presentes e UI ligada à fronteira configurada.",
++  "Arquitectura v1 válida: Ágora 4 + Tailwind 4 CSS-first, wrappers confinados, navegação v4 e consumidores single-source confirmados.",
+ );
+diff --git a/scripts/v1/check-tailwind-output.ts b/scripts/v1/check-tailwind-output.ts
+new file mode 100644
+index 0000000..c9c36fc
+--- /dev/null
++++ b/scripts/v1/check-tailwind-output.ts
+@@ -0,0 +1,46 @@
++import fs from "node:fs";
++import path from "node:path";
++
++const cssRoot = path.join(process.cwd(), "out", "_next", "static", "css");
++if (!fs.existsSync(cssRoot)) {
++  console.error(`CSS exportado em falta: ${path.relative(process.cwd(), cssRoot)}`);
++  process.exit(1);
++}
++
++const cssFiles = fs
++  .readdirSync(cssRoot)
++  .filter((name) => name.endsWith(".css"))
++  .map((name) => path.join(cssRoot, name));
++
++if (cssFiles.length === 0) {
++  console.error("Nenhum ficheiro CSS foi produzido pelo static export.");
++  process.exit(1);
++}
++
++const css = cssFiles.map((file) => fs.readFileSync(file, "utf8")).join("\n");
++const requiredSelectors = [
++  ["responsive sm", ".sm\\:flex-row"],
++  ["responsive md", ".md\\:grid-cols-2"],
++  ["responsive lg", ".lg\\:px-0"],
++  ["spacing 4px", ".gap-y-4"],
++  ["spacing 12px", ".p-12"],
++  ["tipografia S", ".text-s-regular"],
++  ["tipografia S semibold", ".text-s-semibold"],
++  ["tipografia L", ".text-l-regular"],
++] as const;
++
++const missing = requiredSelectors.filter(([, selector]) => !css.includes(selector));
++if (missing.length > 0) {
++  console.error(`Tailwind 4 incompleto: ${missing.length} utility/ies não foram emitidas.`);
++  for (const [label, selector] of missing) console.error(`- ${label}: ${selector}`);
++  process.exit(1);
++}
++
++if (!css.includes(".agora-header")) {
++  console.error("CSS do Ágora 4 não foi incluído no artefacto exportado.");
++  process.exit(1);
++}
++
++console.log(
++  `CSS v1 válido: Ágora 4 presente e ${requiredSelectors.length} utilities Tailwind 4 representativas emitidas em ${cssFiles.length} ficheiro(s).`,
++);
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 9b6d57d..8176e29 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -1,5 +1,98 @@
+-@tailwind base;
+-@tailwind components;
+-@tailwind utilities;
++/* Ágora 4 design tokens */
++@import "@ama-pt/agora-design-system/theme.css";
+ 
+-html{scroll-behavior:smooth} body{margin:0;color:#17253a;background:#fff} .skip-link{position:absolute;left:-9999px;top:0}.skip-link:focus{left:16px;top:16px;z-index:10000;background:white;padding:12px}
++/* Tailwind 4 reset */
++@import "tailwindcss/preflight";
++
++/* Ágora 4 compiled component styles */
++@import "@ama-pt/agora-design-system/index.css";
++
++/* Tailwind 4 application utilities, last by design */
++@import "tailwindcss/utilities";
++
++@theme {
++  /* Tokens restored by the official dados.gov.pt frontend on top of Ágora 4. */
++  --spacing-2: 2px;
++  --spacing-4: 4px;
++  --spacing-6: 6px;
++  --spacing-12: 12px;
++  --spacing-20: 20px;
++
++  --text-24: 24px;
++  --text-32: 32px;
++  --text-40: 40px;
++
++  --breakpoint-sm: 576px;
++  --breakpoint-lg: 1024px;
++
++  --leading-none: 1;
++  --leading-tight: 1.25;
++  --leading-snug: 1.375;
++  --leading-normal: 1.5;
++  --leading-relaxed: 1.625;
++  --leading-loose: 2;
++  --leading-3: 0.75rem;
++  --leading-4: 1rem;
++  --leading-6: 1.5rem;
++  --leading-7: 1.75rem;
++  --leading-8: 2rem;
++  --leading-9: 2.25rem;
++  --leading-10: 2.5rem;
++
++  --tracking-tighter: -0.05em;
++  --tracking-tight: -0.025em;
++  --tracking-normal: 0em;
++  --tracking-wide: 0.025em;
++  --tracking-wider: 0.05em;
++  --tracking-widest: 0.1em;
++
++  --font-weight-thin: 100;
++  --font-weight-extralight: 200;
++  --font-weight-light: 300;
++  --font-weight-normal: 400;
++  --font-weight-semibold: 600;
++  --font-weight-extrabold: 800;
++  --font-weight-black: 900;
++
++  --container-xs: 20rem;
++  --container-sm: 24rem;
++  --container-md: 28rem;
++  --container-lg: 32rem;
++  --container-xl: 36rem;
++  --container-2xl: 42rem;
++  --container-3xl: 48rem;
++  --container-4xl: 56rem;
++  --container-5xl: 64rem;
++  --container-6xl: 72rem;
++  --container-7xl: 80rem;
++
++  --color-accent-light: #f7f7ff;
++  --color-brand-blue-dark: #021c51;
++  --color-brand-blue-primary: #0c02cb;
++  --color-brand-blue-secondary: #050157;
++  --color-gray-medium: #64718b;
++}
++
++html {
++  scroll-behavior: smooth;
++}
++
++body {
++  margin: 0;
++  color: #17253a;
++  background: #fff;
++}
++
++.skip-link {
++  position: absolute;
++  left: -9999px;
++  top: 0;
++}
++
++.skip-link:focus {
++  left: 16px;
++  top: 16px;
++  z-index: 10000;
++  background: white;
++  padding: 12px;
++}
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index e3f0222..e5cc7a8 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -1,6 +1,5 @@
+ import type { Metadata } from "next";
+ import type { ReactNode } from "react";
+-import "@ama-pt/agora-design-system/artifacts/dist/style.css";
+ import "./globals.css";
+ import { PortalHeader } from "@/components/agora/PortalHeader";
+ import { PortalFooter } from "@/components/agora/PortalFooter";
+diff --git a/src/components/agora/PortalFooter.tsx b/src/components/agora/PortalFooter.tsx
+index d9fb013..c80f807 100644
+--- a/src/components/agora/PortalFooter.tsx
++++ b/src/components/agora/PortalFooter.tsx
+@@ -1,4 +1,61 @@
+ "use client";
+-import { Footer as FooterADS, FinancingSectionContainer, FooterDisclaimer, LinksSectionContainer, LinksSectionRelatedLinks, LinksSectionRelatedLinksCopyright, FooterLink } from "@ama-pt/agora-design-system";
++
++import {
++  Footer as FooterADS,
++  FinancingSectionContainer,
++  FooterDisclaimer,
++  LinksSectionContainer,
++  LinksSectionRelatedLinks,
++  LinksSectionRelatedLinksCopyright,
++  FooterLink,
++} from "@ama-pt/agora-design-system";
+ import { siteConfig, withBasePath } from "@/lib/site";
+-export function PortalFooter(){const a=siteConfig.author,p=siteConfig.prototype;return <footer className="bg-primary-900 text-white" aria-label="Rodapé do portal"><FooterADS variant="primary-900"><FinancingSectionContainer aria-label="Portal"><FooterDisclaimer>Portal aberto de dados públicos portugueses.</FooterDisclaimer></FinancingSectionContainer><LinksSectionContainer aria-label="Relacionado com o portal"><LinksSectionRelatedLinks linksSectionRelatedAriaLabel="Links externos"><FooterLink appearance="link" variant="neutral" href="https://dados.gov.pt/ajuda-e-contactos">Ajuda e contactos</FooterLink><FooterLink appearance="link" variant="neutral" href="https://dados.gov.pt/termos-de-utilizacao">Termos de utilização</FooterLink><LinksSectionRelatedLinksCopyright>© dados.gov.pt</LinksSectionRelatedLinksCopyright></LinksSectionRelatedLinks></LinksSectionContainer></FooterADS><section className="container mx-auto flex items-center gap-16 border-t border-white/10 py-24" aria-label="Crédito de autoria"><img src={withBasePath(a.logo_web)} alt={a.logo_alt} className="h-56 w-auto"/><div><p className="text-sm text-white/90">{a.role}: <a className="inline-flex min-h-[44px] items-center font-bold text-white underline underline-offset-4" href={a.linkedin} target="_blank" rel="noopener noreferrer">{a.name}</a></p><p className="text-xs text-white/70">© dados.gov.pt · Protótipo {p.name} {p.version} {p.status}</p></div></section></footer>}
++
++export function PortalFooter() {
++  const author = siteConfig.author;
++  const prototype = siteConfig.prototype;
++
++  return (
++    <footer className="bg-primary-900 text-white" aria-label="Rodapé do portal">
++      <FooterADS variant="primary-900">
++        <FinancingSectionContainer aria-label="Portal">
++          <FooterDisclaimer>Portal aberto de dados públicos portugueses.</FooterDisclaimer>
++        </FinancingSectionContainer>
++        <LinksSectionContainer aria-label="Relacionado com o portal">
++          <LinksSectionRelatedLinks linksSectionRelatedAriaLabel="Links externos">
++            <FooterLink appearance="link" variant="neutral" href="https://dados.gov.pt/ajuda-e-contactos">
++              Ajuda e contactos
++            </FooterLink>
++            <FooterLink appearance="link" variant="neutral" href="https://dados.gov.pt/termos-de-utilizacao">
++              Termos de utilização
++            </FooterLink>
++            <LinksSectionRelatedLinksCopyright>© dados.gov.pt</LinksSectionRelatedLinksCopyright>
++          </LinksSectionRelatedLinks>
++        </LinksSectionContainer>
++      </FooterADS>
++
++      <section
++        className="container mx-auto flex items-center gap-16 border-t border-white/10 py-24"
++        aria-label="Crédito de autoria"
++      >
++        <img src={withBasePath(author.logo_web)} alt={author.logo_alt} className="h-56 w-auto" />
++        <div>
++          <p className="text-s-regular text-white/90">
++            {author.role}:{" "}
++            <a
++              className="inline-flex min-h-[44px] items-center font-bold text-white underline underline-offset-4"
++              href={author.linkedin}
++              target="_blank"
++              rel="noopener noreferrer"
++            >
++              {author.name}
++            </a>
++          </p>
++          <p className="text-s-regular text-white/70">
++            © dados.gov.pt · Protótipo {prototype.name} {prototype.version} {prototype.status}
++          </p>
++        </div>
++      </section>
++    </footer>
++  );
++}
+diff --git a/src/components/agora/PortalHeader.tsx b/src/components/agora/PortalHeader.tsx
+index 2019ae4..884c37b 100644
+--- a/src/components/agora/PortalHeader.tsx
++++ b/src/components/agora/PortalHeader.tsx
+@@ -1,4 +1,65 @@
+ "use client";
+-import { Header as AgoraHeader, Brand, Logo, GeneralBar, Unauthenticated, UnauthenticatedLink, NavigationBar, NavigationRoot, NavigationLink } from "@ama-pt/agora-design-system";
+-const nav=[['Data Stories','https://dados.gov.pt/pt/datastories'],['Conjuntos de dados','https://dados.gov.pt/pt/datasets'],['APIs','https://dados.gov.pt/pt/dataservices'],['Reutilizações','https://dados.gov.pt/pt/reuses'],['Organizações','https://dados.gov.pt/pt/organizations']];
+-export function PortalHeader(){return <header className="sticky top-0 z-50 bg-white"><AgoraHeader maxNavigationItems={7}><Brand><Logo><a href="https://dados.gov.pt/pt" aria-label="dados.gov.pt"><img src="https://dados.gov.pt/Logos/Dados.gov_logocores.png" alt="dados.gov.pt" width="190" height="33"/></a></Logo></Brand><GeneralBar aria-label="Navegação geral"><Unauthenticated label="Autenticar"><UnauthenticatedLink><a href="https://dados.gov.pt/pt/login">Autenticar</a></UnauthenticatedLink></Unauthenticated></GeneralBar><NavigationBar responsiveMenuLabel="Menu" responsiveMenuAriaLabel="Abrir menu" responsiveMenuBackToRootLabel="Voltar" modalMenuLabel="Menu" modalAriaLabel="Navegação principal" modalCloseLabel="Fechar"><NavigationRoot label="Navegação principal">{nav.map(([label,href])=><NavigationLink key={href}><a href={href}>{label}</a></NavigationLink>)}</NavigationRoot></NavigationBar></AgoraHeader></header>}
++
++import {
++  Header as AgoraHeader,
++  Brand,
++  Logo,
++  GeneralBar,
++  Unauthenticated,
++  UnauthenticatedLink,
++  NavigationBar,
++  NavigationSection,
++  NavigationLink,
++} from "@ama-pt/agora-design-system";
++
++const nav = [
++  ["Data Stories", "https://dados.gov.pt/pt/datastories"],
++  ["Conjuntos de dados", "https://dados.gov.pt/pt/datasets"],
++  ["APIs", "https://dados.gov.pt/pt/dataservices"],
++  ["Reutilizações", "https://dados.gov.pt/pt/reuses"],
++  ["Organizações", "https://dados.gov.pt/pt/organizations"],
++] as const;
++
++export function PortalHeader() {
++  return (
++    <header className="sticky top-0 z-50 bg-white">
++      <AgoraHeader maxNavigationItems={7}>
++        <Brand>
++          <Logo>
++            <a href="https://dados.gov.pt/pt" aria-label="dados.gov.pt">
++              <img
++                src="https://dados.gov.pt/Logos/Dados.gov_logocores.png"
++                alt="dados.gov.pt"
++                width="190"
++                height="33"
++              />
++            </a>
++          </Logo>
++        </Brand>
++        <GeneralBar aria-label="Navegação geral">
++          <Unauthenticated label="Autenticar">
++            <UnauthenticatedLink>
++              <a href="https://dados.gov.pt/pt/login">Autenticar</a>
++            </UnauthenticatedLink>
++          </Unauthenticated>
++        </GeneralBar>
++        <NavigationBar
++          responsiveMenuLabel="Menu"
++          responsiveMenuAriaLabel="Abrir menu"
++          responsiveMenuBackToRootLabel="Voltar"
++          modalMenuLabel="Menu"
++          modalAriaLabel="Navegação principal"
++          modalCloseLabel="Fechar"
++        >
++          <NavigationSection>
++            {nav.map(([label, href]) => (
++              <NavigationLink key={href} href={href}>
++                {label}
++              </NavigationLink>
++            ))}
++          </NavigationSection>
++        </NavigationBar>
++      </AgoraHeader>
++    </header>
++  );
++}
+diff --git a/src/components/guides/GuideSearch.tsx b/src/components/guides/GuideSearch.tsx
+index bfdb4de..03206f2 100644
+--- a/src/components/guides/GuideSearch.tsx
++++ b/src/components/guides/GuideSearch.tsx
+@@ -26,7 +26,7 @@ export function GuideSearch({ items }: { items: SearchItem[] }) {
+         onChange={(event) => setQuery(event.currentTarget.value)}
+         placeholder="Ex.: publicar dados"
+       />
+-      <p className="mt-8 text-sm" role="status" aria-live="polite">
++      <p className="mt-8 text-s-regular" role="status" aria-live="polite">
+         {query ? `${hits.length} ${hits.length === 1 ? "resultado" : "resultados"}` : ""}
+       </p>
+       {hits.length > 0 ? (
+diff --git a/src/components/guides/RouteContent.tsx b/src/components/guides/RouteContent.tsx
+index 0b79735..9b529a9 100644
+--- a/src/components/guides/RouteContent.tsx
++++ b/src/components/guides/RouteContent.tsx
+@@ -36,7 +36,7 @@ function Breadcrumb({ route }: { route: GuideRoute }) {
+   if (route.kind === "task" && route.task) items.push({ label: route.task.title });
+ 
+   return (
+-    <nav aria-label="Breadcrumb" className="mb-24 text-sm">
++    <nav aria-label="Breadcrumb" className="mb-24 text-s-regular">
+       <ol className="flex flex-wrap items-center gap-x-8 gap-y-4">
+         {items.map((item, index) => (
+           <li key={`${item.label}-${index}`} className="flex items-center gap-8">
+@@ -189,9 +189,9 @@ export function RouteContent({ route }: { route: GuideRoute }) {
+     return (
+       <article>
+         <Breadcrumb route={route} />
+-        {task.roles ? <p className="mt-24 text-sm-semibold">{task.roles}</p> : null}
++        {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
+         <h1 className="text-3xl-bold my-16">{task.title}</h1>
+-        <p className="text-l mb-32">{task.intro}</p>
++        <p className="text-l-regular mb-32">{task.intro}</p>
+ 
+         <h2 className="text-xl-bold mb-16">Como fazer</h2>
+         <ol className="list-decimal space-y-12 pl-24">
+diff --git a/tailwind.config.ts b/tailwind.config.ts
+deleted file mode 100644
+index 47e5977..0000000
+--- a/tailwind.config.ts
++++ /dev/null
+@@ -1,14 +0,0 @@
+-import type { Config } from "tailwindcss";
+-import { AgoraTailwindConfig } from "@ama-pt/agora-design-system";
+-
+-const config: Config = {
+-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+-  theme: {
+-    ...AgoraTailwindConfig.theme,
+-    extend: { ...AgoraTailwindConfig.theme.extend },
+-  },
+-  plugins: AgoraTailwindConfig.plugins,
+-  safelist: AgoraTailwindConfig.safelist,
+-  corePlugins: { preflight: false },
+-};
+-export default config;

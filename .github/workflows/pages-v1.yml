@@ -32,6 +32,16 @@ jobs:
       - name: Instalar dependências
         run: npm ci --no-audit --no-fund
 
+      - name: Preparar dependências PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar e validar 15 PDFs da fonte única
+        run: bash scripts/v1/build-pdfs.sh
+
       - name: Gerar static export v1
         env:
           NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt

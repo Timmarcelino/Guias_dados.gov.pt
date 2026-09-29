@@ -1,8 +1,8 @@
 import { GuideCard } from "@/components/agora/GuideCard";
+import { GuidesBreadcrumb } from "@/components/guides/GuidesBreadcrumb";
 import { loadContent } from "@/lib/content/repository";
 import { getGuidePublicationStatus } from "@/lib/content/publication-status";
 import {
-  buildRoutes,
   routeForGuide,
   routeForTask,
   type GuideRoute,
@@ -28,53 +28,6 @@ function GuidePublicationNotice({ guideId }: { guideId: string }) {
       </h2>
       <p>{status.message}</p>
     </aside>
-  );
-}
-
-function Breadcrumb({ route }: { route: GuideRoute }) {
-  const content = loadContent();
-  const routes = buildRoutes(content);
-  const items: Array<{ label: string; href?: string }> = [
-    { label: "Guias do utilizador", href: withBasePath("/Guias-do-utilizador/") },
-  ];
-
-  if (route.theme) {
-    const themeRoute = routes.find(
-      (candidate) => candidate.kind === "theme" && candidate.theme?.id === route.theme?.id,
-    );
-    if (route.kind === "theme") items.push({ label: route.theme.title });
-    else if (themeRoute) items.push({ label: route.theme.title, href: withBasePath(themeRoute.path) });
-  }
-
-  if (route.guide) {
-    if (route.kind === "guide") items.push({ label: route.guide.title });
-    else if (route.kind === "task") {
-      items.push({
-        label: route.guide.title,
-        href: withBasePath(routeForGuide(content, route.guide.id).path),
-      });
-    }
-  }
-
-  if (route.kind === "task" && route.task) items.push({ label: route.task.title });
-
-  return (
-    <nav aria-label="Breadcrumb" className="mb-24 text-s-regular">
-      <ol className="flex flex-wrap items-center gap-x-8 gap-y-4">
-        {items.map((item, index) => (
-          <li key={`${item.label}-${index}`} className="flex items-center gap-8">
-            {index > 0 ? <span aria-hidden="true">/</span> : null}
-            {item.href ? (
-              <a className="inline-flex min-h-[24px] items-center underline underline-offset-4" href={item.href}>
-                {item.label}
-              </a>
-            ) : (
-              <span aria-current="page">{item.label}</span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
   );
 }
 
@@ -110,7 +63,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     const guides = route.theme.guideIds.map((id) => content.guides.find((guide) => guide.id === id)!);
     return (
       <>
-        <Breadcrumb route={route} />
+        <GuidesBreadcrumb route={route} />
         <h1 className="text-3xl-bold my-16">{route.theme.title}</h1>
         <p className="mb-32">{route.theme.intro}</p>
         <div className="grid gap-24 md:grid-cols-2">
@@ -137,7 +90,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
 
     return (
       <>
-        <Breadcrumb route={route} />
+        <GuidesBreadcrumb route={route} />
         <h1 className="text-3xl-bold my-16">{guide.title}</h1>
         <p className="mb-8">{guide.intro}</p>
         <p className="mb-24">{guide.audience}</p>
@@ -212,7 +165,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     const task = route.task;
     return (
       <article>
-        <Breadcrumb route={route} />
+        <GuidesBreadcrumb route={route} />
         {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
         <h1 className="text-3xl-bold my-16">{task.title}</h1>
         <p className="text-l-regular mb-32">{task.intro}</p>

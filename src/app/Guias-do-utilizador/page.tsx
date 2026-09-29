@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GuideCard } from "@/components/agora/GuideCard";
 import { GuideSearch } from "@/components/guides/GuideSearch";
+import { GuidesBreadcrumb } from "@/components/guides/GuidesBreadcrumb";
 import { loadConfiguredContent } from "@/lib/content/config";
 import { buildRoutes } from "@/lib/content/routes";
 import { buildSearchIndex } from "@/lib/content/search";
@@ -18,6 +19,7 @@ export default async function GuidesHome() {
 
   return (
     <>
+      <GuidesBreadcrumb />
       <h1 className="text-3xl-bold mb-16">Como podemos ajudar?</h1>
       <p className="mb-32">Escolha o tema relacionado com o que pretende fazer no dados.gov.pt.</p>
       <GuideSearch items={search} />

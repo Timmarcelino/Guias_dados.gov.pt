@@ -18,6 +18,7 @@ const nav = [
   ["APIs", "https://dados.gov.pt/pt/dataservices"],
   ["Reutilizações", "https://dados.gov.pt/pt/reuses"],
   ["Organizações", "https://dados.gov.pt/pt/organizations"],
+  ["Recursos", "https://dados.gov.pt/pt/recursos"],
 ] as const;
 
 export function PortalHeader() {

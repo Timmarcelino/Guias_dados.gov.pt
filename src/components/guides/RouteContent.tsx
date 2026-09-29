@@ -1,5 +1,6 @@
 import { GuideCard } from "@/components/agora/GuideCard";
 import { loadContent } from "@/lib/content/repository";
+import { getGuidePublicationStatus } from "@/lib/content/publication-status";
 import {
   buildRoutes,
   routeForGuide,
@@ -7,6 +8,28 @@ import {
   type GuideRoute,
 } from "@/lib/content/routes";
 import { withBasePath } from "@/lib/site";
+
+function guideCardDescription(guide: { id: string; intro: string }): string {
+  const status = getGuidePublicationStatus(guide.id);
+  return status ? `${status.label}. ${guide.intro}` : guide.intro;
+}
+
+function GuidePublicationNotice({ guideId }: { guideId: string }) {
+  const status = getGuidePublicationStatus(guideId);
+  if (!status) return null;
+
+  return (
+    <aside
+      className="my-24 rounded border border-l-4 border-primary-500 p-16"
+      aria-labelledby={`guide-publication-status-${guideId}`}
+    >
+      <h2 id={`guide-publication-status-${guideId}`} className="text-l-semibold mb-8">
+        {status.label}
+      </h2>
+      <p>{status.message}</p>
+    </aside>
+  );
+}
 
 function Breadcrumb({ route }: { route: GuideRoute }) {
   const content = loadContent();
@@ -97,7 +120,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
               <GuideCard
                 key={guide.id}
                 title={guide.title}
-                description={guide.intro}
+                description={guideCardDescription(guide)}
                 href={withBasePath(guideRoute.path)}
               />
             );
@@ -118,6 +141,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         <h1 className="text-3xl-bold my-16">{guide.title}</h1>
         <p className="mb-8">{guide.intro}</p>
         <p className="mb-24">{guide.audience}</p>
+        <GuidePublicationNotice guideId={guide.id} />
         <p className="mb-32">
           <a
             className="font-bold underline underline-offset-4"
@@ -155,7 +179,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
                   <GuideCard
                     key={item.id}
                     title={item.title}
-                    description={item.intro}
+                    description={guideCardDescription(item)}
                     href={withBasePath(relatedRoute.path)}
                   />
                 );
@@ -192,6 +216,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
         <h1 className="text-3xl-bold my-16">{task.title}</h1>
         <p className="text-l-regular mb-32">{task.intro}</p>
+        <GuidePublicationNotice guideId={route.guide.id} />
 
         <h2 className="text-xl-bold mb-16">Como fazer</h2>
         <ol className="list-decimal space-y-12 pl-24">

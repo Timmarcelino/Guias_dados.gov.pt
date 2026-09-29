@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadContent } from "../../src/lib/content/repository";
+import { getGuidePublicationStatus } from "../../src/lib/content/publication-status";
 import { buildRoutes, routeForGuide, routeForTask } from "../../src/lib/content/routes";
 import { canonicalUrl, siteConfig } from "../../src/lib/site";
 
@@ -71,6 +72,14 @@ for (const route of routes) {
     const internalRoute = internalRouteFromHref(href);
     if (internalRoute && !routePaths.has(internalRoute)) {
       fail(`${prefix} ligação interna para rota inexistente: ${href}`);
+    }
+  }
+
+  if ((route.kind === "guide" || route.kind === "task") && route.guide) {
+    const publicationStatus = getGuidePublicationStatus(route.guide.id);
+    if (publicationStatus) {
+      if (!html.includes(publicationStatus.label)) fail(`${prefix} aviso de disponibilidade em falta`);
+      if (!html.includes(publicationStatus.message)) fail(`${prefix} detalhe de disponibilidade em falta`);
     }
   }
 

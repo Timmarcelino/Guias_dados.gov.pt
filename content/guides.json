@@ -740,7 +740,7 @@
             "Reveja e conclua a operação."
           ],
           "example": "Adicione a ligação para um ficheiro disponibilizado no sítio da entidade e use a descrição para explicar o seu conteúdo.",
-          "tip": "Ligações externas, APIs e serviços de dados apresentam Não aplicável para validação. Adicionar a ligação não equivale a carregar o ficheiro no portal.",
+          "tip": "A referência a validação pertence ao Validador de Dados, ainda não disponível no portal público verificado. Na especificação preparada para essa funcionalidade, ligações externas, APIs e serviços de dados são tratados como Não aplicável.",
           "table": null,
           "media": "Captura de criação de recurso remoto com URL e metadados.",
           "nextRef": {
@@ -761,7 +761,7 @@
             "Reveja e guarde."
           ],
           "example": "Se a entidade mudou o endereço de um ficheiro, actualize a ligação do recurso existente.",
-          "tip": "Alterar apenas metadados não inicia nem invalida a validação aplicável ao ficheiro actual. Uma ligação remota continua com Não aplicável. Num Conjunto de Dados público, as alterações concluídas são imediatas.",
+          "tip": "A referência a estados de validação pertence ao Validador de Dados, ainda não disponível no portal público verificado. A edição dos metadados e da ligação continua a poder ser feita independentemente dessa funcionalidade.",
           "table": null,
           "media": "Captura dos metadados e da alteração de URL.",
           "nextRef": {
@@ -778,13 +778,13 @@
           "steps": [
             "Abra o recurso e seleccione a substituição do ficheiro.",
             "Escolha o novo ficheiro e aguarde o resultado do carregamento.",
-            "Se o novo ficheiro for elegível e existir modelo anterior, decida se pretende seleccionar Herdar modelo de validação. A opção começa desmarcada.",
-            "Conclua a substituição e confira o estado da validação."
+            "Reveja os dados apresentados para o novo ficheiro e confirme a substituição.",
+            "Volte a abrir o recurso e confirme que o novo ficheiro é o conteúdo actual."
           ],
-          "example": "Ao substituir um CSV actualizado, seleccione Herdar modelo de validação se pretende conservar a versão e a configuração do modelo anterior. O novo conteúdo fica Por validar.",
-          "tip": "O ficheiro novo nunca herda o resultado anterior. Sem herança fica Sem modelo; se não for elegível, fica Não aplicável. A validação tem de ser solicitada. Se a substituição falhar, o conteúdo anterior mantém-se.",
+          "example": "Ao substituir um CSV actualizado, confirme que o novo ficheiro ficou associado ao mesmo recurso e que pode voltar a aceder-lhe.",
+          "tip": "As referências a Sem modelo, herança e nova validação pertencem ao Validador de Dados, ainda não disponível no portal público verificado. A substituição do ficheiro continua a ser uma operação própria do recurso; se falhar, o conteúdo anterior mantém-se.",
           "table": null,
-          "media": "Captura da substituição, da herança desmarcada e do estado resultante.",
+          "media": "Captura da substituição do ficheiro e do resultado final do recurso.",
           "nextRef": {
             "type": "task",
             "id": "D05-T05"
@@ -824,7 +824,7 @@
             "Use Explorar dados quando a acção estiver disponível."
           ],
           "example": "Depois de actualizar um ficheiro, confirme o título, os metadados e a opção de acesso apresentada no detalhe.",
-          "tip": "A pré-visualização simples suporta CSV, TSV, XLS, XLSX e ODS, mas depende da obtenção e leitura do conteúdo. O Explorador e o Validador têm condições próprias. A ausência de validação não bloqueia, por si só, o acesso.",
+          "tip": "O Explorador de dados e o Validador de Dados referidos neste guia ainda não estão disponíveis como percursos utilizáveis nas superfícies públicas verificadas. A Pré-visualização simples é uma funcionalidade distinta e actualmente observável.",
           "table": null,
           "media": "Captura de recurso com pré-visualização e outro apenas com Metadados e Downloads.",
           "nextRef": {
@@ -1494,7 +1494,7 @@
             "Guarde e volte a abrir a reutilização para confirmar as alterações."
           ],
           "example": "Uma editora corrige o endereço de uma fonte externa e acrescenta uma descrição.",
-          "tip": "Confirme a informação guardada, sobretudo quando remove ligações. A transferência de gestão tem um percurso próprio.",
+          "tip": "A transferência self-service de Reutilizações não está disponível no ecrã actual do portal público verificado. Se precisar de alterar a responsabilidade e não encontrar essa acção, utilize Ajuda e contactos.",
           "table": null,
           "media": "Captura do percurso da reutilização com dados fictícios, sem expor dados pessoais reais.",
           "nextRef": {

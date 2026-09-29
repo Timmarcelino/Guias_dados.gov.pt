@@ -16,7 +16,7 @@ export function PortalFooter() {
   const prototype = siteConfig.prototype;
 
   return (
-    <footer className="bg-primary-900 text-white" aria-label="RodapÃ© do portal">
+    <footer className="bg-primary-900 text-white" aria-label="Rodapé do portal">
       <section className="container mx-auto px-16 py-40 lg:px-0" aria-labelledby="footer-descobrir">
         <h2 id="footer-descobrir" className="text-xl-bold mb-24">Mais para descobrir no portal</h2>
         <div className="grid gap-32 md:grid-cols-3">
@@ -45,7 +45,7 @@ export function PortalFooter() {
       </section>
       <FooterADS variant="primary-900">
         <FinancingSectionContainer aria-label="Portal">
-          <FooterDisclaimer>Portal aberto de dados pÃºblicos portugueses.</FooterDisclaimer>
+          <FooterDisclaimer>Portal aberto de dados públicos portugueses.</FooterDisclaimer>
         </FinancingSectionContainer>
         <LinksSectionContainer aria-label="Relacionado com o portal">
           <LinksSectionRelatedLinks linksSectionRelatedAriaLabel="Links externos">
@@ -53,16 +53,16 @@ export function PortalFooter() {
               Ajuda e contactos
             </FooterLink>
             <FooterLink appearance="link" variant="neutral" href="https://dados.gov.pt/termos-de-utilizacao">
-              Termos de utilizaÃ§Ã£o
+              Termos de utilização
             </FooterLink>
-            <LinksSectionRelatedLinksCopyright>Â© dados.gov.pt</LinksSectionRelatedLinksCopyright>
+            <LinksSectionRelatedLinksCopyright>© dados.gov.pt</LinksSectionRelatedLinksCopyright>
           </LinksSectionRelatedLinks>
         </LinksSectionContainer>
       </FooterADS>
 
       <section
         className="container mx-auto flex items-center gap-16 border-t border-white/10 py-24"
-        aria-label="CrÃ©dito de autoria"
+        aria-label="Crédito de autoria"
       >
         <img src={withBasePath(author.logo_web)} alt={author.logo_alt} className="h-56 w-auto" />
         <div>
@@ -78,7 +78,7 @@ export function PortalFooter() {
             </a>
           </p>
           <p className="text-s-regular text-white/70">
-            Â© dados.gov.pt Â· ProtÃ³tipo {prototype.name} {prototype.version} {prototype.status}
+            © dados.gov.pt · Protótipo {prototype.name} {prototype.version} {prototype.status}
           </p>
         </div>
       </section>

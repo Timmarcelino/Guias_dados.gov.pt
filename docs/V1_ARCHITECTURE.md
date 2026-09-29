@@ -15,8 +15,8 @@ Manter `GuidesContent` como contrato interno único e `content/guides.json` como
 ## Stack
 
 1. Next.js 16.3.6, React 19.2.3 e TypeScript 5.9.
-2. `@ama-pt/agora-design-system` 3.7.0 através de wrappers locais.
-3. Tailwind 3.4, Zod 4.6 e Playwright para validação automatizada.
+2. `@ama-pt/agora-design-system` 4.0.1 através de wrappers locais, alinhado com o frontend oficial.
+3. Tailwind 4.3 em configuração CSS-first com `@tailwindcss/postcss`, Zod 4.6 e Playwright para validação automatizada.
 4. `output: export` e `trailingSlash: true` para preservar a demonstração estática e o contrato histórico de URLs.
 
 ## Decisões arquitecturais

@@ -20,7 +20,6 @@ on:
       - "package.json"
       - "package-lock.json"
       - "next.config.ts"
-      - "tailwind.config.ts"
       - "postcss.config.mjs"
       - "tsconfig.json"
       - ".github/workflows/v1-ci.yml"
@@ -78,6 +77,9 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /Guias_dados.gov.pt
         run: npm run build
+      - name: Validar CSS Ágora 4 e Tailwind 4
+        run: npx tsx scripts/v1/check-tailwind-output.ts
+
       - name: Confirmar saída estática
         run: |
           test -f out/Guias-do-utilizador/index.html

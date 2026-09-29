@@ -20,23 +20,36 @@ export default async function GuidesHome() {
   return (
     <>
       <GuidesBreadcrumb />
-      <h1 className="text-3xl-bold mb-16">Como podemos ajudar?</h1>
-      <p className="mb-32">Escolha o tema relacionado com o que pretende fazer no dados.gov.pt.</p>
+      <section aria-labelledby="guias-titulo" className="mb-32">
+        <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Guias práticos</p>
+        <h1 id="guias-titulo" className="mb-12 text-3xl-bold">Como podemos ajudar?</h1>
+        <p className="max-w-4xl text-m-regular">
+          Escolha o tema relacionado com o que pretende fazer no dados.gov.pt. Dentro de cada tema encontra guias
+          práticos organizados por tarefas.
+        </p>
+      </section>
+
       <GuideSearch items={search} />
-      <h2 className="text-xl-bold mb-16">Explorar por tema</h2>
-      <div className="grid gap-24 md:grid-cols-2">
-        {content.themes.map((theme) => {
-          const route = routes.find((candidate) => candidate.kind === "theme" && candidate.theme?.id === theme.id)!;
-          return (
-            <GuideCard
-              key={theme.id}
-              title={theme.title}
-              description={theme.intro}
-              href={withBasePath(route.path)}
-            />
-          );
-        })}
-      </div>
+
+      <section aria-labelledby="explorar-tema">
+        <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
+          <h2 id="explorar-tema" className="text-xl-bold">Explorar por tema</h2>
+          <p className="text-s-regular text-gray-medium">{content.themes.length} temas</p>
+        </div>
+        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-3">
+          {content.themes.map((theme) => {
+            const route = routes.find((candidate) => candidate.kind === "theme" && candidate.theme?.id === theme.id)!;
+            return (
+              <GuideCard
+                key={theme.id}
+                title={theme.title}
+                description={theme.intro}
+                href={withBasePath(route.path)}
+              />
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }

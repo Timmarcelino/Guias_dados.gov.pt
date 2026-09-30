@@ -17,33 +17,44 @@ export function GuideSearch({ items }: { items: SearchItem[] }) {
   return (
     <section
       aria-labelledby="pesquisa-guias"
-      className="mb-40 rounded-sm bg-accent-light px-16 py-20 sm:px-24 sm:py-24"
+      className="relative left-1/2 w-screen -translate-x-1/2 border-b border-[#dce5eb] bg-white"
     >
-      <h2 id="pesquisa-guias" className="text-xl-bold mb-16">
-        Pesquisar nos guias
-      </h2>
-      <SearchInput
-        label="Pesquisar nos guias"
-        hideLabel
-        value={query}
-        onChange={(event) => setQuery(event.currentTarget.value)}
-        placeholder="Ex.: publicar dados"
-      />
-      <p className="mt-8 text-s-regular" role="status" aria-live="polite">
-        {query ? `${hits.length} ${hits.length === 1 ? "resultado" : "resultados"}` : ""}
-      </p>
-      {hits.length > 0 ? (
-        <ul className="mt-16 flex flex-col gap-12">
-          {hits.map((item) => (
-            <li key={item.id}>
-              <a className="underline" href={withBasePath(item.url)}>
-                <strong>{item.title}</strong>
-                <span className="block">{item.intro}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <div className="container mx-auto px-16 py-16 sm:px-24 lg:px-0">
+        <div className="ml-auto w-full max-w-[420px]">
+          <h2 id="pesquisa-guias" className="sr-only">Pesquisar nos guias</h2>
+          <form
+            role="search"
+            className="grid gap-8 sm:grid-cols-[minmax(0,1fr)_auto]"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <SearchInput
+              label="Pesquisar nos guias"
+              hideLabel
+              value={query}
+              onChange={(event) => setQuery(event.currentTarget.value)}
+              placeholder="Pesquisar nestes guias"
+            />
+            <button type="submit" className="min-h-[44px] rounded-sm bg-[#005ce6] px-18 font-semibold text-white hover:bg-[#004aaa]">
+              Pesquisar
+            </button>
+          </form>
+          <p className="mt-8 text-s-regular" role="status" aria-live="polite">
+            {query ? `${hits.length} ${hits.length === 1 ? "resultado" : "resultados"}` : ""}
+          </p>
+          {hits.length > 0 ? (
+            <ul className="mt-12 flex flex-col gap-8 border-t border-[#dce5eb] pt-12">
+              {hits.map((item) => (
+                <li key={item.id}>
+                  <a className="block rounded-sm px-8 py-8 hover:bg-[#f4f7f9]" href={withBasePath(item.url)}>
+                    <strong>{item.title}</strong>
+                    <span className="block text-s-regular text-gray-medium">{item.intro}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
     </section>
   );
 }

@@ -65,7 +65,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <>
         <GuidesBreadcrumb route={route} />
-        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+        <div className="grid gap-32 py-40 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
           <div className="min-w-0">
             <header className="mb-32 max-w-4xl">
@@ -107,7 +107,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <>
         <GuidesBreadcrumb route={route} />
-        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+        <div className="grid gap-32 py-40 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
           <div className="min-w-0">
             <header className="mb-24 max-w-4xl">
@@ -197,7 +197,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <>
         <GuidesBreadcrumb route={route} />
-        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+        <div className="grid gap-32 py-40 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
           <article className="min-w-0">
             <header className="mb-32 max-w-4xl">

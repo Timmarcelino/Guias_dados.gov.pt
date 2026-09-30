@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Saltar para o conteúdo
         </a>
         <PortalHeader />
-        <main id="conteudo" tabIndex={-1} className="container mx-auto min-h-[60vh] px-16 py-48 lg:px-0">
+        <main id="conteudo" tabIndex={-1} className="container mx-auto min-h-[60vh] px-16 lg:px-0">
           {children}
         </main>
         <PortalFooter />

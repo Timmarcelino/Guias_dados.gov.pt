@@ -4,9 +4,6 @@ import {
   Header as AgoraHeader,
   Brand,
   Logo,
-  GeneralBar,
-  Unauthenticated,
-  UnauthenticatedLink,
   NavigationBar,
   NavigationSection,
   NavigationLink,
@@ -23,7 +20,22 @@ const nav = [
 
 export function PortalHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="sticky top-0 z-50 bg-white shadow-[0_1px_0_rgba(2,28,81,0.08)]">
+      <div className="border-b border-[#e6e9ef] bg-[#f1f3f7] text-[#18263a]">
+        <div className="container mx-auto flex min-h-[52px] items-center justify-between gap-24 px-16 lg:px-0">
+          <a className="text-s-regular font-medium no-underline hover:underline" href="https://dados.gov.pt/pt">
+            Portal nacional de dados abertos
+          </a>
+          <div className="flex items-center gap-12 text-s-regular">
+            <span className="hidden items-center gap-6 sm:inline-flex" aria-label="Ecossistema ARTE">
+              Ecossistema <strong className="text-m-bold lowercase tracking-tight">arte</strong>
+            </span>
+            <a className="inline-flex min-h-[44px] items-center font-medium no-underline hover:underline" href="https://dados.gov.pt/pt/login" aria-label="Autenticar">
+              Autenticar
+            </a>
+          </div>
+        </div>
+      </div>
       <AgoraHeader maxNavigationItems={7}>
         <Brand>
           <Logo>
@@ -37,13 +49,6 @@ export function PortalHeader() {
             </a>
           </Logo>
         </Brand>
-        <GeneralBar aria-label="Navegação geral">
-          <Unauthenticated label="Autenticar">
-            <UnauthenticatedLink>
-              <a href="https://dados.gov.pt/pt/login" aria-label="Autenticar">Autenticar</a>
-            </UnauthenticatedLink>
-          </Unauthenticated>
-        </GeneralBar>
         <NavigationBar
           responsiveMenuLabel="Menu"
           responsiveMenuAriaLabel="Abrir menu"

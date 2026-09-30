@@ -107,6 +107,21 @@ Validação B5:
 
 Nota PDF: a validação estrutural profunda dos PDFs não foi reexecutada localmente porque os executores não dispõem de parser PDF instalado. A evidência de B5 combina identidade exacta dos 15 blobs com a `main` já validada e `check-export` verde.
 
-Estado: B5 concluído. B6 não iniciado.
+Estado: B5 concluído.
 
-Próximo passo: aguardar instruções antes de iniciar B6, PR ou integração em `main`.
+## B6 concluído
+
+* PR #12 aberto de `feature/qf02-ux-recovery` para `main`, ready for review e mergeable;
+* checkpoint técnico `95b03039e1b8b78c9f6d7434d6f469cb53c4bd79`;
+* primeiro ciclo de CI detectou guardrail Tailwind obsoleto, corrigido sem alteração funcional;
+* `Validar arquitectura v1` #109: success;
+* `Publicar v1 no GitHub Pages` #14, build: success; deploy: skipped por ser pull request;
+* 15 PDFs, static export, CSS Ágora 4/Tailwind 4, coerência do export e contrato UX passaram no CI;
+* artefacto `github-pages` produzido para o checkpoint técnico validado;
+* auditoria pré-integração: `main` inalterada, branch 19 commits à frente e 0 atrás, `git fsck` e `diff --check` verdes;
+* N4050 e `chicovm1` sincronizados e limpos no mesmo checkpoint técnico;
+* nenhuma publicação manual, merge em `main` ou alteração em Jira.
+
+B6.6 fecha apenas rastreabilidade e contingência, sem mudança funcional. O bundle final verificado é mantido fora do clone e o seu SHA-256 é registado no PR para não criar auto-referência no histórico Git.
+
+Estado: B6 concluído. Integração em `main` aguarda autorização explícita separada.

@@ -1,5 +1,6 @@
 import { GuideCard } from "@/components/agora/GuideCard";
 import { GuidesBreadcrumb } from "@/components/guides/GuidesBreadcrumb";
+import { ThemeGuideNavigation } from "@/components/guides/ThemeGuideNavigation";
 import { loadContent } from "@/lib/content/repository";
 import { getGuidePublicationStatus } from "@/lib/content/publication-status";
 import {
@@ -91,7 +92,10 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <>
         <GuidesBreadcrumb route={route} />
-        <h1 className="text-3xl-bold my-16">{guide.title}</h1>
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <div>
+            <h1 className="text-3xl-bold my-16">{guide.title}</h1>
         <p className="mb-8">{guide.intro}</p>
         <p className="mb-24">{guide.audience}</p>
         <GuidePublicationNotice guideId={guide.id} />
@@ -157,6 +161,8 @@ export function RouteContent({ route }: { route: GuideRoute }) {
             </ul>
           </section>
         ) : null}
+          </div>
+        </div>
       </>
     );
   }
@@ -164,9 +170,12 @@ export function RouteContent({ route }: { route: GuideRoute }) {
   if (route.kind === "task" && route.guide && route.task) {
     const task = route.task;
     return (
-      <article>
+      <>
         <GuidesBreadcrumb route={route} />
-        {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <article>
+            {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
         <h1 className="text-3xl-bold my-16">{task.title}</h1>
         <p className="text-l-regular mb-32">{task.intro}</p>
         <GuidePublicationNotice guideId={route.guide.id} />
@@ -230,8 +239,10 @@ export function RouteContent({ route }: { route: GuideRoute }) {
           </aside>
         ) : null}
 
-        <TaskNavigation route={route} />
-      </article>
+            <TaskNavigation route={route} />
+          </article>
+        </div>
+      </>
     );
   }
 

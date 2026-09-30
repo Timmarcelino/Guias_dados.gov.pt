@@ -39,15 +39,24 @@ Até existir identidade mínima própria na VM, separar responsabilidades:
 * um sincronizador autorizado publica o checkpoint depois de verificar branch, base, diff e SHA remoto;
 * trabalho concorrente usa branches distintas e PRs.
 
-## Próximo bloco
+## B3 concluído
 
-`B3.2a` — recuperar navegação compacta entre os guias do tema actual nas páginas de guia e tarefa.
+Checkpoints funcionais sincronizados:
 
-Âmbito:
+* `a6caeefa68f1f6e27eb1b52df0c90d96eb84932e` — B3.2a, navegação «Escolher guia» em guia e tarefa;
+* `8c5d8a1e87ef874336d5372614f2000f82e11739` — B3.2b, navegação estendida ao contexto de Tema;
+* `cdbec691e64f9963cbd04044847fcf0bb426b2ff` — B3.3, raiz passa a apresentar directamente a experiência dos Guias.
 
-* componente reutilizável baseado na fonte de conteúdo e funções de rotas existentes;
-* desktop: navegação lateral ao conteúdo;
-* ecrãs estreitos: navegação no fluxo normal sem esconder destinos;
-* sem alterar pesquisa, conteúdo editorial, QF01, shell B2, entrada B3.1 ou contrato de URLs.
+Validação B3:
 
-Gates rápidos previstos: `typecheck`, `diffcheck`, UTF-8 e contrato de 118 rotas. Build e validação visual ficam num bloco separado.
+* static export concluído com 121 páginas;
+* 7 temas, 15 guias, 95 fichas e 118 rotas preservados;
+* 95 entradas de pesquisa preservadas;
+* validação focalizada de guia e tarefa em 360, 768 e 1440 px;
+* foco visível e activação por teclado da navegação confirmados;
+* contrato UX permanente: 16 testes aprovados no Chrome do N4050;
+* revisão visual de raiz e Tema em 360, 768 e 1440 px sem regressão material observada.
+
+Estado: B3 concluído. B4 não iniciado.
+
+Próximo passo: aguardar instruções antes de iniciar B4.

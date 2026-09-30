@@ -50,3 +50,28 @@ test("tema, guia e tarefa mantêm contexto hierárquico", async ({ page }) => {
     await expect(page.getByRole("navigation", { name: "Breadcrumb" })).toBeVisible();
   }
 });
+
+
+test("raiz apresenta directamente a experiência dos Guias", async ({ page }) => {
+  await page.goto(`${prefix}/`);
+  await expect(page.getByRole("heading", { level: 1, name: "Como podemos ajudar?" })).toBeVisible();
+  await expect(page.getByRole("searchbox", { name: "Pesquisar nos guias" })).toBeVisible();
+  await expect(page.getByText("Abrir os Guias", { exact: true })).toHaveCount(0);
+  const canonical = page.locator('link[rel="canonical"]');
+  await expect(canonical).toHaveAttribute("href", /\/Guias-do-utilizador\/$/);
+});
+
+test("tema, guia e tarefa expõem navegação Escolher guia com contexto correcto", async ({ page }) => {
+  const cases = [
+    [routes[1][1], 0],
+    [routes[2][1], 1],
+    [routes[3][1], 0],
+  ] as const;
+  for (const [route, expectedCurrent] of cases) {
+    await page.goto(`${prefix}${route}`);
+    const nav = page.getByRole("navigation", { name: "Escolher guia" });
+    await expect(nav).toBeVisible();
+    await expect(nav.locator("a")).toHaveCount(2);
+    await expect(nav.locator('a[aria-current="page"]')).toHaveCount(expectedCurrent);
+  }
+});

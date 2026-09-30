@@ -65,9 +65,12 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     return (
       <>
         <GuidesBreadcrumb route={route} />
-        <h1 className="text-3xl-bold my-16">{route.theme.title}</h1>
-        <p className="mb-32">{route.theme.intro}</p>
-        <div className="grid gap-24 md:grid-cols-2">
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <div>
+            <h1 className="text-3xl-bold my-16">{route.theme.title}</h1>
+            <p className="mb-32">{route.theme.intro}</p>
+            <div className="grid gap-24 md:grid-cols-2">
           {guides.map((guide) => {
             const guideRoute = routeForGuide(content, guide.id);
             return (
@@ -79,6 +82,8 @@ export function RouteContent({ route }: { route: GuideRoute }) {
               />
             );
           })}
+            </div>
+          </div>
         </div>
       </>
     );

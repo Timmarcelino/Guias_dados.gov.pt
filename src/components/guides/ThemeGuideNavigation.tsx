@@ -3,7 +3,7 @@ import { routeForGuide, type GuideRoute } from "@/lib/content/routes";
 import { withBasePath } from "@/lib/site";
 
 export function ThemeGuideNavigation({ route }: { route: GuideRoute }) {
-  if (!route.theme || !route.guide) return null;
+  if (!route.theme) return null;
 
   const content = loadContent();
   const guides = route.theme.guideIds.map(

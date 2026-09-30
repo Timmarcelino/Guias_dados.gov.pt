@@ -78,6 +78,35 @@ Validação B4:
 
 Risco transversal por tratar: o Axe global reporta `link-name` serious no link `Autenticar` do header. A evidência é anterior ao âmbito B4 e não foi mascarada. Por confirmar no B5 ou numa correcção transversal dedicada.
 
-Estado: B4 concluído. B5 não iniciado.
+Estado: B4 concluído.
 
-Próximo passo: aguardar instruções antes de iniciar B5.
+## B5 concluído
+
+Checkpoints funcionais sincronizados:
+
+* `7452472bf8735988d7e8342479c3999b4fe8aac0` — B5.2, correcção do nome acessível de `Autenticar` e reforço dos testes de acessibilidade, pesquisa e teclado;
+* `8805a3ad42e1d9893f6d21e2f30cd0721aa2368d` — B5.3a, recuperação das secções de descoberta directa dos 15 guias agrupados pelos 7 temas.
+
+Validação B5:
+
+* `content:validate` verde: 7 temas, 15 guias, 95 fichas, 118 rotas e 3 estados QF01;
+* `routes:check`, `content:derive`, `typecheck` e `diffcheck` verdes;
+* static export concluído com 121 páginas e 95 entradas de pesquisa;
+* `check-export` verde: 118 rotas, canonicals, navegação, pesquisa, sitemap e 15 PDFs coerentes;
+* 15 PDFs versionados confirmados sem diferenças de blobs face à `main` `fc1840d74eb4f6589a7f46af7da6589ece240398`, já validada pós QF01;
+* os PDFs não foram regenerados porque B5 não alterou conteúdo editorial;
+* contrato UX final: 18/18 testes aprovados no Chrome do N4050;
+* acessibilidade final: 17/17 testes aprovados, incluindo 12 scans Axe globais em 360, 768 e 1440 px;
+* skip link, foco, nomes acessíveis, pesquisa com resultados, `Autenticar` e navegação `Escolher guia` por teclado validados;
+* reflow e ausência de overflow horizontal confirmados em Entrada, Tema, Guia e Tarefa a 360, 768 e 1440 px;
+* comparação visual B1 versus B5 revista nos três breakpoints;
+* a comparação detectou a ausência das secções de guias por tema, corrigida no próprio B5 antes do fecho;
+* D06, D07 e CM mantêm aviso QF01 em Guia e Tarefa, PDF, tarefas, `Escolher guia` e navegação;
+* D11 permanece `Favoritos e notificações`;
+* a falha global `link-name` em `Autenticar` foi diagnosticada em mobile/tablet e corrigida com nome acessível explícito, sem alteração de destino ou comportamento.
+
+Nota PDF: a validação estrutural profunda dos PDFs não foi reexecutada localmente porque os executores não dispõem de parser PDF instalado. A evidência de B5 combina identidade exacta dos 15 blobs com a `main` já validada e `check-export` verde.
+
+Estado: B5 concluído. B6 não iniciado.
+
+Próximo passo: aguardar instruções antes de iniciar B6, PR ou integração em `main`.

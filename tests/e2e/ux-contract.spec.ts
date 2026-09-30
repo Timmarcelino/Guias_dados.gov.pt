@@ -24,7 +24,7 @@ for (const [routeName, route] of routes) {
 
       await expect(page.locator("main#conteudo")).toHaveCount(1);
       await expect(page.locator("h1")).toHaveCount(1);
-      await expect(page.locator("header")).toBeVisible();
+      await expect(page.getByRole("banner")).toBeVisible();
       await expect(page.locator('footer[aria-label="Rodapé do portal"]')).toBeVisible();
 
       const geometry = await page.evaluate(() => ({
@@ -74,4 +74,22 @@ test("tema, guia e tarefa expõem navegação Escolher guia com contexto correct
     await expect(nav.locator("a")).toHaveCount(2);
     await expect(nav.locator('a[aria-current="page"]')).toHaveCount(expectedCurrent);
   }
+});
+
+test("B4 preserva hierarquia e recursos de tema, guia e tarefa", async ({ page }) => {
+  await page.goto(`${prefix}${routes[1][1]}`);
+  await expect(page.getByRole("heading", { level: 2, name: "Guias deste tema" })).toBeVisible();
+  await expect(page.getByText("2 guias", { exact: true })).toBeVisible();
+
+  await page.goto(`${prefix}${routes[2][1]}`);
+  await expect(page.getByRole("heading", { level: 2, name: "O que pretende fazer?" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Descarregar este guia em PDF" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Guias relacionados" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Recursos úteis" })).toBeVisible();
+
+  await page.goto(`${prefix}${routes[3][1]}`);
+  await expect(page.getByRole("heading", { level: 2, name: "Como fazer" })).toBeVisible();
+  const taskNav = page.getByRole("navigation", { name: "Navegação da tarefa" });
+  await expect(taskNav).toBeVisible();
+  await expect(taskNav.locator("a")).toHaveCount(2);
 });

@@ -57,6 +57,27 @@ Validação B3:
 * contrato UX permanente: 16 testes aprovados no Chrome do N4050;
 * revisão visual de raiz e Tema em 360, 768 e 1440 px sem regressão material observada.
 
-Estado: B3 concluído. B4 não iniciado.
+Estado: B3 concluído.
 
-Próximo passo: aguardar instruções antes de iniciar B4.
+## B4 concluído
+
+Checkpoints funcionais sincronizados:
+
+* `fccddf4c8cb551e5a554bc34290e0dc06c586ffb` — B4.1, hierarquia e densidade da página de Tema;
+* `4883dea5d59908e79a19908bd30b1644f6b2296c` — B4.2, hierarquia da página de Guia, PDF, tarefas, relacionados e recursos;
+* `e950fb28dcfcb09ee36f2760eecbd81f551a1d00` — B4.3, leitura da Tarefa, tabela, exemplo, media, dica e navegação final.
+
+Validação B4:
+
+* 118 rotas preservadas e static export concluído;
+* `check-export` verde com os 15 PDFs versionados instalados apenas no `out` temporário, sem regeneração editorial;
+* D06, D07 e CM mantêm aviso QF01 em Guia e Tarefa, PDF, tarefas e navegação;
+* contrato UX permanente: 17/17 testes aprovados no Chrome do N4050;
+* Axe focalizado em `main#conteudo`: 9/9 scans sem violações serious/critical em Tema, Guia e Tarefa a 360, 768 e 1440 px;
+* revisão visual de Tema, Guia e Tarefa em 360, 768 e 1440 px sem regressão material observada.
+
+Risco transversal por tratar: o Axe global reporta `link-name` serious no link `Autenticar` do header. A evidência é anterior ao âmbito B4 e não foi mascarada. Por confirmar no B5 ou numa correcção transversal dedicada.
+
+Estado: B4 concluído. B5 não iniciado.
+
+Próximo passo: aguardar instruções antes de iniciar B5.

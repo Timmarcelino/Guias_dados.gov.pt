@@ -45,12 +45,12 @@ function TaskNavigation({ route }: { route: GuideRoute }) {
   return (
     <nav
       aria-label="Navegação da tarefa"
-      className="mt-40 flex flex-col gap-16 border-t pt-24 sm:flex-row sm:items-center sm:justify-between"
+      className="mt-40 grid gap-12 border-t pt-24 sm:grid-cols-2 sm:items-center"
     >
-      <a className="underline underline-offset-4" href={withBasePath(overview.path)}>
+      <a className="rounded-sm border p-16 underline underline-offset-4" href={withBasePath(overview.path)}>
         Visão geral do guia
       </a>
-      <a className="font-bold underline underline-offset-4" href={withBasePath(next.path)}>
+      <a className="rounded-sm border p-16 font-bold underline underline-offset-4 sm:text-right" href={withBasePath(next.path)}>
         {next.title} →
       </a>
     </nav>
@@ -199,21 +199,26 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         <GuidesBreadcrumb route={route} />
         <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
-          <article>
-            {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
-        <h1 className="text-3xl-bold my-16">{task.title}</h1>
-        <p className="text-l-regular mb-32">{task.intro}</p>
-        <GuidePublicationNotice guideId={route.guide.id} />
+          <article className="min-w-0">
+            <header className="mb-32 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Tarefa</p>
+              {task.roles ? <p className="mb-8 text-s-semibold">{task.roles}</p> : null}
+              <h1 className="mb-12 text-3xl-bold">{task.title}</h1>
+              <p className="text-m-regular">{task.intro}</p>
+            </header>
+            <GuidePublicationNotice guideId={route.guide.id} />
 
-        <h2 className="text-xl-bold mb-16">Como fazer</h2>
-        <ol className="list-decimal space-y-12 pl-24">
+            <section aria-labelledby="como-fazer" className="my-32">
+              <h2 id="como-fazer" className="mb-16 text-xl-bold">Como fazer</h2>
+              <ol className="list-decimal space-y-12 pl-24">
           {task.steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
-        </ol>
+              </ol>
+            </section>
 
         {task.table?.length ? (
-          <div className="my-32 overflow-x-auto">
+          <div className="my-32 overflow-x-auto rounded-sm border">
             <table className="w-full border-collapse">
               <thead>
                 <tr>
@@ -240,7 +245,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.example ? (
-          <section className="my-32" aria-labelledby="exemplo-tarefa">
+          <section className="my-32 rounded-sm bg-accent-light p-20" aria-labelledby="exemplo-tarefa">
             <h2 id="exemplo-tarefa" className="text-xl-bold">
               Exemplo
             </h2>
@@ -249,7 +254,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.media ? (
-          <section className="my-32 rounded border p-16" aria-labelledby="media-previsto">
+          <section className="my-32 rounded-sm border p-20" aria-labelledby="media-previsto">
             <h2 id="media-previsto" className="text-xl-bold mb-8">
               Imagem ou vídeo previsto
             </h2>
@@ -258,7 +263,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.tip ? (
-          <aside className="my-32 border-l-4 border-primary-500 pl-16">
+          <aside className="my-32 rounded-sm border border-l-4 border-primary-500 bg-accent-light p-20">
             <strong>Dica</strong>
             <p>{task.tip}</p>
           </aside>

@@ -40,7 +40,7 @@ export function PortalHeader() {
         <GeneralBar aria-label="Navegação geral">
           <Unauthenticated label="Autenticar">
             <UnauthenticatedLink>
-              <a href="https://dados.gov.pt/pt/login">Autenticar</a>
+              <a href="https://dados.gov.pt/pt/login" aria-label="Autenticar">Autenticar</a>
             </UnauthenticatedLink>
           </Unauthenticated>
         </GeneralBar>

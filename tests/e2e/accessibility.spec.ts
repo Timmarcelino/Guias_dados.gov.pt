@@ -61,10 +61,45 @@ test("cartões expõem ligações focáveis e com nome acessível", async ({ pag
 test("pesquisa anuncia resultados e expõe ligações navegáveis", async ({ page }) => {
   await page.goto(`${prefix}/Guias-do-utilizador/`);
   const search = page.getByRole("searchbox", { name: "Pesquisar nos guias" });
-  await search.fill("publicar dados");
-  await expect(page.getByRole("status")).toContainText(/resultado/);
-  const firstResult = page.locator('section[aria-labelledby="pesquisa-guias"] ul a').first();
+  await search.fill("publicar");
+  await expect(page.getByRole("status")).toHaveText(/^[1-9]\d* resultados?$/);
+  const firstResult = page.locator('section[aria-labelledby="pesquisa-guias"]').getByRole("link").first();
   await expect(firstResult).toBeVisible();
   await firstResult.focus();
   await expect(firstResult).toBeFocused();
+});
+
+
+test("Autenticar mantém nome acessível nos breakpoints", async ({ page }) => {
+  for (const viewport of viewports) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.goto(`${prefix}/Guias-do-utilizador/`);
+    const login = page.getByRole("link", { name: "Autenticar" });
+    await expect(login).toHaveCount(1);
+    await expect(login).toHaveAttribute("href", "https://dados.gov.pt/pt/login");
+    await login.focus();
+    await expect(login).toBeFocused();
+  }
+});
+
+
+test("Escolher guia é alcançável e activável por teclado", async ({ page }) => {
+  await page.goto(`${prefix}${routes[2][1]}`);
+  const target = page
+    .getByRole("navigation", { name: "Escolher guia" })
+    .getByRole("link", { name: "Explorador de dados" });
+  let reached = false;
+  for (let step = 0; step < 30; step += 1) {
+    await page.keyboard.press("Tab");
+    if (await target.evaluate((node) => node === document.activeElement)) {
+      reached = true;
+      break;
+    }
+  }
+  expect(reached).toBeTruthy();
+  await expect(target).toBeFocused();
+  await Promise.all([
+    page.waitForURL(/\/Explorador-de-dados\/$/),
+    page.keyboard.press("Enter"),
+  ]);
 });

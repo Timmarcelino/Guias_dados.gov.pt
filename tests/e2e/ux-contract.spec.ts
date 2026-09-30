@@ -93,3 +93,12 @@ test("B4 preserva hierarquia e recursos de tema, guia e tarefa", async ({ page }
   await expect(taskNav).toBeVisible();
   await expect(taskNav.locator("a")).toHaveCount(2);
 });
+
+
+test("entrada expõe descoberta directa dos 15 guias", async ({ page }) => {
+  await page.goto(`${prefix}/Guias-do-utilizador/`);
+  const discovery = page.locator('section[aria-labelledby="descobrir-guias"]');
+  await expect(discovery.getByRole("heading", { level: 2, name: "Descobrir os guias" })).toBeVisible();
+  await expect(discovery.getByRole("heading", { level: 3 })).toHaveCount(7);
+  await expect(discovery.getByRole("link", { name: /^Abrir:/ })).toHaveCount(15);
+});

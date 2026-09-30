@@ -17,6 +17,32 @@ export function PortalFooter() {
 
   return (
     <footer className="bg-primary-900 text-white" aria-label="Rodapé do portal">
+      <section className="container mx-auto px-16 py-40 lg:px-0" aria-labelledby="footer-descobrir">
+        <h2 id="footer-descobrir" className="text-xl-bold mb-24">Mais para descobrir no portal</h2>
+        <div className="grid gap-32 md:grid-cols-3">
+          <section aria-labelledby="footer-dados-abertos">
+            <h3 id="footer-dados-abertos" className="text-l-semibold mb-12">Dados abertos</h3>
+            <ul className="space-y-8">
+              <li><a className="underline underline-offset-4" href="https://dados.gov.pt/areas-tematicas">Áreas Temáticas</a></li>
+              <li><a className="underline underline-offset-4" href="https://data.europa.eu/">Portal de dados europeu</a></li>
+            </ul>
+          </section>
+          <section aria-labelledby="footer-portal">
+            <h3 id="footer-portal" className="text-l-semibold mb-12">Portal</h3>
+            <ul className="space-y-8">
+              <li><a className="underline underline-offset-4" href="https://dados.gov.pt/ajuda-e-contactos">Ajuda e contactos</a></li>
+              <li><a className="underline underline-offset-4" href="https://dados.gov.pt/termos-de-utilizacao">Termos de utilização</a></li>
+            </ul>
+          </section>
+          <section aria-labelledby="footer-desenvolvimento">
+            <h3 id="footer-desenvolvimento" className="text-l-semibold mb-12">Desenvolvimento</h3>
+            <ul className="space-y-8">
+              <li><a className="underline underline-offset-4" href="https://github.com/amagovpt/udata-pt">Backend udata-pt</a></li>
+              <li><a className="underline underline-offset-4" href="https://github.com/amagovpt/dadosgov-fe">Frontend dados.gov.pt</a></li>
+            </ul>
+          </section>
+        </div>
+      </section>
       <FooterADS variant="primary-900">
         <FinancingSectionContainer aria-label="Portal">
           <FooterDisclaimer>Portal aberto de dados públicos portugueses.</FooterDisclaimer>

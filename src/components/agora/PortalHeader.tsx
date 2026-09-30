@@ -18,6 +18,7 @@ const nav = [
   ["APIs", "https://dados.gov.pt/pt/dataservices"],
   ["Reutilizações", "https://dados.gov.pt/pt/reuses"],
   ["Organizações", "https://dados.gov.pt/pt/organizations"],
+  ["Recursos", "https://dados.gov.pt/pt/recursos"],
 ] as const;
 
 export function PortalHeader() {
@@ -39,7 +40,7 @@ export function PortalHeader() {
         <GeneralBar aria-label="Navegação geral">
           <Unauthenticated label="Autenticar">
             <UnauthenticatedLink>
-              <a href="https://dados.gov.pt/pt/login">Autenticar</a>
+              <a href="https://dados.gov.pt/pt/login" aria-label="Autenticar">Autenticar</a>
             </UnauthenticatedLink>
           </Unauthenticated>
         </GeneralBar>

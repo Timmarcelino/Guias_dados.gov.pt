@@ -91,3 +91,9 @@ jobs:
           echo "Static export v1: $count rotas dos Guias."
       - name: Validar estrutura e coerência do static export
         run: npx tsx scripts/v1/check-export.ts
+      - name: Preparar site para testes UX
+        run: npm run test:site:prepare
+      - name: Instalar Chromium para testes UX
+        run: npx playwright install --with-deps chromium
+      - name: Validar contrato UX responsivo
+        run: npx playwright test tests/e2e/ux-contract.spec.ts

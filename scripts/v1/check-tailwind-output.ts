@@ -24,7 +24,7 @@ if (cssFiles.length === 0) {
 
 const css = cssFiles.map((file) => fs.readFileSync(file, "utf8")).join("\n");
 const requiredSelectors = [
-  ["responsive sm", ".sm\\:flex-row"],
+  ["responsive sm", ".sm\\:grid-cols-2"],
   ["responsive md", ".md\\:grid-cols-2"],
   ["responsive lg", ".lg\\:px-0"],
   ["spacing 4px", ".gap-y-4"],

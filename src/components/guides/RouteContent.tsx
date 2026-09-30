@@ -1,8 +1,9 @@
 import { GuideCard } from "@/components/agora/GuideCard";
+import { GuidesBreadcrumb } from "@/components/guides/GuidesBreadcrumb";
+import { ThemeGuideNavigation } from "@/components/guides/ThemeGuideNavigation";
 import { loadContent } from "@/lib/content/repository";
 import { getGuidePublicationStatus } from "@/lib/content/publication-status";
 import {
-  buildRoutes,
   routeForGuide,
   routeForTask,
   type GuideRoute,
@@ -31,53 +32,6 @@ function GuidePublicationNotice({ guideId }: { guideId: string }) {
   );
 }
 
-function Breadcrumb({ route }: { route: GuideRoute }) {
-  const content = loadContent();
-  const routes = buildRoutes(content);
-  const items: Array<{ label: string; href?: string }> = [
-    { label: "Guias do utilizador", href: withBasePath("/Guias-do-utilizador/") },
-  ];
-
-  if (route.theme) {
-    const themeRoute = routes.find(
-      (candidate) => candidate.kind === "theme" && candidate.theme?.id === route.theme?.id,
-    );
-    if (route.kind === "theme") items.push({ label: route.theme.title });
-    else if (themeRoute) items.push({ label: route.theme.title, href: withBasePath(themeRoute.path) });
-  }
-
-  if (route.guide) {
-    if (route.kind === "guide") items.push({ label: route.guide.title });
-    else if (route.kind === "task") {
-      items.push({
-        label: route.guide.title,
-        href: withBasePath(routeForGuide(content, route.guide.id).path),
-      });
-    }
-  }
-
-  if (route.kind === "task" && route.task) items.push({ label: route.task.title });
-
-  return (
-    <nav aria-label="Breadcrumb" className="mb-24 text-s-regular">
-      <ol className="flex flex-wrap items-center gap-x-8 gap-y-4">
-        {items.map((item, index) => (
-          <li key={`${item.label}-${index}`} className="flex items-center gap-8">
-            {index > 0 ? <span aria-hidden="true">/</span> : null}
-            {item.href ? (
-              <a className="inline-flex min-h-[24px] items-center underline underline-offset-4" href={item.href}>
-                {item.label}
-              </a>
-            ) : (
-              <span aria-current="page">{item.label}</span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
-  );
-}
-
 function TaskNavigation({ route }: { route: GuideRoute }) {
   if (!route.guide || !route.task) return null;
   const content = loadContent();
@@ -91,12 +45,12 @@ function TaskNavigation({ route }: { route: GuideRoute }) {
   return (
     <nav
       aria-label="Navegação da tarefa"
-      className="mt-40 flex flex-col gap-16 border-t pt-24 sm:flex-row sm:items-center sm:justify-between"
+      className="mt-40 grid gap-12 border-t pt-24 sm:grid-cols-2 sm:items-center"
     >
-      <a className="underline underline-offset-4" href={withBasePath(overview.path)}>
+      <a className="rounded-sm border p-16 underline underline-offset-4" href={withBasePath(overview.path)}>
         Visão geral do guia
       </a>
-      <a className="font-bold underline underline-offset-4" href={withBasePath(next.path)}>
+      <a className="rounded-sm border p-16 font-bold underline underline-offset-4 sm:text-right" href={withBasePath(next.path)}>
         {next.title} →
       </a>
     </nav>
@@ -110,21 +64,36 @@ export function RouteContent({ route }: { route: GuideRoute }) {
     const guides = route.theme.guideIds.map((id) => content.guides.find((guide) => guide.id === id)!);
     return (
       <>
-        <Breadcrumb route={route} />
-        <h1 className="text-3xl-bold my-16">{route.theme.title}</h1>
-        <p className="mb-32">{route.theme.intro}</p>
-        <div className="grid gap-24 md:grid-cols-2">
-          {guides.map((guide) => {
-            const guideRoute = routeForGuide(content, guide.id);
-            return (
-              <GuideCard
-                key={guide.id}
-                title={guide.title}
-                description={guideCardDescription(guide)}
-                href={withBasePath(guideRoute.path)}
-              />
-            );
-          })}
+        <GuidesBreadcrumb route={route} />
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <div className="min-w-0">
+            <header className="mb-32 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Tema</p>
+              <h1 className="mb-12 text-3xl-bold">{route.theme.title}</h1>
+              <p className="text-m-regular">{route.theme.intro}</p>
+            </header>
+            <section aria-labelledby="guias-do-tema">
+              <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
+                <h2 id="guias-do-tema" className="text-xl-bold">Guias deste tema</h2>
+                <p className="text-s-regular text-gray-medium">{guides.length} {guides.length === 1 ? "guia" : "guias"}</p>
+              </div>
+              <div className="grid gap-16 md:grid-cols-2">
+                {guides.map((guide) => {
+                  const guideRoute = routeForGuide(content, guide.id);
+                  return (
+                    <div key={guide.id} className="rounded-sm border p-4">
+                      <GuideCard
+                        title={guide.title}
+                        description={guideCardDescription(guide)}
+                        href={withBasePath(guideRoute.path)}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
         </div>
       </>
     );
@@ -137,38 +106,50 @@ export function RouteContent({ route }: { route: GuideRoute }) {
 
     return (
       <>
-        <Breadcrumb route={route} />
-        <h1 className="text-3xl-bold my-16">{guide.title}</h1>
-        <p className="mb-8">{guide.intro}</p>
-        <p className="mb-24">{guide.audience}</p>
-        <GuidePublicationNotice guideId={guide.id} />
-        <p className="mb-32">
-          <a
-            className="font-bold underline underline-offset-4"
-            href={withBasePath(`/assets/pdf/${pdfName}`)}
-            download
-          >
-            Descarregar este guia em PDF
-          </a>
-        </p>
+        <GuidesBreadcrumb route={route} />
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <div className="min-w-0">
+            <header className="mb-24 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Guia</p>
+              <h1 className="mb-12 text-3xl-bold">{guide.title}</h1>
+              <p className="mb-8 text-m-regular">{guide.intro}</p>
+              <p className="text-s-regular text-gray-medium">{guide.audience}</p>
+            </header>
+            <GuidePublicationNotice guideId={guide.id} />
+            <p className="mb-32 rounded-sm border bg-accent-light p-16">
+              <a
+                className="font-bold underline underline-offset-4"
+                href={withBasePath(`/assets/pdf/${pdfName}`)}
+                download
+              >
+                Descarregar este guia em PDF
+              </a>
+            </p>
 
-        <h2 className="text-xl-bold mb-16">O que pretende fazer?</h2>
-        <div className="grid gap-24 md:grid-cols-2">
+            <section aria-labelledby="tarefas-do-guia">
+              <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
+                <h2 id="tarefas-do-guia" className="text-xl-bold">O que pretende fazer?</h2>
+                <p className="text-s-regular text-gray-medium">{guide.fichas.length} {guide.fichas.length === 1 ? "tarefa" : "tarefas"}</p>
+              </div>
+              <div className="grid gap-16 md:grid-cols-2">
           {guide.fichas.map((task) => {
             const taskRoute = routeForTask(content, task.id);
             return (
-              <GuideCard
-                key={task.id}
-                title={task.title}
-                description={task.intro}
-                href={withBasePath(taskRoute.path)}
-              />
+              <div key={task.id} className="rounded-sm border p-4">
+                <GuideCard
+                  title={task.title}
+                  description={task.intro}
+                  href={withBasePath(taskRoute.path)}
+                />
+              </div>
             );
           })}
-        </div>
+              </div>
+            </section>
 
         {related.length > 0 ? (
-          <section className="mt-40" aria-labelledby="guias-relacionados">
+          <section className="mt-40 border-t pt-32" aria-labelledby="guias-relacionados">
             <h2 id="guias-relacionados" className="text-xl-bold mb-16">
               Guias relacionados
             </h2>
@@ -176,12 +157,13 @@ export function RouteContent({ route }: { route: GuideRoute }) {
               {related.map((item) => {
                 const relatedRoute = routeForGuide(content, item.id);
                 return (
-                  <GuideCard
-                    key={item.id}
-                    title={item.title}
-                    description={guideCardDescription(item)}
-                    href={withBasePath(relatedRoute.path)}
-                  />
+                  <div key={item.id} className="rounded-sm border p-4">
+                    <GuideCard
+                      title={item.title}
+                      description={guideCardDescription(item)}
+                      href={withBasePath(relatedRoute.path)}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -189,7 +171,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {guide.resources?.length ? (
-          <section className="mt-40" aria-labelledby="recursos-uteis">
+          <section className="mt-40 rounded-sm border bg-accent-light p-20" aria-labelledby="recursos-uteis">
             <h2 id="recursos-uteis" className="text-xl-bold mb-16">
               Recursos úteis
             </h2>
@@ -204,6 +186,8 @@ export function RouteContent({ route }: { route: GuideRoute }) {
             </ul>
           </section>
         ) : null}
+          </div>
+        </div>
       </>
     );
   }
@@ -211,22 +195,30 @@ export function RouteContent({ route }: { route: GuideRoute }) {
   if (route.kind === "task" && route.guide && route.task) {
     const task = route.task;
     return (
-      <article>
-        <Breadcrumb route={route} />
-        {task.roles ? <p className="mt-24 text-s-semibold">{task.roles}</p> : null}
-        <h1 className="text-3xl-bold my-16">{task.title}</h1>
-        <p className="text-l-regular mb-32">{task.intro}</p>
-        <GuidePublicationNotice guideId={route.guide.id} />
+      <>
+        <GuidesBreadcrumb route={route} />
+        <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
+          <ThemeGuideNavigation route={route} />
+          <article className="min-w-0">
+            <header className="mb-32 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Tarefa</p>
+              {task.roles ? <p className="mb-8 text-s-semibold">{task.roles}</p> : null}
+              <h1 className="mb-12 text-3xl-bold">{task.title}</h1>
+              <p className="text-m-regular">{task.intro}</p>
+            </header>
+            <GuidePublicationNotice guideId={route.guide.id} />
 
-        <h2 className="text-xl-bold mb-16">Como fazer</h2>
-        <ol className="list-decimal space-y-12 pl-24">
+            <section aria-labelledby="como-fazer" className="my-32">
+              <h2 id="como-fazer" className="mb-16 text-xl-bold">Como fazer</h2>
+              <ol className="list-decimal space-y-12 pl-24">
           {task.steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
-        </ol>
+              </ol>
+            </section>
 
         {task.table?.length ? (
-          <div className="my-32 overflow-x-auto">
+          <div className="my-32 overflow-x-auto rounded-sm border">
             <table className="w-full border-collapse">
               <thead>
                 <tr>
@@ -253,7 +245,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.example ? (
-          <section className="my-32" aria-labelledby="exemplo-tarefa">
+          <section className="my-32 rounded-sm bg-accent-light p-20" aria-labelledby="exemplo-tarefa">
             <h2 id="exemplo-tarefa" className="text-xl-bold">
               Exemplo
             </h2>
@@ -262,7 +254,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.media ? (
-          <section className="my-32 rounded border p-16" aria-labelledby="media-previsto">
+          <section className="my-32 rounded-sm border p-20" aria-labelledby="media-previsto">
             <h2 id="media-previsto" className="text-xl-bold mb-8">
               Imagem ou vídeo previsto
             </h2>
@@ -271,14 +263,16 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {task.tip ? (
-          <aside className="my-32 border-l-4 border-primary-500 pl-16">
+          <aside className="my-32 rounded-sm border border-l-4 border-primary-500 bg-accent-light p-20">
             <strong>Dica</strong>
             <p>{task.tip}</p>
           </aside>
         ) : null}
 
-        <TaskNavigation route={route} />
-      </article>
+            <TaskNavigation route={route} />
+          </article>
+        </div>
+      </>
     );
   }
 

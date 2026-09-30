@@ -15,7 +15,10 @@ export function GuideSearch({ items }: { items: SearchItem[] }) {
   }, [query, items]);
 
   return (
-    <section aria-labelledby="pesquisa-guias" className="my-32">
+    <section
+      aria-labelledby="pesquisa-guias"
+      className="mb-40 rounded-sm bg-accent-light px-16 py-20 sm:px-24 sm:py-24"
+    >
       <h2 id="pesquisa-guias" className="text-xl-bold mb-16">
         Pesquisar nos guias
       </h2>

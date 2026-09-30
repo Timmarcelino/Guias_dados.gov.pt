@@ -109,38 +109,47 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         <GuidesBreadcrumb route={route} />
         <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
-          <div>
-            <h1 className="text-3xl-bold my-16">{guide.title}</h1>
-        <p className="mb-8">{guide.intro}</p>
-        <p className="mb-24">{guide.audience}</p>
-        <GuidePublicationNotice guideId={guide.id} />
-        <p className="mb-32">
-          <a
-            className="font-bold underline underline-offset-4"
-            href={withBasePath(`/assets/pdf/${pdfName}`)}
-            download
-          >
-            Descarregar este guia em PDF
-          </a>
-        </p>
+          <div className="min-w-0">
+            <header className="mb-24 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Guia</p>
+              <h1 className="mb-12 text-3xl-bold">{guide.title}</h1>
+              <p className="mb-8 text-m-regular">{guide.intro}</p>
+              <p className="text-s-regular text-gray-medium">{guide.audience}</p>
+            </header>
+            <GuidePublicationNotice guideId={guide.id} />
+            <p className="mb-32 rounded-sm border bg-accent-light p-16">
+              <a
+                className="font-bold underline underline-offset-4"
+                href={withBasePath(`/assets/pdf/${pdfName}`)}
+                download
+              >
+                Descarregar este guia em PDF
+              </a>
+            </p>
 
-        <h2 className="text-xl-bold mb-16">O que pretende fazer?</h2>
-        <div className="grid gap-24 md:grid-cols-2">
+            <section aria-labelledby="tarefas-do-guia">
+              <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
+                <h2 id="tarefas-do-guia" className="text-xl-bold">O que pretende fazer?</h2>
+                <p className="text-s-regular text-gray-medium">{guide.fichas.length} {guide.fichas.length === 1 ? "tarefa" : "tarefas"}</p>
+              </div>
+              <div className="grid gap-16 md:grid-cols-2">
           {guide.fichas.map((task) => {
             const taskRoute = routeForTask(content, task.id);
             return (
-              <GuideCard
-                key={task.id}
-                title={task.title}
-                description={task.intro}
-                href={withBasePath(taskRoute.path)}
-              />
+              <div key={task.id} className="rounded-sm border p-4">
+                <GuideCard
+                  title={task.title}
+                  description={task.intro}
+                  href={withBasePath(taskRoute.path)}
+                />
+              </div>
             );
           })}
-        </div>
+              </div>
+            </section>
 
         {related.length > 0 ? (
-          <section className="mt-40" aria-labelledby="guias-relacionados">
+          <section className="mt-40 border-t pt-32" aria-labelledby="guias-relacionados">
             <h2 id="guias-relacionados" className="text-xl-bold mb-16">
               Guias relacionados
             </h2>
@@ -148,12 +157,13 @@ export function RouteContent({ route }: { route: GuideRoute }) {
               {related.map((item) => {
                 const relatedRoute = routeForGuide(content, item.id);
                 return (
-                  <GuideCard
-                    key={item.id}
-                    title={item.title}
-                    description={guideCardDescription(item)}
-                    href={withBasePath(relatedRoute.path)}
-                  />
+                  <div key={item.id} className="rounded-sm border p-4">
+                    <GuideCard
+                      title={item.title}
+                      description={guideCardDescription(item)}
+                      href={withBasePath(relatedRoute.path)}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -161,7 +171,7 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         ) : null}
 
         {guide.resources?.length ? (
-          <section className="mt-40" aria-labelledby="recursos-uteis">
+          <section className="mt-40 rounded-sm border bg-accent-light p-20" aria-labelledby="recursos-uteis">
             <h2 id="recursos-uteis" className="text-xl-bold mb-16">
               Recursos úteis
             </h2>

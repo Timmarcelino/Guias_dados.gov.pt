@@ -67,22 +67,32 @@ export function RouteContent({ route }: { route: GuideRoute }) {
         <GuidesBreadcrumb route={route} />
         <div className="grid gap-32 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start">
           <ThemeGuideNavigation route={route} />
-          <div>
-            <h1 className="text-3xl-bold my-16">{route.theme.title}</h1>
-            <p className="mb-32">{route.theme.intro}</p>
-            <div className="grid gap-24 md:grid-cols-2">
-          {guides.map((guide) => {
-            const guideRoute = routeForGuide(content, guide.id);
-            return (
-              <GuideCard
-                key={guide.id}
-                title={guide.title}
-                description={guideCardDescription(guide)}
-                href={withBasePath(guideRoute.path)}
-              />
-            );
-          })}
-            </div>
+          <div className="min-w-0">
+            <header className="mb-32 max-w-4xl">
+              <p className="mb-8 text-s-regular uppercase tracking-wider text-brand-blue-primary">Tema</p>
+              <h1 className="mb-12 text-3xl-bold">{route.theme.title}</h1>
+              <p className="text-m-regular">{route.theme.intro}</p>
+            </header>
+            <section aria-labelledby="guias-do-tema">
+              <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
+                <h2 id="guias-do-tema" className="text-xl-bold">Guias deste tema</h2>
+                <p className="text-s-regular text-gray-medium">{guides.length} {guides.length === 1 ? "guia" : "guias"}</p>
+              </div>
+              <div className="grid gap-16 md:grid-cols-2">
+                {guides.map((guide) => {
+                  const guideRoute = routeForGuide(content, guide.id);
+                  return (
+                    <div key={guide.id} className="rounded-sm border p-4">
+                      <GuideCard
+                        title={guide.title}
+                        description={guideCardDescription(guide)}
+                        href={withBasePath(guideRoute.path)}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
           </div>
         </div>
       </>

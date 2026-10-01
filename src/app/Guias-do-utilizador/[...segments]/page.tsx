@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { RouteContent } from "@/components/guides/RouteContent";
 import { loadConfiguredContent } from "@/lib/content/config";
 import { buildRoutes, findRoute } from "@/lib/content/routes";
+import { buildSearchIndex } from "@/lib/content/search";
 import { canonicalUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -38,5 +39,6 @@ export default async function GuideRoutePage({
   const content = await loadConfiguredContent();
   const route = findRoute(content, segments);
   if (!route) notFound();
-  return <RouteContent route={route} />;
+  const search = buildSearchIndex(content);
+  return <RouteContent route={route} searchItems={search} />;
 }

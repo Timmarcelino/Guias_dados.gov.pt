@@ -25,7 +25,7 @@ const assessment = assessSquidexImportInventory(plan, inventory);
 assert.deepEqual(assessment.plannedCounts, {
   "guide-theme": 7,
   guide: 15,
-  "guide-task": 95,
+  "guide-task": 96,
 });
 assert.equal(assessment.inventoryCount, 4);
 assert.equal(assessment.knownPilotItems.length, 4);
@@ -53,5 +53,5 @@ assert.equal(collisionAssessment.schemaCollisions.length, 1);
 assert.match(collisionAssessment.blockers[0], /Colisão de schema/);
 
 console.log(
-  "Inventário Squidex: piloto isolado; 117 targets sem colisões; blockers=0",
+  "Inventário Squidex: piloto isolado; 118 targets sem colisões; blockers=0",
 );

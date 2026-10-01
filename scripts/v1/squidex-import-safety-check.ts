@@ -53,7 +53,7 @@ const liveWriteRehearsal =
   rehearsal?.finalStatus === "Draft";
 
 const readiness = assessSquidexOperationalReadiness({
-  deterministicCreateIds: uniqueDeterministicIds === 117,
+  deterministicCreateIds: uniqueDeterministicIds === 118,
   optimisticConcurrency: true,
   ambiguousWriteReconciliation: true,
   guardedRollback: true,

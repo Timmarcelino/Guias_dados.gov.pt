@@ -121,20 +121,20 @@ async function main(): Promise<void> {
     confirmation: SQUIDEX_APPLY_CONFIRMATION,
     expectedPlanHash: hash,
   });
-  assert.equal(applied.writes, 225);
-  assert.equal(applyGateway.calls.length, 225);
-  assert.equal(Object.keys(applied.createdIds).length, 117);
+  assert.equal(applied.writes, 227);
+  assert.equal(applyGateway.calls.length, 227);
+  assert.equal(Object.keys(applied.createdIds).length, 118);
 
   const manifest = buildSquidexImportOperationManifest(plan);
-  assert.equal(manifest.length, 225);
-  assert.equal(new Set(manifest.map((item) => item.operationId)).size, 225);
+  assert.equal(manifest.length, 227);
+  assert.equal(new Set(manifest.map((item) => item.operationId)).size, 227);
 
   let journal = createEmptySquidexImportJournal(plan);
-  assert.equal(getPendingSquidexImportOperations(plan, journal).length, 225);
+  assert.equal(getPendingSquidexImportOperations(plan, journal).length, 227);
   for (const item of manifest.slice(0, 10)) {
     journal = appendCompletedOperation(journal, item.operationId);
   }
-  assert.equal(getPendingSquidexImportOperations(plan, journal).length, 215);
+  assert.equal(getPendingSquidexImportOperations(plan, journal).length, 217);
 
   let rollback = createSquidexRollbackJournal(hash);
   rollback = recordSquidexMutation(rollback, {
@@ -171,7 +171,7 @@ async function main(): Promise<void> {
   );
 
   console.log(
-    `Squidex import safety: OK; planHash=${hash}; operations=225; roundTrip=equivalent`,
+    `Squidex import safety: OK; planHash=${hash}; operations=227; roundTrip=equivalent`,
   );
 }
 

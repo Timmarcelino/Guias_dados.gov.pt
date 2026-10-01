@@ -36,7 +36,8 @@ AUTHOR_LOGO_ALT = AUTHOR['logo_alt']
 AUTHOR_LOGO_URI = (REPO / AUTHOR['logo_file']).resolve().as_uri()
 PROTOTYPE_NAME = PROTOTYPE['name']
 PROTOTYPE_VERSION = PROTOTYPE['version']
-PROTOTYPE_STATUS = PROTOTYPE['status']
+PROTOTYPE_STATUS = PROTOTYPE.get('status', '').strip()
+PROTOTYPE_LABEL = f"Protótipo: '{PROTOTYPE_NAME}' {PROTOTYPE_VERSION}" + (f" {PROTOTYPE_STATUS}" if PROTOTYPE_STATUS else '')
 DEPLOYMENT = SITE['site']
 BASE_WEB = f"{DEPLOYMENT['reviewOrigin']}{DEPLOYMENT['basePath']}{DEPLOYMENT['guidesPath']}/"
 
@@ -179,7 +180,7 @@ def build_html(g, qr_name):
     resources=''
     if g.get('resources'):
         resources='<section class="resources"><h3>Ligações úteis</h3><ul>'+''.join(f'<li><a href="{esc(r["url"])}">{esc(r["title"])}</a><br><span style="font-size:6.5pt;color:#708394;word-break:break-all">{esc(r["url"])}</span></li>' for r in g['resources'])+'</ul></section>'
-    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>29/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div><div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="{esc(AUTHOR_LOGO_ALT)}"><p>{esc(AUTHOR_ROLE)}: <a href="{AUTHOR_LINK}">{esc(AUTHOR_NAME)}</a><br><span>© dados.gov.pt · Protótipo {esc(PROTOTYPE_NAME)} {esc(PROTOTYPE_VERSION)} {esc(PROTOTYPE_STATUS)}</span></p></div></section>'''
+    closing=f'''<section class="closing"><div class="eyebrow">Fim do guia</div><h2>Continue na versão online</h2><div class="closing-grid"><div><p>Consulte a versão Web para aceder à versão mais recente deste guia e navegar pelos restantes conteúdos dos Guias do utilizador.</p>{resources}<p><a href="{esc(url)}">{esc(url)}</a></p></div><div class="closing-qr"><img src="{qr_name}" alt="QR code para a versão Web"><strong>Versão online</strong></div></div><section class="guide-info"><h3>Informação do guia</h3><dl><dt>Título</dt><dd>{esc(title)}</dd><dt>Tema</dt><dd>{esc(theme)}</dd><dt>Última actualização</dt><dd>29/09/2026</dd></dl></section><div class="internal-note"><strong>Nota editorial:</strong> alguns elementos visuais deste guia são esquemas informativos baseados no conteúdo consolidado.</div><div class="pdf-author-credit"><img src="{AUTHOR_LOGO_URI}" alt="{esc(AUTHOR_LOGO_ALT)}"><p>{esc(AUTHOR_ROLE)}: <a href="{AUTHOR_LINK}">{esc(AUTHOR_NAME)}</a><br><span>© dados.gov.pt · {esc(PROTOTYPE_LABEL)}</span></p></div></section>'''
     return f'''<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>{esc(title)} | Guias do utilizador | dados.gov.pt</title><meta name="author" content="dados.gov.pt"><meta name="description" content="{esc(g['intro'])}"><meta name="keywords" content="dados abertos, dados.gov.pt, guia do utilizador, {esc(theme)}"><style>{css}</style></head><body>{cover}{overview}{''.join(tasks)}{closing}</body></html>'''
 
 def norm(s):

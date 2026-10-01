@@ -58,18 +58,18 @@ export function PortalFooter() {
           <span>Portugal 2020</span>
           <span>Comissão Europeia</span>
         </div>
-        <p className="col-span-full mt-[4px] text-[13px] text-white/70">
-          © dados.gov.pt · Protótipo {prototype.name} {prototype.version} {prototype.status}
-        </p>
       </section>
 
-      <section className={`${shell} flex items-center gap-[16px] border-t border-white/10 py-[20px]`} aria-label="Crédito de autoria">
-        <img src={withBasePath(author.logo_web)} alt={author.logo_alt} className="h-[48px] w-auto" />
-        <p className="text-[13px] text-white/85">
+      <section className={`${shell} grid grid-cols-[108px_minmax(0,1fr)] grid-rows-[auto_auto] items-center gap-x-[16px] gap-y-[3px] border-t border-white/10 py-[20px] max-[420px]:grid-cols-[96px_minmax(0,1fr)]`} aria-label="Crédito de autoria">
+        <img src={withBasePath(author.logo_web)} alt={author.logo_alt} className="row-span-2 h-[64px] w-[108px] rounded-[3px] object-cover max-[420px]:h-[56px] max-[420px]:w-[96px]" />
+        <p className="m-0 self-end text-[13px] leading-[1.35] text-white/85">
           {author.role}:{" "}
           <a className="font-bold text-white underline underline-offset-[4px]" href={author.linkedin} target="_blank" rel="noopener noreferrer">
             {author.name}
           </a>
+        </p>
+        <p className="m-0 self-start text-[13px] leading-[1.35] text-white/80">
+          © dados.gov.pt · Protótipo {prototype.name} {prototype.version} {prototype.status}
         </p>
       </section>
     </footer>

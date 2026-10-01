@@ -119,12 +119,17 @@ jobs:
               f"gerados={sorted(generated)}"
           )
 
+          def normalize_page_text(text):
+              normalized = re.sub(r"\s+", " ", text or "").strip()
+              return re.sub(
+                  r"© dados\.gov\.pt · Protótipo(?::)?\s+'?Guias'?\s+[Vv]\d+\.\d+\.\d+(?:-rc\.\d+)?(?:\s+em desenvolvimento)?",
+                  "© dados.gov.pt · Protótipo: 'Guias' <VERSION>",
+                  normalized,
+              )
+
           def page_texts(path):
               reader = PdfReader(str(path))
-              return tuple(
-                  re.sub(r"\s+", " ", page.extract_text() or "").strip()
-                  for page in reader.pages
-              )
+              return tuple(normalize_page_text(page.extract_text() or "") for page in reader.pages)
 
           differences = []
           for name in sorted(generated):

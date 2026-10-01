@@ -3,7 +3,46 @@
 import { siteConfig, withBasePath } from "@/lib/site";
 
 const shell = "mx-auto w-[calc(100%-64px)] max-w-[1216px] max-[700px]:w-[calc(100%-40px)]";
-const footerItem = "text-white/90";
+const footerItem = "text-[15px] leading-[1.45] text-white/90";
+
+const footerColumns = [
+  { title: "Dados abertos", items: ["Catálogo de dados", "Portal de dados europeu"] },
+  { title: "Plataforma", items: ["Sobre nós", "Roadmap"] },
+  {
+    title: "Desenvolvimento",
+    items: [
+      "API dos dados.gov",
+      "Motor de código aberto: udata (14.7.2)",
+      "Interface de usuário de data.gov.pt frontend",
+    ],
+  },
+] as const;
+
+const fundingLogos = [
+  ["PRR", "https://dados.gov.pt/assets/prr.png"],
+  ["República Portuguesa", "https://dados.gov.pt/assets/logo-rp.png"],
+  ["NextGenerationEU", "https://dados.gov.pt/assets/europa.png"],
+  ["Compete 2020", "https://dados.gov.pt/assets/vector-1-.png"],
+  ["Portugal 2020", "https://dados.gov.pt/assets/vector-2-.png"],
+] as const;
+function StaticSocialMarks() {
+  const markClass = "inline-flex h-[28px] min-w-[28px] items-center justify-center text-[17px] font-bold leading-none text-white/90";
+
+  return (
+    <div className="flex flex-wrap items-center gap-[14px]" aria-label="Redes sociais ARTE">
+      <span className={markClass} role="img" aria-label="LinkedIn">in</span>
+      <span className={`${markClass} rounded-[6px] border-2 border-white/90`} role="img" aria-label="Instagram">
+        <span className="h-[9px] w-[9px] rounded-full border-2 border-white/90" />
+      </span>
+      <span className={markClass} role="img" aria-label="Facebook">f</span>
+      <span className={markClass} role="img" aria-label="X">X</span>
+      <span className={`${markClass} rounded-[6px] border-2 border-white/90`} role="img" aria-label="YouTube">▶</span>
+      <span className={markClass} role="img" aria-label="GitHub">
+        <img src="https://dados.gov.pt/Logos/github.svg" alt="" className="h-[24px] w-[24px] brightness-0 invert" />
+      </span>
+    </div>
+  );
+}
 
 export function PortalFooter() {
   const author = siteConfig.author;
@@ -11,56 +50,58 @@ export function PortalFooter() {
 
   return (
     <footer className="overflow-x-hidden bg-[#021c51] text-white" aria-label="Rodapé do portal">
-      <section className={`${shell} pb-[48px] pt-[56px]`} aria-labelledby="footer-descobrir">
-        <h2 id="footer-descobrir" className="mb-[30px] text-[1.35rem] font-bold leading-[1.3] text-white">
+      <section className={`${shell} pb-[36px] pt-[44px]`} aria-labelledby="footer-descobrir">
+        <h2 id="footer-descobrir" className="mb-[24px] text-[1.35rem] font-bold leading-[1.3] text-white">
           Mais para descobrir no portal
         </h2>
-        <div className="grid grid-cols-3 gap-[32px] max-[900px]:grid-cols-2 max-[700px]:grid-cols-1">
-          <section aria-labelledby="footer-dados-abertos">
-            <h3 id="footer-dados-abertos" className="mb-[16px] text-[1rem] font-bold text-white">Dados abertos</h3>
-            <ul className="m-0 list-none space-y-[12px] p-0 text-[14px]">
-              <li className={footerItem}>Áreas Temáticas</li>
-              <li className={footerItem}>Roadmap</li>
-              <li className={footerItem}>Catálogo de dados</li>
-              <li className={footerItem}>Portal de dados europeu</li>
-            </ul>
-          </section>
-          <section aria-labelledby="footer-portal">
-            <h3 id="footer-portal" className="mb-[16px] text-[1rem] font-bold text-white">Portal</h3>
-            <ul className="m-0 list-none space-y-[12px] p-0 text-[14px]">
-              <li className={footerItem}>Notícias</li>
-              <li className={footerItem}>O que é dados.gov.pt</li>
-              <li className={footerItem}>Ajuda e contactos</li>
-              <li className={footerItem}>Termos de utilização</li>
-            </ul>
-          </section>
-          <section aria-labelledby="footer-desenvolvimento">
-            <h3 id="footer-desenvolvimento" className="mb-[16px] text-[1rem] font-bold text-white">Desenvolvimento</h3>
-            <ul className="m-0 list-none space-y-[12px] p-0 text-[14px]">
-              <li className={footerItem}>Referência API</li>
-              <li className={footerItem}>Mecanismo de código aberto: udata (15.0.0)</li>
-              <li className={footerItem}>Extensão do tema udata: udata-front</li>
-            </ul>
-          </section>
+        <div className="grid grid-cols-3 gap-x-[56px] gap-y-[28px] max-[900px]:grid-cols-2 max-[700px]:grid-cols-1">
+          {footerColumns.map((column) => (
+            <section key={column.title} aria-label={column.title}>
+              <h3 className="mb-[10px] text-[1rem] font-bold text-white">{column.title}</h3>
+              <ul className="m-0 list-none space-y-[8px] p-0">
+                {column.items.map((item) => <li key={item} className={footerItem}>{item}</li>)}
+              </ul>
+            </section>
+          ))}
+        </div>
+
+        <div className="mt-[34px] flex flex-wrap items-center gap-x-[34px] gap-y-[18px]" aria-label="Entidades institucionais">
+          <img src="https://dados.gov.pt/Logos/pt-republic-color.svg" alt="República Portuguesa" className="h-[48px] w-auto object-contain" />
+          <img src="https://dados.gov.pt/Logos/Logotipo_ARTE__Horizontal_branco_pt.svg" alt="Agência para a Reforma Tecnológica do Estado" className="h-[48px] max-w-[250px] object-contain" />
         </div>
       </section>
 
-      <section className={`${shell} flex flex-wrap items-center gap-[40px] py-[42px]`} aria-label="Entidades e financiamento">
-        <img src="https://dados.gov.pt/Logos/pt-republic-color.svg" alt="República Portuguesa" className="h-[44px] w-auto object-contain" />
-        <img src="https://dados.gov.pt/Logos/NextGenerationEU.svg" alt="NextGenerationEU" className="h-[44px] w-auto object-contain" />
-        <img src="https://dados.gov.pt/Logos/Logotipo_ARTE__Horizontal_branco_pt.svg" alt="Agência para a Reforma Tecnológica do Estado" className="h-[44px] max-w-[220px] object-contain" />
-      </section>
-      <section className={`${shell} grid grid-cols-[minmax(0,1fr)_auto] items-start gap-[32px] border-t border-white/15 pb-[38px] pt-[28px] max-[900px]:grid-cols-1`}>
-        <p className="m-0 max-w-[680px] text-[14px] text-white/80">Portal aberto de dados públicos portugueses.</p>
-        <div className="flex flex-wrap justify-end gap-x-[22px] gap-y-[12px] text-[14px] text-white/85 max-[900px]:justify-start" aria-label="Referências institucionais relacionadas">
-          <span>República Portuguesa</span>
-          <span>Compete 2020</span>
-          <span>Portugal 2020</span>
-          <span>Comissão Europeia</span>
+      <section className="border-t border-white/10">
+        <div className={`${shell} grid grid-cols-[minmax(0,1fr)_auto] items-center gap-[28px] py-[24px] max-[1000px]:grid-cols-1`}>
+          <p className="m-0 text-[15px] text-white/60">Portal nacional de dados abertos</p>
+          <div className="flex flex-wrap items-center justify-end gap-x-[18px] gap-y-[12px] max-[1000px]:justify-start" aria-label="Programas e financiamento">
+            {fundingLogos.map(([alt, src]) => (
+              <img key={src} src={src} alt={alt} className="h-[26px] w-auto max-w-[118px] object-contain opacity-70" />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={`${shell} grid grid-cols-[108px_minmax(0,1fr)] grid-rows-[auto_auto] items-center gap-x-[16px] gap-y-[3px] border-t border-white/10 py-[20px] max-[420px]:grid-cols-[96px_minmax(0,1fr)]`} aria-label="Crédito de autoria">
+      <section className="border-t border-white/10">
+        <div className={`${shell} grid grid-cols-[0.8fr_1.2fr] gap-[28px] py-[24px] max-[900px]:grid-cols-1`}>
+          <div>
+            <p className="mb-[12px] mt-0 text-[14px] text-white/60">Redes sociais ARTE:</p>
+            <StaticSocialMarks />
+          </div>
+          <div className="border-l border-white/10 pl-[28px] max-[900px]:border-l-0 max-[900px]:border-t max-[900px]:pl-0 max-[900px]:pt-[20px]">
+            <div className="flex flex-wrap justify-end gap-x-[28px] gap-y-[8px] text-[15px] text-white/90 max-[900px]:justify-start" aria-label="Informação institucional">
+              <span>Termos e condições</span>
+              <span>Ajuda e contactos</span>
+              <span>Mapa do site</span>
+            </div>
+            <p className="mb-0 mt-[18px] text-right text-[13px] leading-[1.4] text-white/55 max-[900px]:text-left">
+              © 2026 - AGÊNCIA PARA A REFORMA TECNOLÓGICA DO ESTADO, I.P. Todos os direitos reservados
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${shell} grid grid-cols-[108px_minmax(0,1fr)] grid-rows-[auto_auto] items-center gap-x-[16px] gap-y-[3px] border-t border-white/10 py-[18px] max-[420px]:grid-cols-[96px_minmax(0,1fr)]`} aria-label="Crédito de autoria">
         <img src={withBasePath(author.logo_web)} alt={author.logo_alt} className="row-span-2 h-[64px] w-[108px] rounded-[3px] object-cover max-[420px]:h-[56px] max-[420px]:w-[96px]" />
         <p className="m-0 self-end text-[13px] leading-[1.35] text-white/85">
           {author.role}:{" "}
@@ -69,7 +110,7 @@ export function PortalFooter() {
           </a>
         </p>
         <p className="m-0 self-start text-[13px] leading-[1.35] text-white/80">
-          © dados.gov.pt · Protótipo {prototype.name} {prototype.version} {prototype.status}
+          © dados.gov.pt · Protótipo: &apos;{prototype.name}&apos; {prototype.version}
         </p>
       </section>
     </footer>

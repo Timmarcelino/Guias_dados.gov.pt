@@ -6,7 +6,7 @@ import { buildSquidexImportPlan } from "../../src/lib/content/squidex-import-pla
 const EXPECTED_BASELINE = {
   themes: 7,
   guides: 15,
-  tasks: 95,
+  tasks: 96,
 } as const;
 
 const content = new LocalJsonRepository().load();

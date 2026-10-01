@@ -87,7 +87,7 @@ jobs:
           test -f out/sitemap.xml
           test "$(find out/assets/pdf -name '*.pdf' | wc -l)" -eq 15
           count=$(find out/Guias-do-utilizador -name index.html | wc -l)
-          test "$count" -eq 118
+          test "$count" -eq 119
           echo "Static export v1: $count rotas dos Guias."
       - name: Validar estrutura e coerência do static export
         run: npx tsx scripts/v1/check-export.ts

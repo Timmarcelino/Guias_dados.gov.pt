@@ -112,7 +112,7 @@ const searchFile = path.join(out, "search-index.json");
 if (!fs.existsSync(searchFile)) fail("search-index.json em falta");
 else {
   const search = JSON.parse(fs.readFileSync(searchFile, "utf8")) as unknown[];
-  if (search.length !== 95) fail(`search-index.json: esperadas 95 entradas; obtidas ${search.length}`);
+  if (search.length !== 96) fail(`search-index.json: esperadas 96 entradas; obtidas ${search.length}`);
 }
 
 const sitemapFile = path.join(out, "sitemap.xml");
@@ -120,7 +120,7 @@ if (!fs.existsSync(sitemapFile)) fail("sitemap.xml em falta");
 else {
   const sitemap = fs.readFileSync(sitemapFile, "utf8");
   const urls = sitemap.match(/<url>/g) ?? [];
-  if (urls.length !== 118) fail(`sitemap.xml: esperadas 118 URLs; obtidas ${urls.length}`);
+  if (urls.length !== 119) fail(`sitemap.xml: esperadas 119 URLs; obtidas ${urls.length}`);
 }
 
 if (errors.length) {
@@ -129,4 +129,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Static export v1 válido: 118 rotas, estrutura base, canonicals, navegação, 15 PDFs, pesquisa e sitemap coerentes.");
+console.log("Static export v1 válido: 119 rotas, estrutura base, canonicals, navegação, 15 PDFs, pesquisa e sitemap coerentes.");

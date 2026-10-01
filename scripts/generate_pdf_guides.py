@@ -56,7 +56,10 @@ def slug(s:str)->str:
     return s
 
 # Preserva ligações históricas mesmo quando o título editorial muda.
-PDF_SLUG_OVERRIDES = {'D11': 'seguir-conteudos-e-notificacoes'}
+PDF_SLUG_OVERRIDES = {
+    'D01': 'autenticacao-e-acesso-a-conta',
+    'D11': 'seguir-conteudos-e-notificacoes',
+}
 
 def esc(s): return html.escape(str(s or ''), quote=True)
 

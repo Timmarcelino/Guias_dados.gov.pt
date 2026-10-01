@@ -80,9 +80,9 @@
       "code": "D01",
       "slug": "Autenticacao-e-acesso-a-conta",
       "themeId": "conta-participacao",
-      "title": "Autenticação e acesso à conta",
-      "intro": "Inicie sessão no dados.gov.pt, conclua o primeiro acesso quando necessário e recupere o acesso à sua conta.",
-      "audience": "Para utilizadores que precisam de iniciar sessão ou recuperar o acesso. O portal apresenta actualmente CMD, eIDAS e E-mail e palavra-passe; este último destina-se a utilizadores antigos e pode exigir migração da conta quando o portal assim o indicar.",
+      "title": "Autenticação e acesso à Conta dados.gov.pt",
+      "intro": "Inicie sessão no dados.gov.pt, conclua o primeiro acesso, associe uma identidade digital à sua conta e defina ou recupere a palavra-passe quando necessário.",
+      "audience": "Para utilizadores que pretendem iniciar sessão, concluir o primeiro acesso, associar uma identidade digital ou recuperar o acesso à sua Conta dados.gov.pt.",
       "relatedGuideIds": [
         "D13",
         "D14"
@@ -92,19 +92,19 @@
           "id": "D01-T01",
           "slug": "Iniciar-sessao-com-email-e-palavra-passe",
           "title": "Iniciar sessão com email e palavra-passe",
-          "intro": "Utilize este método apenas se já possui uma conta antiga com email e palavra-passe.",
-          "roles": "Utilizador com conta e credenciais válidas",
+          "intro": "Utilize este método se a sua Conta dados.gov.pt tiver uma palavra-passe definida.",
+          "roles": "Utilizadores com uma Conta dados.gov.pt e credenciais de email e palavra-passe válidas.",
           "steps": [
             "Abra a página Autenticação do dados.gov.pt.",
             "Seleccione o separador Email e palavra-passe.",
             "Introduza o email e a palavra-passe da sua conta.",
             "Conclua a autenticação pela acção apresentada no formulário.",
-            "Confirme que regressa ao portal com a sessão iniciada."
+            "Confirme que a sessão foi iniciada. Quando estiver disponível um destino anterior preservado, o portal regressa a esse destino; caso contrário, apresenta a homepage."
           ],
-          "example": "Uma utilizadora que já tem conta introduz o email e a palavra-passe e entra no portal para gerir os seus conteúdos.",
-          "tip": "O acesso por email e palavra-passe destina-se a contas que ainda utilizam este método. Se o portal apresentar um percurso de migração ou associação, siga as instruções apresentadas.",
+          "example": "Uma utilizadora introduz o email e a palavra-passe da sua Conta dados.gov.pt para iniciar sessão e aceder aos seus conteúdos.",
+          "tip": "Se a sua conta ainda não tiver uma palavra-passe definida, pode utilizar o fluxo de recuperação para definir a primeira palavra-passe, quando esta opção estiver disponível para a conta.",
           "table": null,
-          "media": "Captura da página Autenticação com o separador Email e palavra-passe, usando dados de demonstração.",
+          "media": "Captura da página Autenticação com o separador Email e palavra-passe, utilizando dados de demonstração.",
           "nextRef": {
             "type": "task",
             "id": "D01-T02"
@@ -114,17 +114,17 @@
           "id": "D01-T02",
           "slug": "Iniciar-sessao-com-Chave-Movel-Digital",
           "title": "Iniciar sessão com Chave Móvel Digital",
-          "intro": "Utilize a Chave Móvel Digital para se autenticar através do Autenticação.gov.",
-          "roles": "Utilizador com Chave Móvel Digital activa",
+          "intro": "Utilize a Chave Móvel Digital para se autenticar através do Autenticação.gov e aceder à sua Conta dados.gov.pt.",
+          "roles": "Utilizadores com Chave Móvel Digital activa.",
           "steps": [
             "Abra a página Autenticação do dados.gov.pt.",
             "Seleccione Chave Móvel Digital.",
             "Indique se é cidadão nacional ou estrangeiro, quando essa opção for apresentada.",
-            "Continue para o Autenticação.gov e conclua a autenticação com os dados pedidos nesse serviço.",
-            "No regresso ao dados.gov.pt, conclua os passos adicionais apresentados, quando aplicável."
+            "Continue para o Autenticação.gov e conclua a autenticação com os dados solicitados nesse serviço.",
+            "No regresso ao dados.gov.pt, se a identidade já estiver associada a uma Conta dados.gov.pt, a sessão é iniciada nessa conta. Se ainda não existir uma associação, siga os passos de primeiro acesso apresentados pelo portal."
           ],
-          "example": "Um utilizador escolhe Chave Móvel Digital, conclui a autenticação no Autenticação.gov e regressa ao portal.",
-          "tip": "Se for o primeiro acesso ou se a conta precisar de completar dados, o portal pode pedir a confirmação de um endereço de email antes de disponibilizar o acesso normal.",
+          "example": "Um utilizador selecciona Chave Móvel Digital, conclui a autenticação no Autenticação.gov e regressa ao dados.gov.pt. Se a sua identidade digital já estiver associada, acede à Conta dados.gov.pt correspondente.",
+          "tip": "No primeiro acesso com uma identidade ainda não associada, o portal pode solicitar a indicação e confirmação de um endereço de email. Quando a CMD disponibilizar um endereço, este pode surgir pré-preenchido e pode ser alterado antes da submissão.",
           "table": null,
           "media": "Sequência entre a página Autenticação, o Autenticação.gov e o regresso ao dados.gov.pt, sem expor dados reais.",
           "nextRef": {
@@ -136,17 +136,17 @@
           "id": "D01-T03",
           "slug": "Iniciar-sessao-com-Autenticacao-Europeia-eIDAS",
           "title": "Iniciar sessão com Autenticação Europeia eIDAS",
-          "intro": "Utilize a autenticação electrónica do seu país através do percurso eIDAS disponibilizado pelo portal.",
-          "roles": "Utilizador com meio de identificação electrónica aceite no percurso eIDAS",
+          "intro": "Utilize a Autenticação Europeia para se autenticar através do meio de identificação electrónica disponibilizado pelo seu país e aceder à sua Conta dados.gov.pt.",
+          "roles": "Utilizadores com um meio de identificação electrónica aceite no percurso eIDAS.",
           "steps": [
             "Abra a página Autenticação do dados.gov.pt.",
             "Seleccione Autenticação Europeia.",
             "Escolha o país ou o provedor de identidade apresentado no percurso eIDAS.",
             "Conclua a autenticação seguindo as instruções do serviço de identidade seleccionado.",
-            "Regresse ao dados.gov.pt e conclua os passos adicionais apresentados, quando aplicável."
+            "No regresso ao dados.gov.pt, se a identidade já estiver associada a uma Conta dados.gov.pt, a sessão é iniciada nessa conta. Se ainda não existir uma associação, siga os passos de primeiro acesso apresentados pelo portal."
           ],
-          "example": "Uma pessoa de outro Estado-Membro selecciona Autenticação Europeia, autentica-se através do provedor indicado e regressa ao portal.",
-          "tip": "No primeiro acesso por eIDAS pode ser necessário indicar e confirmar um endereço de email no dados.gov.pt.",
+          "example": "Uma pessoa selecciona Autenticação Europeia, conclui a autenticação através do serviço de identidade indicado e regressa ao dados.gov.pt. Se a identidade já estiver associada, acede à Conta dados.gov.pt correspondente.",
+          "tip": "No primeiro acesso com uma identidade ainda não associada, o portal pode solicitar a indicação e confirmação de um endereço de email. Não se deve pressupor que o serviço eIDAS fornece esse endereço ao dados.gov.pt.",
           "table": null,
           "media": "Sequência do acesso eIDAS com um país de demonstração e sem dados de identidade reais.",
           "nextRef": {
@@ -157,20 +157,63 @@
         {
           "id": "D01-T04",
           "slug": "Concluir-o-primeiro-acesso-e-confirmar-o-email",
-          "title": "Concluir o primeiro acesso quando solicitado",
-          "intro": "Quando o portal apresenta passos adicionais depois da autenticação, siga apenas o percurso e as instruções mostradas no ecrã.",
-          "roles": "Utilizador autenticado por CMD ou eIDAS com passos adicionais de registo ou associação apresentados pelo portal",
+          "title": "Concluir o primeiro acesso com identidade digital",
+          "intro": "Quando utiliza CMD ou Autenticação Europeia e a sua identidade ainda não está associada a uma Conta dados.gov.pt, o portal solicita a indicação e confirmação de um endereço de email.",
+          "roles": "Utilizadores que concluíram a autenticação por CMD ou eIDAS e cuja identidade digital ainda não está associada a uma Conta dados.gov.pt.",
           "steps": [
-            "Depois de concluir a autenticação por CMD ou eIDAS, verifique se o dados.gov.pt apresenta algum passo adicional.",
-            "Se o portal solicitar um endereço de email, confirme ou indique o endereço pretendido no campo apresentado.",
-            "Consulte a mensagem enviada para esse endereço e siga a ligação apresentada, quando aplicável.",
-            "Conclua o passo de validação exactamente pelo método apresentado no portal.",
-            "Depois da conclusão, confirme que regressa ao dados.gov.pt e consegue continuar com a sua conta."
+            "Conclua a autenticação por Chave Móvel Digital ou Autenticação Europeia.",
+            "No regresso ao dados.gov.pt, indique o endereço de email solicitado e confirme o mesmo endereço no campo correspondente.",
+            "Se utilizar CMD e surgir um endereço de email pré-preenchido, confirme se está correcto ou altere-o antes de continuar.",
+            "Submeta o endereço depois de corrigir eventuais erros de preenchimento, formato ou correspondência entre os campos.",
+            "Consulte a mensagem enviada para o endereço indicado e siga as instruções aplicáveis ao seu caso.",
+            "Se a mensagem incluir uma ligação para concluir a operação, utilize-a dentro do respectivo período de validade.",
+            "Depois de concluir o processo, confirme que consegue continuar na Conta dados.gov.pt correspondente."
           ],
-          "example": "Depois de autenticar por CMD ou eIDAS, um utilizador segue os passos adicionais apresentados pelo portal para concluir ou associar a conta.",
-          "tip": "O mecanismo de confirmação pode evoluir. Não partilhe códigos, links, palavras-passe ou outros segredos fora do percurso oficial apresentado pelo dados.gov.pt.",
+          "example": "Depois de se autenticar pela primeira vez com Chave Móvel Digital, uma utilizadora regressa ao dados.gov.pt e confirma o endereço de email pretendido. Em seguida, consulta a mensagem recebida e utiliza a ligação indicada para concluir o processo.",
+          "tip": "A mensagem apresentada no navegador após a submissão do email pode ser genérica por razões de segurança. Consulte a caixa de correio indicada para conhecer as instruções aplicáveis ao seu caso.",
+          "table": [
+            [
+              "Operação",
+              "Validade da ligação"
+            ],
+            [
+              "Concluir uma nova Conta dados.gov.pt",
+              "120 horas"
+            ],
+            [
+              "Associar uma identidade digital a uma conta existente",
+              "30 minutos"
+            ],
+            [
+              "Definir ou recuperar a palavra-passe",
+              "120 horas"
+            ]
+          ],
+          "media": "Sequência do primeiro acesso após CMD ou eIDAS, incluindo a indicação e confirmação do email e a mensagem apresentada após a submissão, sempre com dados fictícios.",
+          "nextRef": {
+            "type": "task",
+            "id": "D01-T07"
+          }
+        },
+        {
+          "id": "D01-T07",
+          "slug": "Associar-uma-identidade-digital-a-sua-Conta-dados-gov-pt",
+          "title": "Associar uma identidade digital à sua Conta dados.gov.pt",
+          "intro": "Se já utiliza uma Conta dados.gov.pt com email e palavra-passe, pode associar uma identidade digital para passar a utilizar também esse método de autenticação na mesma conta.",
+          "roles": "Utilizadores com uma Conta dados.gov.pt com email e palavra-passe que ainda não tenha uma identidade digital associada.",
+          "steps": [
+            "Inicie a associação através da opção apresentada pelo dados.gov.pt.",
+            "Escolha Chave Móvel Digital ou Autenticação Europeia.",
+            "Conclua a autenticação através do serviço de identidade seleccionado.",
+            "Revalide a Conta dados.gov.pt de origem com o respectivo email e palavra-passe.",
+            "Consulte a mensagem enviada para o email dessa conta.",
+            "Utilize a ligação de associação dentro do período de validade indicado.",
+            "Depois da conclusão, utilize a identidade digital associada ou o email e palavra-passe para aceder à mesma Conta dados.gov.pt."
+          ],
+          "example": "Uma utilizadora que habitualmente entra com email e palavra-passe escolhe associar a Chave Móvel Digital. Depois de concluir a autenticação externa, revalida a sua Conta dados.gov.pt e utiliza a ligação recebida por email para concluir a associação.",
+          "tip": "A ligação utilizada neste percurso é válida durante 30 minutos. Se a identidade digital já estiver associada a outra conta, a associação não é transferida automaticamente e as contas devem permanecer inalteradas.",
           "table": null,
-          "media": "Captura dos passos adicionais apresentados pelo portal após a autenticação, sem mostrar endereços, códigos, links de confirmação ou outros dados reais.",
+          "media": "Sequência da associação de uma identidade digital a uma Conta dados.gov.pt existente, utilizando exclusivamente dados de demonstração.",
           "nextRef": {
             "type": "task",
             "id": "D01-T05"
@@ -179,20 +222,22 @@
         {
           "id": "D01-T05",
           "slug": "Recuperar-a-palavra-passe",
-          "title": "Recuperar a palavra-passe",
-          "intro": "Peça uma mensagem de recuperação quando não se recorda da palavra-passe da conta.",
-          "roles": "Utilizador de conta com login por email e palavra-passe",
+          "title": "Definir ou recuperar a palavra-passe",
+          "intro": "Utilize a recuperação de palavra-passe quando não se recorda da sua credencial ou quando pretende definir a primeira palavra-passe de uma Conta dados.gov.pt concluída através de identidade digital.",
+          "roles": "Utilizadores que precisam de recuperar uma palavra-passe ou definir a primeira palavra-passe da sua Conta dados.gov.pt.",
           "steps": [
             "Na página Autenticação, abra o separador Email e palavra-passe.",
             "Seleccione a opção de recuperação da palavra-passe.",
-            "Introduza o endereço de email da conta e submeta o pedido.",
-            "Consulte a caixa de entrada e o spam do endereço indicado.",
-            "Se receber a mensagem de recuperação, siga a ligação e defina a nova palavra-passe de acordo com as instruções apresentadas."
+            "Introduza o endereço de email associado à sua Conta dados.gov.pt e submeta o pedido.",
+            "Consulte a caixa de entrada e a pasta de spam do endereço indicado.",
+            "Se receber a mensagem correspondente, utilize a ligação dentro do respectivo período de validade.",
+            "Defina a nova palavra-passe de acordo com as instruções apresentadas.",
+            "Depois da conclusão, utilize o email e a palavra-passe definidos para iniciar sessão."
           ],
-          "example": "Uma pessoa que não se recorda da palavra-passe pede a recuperação e utiliza a ligação recebida no email da conta.",
-          "tip": "Por segurança, o portal pode apresentar uma resposta genérica ao pedido. Se não receber qualquer mensagem e a dificuldade persistir, utilize Ajuda e contactos sem partilhar a sua palavra-passe.",
+          "example": "Uma utilizadora que criou a sua Conta dados.gov.pt através da Chave Móvel Digital pretende passar a entrar também com email e palavra-passe. Inicia o fluxo de recuperação, utiliza a ligação recebida e define a primeira palavra-passe da mesma conta.",
+          "tip": "A ligação deste fluxo é válida durante 120 horas. Por segurança, o portal pode apresentar uma resposta genérica ao pedido. Se não receber a mensagem e a dificuldade persistir, utilize Ajuda e contactos sem partilhar palavras-passe, códigos ou ligações de confirmação.",
           "table": null,
-          "media": "Captura do pedido de recuperação e do ecrã de definição da nova palavra-passe, com dados fictícios.",
+          "media": "Captura do pedido de recuperação e do ecrã de definição da palavra-passe, utilizando dados fictícios.",
           "nextRef": {
             "type": "task",
             "id": "D01-T06"
@@ -202,19 +247,20 @@
           "id": "D01-T06",
           "slug": "Resolver-dificuldades-de-acesso",
           "title": "Resolver dificuldades de acesso",
-          "intro": "Identifique em que ponto o acesso falha antes de repetir o processo ou pedir apoio.",
-          "roles": "Utilizador com dificuldade de autenticação ou recuperação",
+          "intro": "Identifique em que ponto ocorreu a dificuldade antes de repetir a autenticação, o primeiro acesso, a associação de identidade digital ou a recuperação da palavra-passe.",
+          "roles": "Utilizadores com dificuldades em iniciar sessão, concluir o primeiro acesso, associar uma identidade digital ou definir ou recuperar a palavra-passe.",
           "steps": [
-            "Confirme qual o método de autenticação que está a utilizar: email e palavra-passe, Chave Móvel Digital ou Autenticação Europeia.",
-            "Se utiliza email e palavra-passe e não se recorda da credencial, tente a recuperação antes de repetir várias vezes o login.",
-            "Se o processo CMD ou eIDAS for interrompido, volte à página Autenticação e reinicie o percurso pelo mesmo método.",
-            "Se o portal apresentar um passo adicional de conclusão, migração ou associação da conta, conclua esse percurso antes de voltar a tentar.",
-            "Se a dificuldade persistir, abra Ajuda e contactos e indique o método utilizado, a página, o momento aproximado e a mensagem apresentada, sem incluir palavras-passe, códigos, tokens ou outros segredos."
+            "Confirme qual o método ou operação que estava a utilizar: email e palavra-passe, Chave Móvel Digital, Autenticação Europeia, primeiro acesso, associação de identidade digital ou recuperação da palavra-passe.",
+            "Se utiliza email e palavra-passe e não se recorda da credencial, utilize o fluxo de recuperação.",
+            "Se a autenticação por CMD ou eIDAS for interrompida antes do regresso ao dados.gov.pt, volte à página Autenticação e reinicie o percurso pelo método pretendido.",
+            "Se recebeu uma ligação por email, confirme que está a utilizar a mensagem correspondente à operação que iniciou. Uma ligação expirada, inválida ou já utilizada não deve concluir a operação.",
+            "Se o portal apresentar passos adicionais para concluir o primeiro acesso ou associar uma identidade digital, siga o percurso apresentado antes de iniciar uma nova tentativa.",
+            "Se a dificuldade persistir, utilize Ajuda e contactos e indique o método utilizado, a operação que pretendia efectuar, a página em que ocorreu a dificuldade, o momento aproximado e a informação apresentada pelo portal, sem incluir palavras-passe, códigos, tokens ou ligações privadas."
           ],
-          "example": "Uma utilizadora regressa do Autenticação.gov mas não consegue concluir o acesso. Regista o método utilizado e a mensagem apresentada e envia esses elementos através de Ajuda e contactos.",
-          "tip": "Não crie uma segunda conta para contornar uma dificuldade de autenticação. Se o portal indicar que é necessária migração ou associação de conta, utilize apenas o percurso oficial apresentado.",
+          "example": "Uma utilizadora autentica-se através da Chave Móvel Digital, mas não consegue concluir o percurso apresentado no regresso ao dados.gov.pt. Em vez de criar outra conta, identifica o ponto em que o processo foi interrompido e comunica essa informação através de Ajuda e contactos.",
+          "tip": "Não crie uma nova conta para contornar uma dificuldade de autenticação ou associação. Uma operação interrompida não deve alterar silenciosamente a Conta dados.gov.pt, os conteúdos ou as associações anteriormente válidas.",
           "table": null,
-          "media": "Exemplo de informação útil para suporte, sem credenciais, tokens ou dados pessoais desnecessários.",
+          "media": "Exemplo da informação útil a fornecer ao suporte, sem credenciais, códigos, tokens, ligações privadas ou dados pessoais desnecessários.",
           "nextRef": {
             "type": "guide",
             "id": "D14"
@@ -1921,8 +1967,8 @@
       "slug": "Perfil-e-actividade",
       "themeId": "conta-participacao",
       "title": "Perfil e actividade",
-      "intro": "Actualize a informação do seu perfil e da conta, gira as Chaves da API, encontre os seus conteúdos e consulte a actividade apresentada na sua área pessoal.",
-      "audience": "Para utilizadores com conta no dados.gov.pt. A consulta do perfil de outros utilizadores exige autenticação e é distinguida da gestão da própria conta.",
+      "intro": "Actualize a informação do seu perfil e da Conta dados.gov.pt, gira os métodos de acesso disponíveis e as Chaves da API, encontre os seus conteúdos e consulte a actividade apresentada na sua área pessoal.",
+      "audience": "Para utilizadores com uma Conta dados.gov.pt que pretendem gerir o perfil, os dados e métodos de acesso à conta, as Chaves da API, os seus conteúdos ou a actividade apresentada na área pessoal. A consulta do perfil de outros utilizadores é distinguida da gestão da própria conta.",
       "relatedGuideIds": [
         "D01",
         "D02",
@@ -1955,20 +2001,23 @@
         {
           "id": "D13-T02",
           "slug": "Alterar-o-email-e-a-palavra-passe-da-conta",
-          "title": "Alterar o email e a palavra-passe da conta",
-          "intro": "Actualize os dados de acesso da conta quando o portal disponibiliza essas opções no seu perfil.",
-          "roles": "Utilizador autenticado com conta aplicável",
+          "title": "Gerir os dados e métodos de acesso à Conta dados.gov.pt",
+          "intro": "Na área da conta pode gerir os dados de acesso disponíveis e, quando aplicável, iniciar a associação de uma identidade digital à mesma Conta dados.gov.pt.",
+          "roles": "Utilizadores autenticados que pretendem alterar dados de acesso ou associar uma identidade digital à sua Conta dados.gov.pt.",
           "steps": [
-            "Inicie sessão e abra Meu perfil.",
-            "Na área Perfil, localize a opção para alterar o endereço de email ou a palavra-passe.",
-            "Escolha a alteração pretendida e preencha os campos apresentados.",
-            "Conclua a confirmação solicitada pelo portal, incluindo a consulta da caixa de correio quando for enviado um link de validação.",
-            "Volte ao perfil ou ao acesso à conta e confirme que a alteração ficou concluída."
+            "Inicie sessão e abra a área da sua conta ou perfil.",
+            "Localize as opções relacionadas com os dados ou métodos de acesso à conta.",
+            "Para alterar o email ou a palavra-passe, escolha a opção correspondente e conclua as validações apresentadas pelo portal.",
+            "Para associar uma identidade digital, utilize a opção permanente de associação disponível na área da conta ou perfil e escolha Chave Móvel Digital ou Autenticação Europeia.",
+            "Conclua a autenticação através do serviço de identidade seleccionado.",
+            "Na associação iniciada a partir da conta tradicional, revalide a mesma Conta dados.gov.pt com o respectivo email e palavra-passe.",
+            "Consulte a mensagem enviada para o email da conta e utilize a ligação de associação dentro do período de validade de 30 minutos.",
+            "Depois da conclusão, confirme que continua a utilizar a mesma Conta dados.gov.pt e que a identidade digital ficou associada."
           ],
-          "example": "Uma utilizadora altera o endereço de email da conta e conclui a validação através da mensagem recebida.",
-          "tip": "Não partilhe palavras-passe nem links de validação. Se a conta estiver associada a CMD ou eIDAS, siga apenas o percurso apresentado pelo portal para a alteração pretendida.",
+          "example": "Uma utilizadora que entra habitualmente com email e palavra-passe abre a área da conta e utiliza a opção permanente de associação para adicionar a Chave Móvel Digital à mesma Conta dados.gov.pt.",
+          "tip": "Associar uma identidade digital não deve criar uma segunda conta nem transferir silenciosamente uma identidade que já esteja associada a outra conta. Se existir esse conflito, a operação é interrompida e as contas permanecem inalteradas.",
           "table": null,
-          "media": "Área de Perfil com as opções de alteração de email e palavra-passe, usando dados de demonstração.",
+          "media": "Área da conta ou perfil com as opções de gestão dos dados de acesso e de associação de identidade digital, utilizando exclusivamente dados de demonstração.",
           "nextRef": {
             "type": "task",
             "id": "D13-T03"
@@ -2064,10 +2113,10 @@
           "id": "D13-T07",
           "slug": "Resolver-dificuldades-no-perfil",
           "title": "Resolver dificuldades no perfil",
-          "intro": "Comece por identificar se a dificuldade está no acesso, na edição do perfil ou na localização de conteúdos.",
+          "intro": "Comece por identificar se a dificuldade está no acesso, na associação de uma identidade digital, na edição do perfil ou na localização de conteúdos.",
           "roles": "Utilizador autenticado",
           "steps": [
-            "Se não consegue iniciar sessão, consulte Autenticação e acesso à conta.",
+            "Se a dificuldade estiver no início de sessão, primeiro acesso, associação de identidade digital ou recuperação da palavra-passe, consulte Autenticação e acesso à Conta dados.gov.pt.",
             "Se uma fotografia for recusada, compare o ficheiro com os requisitos indicados no campo de carregamento.",
             "Se não encontra um conteúdo, confirme a conta utilizada e se está na área pessoal ou na área da organização.",
             "Se a alteração não ficar guardada ou o problema persistir, abra Ajuda e contactos e descreva a acção, a página e a mensagem apresentada."

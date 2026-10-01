@@ -2,7 +2,7 @@
 
 ## Estado
 
-A arquitectura v1.0 está implementada e validada como release candidate `v1.0.0-rc.1` deste repositório.
+A arquitectura v1.0 está implementada e validada como release estável `v1.0.0` deste repositório.
 
 A fonte activa por defeito continua a ser Local JSON. A fonte Squidex existe por opt in explícito e não tem fallback silencioso.
 

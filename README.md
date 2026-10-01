@@ -100,7 +100,7 @@ Esta distinção é importante porque um manual de utilizador deve ser simples, 
 
 ## Estado actual
 
-A release candidate **v1.0.0-rc.1** representa a baseline técnica actual preparada para integração em `main` neste repositório.
+A versão estável **v1.0.0** representa a baseline técnica actual integrada em `main` neste repositório.
 
 A v1 preserva os 15 guias, 95 fichas, sete temas funcionais e 118 rotas históricas, mas substitui a arquitectura de manutenção baseada em HTML materializado por uma aplicação Next.js com domínio estruturado e fonte configurável.
 
@@ -223,7 +223,7 @@ O histórico visual e funcional é preservado na pasta `versions`.
 | `v0.3` | Organização dos guias por temas e introdução da navegação Tema → Guia → Tarefa. |
 | `v0.4` | Modularização técnica, aproximação do header e footer, integração de D14 e D01 e evolução da taxonomia para sete temas. |
 | `v0.5.0` | 15 guias, 95 fichas, 118 rotas estáticas, 15 PDFs, guardrails de consistência, alinhamento editorial com PRD/PPR e workflows permanentes. |
-| `v1.0.0-rc.1` | Arquitectura Next.js single source, Ágora 4.0/Tailwind 4.3 alinhados com o portal oficial, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
+| `v1.0.0` | Primeira versão estável do protótipo: arquitectura Next.js single source, Ágora 4.0/Tailwind 4.3 alinhados com o portal oficial, fonte configurável Local/Squidex, 118 rotas preservadas, importação Squidex Draft validada e CI reforçado. |
 
 O histórico Git continua a ser a fonte técnica principal de versionamento. Nem todos os commits originam uma nova pasta em `versions`. A pasta é reservada a referências que seja útil abrir e comparar de forma autónoma.
 

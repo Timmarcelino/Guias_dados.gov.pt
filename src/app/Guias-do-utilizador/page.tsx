@@ -18,13 +18,13 @@ function HomeCard({ title, description, href }: { title: string; description: st
     <a
       href={href}
       aria-label={`Abrir: ${title}`}
-      className="group flex min-h-[112px] items-start justify-between gap-16 rounded-[6px] border border-[#dce5eb] bg-white p-18 text-inherit no-underline transition-colors hover:border-[#005ce6] hover:bg-[#f7faff]"
+      className="group flex min-h-[124px] items-start justify-between gap-[16px] rounded-[6px] border border-[#dce5eb] bg-white px-[18px] pb-[24px] pt-[18px] text-inherit no-underline transition-colors hover:border-[#005ce6] hover:bg-[#f7faff]"
     >
       <span className="min-w-0">
-        <strong className="mb-6 block text-m-semibold text-[#103454]">{title}</strong>
-        <span className="block text-s-regular leading-relaxed text-[#526779]">{description}</span>
+        <strong className="mb-[8px] block text-m-semibold leading-[1.35] text-[#103454]">{title}</strong>
+        <span className="block text-s-regular leading-[1.55] text-[#526779]">{description}</span>
       </span>
-      <span aria-hidden="true" className="shrink-0 text-xl text-[#005ce6]">→</span>
+      <span aria-hidden="true" className="mt-[2px] shrink-0 text-xl text-[#005ce6]">→</span>
     </a>
   );
 }
